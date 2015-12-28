@@ -1,0 +1,114 @@
+[INFO][2015-12-28 22:19:29,171][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization started
+[INFO][2015-12-28 22:19:29,324][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing Root WebApplicationContext: startup date [Mon Dec 28 22:19:29 CST 2015]; root of context hierarchy
+[INFO][2015-12-28 22:19:29,392][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring.xml]
+[INFO][2015-12-28 22:19:29,648][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-hiber.xml]
+[INFO][2015-12-28 22:19:30,001][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [config.properties]
+[ERROR][2015-12-28 22:19:30,448][com.alibaba.druid.pool.DruidAbstractDataSource]maxIdle is deprecated
+[INFO][2015-12-28 22:19:30,511][com.alibaba.druid.pool.DruidDataSource]{dataSource-1} inited
+[INFO][2015-12-28 22:19:30,859][org.hibernate.annotations.common.Version]HCANN000001: Hibernate Commons Annotations {4.0.2.Final}
+[INFO][2015-12-28 22:19:30,869][org.hibernate.Version]HHH000412: Hibernate Core {4.2.5.Final}
+[INFO][2015-12-28 22:19:30,874][org.hibernate.cfg.Environment]HHH000206: hibernate.properties not found
+[INFO][2015-12-28 22:19:30,877][org.hibernate.cfg.Environment]HHH000021: Bytecode provider name : javassist
+[INFO][2015-12-28 22:19:31,548][org.hibernate.dialect.Dialect]HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+[INFO][2015-12-28 22:19:31,642][org.hibernate.engine.transaction.internal.TransactionFactoryInitiator]HHH000399: Using default transaction strategy (direct JDBC transactions)
+[INFO][2015-12-28 22:19:31,662][org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory]HHH000397: Using ASTQueryTranslatorFactory
+[INFO][2015-12-28 22:19:31,740][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000228: Running hbm2ddl schema update
+[INFO][2015-12-28 22:19:31,740][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000102: Fetching database metadata
+[INFO][2015-12-28 22:19:31,745][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000396: Updating schema
+[INFO][2015-12-28 22:19:31,746][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000232: Schema update complete
+[INFO][2015-12-28 22:19:31,852][org.springframework.orm.hibernate4.HibernateTransactionManager]Using DataSource [{
+	CreateTime:"2015-12-28 22:19:30",
+	ActiveCount:0,
+	PoolingCount:1,
+	CreateCount:1,
+	DestroyCount:0,
+	CloseCount:2,
+	ConnectCount:2,
+	Connections:[
+		{ID:424616501, ConnectTime:"2015-12-28 22:19:31", UseCount:2, LastActiveTime:"2015-12-28 22:19:31"}
+	]
+}] of Hibernate SessionFactory for HibernateTransactionManager
+[INFO][2015-12-28 22:19:32,350][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization completed in 3178 ms
+[INFO][2015-12-28 22:19:32,408][org.springframework.web.servlet.DispatcherServlet]FrameworkServlet 'springMVC': initialization started
+[INFO][2015-12-28 22:19:32,414][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing WebApplicationContext for namespace 'springMVC-servlet': startup date [Mon Dec 28 22:19:32 CST 2015]; parent: Root WebApplicationContext
+[INFO][2015-12-28 22:19:32,416][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mvc.xml]
+[INFO][2015-12-28 22:19:32,874][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/home]}" onto public java.lang.String controller.HomeController.home(org.springframework.ui.Model)
+[INFO][2015-12-28 22:19:33,076][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMVC-servlet': startup date [Mon Dec 28 22:19:32 CST 2015]; parent: Root WebApplicationContext
+[INFO][2015-12-28 22:19:33,139][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMVC-servlet': startup date [Mon Dec 28 22:19:32 CST 2015]; parent: Root WebApplicationContext
+[INFO][2015-12-28 22:19:33,328][org.springframework.web.servlet.DispatcherServlet]FrameworkServlet 'springMVC': initialization completed in 920 ms
+[INFO][2015-12-28 22:23:19,727][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization started
+[INFO][2015-12-28 22:23:19,867][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing Root WebApplicationContext: startup date [Mon Dec 28 22:23:19 CST 2015]; root of context hierarchy
+[INFO][2015-12-28 22:23:19,925][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring.xml]
+[INFO][2015-12-28 22:23:20,185][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-hiber.xml]
+[INFO][2015-12-28 22:23:20,491][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [config.properties]
+[ERROR][2015-12-28 22:23:20,958][com.alibaba.druid.pool.DruidAbstractDataSource]maxIdle is deprecated
+[INFO][2015-12-28 22:23:21,026][com.alibaba.druid.pool.DruidDataSource]{dataSource-1} inited
+[INFO][2015-12-28 22:23:21,359][org.hibernate.annotations.common.Version]HCANN000001: Hibernate Commons Annotations {4.0.2.Final}
+[INFO][2015-12-28 22:23:21,368][org.hibernate.Version]HHH000412: Hibernate Core {4.2.5.Final}
+[INFO][2015-12-28 22:23:21,374][org.hibernate.cfg.Environment]HHH000206: hibernate.properties not found
+[INFO][2015-12-28 22:23:21,377][org.hibernate.cfg.Environment]HHH000021: Bytecode provider name : javassist
+[INFO][2015-12-28 22:23:22,309][org.hibernate.dialect.Dialect]HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+[INFO][2015-12-28 22:23:22,379][org.hibernate.engine.transaction.internal.TransactionFactoryInitiator]HHH000399: Using default transaction strategy (direct JDBC transactions)
+[INFO][2015-12-28 22:23:22,388][org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory]HHH000397: Using ASTQueryTranslatorFactory
+[INFO][2015-12-28 22:23:22,457][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000228: Running hbm2ddl schema update
+[INFO][2015-12-28 22:23:22,457][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000102: Fetching database metadata
+[INFO][2015-12-28 22:23:22,463][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000396: Updating schema
+[INFO][2015-12-28 22:23:22,464][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000232: Schema update complete
+[INFO][2015-12-28 22:23:22,542][org.springframework.orm.hibernate4.HibernateTransactionManager]Using DataSource [{
+	CreateTime:"2015-12-28 22:23:20",
+	ActiveCount:0,
+	PoolingCount:1,
+	CreateCount:1,
+	DestroyCount:0,
+	CloseCount:2,
+	ConnectCount:2,
+	Connections:[
+		{ID:604400056, ConnectTime:"2015-12-28 22:23:22", UseCount:2, LastActiveTime:"2015-12-28 22:23:22"}
+	]
+}] of Hibernate SessionFactory for HibernateTransactionManager
+[INFO][2015-12-28 22:23:22,651][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization completed in 2922 ms
+[INFO][2015-12-28 22:23:22,720][org.springframework.web.servlet.DispatcherServlet]FrameworkServlet 'springMVC': initialization started
+[INFO][2015-12-28 22:23:22,737][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing WebApplicationContext for namespace 'springMVC-servlet': startup date [Mon Dec 28 22:23:22 CST 2015]; parent: Root WebApplicationContext
+[INFO][2015-12-28 22:23:22,740][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mvc.xml]
+[INFO][2015-12-28 22:23:23,200][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/home]}" onto public java.lang.String controller.HomeController.home(org.springframework.ui.Model)
+[INFO][2015-12-28 22:23:23,388][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMVC-servlet': startup date [Mon Dec 28 22:23:22 CST 2015]; parent: Root WebApplicationContext
+[INFO][2015-12-28 22:23:23,470][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMVC-servlet': startup date [Mon Dec 28 22:23:22 CST 2015]; parent: Root WebApplicationContext
+[INFO][2015-12-28 22:23:23,607][org.springframework.web.servlet.DispatcherServlet]FrameworkServlet 'springMVC': initialization completed in 882 ms
+[INFO][2015-12-28 22:27:20,078][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization started
+[INFO][2015-12-28 22:27:20,205][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing Root WebApplicationContext: startup date [Mon Dec 28 22:27:20 CST 2015]; root of context hierarchy
+[INFO][2015-12-28 22:27:20,258][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring.xml]
+[INFO][2015-12-28 22:27:20,507][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-hiber.xml]
+[INFO][2015-12-28 22:27:20,849][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [config.properties]
+[ERROR][2015-12-28 22:27:21,293][com.alibaba.druid.pool.DruidAbstractDataSource]maxIdle is deprecated
+[INFO][2015-12-28 22:27:21,366][com.alibaba.druid.pool.DruidDataSource]{dataSource-1} inited
+[INFO][2015-12-28 22:27:21,697][org.hibernate.annotations.common.Version]HCANN000001: Hibernate Commons Annotations {4.0.2.Final}
+[INFO][2015-12-28 22:27:21,710][org.hibernate.Version]HHH000412: Hibernate Core {4.2.5.Final}
+[INFO][2015-12-28 22:27:21,715][org.hibernate.cfg.Environment]HHH000206: hibernate.properties not found
+[INFO][2015-12-28 22:27:21,719][org.hibernate.cfg.Environment]HHH000021: Bytecode provider name : javassist
+[INFO][2015-12-28 22:27:22,614][org.hibernate.dialect.Dialect]HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+[INFO][2015-12-28 22:27:22,706][org.hibernate.engine.transaction.internal.TransactionFactoryInitiator]HHH000399: Using default transaction strategy (direct JDBC transactions)
+[INFO][2015-12-28 22:27:22,720][org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory]HHH000397: Using ASTQueryTranslatorFactory
+[INFO][2015-12-28 22:27:22,809][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000228: Running hbm2ddl schema update
+[INFO][2015-12-28 22:27:22,810][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000102: Fetching database metadata
+[INFO][2015-12-28 22:27:22,817][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000396: Updating schema
+[INFO][2015-12-28 22:27:22,820][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000232: Schema update complete
+[INFO][2015-12-28 22:27:22,910][org.springframework.orm.hibernate4.HibernateTransactionManager]Using DataSource [{
+	CreateTime:"2015-12-28 22:27:21",
+	ActiveCount:0,
+	PoolingCount:1,
+	CreateCount:1,
+	DestroyCount:0,
+	CloseCount:2,
+	ConnectCount:2,
+	Connections:[
+		{ID:874337275, ConnectTime:"2015-12-28 22:27:22", UseCount:2, LastActiveTime:"2015-12-28 22:27:22"}
+	]
+}] of Hibernate SessionFactory for HibernateTransactionManager
+[INFO][2015-12-28 22:27:23,012][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization completed in 2933 ms
+[INFO][2015-12-28 22:27:23,111][org.springframework.web.servlet.DispatcherServlet]FrameworkServlet 'springMVC': initialization started
+[INFO][2015-12-28 22:27:23,122][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing WebApplicationContext for namespace 'springMVC-servlet': startup date [Mon Dec 28 22:27:23 CST 2015]; parent: Root WebApplicationContext
+[INFO][2015-12-28 22:27:23,124][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mvc.xml]
+[INFO][2015-12-28 22:27:23,606][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/home]}" onto public java.lang.String controller.HomeController.home(org.springframework.ui.Model)
+[INFO][2015-12-28 22:27:23,824][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMVC-servlet': startup date [Mon Dec 28 22:27:23 CST 2015]; parent: Root WebApplicationContext
+[INFO][2015-12-28 22:27:23,886][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMVC-servlet': startup date [Mon Dec 28 22:27:23 CST 2015]; parent: Root WebApplicationContext
+[INFO][2015-12-28 22:27:24,044][org.springframework.web.servlet.DispatcherServlet]FrameworkServlet 'springMVC': initialization completed in 932 ms
