@@ -24,4 +24,8 @@ public class UserServiceIml implements UserService {
             return false;
         }
     }
+
+    public User getUserById(int id) {
+        return userDao.getUserById(id);
+    }
 }
