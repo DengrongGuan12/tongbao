@@ -7,6 +7,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -14,6 +16,8 @@ import java.util.List;
  * Created by dengrong on 2015/12/29.
  */
 @Repository
+@EnableTransactionManagement
+@Transactional
 public class BaseDaoImpl implements BaseDao {
     @Autowired
     protected SessionFactory sessionFactory;
@@ -35,8 +39,8 @@ public class BaseDaoImpl implements BaseDao {
     }
 
     public Object load(Class c, int id) {
-//        Session session = getSession();
-        Session session = HibernateUtil.getSession();
+        Session session = getSession();
+//        Session session = HibernateUtil.getSession();
         return session.get(c, id);
     }
 
