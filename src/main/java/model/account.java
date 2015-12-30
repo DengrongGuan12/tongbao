@@ -11,7 +11,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name="account")
-public class account implements Serializable {
+public class Account implements Serializable {
     private int accountId;
     private Date buildTime;
     private Byte type;
