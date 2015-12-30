@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import service.UserService;
+import vo.RestResult;
 
 /**
  * Created by cg on 2015/12/29.
@@ -33,10 +34,18 @@ public class UserController {
     }
     @RequestMapping(value = "/id/{id}",method = RequestMethod.GET)
         @ResponseBody
-    public User getUser(@PathVariable int id){
+    public RestResult getUser(@PathVariable int id){
 //        String[] strings = {"a","b","c"};
 //        String string = "sdsd";
         count++;
-        return userService.getUserById(id);
+        User user = userService.getUserById(id);
+        return RestResult.CreateResult(200,user);
+    }
+
+    @RequestMapping(value = "/count", method = RequestMethod.GET)
+        @ResponseBody
+    public int getCount(){
+        count++;
+        return count;
     }
 }
