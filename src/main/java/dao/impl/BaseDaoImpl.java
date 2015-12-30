@@ -1,6 +1,7 @@
 package dao.impl;
 
 import dao.BaseDao;
+import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -33,8 +34,9 @@ public class BaseDaoImpl implements BaseDao {
         getSession().clear();
     }
 
-    public Object load(Class c, String id) {
-        Session session = getSession();
+    public Object load(Class c, int id) {
+//        Session session = getSession();
+        Session session = HibernateUtil.getSession();
         return session.get(c, id);
     }
 

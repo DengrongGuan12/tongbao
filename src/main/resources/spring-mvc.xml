@@ -10,10 +10,15 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
     <!-- Scans the classpath of this application for @Components to deploy as beans -->
     <context:component-scan base-package="controller" />
     <!-- Configures the @Controller programming model -->
-    <mvc:annotation-driven />
     <!-- Resolves view names to protected .jsp resources within the /WEB-INF/views directory -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/" />
         <property name="suffix" value=".jsp" />
     </bean>
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
 </beans>

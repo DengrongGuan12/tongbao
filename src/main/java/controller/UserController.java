@@ -16,6 +16,7 @@ import service.UserService;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+    public static int count = 0;
     @Autowired
     private UserService userService;
     @RequestMapping("/register")
@@ -33,6 +34,9 @@ public class UserController {
     @RequestMapping(value = "/id/{id}",method = RequestMethod.GET)
         @ResponseBody
     public User getUser(@PathVariable int id){
+//        String[] strings = {"a","b","c"};
+//        String string = "sdsd";
+        count++;
         return userService.getUserById(id);
     }
 }

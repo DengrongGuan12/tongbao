@@ -1,10 +1,12 @@
 package dao.impl;
 
+import dao.BaseDao;
 import dao.UserDao;
 import model.User;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -12,6 +14,8 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class UserDaoImpl implements UserDao{
+    @Autowired
+    private BaseDao baseDao;
     public boolean registerUser(User user){
         Session session = HibernateUtil.getSession();
         Transaction tx = session.beginTransaction();
@@ -31,7 +35,6 @@ public class UserDaoImpl implements UserDao{
     }
 
     public User getUserById(int id) {
-        Session session = HibernateUtil.getSession();
-        return null;
+        return (User) baseDao.load(User.class,id);
     }
 }
