@@ -4,10 +4,11 @@ import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import pojo.ModifiedIcon;
+import pojo.ModifiedNickName;
+import pojo.ModifiedPassword;
+import pojo.UserAuthInfo;
 import service.UserService;
 import vo.RestResult;
 
@@ -20,7 +21,7 @@ public class UserController {
     public static int count = 0;
     @Autowired
     private UserService userService;
-    @RequestMapping("/register")
+    @RequestMapping("/userRegister")
     public String userRegister(Model model){
 
         User user = new User("158518131313","fsdf",new Byte("1"));
@@ -47,5 +48,72 @@ public class UserController {
     public int getCount(){
         count++;
         return count;
+    }
+
+    @RequestMapping(value = "/register",method = RequestMethod.POST)
+        @ResponseBody
+    public RestResult register(@ModelAttribute("UserAuthInfo")UserAuthInfo userAuthInfo){
+        if(userService.register(userAuthInfo.getPhoneNumber(),userAuthInfo.getPassword())){
+            return RestResult.CreateResult(1);
+        }else{
+            return RestResult.CreateResult(0,"注册失败");
+        }
+
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+        @ResponseBody
+    public RestResult login(@ModelAttribute("UserAuthInfo")UserAuthInfo userAuthInfo){
+        User user = userService.login(userAuthInfo.getPhoneNumber(),userAuthInfo.getPassword());
+        if(user == null){
+            return RestResult.CreateResult(0,"登录失败");
+        }else{
+            return RestResult.CreateResult(1,user);
+        }
+    }
+
+    @RequestMapping(value = "/modifyNickName", method = RequestMethod.POST)
+        @ResponseBody
+    public RestResult modifyNickName(@ModelAttribute("ModifiedNickName")ModifiedNickName modifiedNickName){
+        int id = userService.hasLogin(modifiedNickName.getToken());
+        if(id == 0){
+            return RestResult.CreateResult(0,"尚未登录!");
+        }else{
+            if(userService.changeNickName(id,modifiedNickName.getNickName())){
+                return RestResult.CreateResult(1);
+            }else{
+                return RestResult.CreateResult(0,"操作失败!");
+            }
+        }
+    }
+
+    @RequestMapping(value = "/modifyPassword", method = RequestMethod.POST)
+        @ResponseBody
+    public RestResult modifyPassword(@ModelAttribute("ModifiedPassword")ModifiedPassword modifiedPassword){
+        int id = userService.hasLogin(modifiedPassword.getToken());
+        if(id == 0){
+            return RestResult.CreateResult(0,"尚未登录!");
+        }else{
+            if(userService.changePassword(id,modifiedPassword.getOldPassword(),modifiedPassword.getNewPassword())){
+                return RestResult.CreateResult(1);
+            }else{
+                return RestResult.CreateResult(0,"操作失败!");
+            }
+        }
+    }
+
+    @RequestMapping(value = "/modifyIcon", method = RequestMethod.POST)
+        @ResponseBody
+    public RestResult modifyIcon(@ModelAttribute("ModifiedIcon")ModifiedIcon modifiedIcon){
+        int id = userService.hasLogin(modifiedIcon.getToken());
+        if(id == 0){
+            return RestResult.CreateResult(0,"尚未登录!");
+        }else{
+            if(userService.changeIconUrl(id,modifiedIcon.getIconUrl())){
+                return RestResult.CreateResult(1);
+            }else{
+                return RestResult.CreateResult(0,"操作失败!");
+            }
+        }
     }
 }

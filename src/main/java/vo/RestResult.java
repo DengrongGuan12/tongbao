@@ -7,19 +7,36 @@ import javax.persistence.Entity;
  */
 @Entity
 public class RestResult {
-    private int status;
+    private int result;
     private Object data;
-    public int getStatus(){
-        return status;
+    private String errorMsg;
+    public String getErrorMsg(){
+        return errorMsg;
+    }
+    public int getResult(){
+        return result;
     }
     public Object getData(){
         return data;
     }
-    public RestResult(int status, Object data){
-        this.status = status;
+    public RestResult(int result, Object data){
+        this.result = result;
         this.data = data;
     }
-    public static RestResult CreateResult(int status, Object data){
-        return new RestResult(status,data);
+    public RestResult(int result, String errorMsg){
+        this.result = result;
+        this.errorMsg = errorMsg;
+    }
+    public RestResult(int result){
+        this.result = result;
+    }
+    public static RestResult CreateResult(int result, Object data){
+        return new RestResult(result,data);
+    }
+    public static RestResult CreateResult(int result, String errorMsg){
+        return new RestResult(result,errorMsg);
+    }
+    public static RestResult CreateResult(int result){
+        return new RestResult(result);
     }
 }
