@@ -125,16 +125,11 @@ public class BaseDaoImpl implements BaseDao {
     }
 
     public void save(Object bean) {
-        try {
             Session session = getNewSession();
             session.save(bean);
             session.flush();
             session.clear();
             session.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
     }
 
     public void update(Object bean) {

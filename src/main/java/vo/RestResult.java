@@ -10,6 +10,7 @@ public class RestResult {
     private int result;
     private Object data;
     private String errorMsg;
+
     public String getErrorMsg(){
         return errorMsg;
     }
@@ -30,6 +31,7 @@ public class RestResult {
     public RestResult(int result){
         this.result = result;
     }
+
     public static RestResult CreateResult(int result, Object data){
         return new RestResult(result,data);
     }

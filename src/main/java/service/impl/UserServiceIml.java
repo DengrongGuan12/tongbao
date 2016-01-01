@@ -1,6 +1,7 @@
 package service.impl;
 
 import dao.UserDao;
+import manager.UserManager;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,16 +14,13 @@ import service.UserService;
  */
 @Service
 public class UserServiceIml implements UserService {
-
+    UserManager userManager=UserManager.getInstance();
     @Autowired
     private UserDao userDao;
-    public boolean registerUser(User user){
-        try {
-            userDao.registerUser(user);
-            return true;
-        }catch (Exception e) {
-            return false;
-        }
+
+
+    public User getUserByPhoneNumber(String phoneNumber) {
+        return userDao.getUserByPhoneNumber(phoneNumber);
     }
 
     public User getUserById(int id) {
@@ -30,17 +28,26 @@ public class UserServiceIml implements UserService {
     }
 
     /*
-    注册
-     */
-    public boolean register(String phoneNumber, String password) {
-        return false;
+        注册
+         */
+    public boolean register(String phoneNumber, String password,Byte type) {
+        User user=new User(phoneNumber,password,type);
+        return userDao.registerUser(user);
     }
 
     /*
     登录,登录成功返回用户信息,否则返回null
      */
     public User login(String phoneNumber, String password) {
-        return null;
+        User userTemp=userDao.getUserByPhoneNumber(phoneNumber);
+        if(userTemp!=null&&userTemp.getPassword().equals(password)){
+            String token=userManager.addToOnlineList(userTemp.getId(),userTemp.getType());
+            userTemp.setToken(token);
+            return userTemp;
+        }else {
+            return null;
+        }
+
     }
 
 
@@ -48,27 +55,46 @@ public class UserServiceIml implements UserService {
     根据判断用户是否登录，如果已经登录返回用户id,否则返回0
      */
     public int hasLogin(String token) {
-        return 0;
+        return userManager.getUserIdByKey(token);
     }
 
     /*
     修改用户昵称,成功返回true,否则返回false
      */
     public boolean changeNickName(int id, String nickName) {
-        return false;
+        User userTemp=userDao.getUserById(id);
+        if(userTemp!=null){
+            userTemp.setNick_name(nickName);
+            return userDao.updateUser(userTemp);
+        }else {
+            return false;
+        }
     }
 
     /*
     修改用户密码,成功返回true
      */
     public boolean changePassword(int id, String oldPassword, String newPassword) {
-        return false;
+        User userTemp=userDao.getUserById(id);
+        if(userTemp!=null&&userTemp.getPassword().equals(oldPassword)){
+            userTemp.setPassword(newPassword);
+            return userDao.updateUser(userTemp);
+        }else {
+            return false;
+        }
+
     }
 
     /*
     修改用户头像 ,成功返回true
      */
     public boolean changeIconUrl(int id, String url) {
-        return false;
+        User userTemp=userDao.getUserById(id);
+        if(userTemp!=null){
+            userTemp.setIcon(url);
+            return userDao.updateUser(userTemp);
+        }else {
+            return false;
+        }
     }
 }

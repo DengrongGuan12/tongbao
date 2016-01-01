@@ -13,28 +13,44 @@ import org.springframework.stereotype.Repository;
  * Created by dengrong on 2015/12/29.
  */
 @Repository
-public class UserDaoImpl implements UserDao{
-    @Autowired
-    private BaseDao baseDao;
-    public boolean registerUser(User user){
-        Session session = HibernateUtil.getSession();
-        Transaction tx = session.beginTransaction();
-        try {
-            session.save(user);
-            tx.commit();
-            return true;
-        }catch (Exception e){
-            System.out.println(e);
-            return false;
-        }finally {
-            HibernateUtil.flushClearClose();
-        }
-    }
-    public User queryUserByPhone(String phone_number){
-        return null;
+public class UserDaoImpl extends BaseDaoImpl implements UserDao{
+
+
+    public boolean deleteUser(int id) {
+        return false;
     }
 
     public User getUserById(int id) {
-        return (User) baseDao.load(User.class,id);
+        try {
+            User userTemp=(User)super.load(User.class,id);
+            return userTemp;
+        }catch (Exception e){
+            return null;
+        }
     }
+
+    public boolean updateUser(User user) {
+        try{
+            super.update(user);
+            return true;
+        }catch (Exception e)
+        {
+            return false;
+        }
+
+    }
+
+    public boolean registerUser(User user) {
+        try {
+            super.save(user);
+            return true;
+        }catch (Exception e) {
+            return false;
+        }
+
+    }
+    public User getUserByPhoneNumber(String phoneNumber) {
+        return (User)super.getList(User.class,"phone_number",phoneNumber).get(0);
+    }
+
 }

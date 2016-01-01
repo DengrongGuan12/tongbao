@@ -1,5 +1,6 @@
 package controller;
 
+import manager.UserManager;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,9 +24,7 @@ public class UserController {
     private UserService userService;
     @RequestMapping("/userRegister")
     public String userRegister(Model model){
-
-        User user = new User("158518131313","fsdf",new Byte("1"));
-        boolean result=userService.registerUser(user);
+        boolean result=userService.register("15851813131214", "fsdf", new Byte("1"));
         if(result){
             model.addAttribute("message","register success");
         }else{
@@ -53,7 +52,7 @@ public class UserController {
     @RequestMapping(value = "/register",method = RequestMethod.POST)
         @ResponseBody
     public RestResult register(@ModelAttribute("UserAuthInfo")UserAuthInfo userAuthInfo){
-        if(userService.register(userAuthInfo.getPhoneNumber(),userAuthInfo.getPassword())){
+        if(userService.register(userAuthInfo.getPhoneNumber(),userAuthInfo.getPassword(),userAuthInfo.getType())){
             return RestResult.CreateResult(1);
         }else{
             return RestResult.CreateResult(0,"注册失败");
@@ -65,6 +64,7 @@ public class UserController {
         @ResponseBody
     public RestResult login(@ModelAttribute("UserAuthInfo")UserAuthInfo userAuthInfo){
         User user = userService.login(userAuthInfo.getPhoneNumber(),userAuthInfo.getPassword());
+
         if(user == null){
             return RestResult.CreateResult(0,"登录失败");
         }else{
@@ -76,6 +76,7 @@ public class UserController {
         @ResponseBody
     public RestResult modifyNickName(@ModelAttribute("ModifiedNickName")ModifiedNickName modifiedNickName){
         int id = userService.hasLogin(modifiedNickName.getToken());
+        System.out.print("modify"+id);
         if(id == 0){
             return RestResult.CreateResult(0,"尚未登录!");
         }else{

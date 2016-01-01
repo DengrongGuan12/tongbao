@@ -6,6 +6,16 @@ package pojo;
 public class UserAuthInfo {
     private String phoneNumber;
 
+    public Byte getType() {
+        return type;
+    }
+
+    public void setType(Byte type) {
+        this.type = type;
+    }
+
+    private Byte type;
+
     public String getPassword() {
         return password;
     }

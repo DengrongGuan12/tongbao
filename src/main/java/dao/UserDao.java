@@ -7,6 +7,9 @@ import model.User;
  */
 public interface UserDao {
     public boolean registerUser(User user);
-    public User queryUserByPhone(String phone_number);
+    public User getUserByPhoneNumber(String phoneNumber);
     public User getUserById(int id);
+    public boolean updateUser(User user);
+    public boolean deleteUser(int id);
+
 }
