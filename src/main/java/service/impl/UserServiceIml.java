@@ -6,7 +6,10 @@ import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.UserService;
+import vo.Account;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -96,5 +99,16 @@ public class UserServiceIml implements UserService {
         }else {
             return false;
         }
+    }
+
+    public List getUserAccount(int userId) {
+        List list = new ArrayList();
+        Account account = new Account();
+        account.setMoney(12.3);
+        account.setType(0);
+        account.setTime("2013-11-11 00:00:00");
+        account.setOrder(null);
+        list.add(account);
+        return list;
     }
 }

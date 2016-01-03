@@ -2,6 +2,8 @@ package service;
 
 import model.User;
 
+import java.util.List;
+
 /**
  * Created by cg on 2015/12/29.
  */
@@ -14,5 +16,6 @@ public interface UserService {
     public boolean changeNickName(int id, String nickName);
     public boolean changePassword(int id, String oldPassword, String newPassword);
     public boolean changeIconUrl(int id, String url);
+    public List getUserAccount(int userId);
 
 }

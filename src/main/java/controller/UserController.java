@@ -6,12 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import pojo.ModifiedIcon;
-import pojo.ModifiedNickName;
-import pojo.ModifiedPassword;
-import pojo.UserAuthInfo;
+import pojo.*;
 import service.UserService;
 import vo.RestResult;
+
+import java.util.List;
 
 /**
  * Created by cg on 2015/12/29.
@@ -116,5 +115,18 @@ public class UserController {
                 return RestResult.CreateResult(0,"操作失败!");
             }
         }
+    }
+    @RequestMapping(value = "showAccount",method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult showAccount(@ModelAttribute("TokenAuthInfo") TokenAuthInfo tokenAuthInfo){
+        List list = userService.getUserAccount(1);
+        return RestResult.CreateResult(1,list);
+//        int userId = userService.hasLogin(tokenAuthInfo.getToken());
+//        if(userId == 0){
+//            return RestResult.CreateResult(0,"尚未登录!");
+//        }else {
+//            List list = userService.getUserAccount(userId);
+//            return RestResult.CreateResult(1,list);
+//        }
     }
 }
