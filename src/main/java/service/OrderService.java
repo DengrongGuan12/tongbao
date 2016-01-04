@@ -12,4 +12,5 @@ public interface OrderService {
     public List getOrderList(int userId, int type);
     public boolean deleteOrder(int userId, int orderId);
     public int cancelOrder(int userId, int orderId);
+    public boolean finishOrder(int userId, int orderId);
 }

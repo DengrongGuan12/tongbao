@@ -12,4 +12,8 @@ public class ShipperServiceImpl implements ShipperService{
     public boolean evaluateOrder(int userId, int id, int evaluateType, String content) {
         return false;
     }
+
+    public boolean recharge(int userId, double money) {
+        return false;
+    }
 }

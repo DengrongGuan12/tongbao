@@ -5,4 +5,5 @@ package service;
  */
 public interface ShipperService {
     public boolean evaluateOrder(int userId, int id, int evaluateType, String content);
+    public boolean recharge(int userId, double money);
 }

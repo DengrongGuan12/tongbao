@@ -1,6 +1,7 @@
 package service;
 
 import model.User;
+import vo.ContactDetail;
 
 import java.util.List;
 
@@ -17,5 +18,7 @@ public interface UserService {
     public boolean changePassword(int id, String oldPassword, String newPassword);
     public boolean changeIconUrl(int id, String url);
     public List getUserAccount(int userId);
+    public List getContacts(int userId);
+    public ContactDetail getContactDetail(int userId);
 
 }

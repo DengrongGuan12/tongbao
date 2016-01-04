@@ -119,14 +119,29 @@ public class UserController {
     @RequestMapping(value = "showAccount",method = RequestMethod.POST)
     @ResponseBody
     public RestResult showAccount(@ModelAttribute("TokenAuthInfo") TokenAuthInfo tokenAuthInfo){
-        List list = userService.getUserAccount(1);
-        return RestResult.CreateResult(1,list);
-//        int userId = userService.hasLogin(tokenAuthInfo.getToken());
-//        if(userId == 0){
-//            return RestResult.CreateResult(0,"尚未登录!");
-//        }else {
-//            List list = userService.getUserAccount(userId);
-//            return RestResult.CreateResult(1,list);
-//        }
+//        List list = userService.getUserAccount(1);
+//        return RestResult.CreateResult(1,list);
+        int userId = userService.hasLogin(tokenAuthInfo.getToken());
+        if(userId == 0){
+            return RestResult.CreateResult(0,"尚未登录!");
+        }else {
+            List list = userService.getUserAccount(userId);
+            return RestResult.CreateResult(1,list);
+        }
     }
+
+    @RequestMapping(value = "getContacts",method = RequestMethod.POST)
+        @ResponseBody
+    public RestResult getContacts(@ModelAttribute("TokenAuthInfo") TokenAuthInfo tokenAuthInfo){
+        int userId = userService.hasLogin(tokenAuthInfo.getToken());
+        if(userId == 0){
+            return RestResult.CreateResult(0,"尚未登录!");
+        }else{
+            List list = userService.getContacts(userId);
+            return RestResult.CreateResult(1,list);
+        }
+    }
+
+
+
 }

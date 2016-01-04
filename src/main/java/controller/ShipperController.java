@@ -110,4 +110,34 @@ public class ShipperController {
         }
     }
 
+    @RequestMapping(value = "finishOrder", method = RequestMethod.POST)
+        @ResponseBody
+    public RestResult finishOrder(@ModelAttribute("OrderIdInfoWithAuth")OrderIdInfoWithAuth orderIdInfoWithAuth){
+        int userId = userService.hasLogin(orderIdInfoWithAuth.getToken());
+        if(userId == 0){
+            return RestResult.CreateResult(0,"尚未登录!");
+        }else{
+            if(orderService.finishOrder(userId,orderIdInfoWithAuth.getId())){
+                return RestResult.CreateResult(1);
+            }else{
+                return RestResult.CreateResult(0,"结束失败!");
+            }
+        }
+    }
+
+    @RequestMapping(value = "recharge",method = RequestMethod.POST)
+        @ResponseBody
+    public RestResult recharge(@ModelAttribute("RechargeInfo")RechargeInfo rechargeInfo){
+        int userId = userService.hasLogin(rechargeInfo.getToken());
+        if(userId == 0){
+            return RestResult.CreateResult(0,"尚未登录!");
+        }else{
+            if(shipperService.recharge(userId,rechargeInfo.getMoney())){
+                return RestResult.CreateResult(1);
+            }else{
+                return RestResult.CreateResult(0,"充值失败!");
+            }
+        }
+    }
+
 }

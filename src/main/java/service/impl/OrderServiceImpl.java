@@ -36,4 +36,8 @@ public class OrderServiceImpl implements OrderService {
     public int cancelOrder(int userId, int orderId) {
         return 0;
     }
+
+    public boolean finishOrder(int userId, int orderId) {
+        return false;
+    }
 }
