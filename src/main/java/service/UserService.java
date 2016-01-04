@@ -19,6 +19,6 @@ public interface UserService {
     public boolean changeIconUrl(int id, String url);
     public List getUserAccount(int userId);
     public List getContacts(int userId);
-    public ContactDetail getContactDetail(int userId);
+    public ContactDetail getContactDetail(int contactId);
 
 }

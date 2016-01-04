@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pojo.*;
 import service.UserService;
+import vo.ContactDetail;
 import vo.RestResult;
 
 import java.util.List;
@@ -139,6 +140,18 @@ public class UserController {
         }else{
             List list = userService.getContacts(userId);
             return RestResult.CreateResult(1,list);
+        }
+    }
+    @RequestMapping(value = "getContactDetail",method = RequestMethod.POST)
+        @ResponseBody
+    public RestResult getContactDetail(@ModelAttribute("UserIdInfoWithAuth")UserIdInfoWithAuth userIdInfoWithAuth){
+        int userId = userService.hasLogin(userIdInfoWithAuth.getToken());
+        if(userId == 0){
+            return RestResult.CreateResult(0,"尚未登录!");
+        }else{
+            ContactDetail contactDetail = userService.getContactDetail(userIdInfoWithAuth.getId());
+            return RestResult.CreateResult(1,contactDetail);
+
         }
     }
 

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.UserService;
 import vo.Account;
+import vo.ContactDetail;
 import vo.ContactSimple;
 
 import java.util.ArrayList;
@@ -128,5 +129,15 @@ public class UserServiceIml implements UserService {
         list.add(contactSimple1);
         list.add(contactSimple2);
         return list;
+    }
+
+    public ContactDetail getContactDetail(int contactId) {
+        ContactDetail contactDetail = new ContactDetail();
+        contactDetail.setNickName("sdfsdf");
+        contactDetail.setPhoneNum("121212121212");
+        contactDetail.setType(0);
+        contactDetail.setSex(0);
+        contactDetail.setRegTime("2015-11-02 00:00:00");
+        return contactDetail;
     }
 }
