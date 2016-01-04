@@ -20,5 +20,8 @@ public interface UserService {
     public List getUserAccount(int userId);
     public List getContacts(int userId);
     public ContactDetail getContactDetail(int contactId);
+    public List getTruckTypes();
+    public List getLengthTypes();
+    public List getCapacityTypes();
 
 }

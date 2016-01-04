@@ -154,6 +154,25 @@ public class UserController {
 
         }
     }
+    @RequestMapping(value = "getAllTruckTypes",method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult getAllTruckTypes(){
+        List list = userService.getTruckTypes();
+        return RestResult.CreateResult(1,list);
+
+    }
+    @RequestMapping(value = "getAllLengthTypes",method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult getAllLengthTypes(){
+        List list = userService.getLengthTypes();
+        return RestResult.CreateResult(1,list);
+    }
+    @RequestMapping(value = "getAllCapacityTypes", method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult getAllCapacityTypes(){
+        List list = userService.getCapacityTypes();
+        return RestResult.CreateResult(1,list);
+    }
 
 
 

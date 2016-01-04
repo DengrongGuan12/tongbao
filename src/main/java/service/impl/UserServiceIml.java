@@ -6,9 +6,7 @@ import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.UserService;
-import vo.Account;
-import vo.ContactDetail;
-import vo.ContactSimple;
+import vo.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -139,5 +137,32 @@ public class UserServiceIml implements UserService {
         contactDetail.setSex(0);
         contactDetail.setRegTime("2015-11-02 00:00:00");
         return contactDetail;
+    }
+
+    public List getTruckTypes() {
+        List list = new ArrayList();
+        TruckType truckType = new TruckType();
+        truckType.setType(0);
+        truckType.setName("敞篷车");
+        list.add(truckType);
+        return list;
+    }
+
+    public List getLengthTypes() {
+        List list = new ArrayList();
+        TruckType truckType = new TruckType();
+        truckType.setType(0);
+        truckType.setName("5-6米");
+        list.add(truckType);
+        return null;
+    }
+
+    public List getCapacityTypes() {
+        List list = new ArrayList();
+        TruckType truckType = new TruckType();
+        truckType.setType(0);
+        truckType.setName("5-6吨");
+        list.add(truckType);
+        return list;
     }
 }
