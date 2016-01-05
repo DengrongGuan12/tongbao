@@ -1,5 +1,7 @@
 package service;
 
+import pojo.RealNameAuthInfo;
+import pojo.TruckAuthInfo;
 import pojo.TruckInfo;
 
 /**
@@ -7,4 +9,6 @@ import pojo.TruckInfo;
  */
 public interface DriverService {
     public boolean setTruckInfo(int userId, TruckInfo truckInfo);
+    public boolean setRealNameInfo(int userId, RealNameAuthInfo realNameAuthInfo);
+    public boolean setTruckAuthInfo(int userId, TruckAuthInfo truckAuthInfo);
 }

@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pojo.*;
+import service.OrderService;
 import service.UserService;
 import vo.ContactDetail;
+import vo.Order;
 import vo.RestResult;
 
 import java.util.List;
@@ -22,6 +24,8 @@ public class UserController {
     public static int count = 0;
     @Autowired
     private UserService userService;
+    @Autowired
+    private OrderService orderService;
     @RequestMapping("/userRegister")
     public String userRegister(Model model){
         boolean result=userService.register("15851813131214", "fsdf", new Byte("1"));
@@ -172,6 +176,17 @@ public class UserController {
     public RestResult getAllCapacityTypes(){
         List list = userService.getCapacityTypes();
         return RestResult.CreateResult(1,list);
+    }
+    @RequestMapping(value = "getOrderDetail",method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult getOrderDetail(@ModelAttribute("OrderIdInfoWithAuth")OrderIdInfoWithAuth orderIdInfoWithAuth){
+        int userId = userService.hasLogin(orderIdInfoWithAuth.getToken());
+        if(userId == 0){
+            return RestResult.CreateResult(0,"尚未登录!");
+        }else{
+            Order order = orderService.getOrderDetail(orderIdInfoWithAuth.getId());
+            return RestResult.CreateResult(1,order);
+        }
     }
 
 

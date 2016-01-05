@@ -1,5 +1,7 @@
 package service.impl;
 
+import pojo.RealNameAuthInfo;
+import pojo.TruckAuthInfo;
 import pojo.TruckInfo;
 import service.DriverService;
 
@@ -8,6 +10,14 @@ import service.DriverService;
  */
 public class DriverServiceImpl implements DriverService {
     public boolean setTruckInfo(int userId, TruckInfo truckInfo) {
+        return false;
+    }
+
+    public boolean setRealNameInfo(int userId, RealNameAuthInfo realNameAuthInfo) {
+        return false;
+    }
+
+    public boolean setTruckAuthInfo(int userId, TruckAuthInfo truckAuthInfo) {
         return false;
     }
 }
