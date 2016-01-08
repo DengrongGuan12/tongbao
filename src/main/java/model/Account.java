@@ -4,6 +4,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -12,28 +13,28 @@ import java.util.Date;
 @Entity
 @Table(name="account")
 public class Account implements Serializable {
-    private int accountId;
-    private Date buildTime;
+    private int id;
+    private Timestamp buildTime;
     private Byte type;
     private int money;
     private int orderId;
     @Id
-    @Column(name="account_id",nullable = true)
+    @Column(name="id",nullable = true)
     @GeneratedValue(generator = "generator")
     @GenericGenerator(name = "generator",strategy = "increment")
-    public int getAccountId() {
-        return accountId;
+    public int getId() {
+        return id;
     }
 
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
+    public void setId(int id) {
+        this.id = id;
     }
     @Column(name="build_time")
-    public Date getBuildTime() {
+    public Timestamp getBuildTime() {
         return buildTime;
     }
 
-    public void setBuildTime(Date buildTime) {
+    public void setBuildTime(Timestamp buildTime) {
         this.buildTime = buildTime;
     }
     @Column

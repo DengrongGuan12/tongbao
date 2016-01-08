@@ -9,16 +9,16 @@ import java.io.Serializable;
 @Entity
 @Table(name="auth_state_name_t")
 public class Auth_state_name_t implements Serializable{
-    private Byte authState;
+    private Byte state;
     private String name;
     @Id
-    @Column(name="auth_state")
-    public Byte getAuthState() {
-        return authState;
+    @Column(name="state")
+    public Byte getState() {
+        return state;
     }
 
-    public void setAuthState(Byte authState) {
-        this.authState = authState;
+    public void setState(Byte state) {
+        this.state = state;
     }
     @Column
     public String getName() {

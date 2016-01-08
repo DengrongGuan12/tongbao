@@ -12,16 +12,16 @@ import java.io.Serializable;
 @Entity
 @Table(name="account_type_name_t")
 public class Account_type_name_t implements Serializable{
-    private Byte accountType;
+    private Byte type;
     private String name;
     @Id
-    @Column(name="account_type")
-    public Byte getAccountType() {
-        return accountType;
+    @Column(name="type")
+    public Byte getType() {
+        return type;
     }
 
-    public void setAccountType(Byte accountType) {
-        this.accountType = accountType;
+    public void setType(Byte type) {
+        this.type = type;
     }
     @Column
     public String getName() {

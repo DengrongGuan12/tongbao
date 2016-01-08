@@ -4,6 +4,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -12,38 +13,45 @@ import java.util.Date;
 @Entity
 @Table(name="orders")
 public class Order implements Serializable{
-    private int orderId;
-    private Date buildTime;
+    private int id;
+    private Timestamp buildTime;
     private int shipperId;
     private int driverId;
     private Date loadTime;
     private String addressFrom;
     private String addressTo;
+    private String from_contact_name;
+    private String from_contact_phone;
+    private String to_contact_name;
+    private String to_contact_phone;
     private Byte goodsType;
-    private String goodsWeightSize;
+    private String goodsWeight;
+    private String goodsSize;
     private Byte truckType;
-    private Byte truckCapacity;
     private Byte payType;
     private int price;
-    private Byte evaluateType;
-    private String evaluate;
+    private Byte evaluate_point;
+    private String evaluate_content;
+    private String remark;
+    private Byte state;
+
     @Id
-    @Column(name="order_id",nullable = true)
+    @Column(name="id",nullable = true)
     @GeneratedValue(generator = "generator")
     @GenericGenerator(name = "generator",strategy = "increment")
-    public int getOrderId() {
-        return orderId;
+    public int getId() {
+        return id;
     }
 
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
+    public void setId(int id) {
+        this.id = id;
     }
     @Column(name="build_time")
-    public Date getBuildTime() {
+    public Timestamp getBuildTime() {
         return buildTime;
     }
 
-    public void setBuildTime(Date buildTime) {
+    public void setBuildTime(Timestamp buildTime) {
         this.buildTime = buildTime;
     }
     @Column(name="shipper_id")
@@ -94,13 +102,21 @@ public class Order implements Serializable{
     public void setGoodsType(Byte goodsType) {
         this.goodsType = goodsType;
     }
-    @Column(name="goods_weight_size")
-    public String getGoodsWeightSize() {
-        return goodsWeightSize;
+    @Column(name="goods_weight")
+    public String getGoodsWeight() {
+        return goodsWeight;
     }
 
-    public void setGoodsWeightSize(String goodsWeightSize) {
-        this.goodsWeightSize = goodsWeightSize;
+    public void setGoodsWeight(String goodsWeight) {
+        this.goodsWeight = goodsWeight;
+    }
+    @Column(name="goods_size")
+    public String getGoodsSize() {
+        return goodsSize;
+    }
+
+    public void setGoodsSize(String goodsSize) {
+        this.goodsSize = goodsSize;
     }
     @Column(name="truck_type")
     public Byte getTruckType() {
@@ -110,14 +126,7 @@ public class Order implements Serializable{
     public void setTruckType(Byte truckType) {
         this.truckType = truckType;
     }
-    @Column(name="truck_capacity")
-    public Byte getTruckCapacity() {
-        return truckCapacity;
-    }
 
-    public void setTruckCapacity(Byte truckCapacity) {
-        this.truckCapacity = truckCapacity;
-    }
     @Column(name="pay_type")
     public Byte getPayType() {
         return payType;
@@ -134,20 +143,68 @@ public class Order implements Serializable{
     public void setPrice(int price) {
         this.price = price;
     }
-    @Column(name="evaluate_type")
-    public Byte getEvaluateype() {
-        return evaluateType;
+    @Column
+    public String getFrom_contact_name() {
+        return from_contact_name;
     }
 
-    public void setEvaluateype(Byte evaluateType) {
-        this.evaluateType = evaluateType;
+    public void setFrom_contact_name(String from_contact_name) {
+        this.from_contact_name = from_contact_name;
     }
     @Column
-    public String getEvaluate() {
-        return evaluate;
+    public String getFrom_contact_phone() {
+        return from_contact_phone;
     }
 
-    public void setEvaluate(String evaluate) {
-        this.evaluate = evaluate;
+    public void setFrom_contact_phone(String from_contact_phone) {
+        this.from_contact_phone = from_contact_phone;
+    }
+    @Column
+    public String getTo_contact_name() {
+        return to_contact_name;
+    }
+
+    public void setTo_contact_name(String to_contact_name) {
+        this.to_contact_name = to_contact_name;
+    }
+    @Column
+    public String getTo_contact_phone() {
+        return to_contact_phone;
+    }
+
+    public void setTo_contact_phone(String to_contact_phone) {
+        this.to_contact_phone = to_contact_phone;
+    }
+    @Column
+    public Byte getEvaluate_point() {
+        return evaluate_point;
+    }
+
+    public void setEvaluate_point(Byte evaluate_point) {
+        this.evaluate_point = evaluate_point;
+    }
+    @Column
+    public String getEvaluate_content() {
+        return evaluate_content;
+    }
+
+    public void setEvaluate_content(String evaluate_content) {
+        this.evaluate_content = evaluate_content;
+    }
+    @Column
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+    @Column
+    public Byte getState() {
+        return state;
+    }
+
+    public void setState(Byte state) {
+        this.state = state;
     }
 }

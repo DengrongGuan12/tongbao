@@ -14,21 +14,32 @@ import java.io.Serializable;
 @Entity
 @Table(name = "driver_auth")
 public class Driver_auth implements Serializable{
+    private int id;
     private int userId;
     private String truckNum;
     private Byte type;
     private Byte authState;
     private String realName;
     private String truckLicense;
+    private String drivingLicense;
     private String truckPicture;
     private String phoneNum;
-    private Byte length;
-    private Byte capacity;
 
     @Id
-    @Column(name="user_id",nullable = true)
+    @Column(name="id",nullable = true)
     @GeneratedValue(generator = "generator")
     @GenericGenerator(name = "generator",strategy = "increment")
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
+
+    @Column(name="user_id")
+
     public int getUserId() {
         return userId;
     }
@@ -93,20 +104,13 @@ public class Driver_auth implements Serializable{
     public void setPhoneNum(String phoneNum) {
         this.phoneNum = phoneNum;
     }
-    @Column
-    public Byte getLength() {
-        return length;
+
+    @Column(name="driving_license")
+    public String getDrivingLicense() {
+        return drivingLicense;
     }
 
-    public void setLength(Byte length) {
-        this.length = length;
-    }
-    @Column
-    public Byte getCapacity() {
-        return capacity;
-    }
-
-    public void setCapacity(Byte capacity) {
-        this.capacity = capacity;
+    public void setDrivingLicense(String drivingLicense) {
+        this.drivingLicense = drivingLicense;
     }
 }

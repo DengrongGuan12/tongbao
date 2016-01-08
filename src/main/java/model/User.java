@@ -4,7 +4,8 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
+import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * Created by cg on 2015/12/29.
@@ -20,7 +21,7 @@ public class User implements Serializable{
     private String icon;
     private int point;
     private int money;
-    private Date register_time;
+    private Timestamp register_time;
     private String token;
 
     public String getToken() {
@@ -112,11 +113,11 @@ public class User implements Serializable{
         this.money = money;
     }
     @Column(updatable = false)
-    public Date getRegister_time() {
+    public Timestamp getRegister_time() {
         return register_time;
     }
 
-    public void setRegister_time(Date register_time) {
+    public void setRegister_time(Timestamp register_time) {
         this.register_time = register_time;
     }
 }
