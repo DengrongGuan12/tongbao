@@ -158,6 +158,18 @@ public class UserController {
 
         }
     }
+    @RequestMapping(value = "getMyMessages",method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult getMyMessages(@ModelAttribute("TokenAuthInfo")TokenAuthInfo tokenAuthInfo){
+        int userId = userService.hasLogin(tokenAuthInfo.getToken());
+        if(userId == 0){
+            return RestResult.CreateResult(0,"尚未登录!");
+        }else{
+            List list = userService.getMessagesByUserId(userId);
+            return RestResult.CreateResult(1,list);
+        }
+
+    }
     @RequestMapping(value = "getAllTruckTypes",method = RequestMethod.POST)
     @ResponseBody
     public RestResult getAllTruckTypes(){
@@ -165,27 +177,18 @@ public class UserController {
         return RestResult.CreateResult(1,list);
 
     }
-    @RequestMapping(value = "getAllLengthTypes",method = RequestMethod.POST)
+    @RequestMapping(value = "recharge",method = RequestMethod.POST)
     @ResponseBody
-    public RestResult getAllLengthTypes(){
-        List list = userService.getLengthTypes();
-        return RestResult.CreateResult(1,list);
-    }
-    @RequestMapping(value = "getAllCapacityTypes", method = RequestMethod.POST)
-    @ResponseBody
-    public RestResult getAllCapacityTypes(){
-        List list = userService.getCapacityTypes();
-        return RestResult.CreateResult(1,list);
-    }
-    @RequestMapping(value = "getOrderDetail",method = RequestMethod.POST)
-    @ResponseBody
-    public RestResult getOrderDetail(@ModelAttribute("OrderIdInfoWithAuth")OrderIdInfoWithAuth orderIdInfoWithAuth){
-        int userId = userService.hasLogin(orderIdInfoWithAuth.getToken());
+    public RestResult recharge(@ModelAttribute("RechargeInfo")RechargeInfo rechargeInfo){
+        int userId = userService.hasLogin(rechargeInfo.getToken());
         if(userId == 0){
             return RestResult.CreateResult(0,"尚未登录!");
         }else{
-            Order order = orderService.getOrderDetail(orderIdInfoWithAuth.getId());
-            return RestResult.CreateResult(1,order);
+            if(userService.recharge(userId,rechargeInfo.getMoney())){
+                return RestResult.CreateResult(1);
+            }else{
+                return RestResult.CreateResult(0,"充值失败!");
+            }
         }
     }
 

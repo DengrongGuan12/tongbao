@@ -11,6 +11,7 @@ import pojo.*;
 import service.OrderService;
 import service.ShipperService;
 import service.UserService;
+import vo.Order;
 import vo.RestResult;
 
 import java.util.ArrayList;
@@ -31,6 +32,40 @@ public class ShipperController {
 
     @Autowired
     private UserService userService;
+
+    @RequestMapping(value = "getFrequentDrivers", method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult getFrequentDrivers(@ModelAttribute("TokenAuthInfo")TokenAuthInfo tokenAuthInfo){
+        int userId = userService.hasLogin(tokenAuthInfo.getToken());
+        if(userId == 0){
+            return RestResult.CreateResult(0,"尚未登录!");
+        }else{
+            List list = shipperService.getFrequentDrivers(userId);
+            return RestResult.CreateResult(1,list);
+        }
+    }
+
+    @RequestMapping(value = "getFrequentAddresses",method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult getFrequentAddresses(@ModelAttribute("TokenAuthInfo")TokenAuthInfo tokenAuthInfo){
+        int userId = userService.hasLogin(tokenAuthInfo.getToken());
+        if(userId == 0){
+            return RestResult.CreateResult(0,"尚未登录!");
+        }else{
+            List list = shipperService.getFrequentAddresses(userId);
+            return RestResult.CreateResult(1,list);
+        }
+    }
+    @RequestMapping(value = "addFrequentDriver",method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult addFrequentDriver(@ModelAttribute("UserIdInfoWithAuth")UserIdInfoWithAuth userIdInfoWithAuth){
+        int userId = userService.hasLogin(userIdInfoWithAuth.getToken());
+        if(userId == 0){
+            return RestResult.CreateResult(0,"尚未登录!");
+        }else{
+            return null;
+        }
+    }
 
     @RequestMapping(value = "placeOrder", method = RequestMethod.POST)
         @ResponseBody
@@ -125,18 +160,15 @@ public class ShipperController {
         }
     }
 
-    @RequestMapping(value = "recharge",method = RequestMethod.POST)
-        @ResponseBody
-    public RestResult recharge(@ModelAttribute("RechargeInfo")RechargeInfo rechargeInfo){
-        int userId = userService.hasLogin(rechargeInfo.getToken());
+    @RequestMapping(value = "getOrderDetail",method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult getOrderDetail(@ModelAttribute("OrderIdInfoWithAuth")OrderIdInfoWithAuth orderIdInfoWithAuth){
+        int userId = userService.hasLogin(orderIdInfoWithAuth.getToken());
         if(userId == 0){
             return RestResult.CreateResult(0,"尚未登录!");
         }else{
-            if(shipperService.recharge(userId,rechargeInfo.getMoney())){
-                return RestResult.CreateResult(1);
-            }else{
-                return RestResult.CreateResult(0,"充值失败!");
-            }
+            Order order = orderService.getOrderDetail(orderIdInfoWithAuth.getId());
+            return RestResult.CreateResult(1,order);
         }
     }
 

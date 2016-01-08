@@ -144,25 +144,20 @@ public class UserServiceIml implements UserService {
         TruckType truckType = new TruckType();
         truckType.setType(0);
         truckType.setName("敞篷车");
+        truckType.setBasePrice(10);
+        truckType.setCapacity(30);
+        truckType.setOverPrice(3);
+        truckType.setLength(10);
+        truckType.setWidth(3.5);
+        truckType.setHeight(2.5);
         list.add(truckType);
         return list;
     }
 
-    public List getLengthTypes() {
-        List list = new ArrayList();
-        TruckType truckType = new TruckType();
-        truckType.setType(0);
-        truckType.setName("5-6米");
-        list.add(truckType);
+    public List getMessagesByUserId(int userId) {
         return null;
     }
-
-    public List getCapacityTypes() {
-        List list = new ArrayList();
-        TruckType truckType = new TruckType();
-        truckType.setType(0);
-        truckType.setName("5-6吨");
-        list.add(truckType);
-        return list;
+    public boolean recharge(int userId, double money) {
+        return false;
     }
 }

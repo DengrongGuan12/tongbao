@@ -2,6 +2,11 @@ package service.impl;
 
 import org.springframework.stereotype.Service;
 import service.ShipperService;
+import vo.Address;
+import vo.User;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by dengrong on 2016/1/3.
@@ -13,7 +18,25 @@ public class ShipperServiceImpl implements ShipperService{
         return false;
     }
 
-    public boolean recharge(int userId, double money) {
-        return false;
+    public List getFrequentDrivers(int userId) {
+        List list = new ArrayList();
+        User user = new User();
+        user.setId(1);
+        user.setNickName("sdfsdf");
+        user.setPhoneNum("1212121212");
+        list.add(user);
+        return list;
+
     }
+
+    public List getFrequentAddresses(int userId) {
+        List list = new ArrayList();
+        Address address = new Address();
+        address.setLat(32.08);
+        address.setLng(108.09);
+        address.setName("南京市鼓楼区");
+        list.add(address);
+        return list;
+    }
+
 }
