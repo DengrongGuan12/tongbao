@@ -8,12 +8,68 @@ import java.util.Date;
 public class OrderInfo extends TokenAuthInfo{
     private String addressFrom;
     private String addressTo;
+    private String fromContactName;
+    private String fromContactPhone;
+    private String toContactName;
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    //备注信息
+    private String remark;
+
+    public String getToContactPhone() {
+        return toContactPhone;
+    }
+
+    public void setToContactPhone(String toContactPhone) {
+        this.toContactPhone = toContactPhone;
+    }
+
+    public String getFromContactName() {
+        return fromContactName;
+    }
+
+    public void setFromContactName(String fromContactName) {
+        this.fromContactName = fromContactName;
+    }
+
+    public String getFromContactPhone() {
+        return fromContactPhone;
+    }
+
+    public void setFromContactPhone(String fromContactPhone) {
+        this.fromContactPhone = fromContactPhone;
+    }
+
+    public String getToContactName() {
+        return toContactName;
+    }
+
+    public void setToContactName(String toContactName) {
+        this.toContactName = toContactName;
+    }
+
+    private String toContactPhone;
     private String loadTime;
     private String goodsType;
     private double goodsWeight;
     private double goodsSize;
-    private int truckType;
-    private int truckCapacity;
+
+    public String getTruckTypes() {
+        return truckTypes;
+    }
+
+    public void setTruckTypes(String truckTypes) {
+        this.truckTypes = truckTypes;
+    }
+
+    private String truckTypes;
     private int payType;
 
     public double getPrice() {
@@ -72,21 +128,7 @@ public class OrderInfo extends TokenAuthInfo{
         this.goodsSize = goodsSize;
     }
 
-    public int getTruckType() {
-        return truckType;
-    }
 
-    public void setTruckType(int truckType) {
-        this.truckType = truckType;
-    }
-
-    public int getTruckCapacity() {
-        return truckCapacity;
-    }
-
-    public void setTruckCapacity(int truckCapacity) {
-        this.truckCapacity = truckCapacity;
-    }
 
     public int getPayType() {
         return payType;

@@ -35,17 +35,17 @@ public class ShipperController {
     @RequestMapping(value = "placeOrder", method = RequestMethod.POST)
         @ResponseBody
     public RestResult placeOrder(@ModelAttribute("OrderInfo")OrderInfo orderInfo){
-//        return RestResult.CreateResult(1,orderInfo);
-        int userId = userService.hasLogin(orderInfo.getToken());
-        if(userId == 0){
-            return RestResult.CreateResult(0,"尚未登录!");
-        }else{
-            if(orderService.createOrder(userId,orderInfo)){
-                return RestResult.CreateResult(1);
-            }else{
-                return RestResult.CreateResult(0,"操作失败!");
-            }
-        }
+        return RestResult.CreateResult(1,orderInfo);
+//        int userId = userService.hasLogin(orderInfo.getToken());
+//        if(userId == 0){
+//            return RestResult.CreateResult(0,"尚未登录!");
+//        }else{
+//            if(orderService.createOrder(userId,orderInfo)){
+//                return RestResult.CreateResult(1);
+//            }else{
+//                return RestResult.CreateResult(0,"操作失败!");
+//            }
+//        }
     }
 
     @RequestMapping(value = "evaluateOrder", method = RequestMethod.POST)
