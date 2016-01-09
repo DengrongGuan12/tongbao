@@ -8,6 +8,8 @@ public class Order {
     private int id;
     private String addressFrom;
     private String time;
+    private double money;
+    private String addressTo;
 
     public double getMoney() {
         return money;
@@ -25,7 +27,7 @@ public class Order {
         this.time = time;
     }
 
-    private double money;
+
 
     public String getAddressTo() {
         return addressTo;
@@ -51,6 +53,6 @@ public class Order {
         this.addressFrom = addressFrom;
     }
 
-    private String addressTo;
+
 
 }

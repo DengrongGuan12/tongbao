@@ -19,8 +19,8 @@ public class User implements Serializable{
     private String password;
     private String nick_name;
     private String icon;
-    private int point;
-    private int money;
+    private double point;
+    private double money;
     private Timestamp register_time;
     private String token;
 
@@ -97,19 +97,19 @@ public class User implements Serializable{
         this.icon = icon;
     }
     @Column
-    public int getPoint() {
+    public double getPoint() {
         return point;
     }
 
-    public void setPoint(int point) {
+    public void setPoint(double point) {
         this.point = point;
     }
     @Column
-    public int getMoney() {
+    public double getMoney() {
         return money;
     }
 
-    public void setMoney(int money) {
+    public void setMoney(double money) {
         this.money = money;
     }
     @Column(updatable = false)

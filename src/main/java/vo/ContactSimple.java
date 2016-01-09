@@ -8,6 +8,7 @@ public class ContactSimple {
     private int id;
     private String nickName;
     private String phoneNum;
+    private int type;
 
     public int getType() {
         return type;
@@ -41,5 +42,5 @@ public class ContactSimple {
         this.phoneNum = phoneNum;
     }
 
-    private int type;
+
 }

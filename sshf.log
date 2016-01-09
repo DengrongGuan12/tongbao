@@ -18298,3 +18298,1172 @@ Caused by: java.net.ConnectException: Connection refused: connect
 [INFO][2016-01-01 22:22:18,104][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMVC-servlet': startup date [Fri Jan 01 22:22:17 CST 2016]; parent: Root WebApplicationContext
 [INFO][2016-01-01 22:22:18,190][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMVC-servlet': startup date [Fri Jan 01 22:22:17 CST 2016]; parent: Root WebApplicationContext
 [INFO][2016-01-01 22:22:18,328][org.springframework.web.servlet.DispatcherServlet]FrameworkServlet 'springMVC': initialization completed in 850 ms
+[INFO][2016-01-04 09:45:53,039][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization started
+[INFO][2016-01-04 09:45:53,226][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing Root WebApplicationContext: startup date [Mon Jan 04 09:45:53 CST 2016]; root of context hierarchy
+[INFO][2016-01-04 09:45:53,278][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring.xml]
+[INFO][2016-01-04 09:45:53,556][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-hiber.xml]
+[INFO][2016-01-04 09:45:53,974][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [config.properties]
+[INFO][2016-01-04 09:45:53,984][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[ERROR][2016-01-04 09:45:54,373][com.alibaba.druid.pool.DruidAbstractDataSource]maxIdle is deprecated
+[INFO][2016-01-04 09:45:54,429][com.alibaba.druid.pool.DruidDataSource]{dataSource-1} inited
+[INFO][2016-01-04 09:45:54,653][org.hibernate.annotations.common.Version]HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+[INFO][2016-01-04 09:45:54,661][org.hibernate.Version]HHH000412: Hibernate Core {4.3.8.Final}
+[INFO][2016-01-04 09:45:54,663][org.hibernate.cfg.Environment]HHH000206: hibernate.properties not found
+[INFO][2016-01-04 09:45:54,666][org.hibernate.cfg.Environment]HHH000021: Bytecode provider name : javassist
+[ERROR][2016-01-04 09:45:57,010][com.alibaba.druid.pool.DruidDataSource]create connection error
+com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:422)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1117)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:350)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2393)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2430)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2215)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:813)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:422)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:399)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:334)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:146)
+	at com.alibaba.druid.filter.stat.StatFilter.connection_connect(StatFilter.java:211)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:140)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1355)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1409)
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:1649)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at java.net.Socket.<init>(Socket.java:434)
+	at java.net.Socket.<init>(Socket.java:244)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:257)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:300)
+	... 18 more
+[ERROR][2016-01-04 09:45:59,017][com.alibaba.druid.pool.DruidDataSource]create connection error
+com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:422)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1117)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:350)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2393)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2430)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2215)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:813)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:422)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:399)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:334)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:146)
+	at com.alibaba.druid.filter.stat.StatFilter.connection_connect(StatFilter.java:211)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:140)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1355)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1409)
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:1649)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at java.net.Socket.<init>(Socket.java:434)
+	at java.net.Socket.<init>(Socket.java:244)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:257)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:300)
+	... 18 more
+[INFO][2016-01-04 09:47:23,680][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization started
+[INFO][2016-01-04 09:47:23,776][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing Root WebApplicationContext: startup date [Mon Jan 04 09:47:23 CST 2016]; root of context hierarchy
+[INFO][2016-01-04 09:47:23,824][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring.xml]
+[INFO][2016-01-04 09:47:24,095][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-hiber.xml]
+[INFO][2016-01-04 09:47:24,476][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [config.properties]
+[INFO][2016-01-04 09:47:24,485][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[ERROR][2016-01-04 09:47:24,910][com.alibaba.druid.pool.DruidAbstractDataSource]maxIdle is deprecated
+[INFO][2016-01-04 09:47:24,970][com.alibaba.druid.pool.DruidDataSource]{dataSource-1} inited
+[INFO][2016-01-04 09:47:25,259][org.hibernate.annotations.common.Version]HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+[INFO][2016-01-04 09:47:25,269][org.hibernate.Version]HHH000412: Hibernate Core {4.3.8.Final}
+[INFO][2016-01-04 09:47:25,272][org.hibernate.cfg.Environment]HHH000206: hibernate.properties not found
+[INFO][2016-01-04 09:47:25,274][org.hibernate.cfg.Environment]HHH000021: Bytecode provider name : javassist
+[INFO][2016-01-04 09:47:25,987][org.hibernate.dialect.Dialect]HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+[INFO][2016-01-04 09:47:26,271][org.hibernate.engine.transaction.internal.TransactionFactoryInitiator]HHH000399: Using default transaction strategy (direct JDBC transactions)
+[INFO][2016-01-04 09:47:26,278][org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory]HHH000397: Using ASTQueryTranslatorFactory
+[INFO][2016-01-04 09:47:26,961][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000228: Running hbm2ddl schema update
+[INFO][2016-01-04 09:47:26,962][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000102: Fetching database metadata
+[INFO][2016-01-04 09:47:26,968][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000396: Updating schema
+[INFO][2016-01-04 09:47:27,008][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.account
+[INFO][2016-01-04 09:47:27,009][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [account_id, money, build_time, type, order_id]
+[INFO][2016-01-04 09:47:27,009][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-04 09:47:27,009][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-04 09:47:27,036][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.account_type_name_t
+[INFO][2016-01-04 09:47:27,036][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [account_type, name]
+[INFO][2016-01-04 09:47:27,036][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-04 09:47:27,036][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-04 09:47:27,064][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.auth_state_name_t
+[INFO][2016-01-04 09:47:27,064][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [auth_state, name]
+[INFO][2016-01-04 09:47:27,064][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-04 09:47:27,065][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-04 09:47:27,082][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.cancel_state_name_t
+[INFO][2016-01-04 09:47:27,082][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [cancel_state, name]
+[INFO][2016-01-04 09:47:27,082][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-04 09:47:27,082][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-04 09:47:27,106][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.contacts
+[INFO][2016-01-04 09:47:27,107][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [driver_id, shipper_to_driver, shipper_id, id, driver_to_shipper]
+[INFO][2016-01-04 09:47:27,107][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-04 09:47:27,107][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-04 09:47:27,129][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.driver_auth
+[INFO][2016-01-04 09:47:27,130][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [truck_license, user_id, truck_num, auth_state, length, phone_num, real_name, type, capacity, truck_picture]
+[INFO][2016-01-04 09:47:27,130][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-04 09:47:27,130][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-04 09:47:27,154][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.order_cance_state
+[INFO][2016-01-04 09:47:27,156][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [reason, state, order_id]
+[INFO][2016-01-04 09:47:27,157][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-04 09:47:27,157][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-04 09:47:27,193][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.orders
+[INFO][2016-01-04 09:47:27,194][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [truck_type, driver_id, address_to, build_time, evaluate_type, address_from, load_time, price, pay_type, shipper_id, goods_type, goods_weight_size, truck_capacity, order_id, evaluate]
+[INFO][2016-01-04 09:47:27,194][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-04 09:47:27,194][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-04 09:47:27,215][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.truck_capacity_t
+[INFO][2016-01-04 09:47:27,215][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [truck_type, capacity_range]
+[INFO][2016-01-04 09:47:27,215][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-04 09:47:27,215][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-04 09:47:27,234][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.truck_length
+[INFO][2016-01-04 09:47:27,234][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [truck_type, length_range]
+[INFO][2016-01-04 09:47:27,234][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-04 09:47:27,234][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-04 09:47:27,251][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.truck_type_name_t
+[INFO][2016-01-04 09:47:27,251][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [truck_type, name]
+[INFO][2016-01-04 09:47:27,251][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-04 09:47:27,251][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-04 09:47:27,269][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.user
+[INFO][2016-01-04 09:47:27,270][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [icon_url, password, money, nick_name, phone_number, id, type, point, register_time, token]
+[INFO][2016-01-04 09:47:27,270][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-04 09:47:27,270][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [uk_4bgmpi98dylab6qdvf9xyaxu4, primary]
+[INFO][2016-01-04 09:47:27,284][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.user_type_name_t
+[INFO][2016-01-04 09:47:27,284][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [user_type, name]
+[INFO][2016-01-04 09:47:27,284][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-04 09:47:27,284][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-04 09:47:27,285][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000232: Schema update complete
+[INFO][2016-01-04 09:47:27,525][org.springframework.orm.hibernate4.HibernateTransactionManager]Using DataSource [{
+	CreateTime:"2016-01-04 09:47:24",
+	ActiveCount:0,
+	PoolingCount:1,
+	CreateCount:1,
+	DestroyCount:0,
+	CloseCount:2,
+	ConnectCount:2,
+	Connections:[
+		{ID:674407281, ConnectTime:"2016-01-04 09:47:25", UseCount:2, LastActiveTime:"2016-01-04 09:47:27"}
+	]
+}] of Hibernate SessionFactory for HibernateTransactionManager
+[INFO][2016-01-04 09:47:27,594][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization completed in 3913 ms
+[INFO][2016-01-04 09:47:27,966][org.springframework.web.servlet.DispatcherServlet]FrameworkServlet 'springMVC': initialization started
+[INFO][2016-01-04 09:47:27,971][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing WebApplicationContext for namespace 'springMVC-servlet': startup date [Mon Jan 04 09:47:27 CST 2016]; parent: Root WebApplicationContext
+[INFO][2016-01-04 09:47:27,973][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mvc.xml]
+[INFO][2016-01-04 09:47:28,209][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO][2016-01-04 09:47:28,419][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/home]}" onto public java.lang.String controller.HomeController.home(org.springframework.ui.Model)
+[INFO][2016-01-04 09:47:28,422][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/order/test]}" onto public vo.RestResult controller.OrderController.getOrders()
+[INFO][2016-01-04 09:47:28,431][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/register],methods=[POST]}" onto public vo.RestResult controller.UserController.register(pojo.UserAuthInfo)
+[INFO][2016-01-04 09:47:28,431][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/count],methods=[GET]}" onto public int controller.UserController.getCount()
+[INFO][2016-01-04 09:47:28,432][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/login],methods=[POST]}" onto public vo.RestResult controller.UserController.login(pojo.UserAuthInfo)
+[INFO][2016-01-04 09:47:28,432][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/modifyNickName],methods=[POST]}" onto public vo.RestResult controller.UserController.modifyNickName(pojo.ModifiedNickName)
+[INFO][2016-01-04 09:47:28,432][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/modifyIcon],methods=[POST]}" onto public vo.RestResult controller.UserController.modifyIcon(pojo.ModifiedIcon)
+[INFO][2016-01-04 09:47:28,432][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/modifyPassword],methods=[POST]}" onto public vo.RestResult controller.UserController.modifyPassword(pojo.ModifiedPassword)
+[INFO][2016-01-04 09:47:28,433][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/userRegister]}" onto public java.lang.String controller.UserController.userRegister(org.springframework.ui.Model)
+[INFO][2016-01-04 09:47:28,433][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/id/{id}],methods=[GET]}" onto public vo.RestResult controller.UserController.getUser(int)
+[INFO][2016-01-04 09:47:28,579][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMVC-servlet': startup date [Mon Jan 04 09:47:27 CST 2016]; parent: Root WebApplicationContext
+[INFO][2016-01-04 09:47:28,657][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMVC-servlet': startup date [Mon Jan 04 09:47:27 CST 2016]; parent: Root WebApplicationContext
+[INFO][2016-01-04 09:47:28,797][org.springframework.web.servlet.DispatcherServlet]FrameworkServlet 'springMVC': initialization completed in 831 ms
+[WARN][2016-01-04 09:48:07,685][org.springframework.web.servlet.PageNotFound]No mapping found for HTTP request with URI [/tongbao/register] in DispatcherServlet with name 'springMVC'
+[INFO][2016-01-04 14:36:10,012][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization started
+[INFO][2016-01-04 14:36:10,112][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing Root WebApplicationContext: startup date [Mon Jan 04 14:36:10 CST 2016]; root of context hierarchy
+[INFO][2016-01-04 14:36:10,161][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring.xml]
+[INFO][2016-01-04 14:36:10,457][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-hiber.xml]
+[INFO][2016-01-04 14:36:10,915][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [config.properties]
+[INFO][2016-01-04 14:36:10,926][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[ERROR][2016-01-04 14:36:11,419][com.alibaba.druid.pool.DruidAbstractDataSource]maxIdle is deprecated
+[INFO][2016-01-04 14:36:11,481][com.alibaba.druid.pool.DruidDataSource]{dataSource-1} inited
+[INFO][2016-01-04 14:36:11,807][org.hibernate.annotations.common.Version]HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+[INFO][2016-01-04 14:36:11,816][org.hibernate.Version]HHH000412: Hibernate Core {4.3.8.Final}
+[INFO][2016-01-04 14:36:11,820][org.hibernate.cfg.Environment]HHH000206: hibernate.properties not found
+[INFO][2016-01-04 14:36:11,822][org.hibernate.cfg.Environment]HHH000021: Bytecode provider name : javassist
+[INFO][2016-01-04 14:36:12,477][org.hibernate.dialect.Dialect]HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+[INFO][2016-01-04 14:36:12,724][org.hibernate.engine.transaction.internal.TransactionFactoryInitiator]HHH000399: Using default transaction strategy (direct JDBC transactions)
+[INFO][2016-01-04 14:36:12,731][org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory]HHH000397: Using ASTQueryTranslatorFactory
+[INFO][2016-01-04 14:36:13,618][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000228: Running hbm2ddl schema update
+[INFO][2016-01-04 14:36:13,619][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000102: Fetching database metadata
+[INFO][2016-01-04 14:36:13,625][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000396: Updating schema
+[INFO][2016-01-04 14:36:13,667][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.account
+[INFO][2016-01-04 14:36:13,668][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [account_id, money, build_time, type, order_id]
+[INFO][2016-01-04 14:36:13,668][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-04 14:36:13,668][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-04 14:36:13,685][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.account_type_name_t
+[INFO][2016-01-04 14:36:13,685][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [account_type, name]
+[INFO][2016-01-04 14:36:13,685][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-04 14:36:13,686][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-04 14:36:13,703][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.auth_state_name_t
+[INFO][2016-01-04 14:36:13,703][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [auth_state, name]
+[INFO][2016-01-04 14:36:13,703][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-04 14:36:13,704][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-04 14:36:13,723][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.cancel_state_name_t
+[INFO][2016-01-04 14:36:13,723][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [cancel_state, name]
+[INFO][2016-01-04 14:36:13,723][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-04 14:36:13,724][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-04 14:36:13,752][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.contacts
+[INFO][2016-01-04 14:36:13,752][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [driver_id, shipper_to_driver, shipper_id, id, driver_to_shipper]
+[INFO][2016-01-04 14:36:13,753][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-04 14:36:13,753][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-04 14:36:13,774][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.driver_auth
+[INFO][2016-01-04 14:36:13,774][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [truck_license, user_id, truck_num, auth_state, length, phone_num, real_name, type, capacity, truck_picture]
+[INFO][2016-01-04 14:36:13,774][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-04 14:36:13,774][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-04 14:36:13,794][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.order_cance_state
+[INFO][2016-01-04 14:36:13,795][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [reason, state, order_id]
+[INFO][2016-01-04 14:36:13,795][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-04 14:36:13,795][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-04 14:36:13,811][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.orders
+[INFO][2016-01-04 14:36:13,811][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [truck_type, driver_id, address_to, build_time, evaluate_type, address_from, load_time, price, pay_type, shipper_id, goods_type, goods_weight_size, truck_capacity, order_id, evaluate]
+[INFO][2016-01-04 14:36:13,811][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-04 14:36:13,812][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-04 14:36:13,837][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.truck_capacity_t
+[INFO][2016-01-04 14:36:13,837][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [truck_type, capacity_range]
+[INFO][2016-01-04 14:36:13,837][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-04 14:36:13,837][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-04 14:36:13,860][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.truck_length
+[INFO][2016-01-04 14:36:13,860][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [truck_type, length_range]
+[INFO][2016-01-04 14:36:13,860][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-04 14:36:13,860][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-04 14:36:13,881][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.truck_type_name_t
+[INFO][2016-01-04 14:36:13,881][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [truck_type, name]
+[INFO][2016-01-04 14:36:13,881][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-04 14:36:13,881][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-04 14:36:13,899][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.user
+[INFO][2016-01-04 14:36:13,901][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [icon_url, password, money, nick_name, phone_number, id, type, point, register_time, token]
+[INFO][2016-01-04 14:36:13,901][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-04 14:36:13,901][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [uk_4bgmpi98dylab6qdvf9xyaxu4, primary]
+[INFO][2016-01-04 14:36:13,916][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.user_type_name_t
+[INFO][2016-01-04 14:36:13,917][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [user_type, name]
+[INFO][2016-01-04 14:36:13,917][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-04 14:36:13,917][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-04 14:36:14,152][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000232: Schema update complete
+[INFO][2016-01-04 14:36:14,387][org.springframework.orm.hibernate4.HibernateTransactionManager]Using DataSource [{
+	CreateTime:"2016-01-04 14:36:11",
+	ActiveCount:0,
+	PoolingCount:1,
+	CreateCount:1,
+	DestroyCount:0,
+	CloseCount:2,
+	ConnectCount:2,
+	Connections:[
+		{ID:1104969658, ConnectTime:"2016-01-04 14:36:12", UseCount:2, LastActiveTime:"2016-01-04 14:36:14"}
+	]
+}] of Hibernate SessionFactory for HibernateTransactionManager
+[INFO][2016-01-04 14:36:14,504][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization completed in 4491 ms
+[INFO][2016-01-04 14:36:14,943][org.springframework.web.servlet.DispatcherServlet]FrameworkServlet 'springMVC': initialization started
+[INFO][2016-01-04 14:36:14,950][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing WebApplicationContext for namespace 'springMVC-servlet': startup date [Mon Jan 04 14:36:14 CST 2016]; parent: Root WebApplicationContext
+[INFO][2016-01-04 14:36:14,951][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mvc.xml]
+[INFO][2016-01-04 14:36:15,164][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO][2016-01-04 14:36:15,419][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/home]}" onto public java.lang.String controller.HomeController.home(org.springframework.ui.Model)
+[INFO][2016-01-04 14:36:15,428][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/deleteOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.deleteOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-04 14:36:15,428][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/placeOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.placeOrder(pojo.OrderInfo)
+[INFO][2016-01-04 14:36:15,429][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/cancelOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.cancelOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-04 14:36:15,429][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/evaluateOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.evaluateOrder(pojo.EvaluateInfo)
+[INFO][2016-01-04 14:36:15,430][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/showMyOrderList],methods=[POST]}" onto public vo.RestResult controller.ShipperController.showMyOrderList(pojo.OrderListType)
+[INFO][2016-01-04 14:36:15,438][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/register],methods=[POST]}" onto public vo.RestResult controller.UserController.register(pojo.UserAuthInfo)
+[INFO][2016-01-04 14:36:15,438][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/count],methods=[GET]}" onto public int controller.UserController.getCount()
+[INFO][2016-01-04 14:36:15,438][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/login],methods=[POST]}" onto public vo.RestResult controller.UserController.login(pojo.UserAuthInfo)
+[INFO][2016-01-04 14:36:15,438][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/modifyPassword],methods=[POST]}" onto public vo.RestResult controller.UserController.modifyPassword(pojo.ModifiedPassword)
+[INFO][2016-01-04 14:36:15,439][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/userRegister]}" onto public java.lang.String controller.UserController.userRegister(org.springframework.ui.Model)
+[INFO][2016-01-04 14:36:15,439][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/modifyIcon],methods=[POST]}" onto public vo.RestResult controller.UserController.modifyIcon(pojo.ModifiedIcon)
+[INFO][2016-01-04 14:36:15,439][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/showAccount],methods=[POST]}" onto public vo.RestResult controller.UserController.showAccount(pojo.TokenAuthInfo)
+[INFO][2016-01-04 14:36:15,440][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/modifyNickName],methods=[POST]}" onto public vo.RestResult controller.UserController.modifyNickName(pojo.ModifiedNickName)
+[INFO][2016-01-04 14:36:15,440][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/id/{id}],methods=[GET]}" onto public vo.RestResult controller.UserController.getUser(int)
+[INFO][2016-01-04 14:36:15,604][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMVC-servlet': startup date [Mon Jan 04 14:36:14 CST 2016]; parent: Root WebApplicationContext
+[INFO][2016-01-04 14:36:15,722][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMVC-servlet': startup date [Mon Jan 04 14:36:14 CST 2016]; parent: Root WebApplicationContext
+[INFO][2016-01-04 14:36:15,871][org.springframework.web.servlet.DispatcherServlet]FrameworkServlet 'springMVC': initialization completed in 927 ms
+[WARN][2016-01-04 14:36:39,506][org.hibernate.engine.jdbc.spi.SqlExceptionHelper]SQL Warning Code: 1292, SQLState: HY000
+[WARN][2016-01-04 14:36:39,506][org.hibernate.engine.jdbc.spi.SqlExceptionHelper]Incorrect date value: '2016-01-04 14:36:39' for column 'register_time' at row 1
+[WARN][2016-01-04 14:37:15,167][org.hibernate.engine.jdbc.spi.SqlExceptionHelper]SQL Error: 1062, SQLState: 23000
+[ERROR][2016-01-04 14:37:15,167][org.hibernate.engine.jdbc.spi.SqlExceptionHelper]Duplicate entry '123' for key 'UK_4bgmpi98dylab6qdvf9xyaxu4'
+[INFO][2016-01-04 14:37:15,168][org.hibernate.engine.jdbc.batch.internal.AbstractBatchImpl]HHH000010: On release of batch it still contained JDBC statements
+[WARN][2016-01-04 14:37:15,169][org.hibernate.engine.jdbc.spi.SqlExceptionHelper]SQL Warning Code: 1292, SQLState: HY000
+[WARN][2016-01-04 14:37:15,169][org.hibernate.engine.jdbc.spi.SqlExceptionHelper]Incorrect date value: '2016-01-04 14:37:15' for column 'register_time' at row 1
+[WARN][2016-01-04 14:37:15,169][org.hibernate.engine.jdbc.spi.SqlExceptionHelper]SQL Warning Code: 1062, SQLState: 23000
+[WARN][2016-01-04 14:37:15,169][org.hibernate.engine.jdbc.spi.SqlExceptionHelper]Duplicate entry '123' for key 'UK_4bgmpi98dylab6qdvf9xyaxu4'
+[INFO][2016-01-08 22:41:40,780][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization started
+[INFO][2016-01-08 22:41:40,891][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing Root WebApplicationContext: startup date [Fri Jan 08 22:41:40 CST 2016]; root of context hierarchy
+[INFO][2016-01-08 22:41:40,937][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring.xml]
+[INFO][2016-01-08 22:41:41,274][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-hiber.xml]
+[INFO][2016-01-08 22:41:41,786][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [config.properties]
+[INFO][2016-01-08 22:41:41,797][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[ERROR][2016-01-08 22:41:42,225][com.alibaba.druid.pool.DruidAbstractDataSource]maxIdle is deprecated
+[INFO][2016-01-08 22:41:42,281][com.alibaba.druid.pool.DruidDataSource]{dataSource-1} inited
+[INFO][2016-01-08 22:41:42,553][org.hibernate.annotations.common.Version]HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+[INFO][2016-01-08 22:41:42,562][org.hibernate.Version]HHH000412: Hibernate Core {4.3.8.Final}
+[INFO][2016-01-08 22:41:42,564][org.hibernate.cfg.Environment]HHH000206: hibernate.properties not found
+[INFO][2016-01-08 22:41:42,566][org.hibernate.cfg.Environment]HHH000021: Bytecode provider name : javassist
+[INFO][2016-01-08 22:41:43,197][org.hibernate.dialect.Dialect]HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+[INFO][2016-01-08 22:41:43,400][org.hibernate.engine.transaction.internal.TransactionFactoryInitiator]HHH000399: Using default transaction strategy (direct JDBC transactions)
+[INFO][2016-01-08 22:41:43,412][org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory]HHH000397: Using ASTQueryTranslatorFactory
+[INFO][2016-01-08 22:41:44,267][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000228: Running hbm2ddl schema update
+[INFO][2016-01-08 22:41:44,267][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000102: Fetching database metadata
+[INFO][2016-01-08 22:41:44,273][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000396: Updating schema
+[INFO][2016-01-08 22:41:44,276][java.sql.DatabaseMetaData]HHH000262: Table not found: account
+[INFO][2016-01-08 22:41:44,278][java.sql.DatabaseMetaData]HHH000262: Table not found: account_type_name_t
+[INFO][2016-01-08 22:41:44,280][java.sql.DatabaseMetaData]HHH000262: Table not found: auth_state_name_t
+[INFO][2016-01-08 22:41:44,281][java.sql.DatabaseMetaData]HHH000262: Table not found: contacts
+[INFO][2016-01-08 22:41:44,283][java.sql.DatabaseMetaData]HHH000262: Table not found: driver_auth
+[INFO][2016-01-08 22:41:44,284][java.sql.DatabaseMetaData]HHH000262: Table not found: frequent_address
+[INFO][2016-01-08 22:41:44,285][java.sql.DatabaseMetaData]HHH000262: Table not found: frequent_driver
+[INFO][2016-01-08 22:41:44,287][java.sql.DatabaseMetaData]HHH000262: Table not found: message
+[INFO][2016-01-08 22:41:44,288][java.sql.DatabaseMetaData]HHH000262: Table not found: order_state_name_t
+[INFO][2016-01-08 22:41:44,290][java.sql.DatabaseMetaData]HHH000262: Table not found: orders
+[INFO][2016-01-08 22:41:44,291][java.sql.DatabaseMetaData]HHH000262: Table not found: truck_type
+[INFO][2016-01-08 22:41:44,292][java.sql.DatabaseMetaData]HHH000262: Table not found: user
+[INFO][2016-01-08 22:41:44,295][java.sql.DatabaseMetaData]HHH000262: Table not found: user_type_name_t
+[INFO][2016-01-08 22:41:44,296][java.sql.DatabaseMetaData]HHH000262: Table not found: account
+[INFO][2016-01-08 22:41:44,297][java.sql.DatabaseMetaData]HHH000262: Table not found: account_type_name_t
+[INFO][2016-01-08 22:41:44,299][java.sql.DatabaseMetaData]HHH000262: Table not found: auth_state_name_t
+[INFO][2016-01-08 22:41:44,300][java.sql.DatabaseMetaData]HHH000262: Table not found: contacts
+[INFO][2016-01-08 22:41:44,302][java.sql.DatabaseMetaData]HHH000262: Table not found: driver_auth
+[INFO][2016-01-08 22:41:44,303][java.sql.DatabaseMetaData]HHH000262: Table not found: frequent_address
+[INFO][2016-01-08 22:41:44,310][java.sql.DatabaseMetaData]HHH000262: Table not found: frequent_driver
+[INFO][2016-01-08 22:41:44,312][java.sql.DatabaseMetaData]HHH000262: Table not found: message
+[INFO][2016-01-08 22:41:44,313][java.sql.DatabaseMetaData]HHH000262: Table not found: order_state_name_t
+[INFO][2016-01-08 22:41:44,314][java.sql.DatabaseMetaData]HHH000262: Table not found: orders
+[INFO][2016-01-08 22:41:44,316][java.sql.DatabaseMetaData]HHH000262: Table not found: truck_type
+[INFO][2016-01-08 22:41:44,318][java.sql.DatabaseMetaData]HHH000262: Table not found: user
+[INFO][2016-01-08 22:41:44,319][java.sql.DatabaseMetaData]HHH000262: Table not found: user_type_name_t
+[INFO][2016-01-08 22:41:44,320][java.sql.DatabaseMetaData]HHH000262: Table not found: account
+[INFO][2016-01-08 22:41:44,323][java.sql.DatabaseMetaData]HHH000262: Table not found: account_type_name_t
+[INFO][2016-01-08 22:41:44,324][java.sql.DatabaseMetaData]HHH000262: Table not found: auth_state_name_t
+[INFO][2016-01-08 22:41:44,326][java.sql.DatabaseMetaData]HHH000262: Table not found: contacts
+[INFO][2016-01-08 22:41:44,327][java.sql.DatabaseMetaData]HHH000262: Table not found: driver_auth
+[INFO][2016-01-08 22:41:44,329][java.sql.DatabaseMetaData]HHH000262: Table not found: frequent_address
+[INFO][2016-01-08 22:41:44,330][java.sql.DatabaseMetaData]HHH000262: Table not found: frequent_driver
+[INFO][2016-01-08 22:41:44,331][java.sql.DatabaseMetaData]HHH000262: Table not found: message
+[INFO][2016-01-08 22:41:44,332][java.sql.DatabaseMetaData]HHH000262: Table not found: order_state_name_t
+[INFO][2016-01-08 22:41:44,334][java.sql.DatabaseMetaData]HHH000262: Table not found: orders
+[INFO][2016-01-08 22:41:44,335][java.sql.DatabaseMetaData]HHH000262: Table not found: truck_type
+[INFO][2016-01-08 22:41:44,336][java.sql.DatabaseMetaData]HHH000262: Table not found: user
+[INFO][2016-01-08 22:41:44,337][java.sql.DatabaseMetaData]HHH000262: Table not found: user_type_name_t
+[INFO][2016-01-08 22:41:44,860][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000232: Schema update complete
+[INFO][2016-01-08 22:41:45,125][org.springframework.orm.hibernate4.HibernateTransactionManager]Using DataSource [{
+	CreateTime:"2016-01-08 22:41:42",
+	ActiveCount:0,
+	PoolingCount:1,
+	CreateCount:1,
+	DestroyCount:0,
+	CloseCount:2,
+	ConnectCount:2,
+	Connections:[
+		{ID:1115894602, ConnectTime:"2016-01-08 22:41:43", UseCount:2, LastActiveTime:"2016-01-08 22:41:44"}
+	]
+}] of Hibernate SessionFactory for HibernateTransactionManager
+[INFO][2016-01-08 22:41:45,256][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization completed in 4475 ms
+[INFO][2016-01-08 22:41:45,728][org.springframework.web.servlet.DispatcherServlet]FrameworkServlet 'springMVC': initialization started
+[INFO][2016-01-08 22:41:45,733][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing WebApplicationContext for namespace 'springMVC-servlet': startup date [Fri Jan 08 22:41:45 CST 2016]; parent: Root WebApplicationContext
+[INFO][2016-01-08 22:41:45,734][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mvc.xml]
+[INFO][2016-01-08 22:41:45,963][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO][2016-01-08 22:41:46,168][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/cancelOrder],methods=[POST]}" onto public vo.RestResult controller.DriverController.cancelOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-08 22:41:46,171][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/setRealNameAuthInfo],methods=[POST]}" onto public vo.RestResult controller.DriverController.setRealNameAuthInfo(pojo.RealNameAuthInfo)
+[INFO][2016-01-08 22:41:46,172][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/deleteOrder],methods=[POST]}" onto public vo.RestResult controller.DriverController.deleteOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-08 22:41:46,174][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/setTruckInfo],methods=[POST]}" onto public vo.RestResult controller.DriverController.setTruckInfo(pojo.TruckInfo)
+[INFO][2016-01-08 22:41:46,174][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/setTruckAuthInfo],methods=[POST]}" onto public vo.RestResult controller.DriverController.setTruckAuthInfo(pojo.TruckAuthInfo)
+[INFO][2016-01-08 22:41:46,175][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/showMyOrderList],methods=[POST]}" onto public vo.RestResult controller.DriverController.showMyOrderList(pojo.OrderListType)
+[INFO][2016-01-08 22:41:46,175][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/showAllOrders],methods=[POST]}" onto public vo.RestResult controller.DriverController.showAllOrders(pojo.TokenAuthInfo)
+[INFO][2016-01-08 22:41:46,175][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/grabOrder],methods=[POST]}" onto public vo.RestResult controller.DriverController.grabOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-08 22:41:46,176][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/home]}" onto public java.lang.String controller.HomeController.home(org.springframework.ui.Model)
+[INFO][2016-01-08 22:41:46,180][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/cancelOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.cancelOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-08 22:41:46,180][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/addFrequentDriver],methods=[POST]}" onto public vo.RestResult controller.ShipperController.addFrequentDriver(pojo.UserIdInfoWithAuth)
+[INFO][2016-01-08 22:41:46,180][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/deleteOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.deleteOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-08 22:41:46,181][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/showMyOrderList],methods=[POST]}" onto public vo.RestResult controller.ShipperController.showMyOrderList(pojo.OrderListType)
+[INFO][2016-01-08 22:41:46,182][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/placeOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.placeOrder(pojo.OrderInfo)
+[INFO][2016-01-08 22:41:46,182][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/getFrequentDrivers],methods=[POST]}" onto public vo.RestResult controller.ShipperController.getFrequentDrivers(pojo.TokenAuthInfo)
+[INFO][2016-01-08 22:41:46,182][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/getFrequentAddresses],methods=[POST]}" onto public vo.RestResult controller.ShipperController.getFrequentAddresses(pojo.TokenAuthInfo)
+[INFO][2016-01-08 22:41:46,182][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/finishOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.finishOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-08 22:41:46,183][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/getOrderDetail],methods=[POST]}" onto public vo.RestResult controller.ShipperController.getOrderDetail(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-08 22:41:46,183][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/evaluateOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.evaluateOrder(pojo.EvaluateInfo)
+[INFO][2016-01-08 22:41:46,194][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/register],methods=[POST]}" onto public vo.RestResult controller.UserController.register(pojo.UserAuthInfo)
+[INFO][2016-01-08 22:41:46,194][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/count],methods=[GET]}" onto public int controller.UserController.getCount()
+[INFO][2016-01-08 22:41:46,195][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/login],methods=[POST]}" onto public vo.RestResult controller.UserController.login(pojo.UserAuthInfo)
+[INFO][2016-01-08 22:41:46,195][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/userRegister]}" onto public java.lang.String controller.UserController.userRegister(org.springframework.ui.Model)
+[INFO][2016-01-08 22:41:46,196][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/getAllTruckTypes],methods=[POST]}" onto public vo.RestResult controller.UserController.getAllTruckTypes()
+[INFO][2016-01-08 22:41:46,196][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/modifyNickName],methods=[POST]}" onto public vo.RestResult controller.UserController.modifyNickName(pojo.ModifiedNickName)
+[INFO][2016-01-08 22:41:46,196][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/modifyPassword],methods=[POST]}" onto public vo.RestResult controller.UserController.modifyPassword(pojo.ModifiedPassword)
+[INFO][2016-01-08 22:41:46,196][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/getMyMessages],methods=[POST]}" onto public vo.RestResult controller.UserController.getMyMessages(pojo.TokenAuthInfo)
+[INFO][2016-01-08 22:41:46,197][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/showAccount],methods=[POST]}" onto public vo.RestResult controller.UserController.showAccount(pojo.TokenAuthInfo)
+[INFO][2016-01-08 22:41:46,197][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/modifyIcon],methods=[POST]}" onto public vo.RestResult controller.UserController.modifyIcon(pojo.ModifiedIcon)
+[INFO][2016-01-08 22:41:46,198][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/id/{id}],methods=[GET]}" onto public vo.RestResult controller.UserController.getUser(int)
+[INFO][2016-01-08 22:41:46,198][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/getContactDetail],methods=[POST]}" onto public vo.RestResult controller.UserController.getContactDetail(pojo.UserIdInfoWithAuth)
+[INFO][2016-01-08 22:41:46,198][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/recharge],methods=[POST]}" onto public vo.RestResult controller.UserController.recharge(pojo.RechargeInfo)
+[INFO][2016-01-08 22:41:46,199][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/getContacts],methods=[POST]}" onto public vo.RestResult controller.UserController.getContacts(pojo.TokenAuthInfo)
+[INFO][2016-01-08 22:41:46,330][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMVC-servlet': startup date [Fri Jan 08 22:41:45 CST 2016]; parent: Root WebApplicationContext
+[INFO][2016-01-08 22:41:46,399][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMVC-servlet': startup date [Fri Jan 08 22:41:45 CST 2016]; parent: Root WebApplicationContext
+[INFO][2016-01-08 22:41:46,502][org.springframework.web.servlet.DispatcherServlet]FrameworkServlet 'springMVC': initialization completed in 774 ms
+[INFO][2016-01-08 22:45:35,816][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization started
+[INFO][2016-01-08 22:45:35,918][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing Root WebApplicationContext: startup date [Fri Jan 08 22:45:35 CST 2016]; root of context hierarchy
+[INFO][2016-01-08 22:45:35,961][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring.xml]
+[INFO][2016-01-08 22:45:36,272][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-hiber.xml]
+[INFO][2016-01-08 22:45:36,691][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [config.properties]
+[INFO][2016-01-08 22:45:36,699][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[ERROR][2016-01-08 22:45:37,115][com.alibaba.druid.pool.DruidAbstractDataSource]maxIdle is deprecated
+[INFO][2016-01-08 22:45:37,177][com.alibaba.druid.pool.DruidDataSource]{dataSource-1} inited
+[INFO][2016-01-08 22:45:37,416][org.hibernate.annotations.common.Version]HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+[INFO][2016-01-08 22:45:37,426][org.hibernate.Version]HHH000412: Hibernate Core {4.3.8.Final}
+[INFO][2016-01-08 22:45:37,429][org.hibernate.cfg.Environment]HHH000206: hibernate.properties not found
+[INFO][2016-01-08 22:45:37,431][org.hibernate.cfg.Environment]HHH000021: Bytecode provider name : javassist
+[INFO][2016-01-08 22:45:38,113][org.hibernate.dialect.Dialect]HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+[INFO][2016-01-08 22:45:38,318][org.hibernate.engine.transaction.internal.TransactionFactoryInitiator]HHH000399: Using default transaction strategy (direct JDBC transactions)
+[INFO][2016-01-08 22:45:38,329][org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory]HHH000397: Using ASTQueryTranslatorFactory
+[INFO][2016-01-08 22:45:39,183][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000228: Running hbm2ddl schema update
+[INFO][2016-01-08 22:45:39,183][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000102: Fetching database metadata
+[INFO][2016-01-08 22:45:39,188][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000396: Updating schema
+[INFO][2016-01-08 22:45:39,220][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.account
+[INFO][2016-01-08 22:45:39,220][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [money, build_time, id, type, order_id]
+[INFO][2016-01-08 22:45:39,220][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:45:39,221][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-08 22:45:39,236][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.account_type_name_t
+[INFO][2016-01-08 22:45:39,236][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [name, type]
+[INFO][2016-01-08 22:45:39,236][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:45:39,237][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-08 22:45:39,254][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.auth_state_name_t
+[INFO][2016-01-08 22:45:39,255][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [name, state]
+[INFO][2016-01-08 22:45:39,255][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:45:39,255][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-08 22:45:39,270][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.contacts
+[INFO][2016-01-08 22:45:39,271][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [driver_id, shipper_to_driver, shipper_id, id, driver_to_shipper]
+[INFO][2016-01-08 22:45:39,271][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:45:39,271][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-08 22:45:39,286][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.driver_auth
+[INFO][2016-01-08 22:45:39,286][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [truck_license, driving_license, user_id, truck_num, auth_state, phone_num, real_name, id, type, truck_picture]
+[INFO][2016-01-08 22:45:39,286][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:45:39,286][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-08 22:45:39,302][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.frequent_address
+[INFO][2016-01-08 22:45:39,302][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [address, shipper_id, id]
+[INFO][2016-01-08 22:45:39,302][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:45:39,302][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-08 22:45:39,318][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.frequent_driver
+[INFO][2016-01-08 22:45:39,318][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [driver_id, shipper_id, id]
+[INFO][2016-01-08 22:45:39,318][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:45:39,319][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-08 22:45:39,331][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.message
+[INFO][2016-01-08 22:45:39,332][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [user_id, id, time, type, object_id, content, has_read]
+[INFO][2016-01-08 22:45:39,332][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:45:39,332][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-08 22:45:39,343][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.order_state_name_t
+[INFO][2016-01-08 22:45:39,344][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [name, state]
+[INFO][2016-01-08 22:45:39,344][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:45:39,344][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-08 22:45:39,362][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.orders
+[INFO][2016-01-08 22:45:39,363][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [truck_type, driver_id, from_contact_name, address_to, build_time, remark, evaluate_point, address_from, to_contact_name, goods_size, from_contact_phone, load_time, evaluate_content, price, pay_type, shipper_id, id, goods_type, state, goods_weight, to_contact_phone]
+[INFO][2016-01-08 22:45:39,363][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:45:39,363][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-08 22:45:39,379][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.truck_type
+[INFO][2016-01-08 22:45:39,379][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [over_price, base_price, length, name, width, type, capacity, height]
+[INFO][2016-01-08 22:45:39,379][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:45:39,379][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-08 22:45:39,396][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.user
+[INFO][2016-01-08 22:45:39,396][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [icon_url, password, money, nick_name, phone_number, id, type, point, register_time, token]
+[INFO][2016-01-08 22:45:39,396][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:45:39,396][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [uk_4bgmpi98dylab6qdvf9xyaxu4, primary]
+[INFO][2016-01-08 22:45:39,410][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.user_type_name_t
+[INFO][2016-01-08 22:45:39,410][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [name, type]
+[INFO][2016-01-08 22:45:39,410][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:45:39,410][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-08 22:45:39,412][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000232: Schema update complete
+[INFO][2016-01-08 22:45:39,667][org.springframework.orm.hibernate4.HibernateTransactionManager]Using DataSource [{
+	CreateTime:"2016-01-08 22:45:37",
+	ActiveCount:0,
+	PoolingCount:1,
+	CreateCount:1,
+	DestroyCount:0,
+	CloseCount:2,
+	ConnectCount:2,
+	Connections:[
+		{ID:210124467, ConnectTime:"2016-01-08 22:45:38", UseCount:2, LastActiveTime:"2016-01-08 22:45:39"}
+	]
+}] of Hibernate SessionFactory for HibernateTransactionManager
+[INFO][2016-01-08 22:45:39,787][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization completed in 3971 ms
+[INFO][2016-01-08 22:45:40,187][org.springframework.web.servlet.DispatcherServlet]FrameworkServlet 'springMVC': initialization started
+[INFO][2016-01-08 22:45:40,192][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing WebApplicationContext for namespace 'springMVC-servlet': startup date [Fri Jan 08 22:45:40 CST 2016]; parent: Root WebApplicationContext
+[INFO][2016-01-08 22:45:40,194][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mvc.xml]
+[INFO][2016-01-08 22:45:40,402][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO][2016-01-08 22:45:40,632][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/showMyOrderList],methods=[POST]}" onto public vo.RestResult controller.DriverController.showMyOrderList(pojo.OrderListType)
+[INFO][2016-01-08 22:45:40,634][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/showAllOrders],methods=[POST]}" onto public vo.RestResult controller.DriverController.showAllOrders(pojo.TokenAuthInfo)
+[INFO][2016-01-08 22:45:40,635][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/setRealNameAuthInfo],methods=[POST]}" onto public vo.RestResult controller.DriverController.setRealNameAuthInfo(pojo.RealNameAuthInfo)
+[INFO][2016-01-08 22:45:40,635][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/cancelOrder],methods=[POST]}" onto public vo.RestResult controller.DriverController.cancelOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-08 22:45:40,635][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/setTruckAuthInfo],methods=[POST]}" onto public vo.RestResult controller.DriverController.setTruckAuthInfo(pojo.TruckAuthInfo)
+[INFO][2016-01-08 22:45:40,636][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/grabOrder],methods=[POST]}" onto public vo.RestResult controller.DriverController.grabOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-08 22:45:40,636][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/deleteOrder],methods=[POST]}" onto public vo.RestResult controller.DriverController.deleteOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-08 22:45:40,636][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/setTruckInfo],methods=[POST]}" onto public vo.RestResult controller.DriverController.setTruckInfo(pojo.TruckInfo)
+[INFO][2016-01-08 22:45:40,637][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/home]}" onto public java.lang.String controller.HomeController.home(org.springframework.ui.Model)
+[INFO][2016-01-08 22:45:40,646][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/showMyOrderList],methods=[POST]}" onto public vo.RestResult controller.ShipperController.showMyOrderList(pojo.OrderListType)
+[INFO][2016-01-08 22:45:40,646][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/getFrequentAddresses],methods=[POST]}" onto public vo.RestResult controller.ShipperController.getFrequentAddresses(pojo.TokenAuthInfo)
+[INFO][2016-01-08 22:45:40,646][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/getFrequentDrivers],methods=[POST]}" onto public vo.RestResult controller.ShipperController.getFrequentDrivers(pojo.TokenAuthInfo)
+[INFO][2016-01-08 22:45:40,647][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/addFrequentDriver],methods=[POST]}" onto public vo.RestResult controller.ShipperController.addFrequentDriver(pojo.UserIdInfoWithAuth)
+[INFO][2016-01-08 22:45:40,647][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/cancelOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.cancelOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-08 22:45:40,647][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/finishOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.finishOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-08 22:45:40,647][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/deleteOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.deleteOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-08 22:45:40,648][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/getOrderDetail],methods=[POST]}" onto public vo.RestResult controller.ShipperController.getOrderDetail(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-08 22:45:40,648][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/placeOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.placeOrder(pojo.OrderInfo)
+[INFO][2016-01-08 22:45:40,648][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/evaluateOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.evaluateOrder(pojo.EvaluateInfo)
+[INFO][2016-01-08 22:45:40,655][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/register],methods=[POST]}" onto public vo.RestResult controller.UserController.register(pojo.UserAuthInfo)
+[INFO][2016-01-08 22:45:40,656][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/count],methods=[GET]}" onto public int controller.UserController.getCount()
+[INFO][2016-01-08 22:45:40,656][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/login],methods=[POST]}" onto public vo.RestResult controller.UserController.login(pojo.UserAuthInfo)
+[INFO][2016-01-08 22:45:40,657][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/getAllTruckTypes],methods=[POST]}" onto public vo.RestResult controller.UserController.getAllTruckTypes()
+[INFO][2016-01-08 22:45:40,657][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/modifyNickName],methods=[POST]}" onto public vo.RestResult controller.UserController.modifyNickName(pojo.ModifiedNickName)
+[INFO][2016-01-08 22:45:40,658][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/userRegister]}" onto public java.lang.String controller.UserController.userRegister(org.springframework.ui.Model)
+[INFO][2016-01-08 22:45:40,658][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/modifyIcon],methods=[POST]}" onto public vo.RestResult controller.UserController.modifyIcon(pojo.ModifiedIcon)
+[INFO][2016-01-08 22:45:40,658][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/showAccount],methods=[POST]}" onto public vo.RestResult controller.UserController.showAccount(pojo.TokenAuthInfo)
+[INFO][2016-01-08 22:45:40,658][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/getMyMessages],methods=[POST]}" onto public vo.RestResult controller.UserController.getMyMessages(pojo.TokenAuthInfo)
+[INFO][2016-01-08 22:45:40,658][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/modifyPassword],methods=[POST]}" onto public vo.RestResult controller.UserController.modifyPassword(pojo.ModifiedPassword)
+[INFO][2016-01-08 22:45:40,660][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/getContactDetail],methods=[POST]}" onto public vo.RestResult controller.UserController.getContactDetail(pojo.UserIdInfoWithAuth)
+[INFO][2016-01-08 22:45:40,661][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/getContacts],methods=[POST]}" onto public vo.RestResult controller.UserController.getContacts(pojo.TokenAuthInfo)
+[INFO][2016-01-08 22:45:40,661][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/recharge],methods=[POST]}" onto public vo.RestResult controller.UserController.recharge(pojo.RechargeInfo)
+[INFO][2016-01-08 22:45:40,661][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/id/{id}],methods=[GET]}" onto public vo.RestResult controller.UserController.getUser(int)
+[INFO][2016-01-08 22:45:40,793][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMVC-servlet': startup date [Fri Jan 08 22:45:40 CST 2016]; parent: Root WebApplicationContext
+[INFO][2016-01-08 22:45:40,875][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMVC-servlet': startup date [Fri Jan 08 22:45:40 CST 2016]; parent: Root WebApplicationContext
+[INFO][2016-01-08 22:45:41,003][org.springframework.web.servlet.DispatcherServlet]FrameworkServlet 'springMVC': initialization completed in 816 ms
+[INFO][2016-01-08 22:49:54,972][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization started
+[INFO][2016-01-08 22:49:55,099][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing Root WebApplicationContext: startup date [Fri Jan 08 22:49:55 CST 2016]; root of context hierarchy
+[INFO][2016-01-08 22:49:55,146][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring.xml]
+[INFO][2016-01-08 22:49:55,496][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-hiber.xml]
+[INFO][2016-01-08 22:49:56,009][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [config.properties]
+[INFO][2016-01-08 22:49:56,018][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[ERROR][2016-01-08 22:49:56,711][com.alibaba.druid.pool.DruidAbstractDataSource]maxIdle is deprecated
+[INFO][2016-01-08 22:49:56,781][com.alibaba.druid.pool.DruidDataSource]{dataSource-1} inited
+[INFO][2016-01-08 22:49:57,061][org.hibernate.annotations.common.Version]HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+[INFO][2016-01-08 22:49:57,069][org.hibernate.Version]HHH000412: Hibernate Core {4.3.8.Final}
+[INFO][2016-01-08 22:49:57,072][org.hibernate.cfg.Environment]HHH000206: hibernate.properties not found
+[INFO][2016-01-08 22:49:57,074][org.hibernate.cfg.Environment]HHH000021: Bytecode provider name : javassist
+[INFO][2016-01-08 22:49:57,684][org.hibernate.dialect.Dialect]HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+[INFO][2016-01-08 22:49:57,874][org.hibernate.engine.transaction.internal.TransactionFactoryInitiator]HHH000399: Using default transaction strategy (direct JDBC transactions)
+[INFO][2016-01-08 22:49:57,880][org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory]HHH000397: Using ASTQueryTranslatorFactory
+[INFO][2016-01-08 22:49:58,954][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000228: Running hbm2ddl schema update
+[INFO][2016-01-08 22:49:58,954][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000102: Fetching database metadata
+[INFO][2016-01-08 22:49:58,960][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000396: Updating schema
+[INFO][2016-01-08 22:49:58,994][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.account
+[INFO][2016-01-08 22:49:58,994][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [money, build_time, id, type, order_id]
+[INFO][2016-01-08 22:49:58,994][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:49:58,994][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-08 22:49:59,007][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.account_type_name_t
+[INFO][2016-01-08 22:49:59,007][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [name, type]
+[INFO][2016-01-08 22:49:59,007][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:49:59,008][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-08 22:49:59,020][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.auth_state_name_t
+[INFO][2016-01-08 22:49:59,020][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [name, state]
+[INFO][2016-01-08 22:49:59,021][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:49:59,021][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-08 22:49:59,033][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.contacts
+[INFO][2016-01-08 22:49:59,034][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [driver_id, shipper_to_driver, shipper_id, id, driver_to_shipper]
+[INFO][2016-01-08 22:49:59,034][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:49:59,034][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-08 22:49:59,047][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.driver_auth
+[INFO][2016-01-08 22:49:59,047][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [truck_license, driving_license, user_id, truck_num, auth_state, phone_num, real_name, id, type, truck_picture]
+[INFO][2016-01-08 22:49:59,047][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:49:59,047][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-08 22:49:59,060][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.frequent_address
+[INFO][2016-01-08 22:49:59,060][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [address, shipper_id, id]
+[INFO][2016-01-08 22:49:59,060][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:49:59,060][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-08 22:49:59,071][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.frequent_driver
+[INFO][2016-01-08 22:49:59,071][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [driver_id, shipper_id, id]
+[INFO][2016-01-08 22:49:59,071][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:49:59,071][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-08 22:49:59,082][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.message
+[INFO][2016-01-08 22:49:59,082][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [user_id, id, time, type, object_id, content, has_read]
+[INFO][2016-01-08 22:49:59,082][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:49:59,082][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-08 22:49:59,092][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.order_state_name_t
+[INFO][2016-01-08 22:49:59,092][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [name, state]
+[INFO][2016-01-08 22:49:59,093][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:49:59,093][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-08 22:49:59,108][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.orders
+[INFO][2016-01-08 22:49:59,108][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [truck_type, driver_id, from_contact_name, address_to, build_time, remark, evaluate_point, address_from, to_contact_name, goods_size, from_contact_phone, load_time, evaluate_content, price, pay_type, shipper_id, id, goods_type, state, goods_weight, to_contact_phone]
+[INFO][2016-01-08 22:49:59,108][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:49:59,108][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-08 22:49:59,124][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.truck_type
+[INFO][2016-01-08 22:49:59,124][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [over_price, base_price, length, name, width, type, capacity, height]
+[INFO][2016-01-08 22:49:59,124][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:49:59,125][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-08 22:49:59,137][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.user
+[INFO][2016-01-08 22:49:59,137][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [icon_url, password, money, nick_name, phone_number, id, type, point, register_time, token]
+[INFO][2016-01-08 22:49:59,137][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:49:59,137][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [uk_4bgmpi98dylab6qdvf9xyaxu4, primary]
+[INFO][2016-01-08 22:49:59,148][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.user_type_name_t
+[INFO][2016-01-08 22:49:59,148][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [name, type]
+[INFO][2016-01-08 22:49:59,148][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:49:59,148][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-08 22:49:59,150][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000232: Schema update complete
+[INFO][2016-01-08 22:49:59,380][org.springframework.orm.hibernate4.HibernateTransactionManager]Using DataSource [{
+	CreateTime:"2016-01-08 22:49:56",
+	ActiveCount:0,
+	PoolingCount:1,
+	CreateCount:1,
+	DestroyCount:0,
+	CloseCount:2,
+	ConnectCount:2,
+	Connections:[
+		{ID:1604443598, ConnectTime:"2016-01-08 22:49:57", UseCount:2, LastActiveTime:"2016-01-08 22:49:59"}
+	]
+}] of Hibernate SessionFactory for HibernateTransactionManager
+[INFO][2016-01-08 22:49:59,489][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization completed in 4516 ms
+[INFO][2016-01-08 22:49:59,966][org.springframework.web.servlet.DispatcherServlet]FrameworkServlet 'springMVC': initialization started
+[INFO][2016-01-08 22:49:59,971][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing WebApplicationContext for namespace 'springMVC-servlet': startup date [Fri Jan 08 22:49:59 CST 2016]; parent: Root WebApplicationContext
+[INFO][2016-01-08 22:49:59,973][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mvc.xml]
+[INFO][2016-01-08 22:50:00,170][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO][2016-01-08 22:50:00,420][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/showMyOrderList],methods=[POST]}" onto public vo.RestResult controller.DriverController.showMyOrderList(pojo.OrderListType)
+[INFO][2016-01-08 22:50:00,421][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/showAllOrders],methods=[POST]}" onto public vo.RestResult controller.DriverController.showAllOrders(pojo.TokenAuthInfo)
+[INFO][2016-01-08 22:50:00,422][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/setRealNameAuthInfo],methods=[POST]}" onto public vo.RestResult controller.DriverController.setRealNameAuthInfo(pojo.RealNameAuthInfo)
+[INFO][2016-01-08 22:50:00,422][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/setTruckInfo],methods=[POST]}" onto public vo.RestResult controller.DriverController.setTruckInfo(pojo.TruckInfo)
+[INFO][2016-01-08 22:50:00,423][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/setTruckAuthInfo],methods=[POST]}" onto public vo.RestResult controller.DriverController.setTruckAuthInfo(pojo.TruckAuthInfo)
+[INFO][2016-01-08 22:50:00,423][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/grabOrder],methods=[POST]}" onto public vo.RestResult controller.DriverController.grabOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-08 22:50:00,424][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/deleteOrder],methods=[POST]}" onto public vo.RestResult controller.DriverController.deleteOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-08 22:50:00,425][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/cancelOrder],methods=[POST]}" onto public vo.RestResult controller.DriverController.cancelOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-08 22:50:00,426][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/home]}" onto public java.lang.String controller.HomeController.home(org.springframework.ui.Model)
+[INFO][2016-01-08 22:50:00,432][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/showMyOrderList],methods=[POST]}" onto public vo.RestResult controller.ShipperController.showMyOrderList(pojo.OrderListType)
+[INFO][2016-01-08 22:50:00,432][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/addFrequentDriver],methods=[POST]}" onto public vo.RestResult controller.ShipperController.addFrequentDriver(pojo.UserIdInfoWithAuth)
+[INFO][2016-01-08 22:50:00,433][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/placeOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.placeOrder(pojo.OrderInfo)
+[INFO][2016-01-08 22:50:00,433][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/finishOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.finishOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-08 22:50:00,433][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/deleteOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.deleteOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-08 22:50:00,434][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/getOrderDetail],methods=[POST]}" onto public vo.RestResult controller.ShipperController.getOrderDetail(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-08 22:50:00,434][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/evaluateOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.evaluateOrder(pojo.EvaluateInfo)
+[INFO][2016-01-08 22:50:00,434][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/cancelOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.cancelOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-08 22:50:00,434][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/getFrequentAddresses],methods=[POST]}" onto public vo.RestResult controller.ShipperController.getFrequentAddresses(pojo.TokenAuthInfo)
+[INFO][2016-01-08 22:50:00,435][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/getFrequentDrivers],methods=[POST]}" onto public vo.RestResult controller.ShipperController.getFrequentDrivers(pojo.TokenAuthInfo)
+[INFO][2016-01-08 22:50:00,442][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/register],methods=[POST]}" onto public vo.RestResult controller.UserController.register(pojo.UserAuthInfo)
+[INFO][2016-01-08 22:50:00,443][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/count],methods=[GET]}" onto public int controller.UserController.getCount()
+[INFO][2016-01-08 22:50:00,443][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/getMyMessages],methods=[POST]}" onto public vo.RestResult controller.UserController.getMyMessages(pojo.TokenAuthInfo)
+[INFO][2016-01-08 22:50:00,444][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/modifyIcon],methods=[POST]}" onto public vo.RestResult controller.UserController.modifyIcon(pojo.ModifiedIcon)
+[INFO][2016-01-08 22:50:00,444][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/modifyNickName],methods=[POST]}" onto public vo.RestResult controller.UserController.modifyNickName(pojo.ModifiedNickName)
+[INFO][2016-01-08 22:50:00,445][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/modifyPassword],methods=[POST]}" onto public vo.RestResult controller.UserController.modifyPassword(pojo.ModifiedPassword)
+[INFO][2016-01-08 22:50:00,445][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/getAllTruckTypes],methods=[POST]}" onto public vo.RestResult controller.UserController.getAllTruckTypes()
+[INFO][2016-01-08 22:50:00,445][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/userRegister]}" onto public java.lang.String controller.UserController.userRegister(org.springframework.ui.Model)
+[INFO][2016-01-08 22:50:00,445][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/showAccount],methods=[POST]}" onto public vo.RestResult controller.UserController.showAccount(pojo.TokenAuthInfo)
+[INFO][2016-01-08 22:50:00,446][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/login],methods=[POST]}" onto public vo.RestResult controller.UserController.login(pojo.UserAuthInfo)
+[INFO][2016-01-08 22:50:00,448][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/getContacts],methods=[POST]}" onto public vo.RestResult controller.UserController.getContacts(pojo.TokenAuthInfo)
+[INFO][2016-01-08 22:50:00,448][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/getContactDetail],methods=[POST]}" onto public vo.RestResult controller.UserController.getContactDetail(pojo.UserIdInfoWithAuth)
+[INFO][2016-01-08 22:50:00,448][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/recharge],methods=[POST]}" onto public vo.RestResult controller.UserController.recharge(pojo.RechargeInfo)
+[INFO][2016-01-08 22:50:00,448][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/id/{id}],methods=[GET]}" onto public vo.RestResult controller.UserController.getUser(int)
+[INFO][2016-01-08 22:50:00,587][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMVC-servlet': startup date [Fri Jan 08 22:49:59 CST 2016]; parent: Root WebApplicationContext
+[INFO][2016-01-08 22:50:00,681][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMVC-servlet': startup date [Fri Jan 08 22:49:59 CST 2016]; parent: Root WebApplicationContext
+[INFO][2016-01-08 22:50:00,820][org.springframework.web.servlet.DispatcherServlet]FrameworkServlet 'springMVC': initialization completed in 853 ms
+[INFO][2016-01-08 22:57:21,681][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization started
+[INFO][2016-01-08 22:57:21,783][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing Root WebApplicationContext: startup date [Fri Jan 08 22:57:21 CST 2016]; root of context hierarchy
+[INFO][2016-01-08 22:57:21,835][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring.xml]
+[INFO][2016-01-08 22:57:22,128][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-hiber.xml]
+[INFO][2016-01-08 22:57:22,548][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [config.properties]
+[INFO][2016-01-08 22:57:22,557][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[ERROR][2016-01-08 22:57:23,062][com.alibaba.druid.pool.DruidAbstractDataSource]maxIdle is deprecated
+[INFO][2016-01-08 22:57:23,143][com.alibaba.druid.pool.DruidDataSource]{dataSource-1} inited
+[INFO][2016-01-08 22:57:23,436][org.hibernate.annotations.common.Version]HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+[INFO][2016-01-08 22:57:23,444][org.hibernate.Version]HHH000412: Hibernate Core {4.3.8.Final}
+[INFO][2016-01-08 22:57:23,447][org.hibernate.cfg.Environment]HHH000206: hibernate.properties not found
+[INFO][2016-01-08 22:57:23,450][org.hibernate.cfg.Environment]HHH000021: Bytecode provider name : javassist
+[INFO][2016-01-08 22:57:24,243][org.hibernate.dialect.Dialect]HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+[INFO][2016-01-08 22:57:24,446][org.hibernate.engine.transaction.internal.TransactionFactoryInitiator]HHH000399: Using default transaction strategy (direct JDBC transactions)
+[INFO][2016-01-08 22:57:24,462][org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory]HHH000397: Using ASTQueryTranslatorFactory
+[INFO][2016-01-08 22:57:25,304][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000228: Running hbm2ddl schema update
+[INFO][2016-01-08 22:57:25,305][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000102: Fetching database metadata
+[INFO][2016-01-08 22:57:25,310][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000396: Updating schema
+[INFO][2016-01-08 22:57:25,340][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.account
+[INFO][2016-01-08 22:57:25,341][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [money, build_time, id, type, order_id]
+[INFO][2016-01-08 22:57:25,341][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:57:25,341][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-08 22:57:25,353][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.account_type_name_t
+[INFO][2016-01-08 22:57:25,353][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [name, type]
+[INFO][2016-01-08 22:57:25,353][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:57:25,353][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-08 22:57:25,369][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.auth_state_name_t
+[INFO][2016-01-08 22:57:25,370][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [name, state]
+[INFO][2016-01-08 22:57:25,370][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:57:25,370][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-08 22:57:25,384][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.contacts
+[INFO][2016-01-08 22:57:25,384][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [driver_id, shipper_to_driver, shipper_id, id, driver_to_shipper]
+[INFO][2016-01-08 22:57:25,384][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:57:25,385][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-08 22:57:25,398][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.driver_auth
+[INFO][2016-01-08 22:57:25,398][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [truck_license, driving_license, user_id, truck_num, auth_state, phone_num, real_name, id, type, truck_picture]
+[INFO][2016-01-08 22:57:25,399][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:57:25,399][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-08 22:57:25,420][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.frequent_address
+[INFO][2016-01-08 22:57:25,420][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [address, shipper_id, id]
+[INFO][2016-01-08 22:57:25,420][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:57:25,420][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-08 22:57:25,434][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.frequent_driver
+[INFO][2016-01-08 22:57:25,434][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [driver_id, shipper_id, id]
+[INFO][2016-01-08 22:57:25,435][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:57:25,435][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-08 22:57:25,446][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.message
+[INFO][2016-01-08 22:57:25,446][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [user_id, id, time, type, object_id, content, has_read]
+[INFO][2016-01-08 22:57:25,446][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:57:25,447][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-08 22:57:25,456][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.order_state_name_t
+[INFO][2016-01-08 22:57:25,456][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [name, state]
+[INFO][2016-01-08 22:57:25,457][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:57:25,457][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-08 22:57:25,474][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.orders
+[INFO][2016-01-08 22:57:25,474][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [truck_type, driver_id, from_contact_name, address_to, build_time, remark, evaluate_point, address_from, to_contact_name, goods_size, from_contact_phone, load_time, evaluate_content, price, pay_type, shipper_id, id, goods_type, state, goods_weight, to_contact_phone]
+[INFO][2016-01-08 22:57:25,475][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:57:25,475][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-08 22:57:25,489][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.truck_type
+[INFO][2016-01-08 22:57:25,489][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [over_price, base_price, length, name, width, type, capacity, height]
+[INFO][2016-01-08 22:57:25,489][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:57:25,489][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-08 22:57:25,501][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.user
+[INFO][2016-01-08 22:57:25,502][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [icon_url, password, money, nick_name, phone_number, id, type, point, register_time, token]
+[INFO][2016-01-08 22:57:25,502][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:57:25,502][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [uk_4bgmpi98dylab6qdvf9xyaxu4, primary]
+[INFO][2016-01-08 22:57:25,514][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.user_type_name_t
+[INFO][2016-01-08 22:57:25,514][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [name, type]
+[INFO][2016-01-08 22:57:25,514][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-08 22:57:25,514][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-08 22:57:25,516][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000232: Schema update complete
+[INFO][2016-01-08 22:57:25,764][org.springframework.orm.hibernate4.HibernateTransactionManager]Using DataSource [{
+	CreateTime:"2016-01-08 22:57:22",
+	ActiveCount:0,
+	PoolingCount:1,
+	CreateCount:1,
+	DestroyCount:0,
+	CloseCount:2,
+	ConnectCount:2,
+	Connections:[
+		{ID:2098728389, ConnectTime:"2016-01-08 22:57:24", UseCount:2, LastActiveTime:"2016-01-08 22:57:25"}
+	]
+}] of Hibernate SessionFactory for HibernateTransactionManager
+[INFO][2016-01-08 22:57:25,891][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization completed in 4210 ms
+[INFO][2016-01-08 22:57:26,287][org.springframework.web.servlet.DispatcherServlet]FrameworkServlet 'springMVC': initialization started
+[INFO][2016-01-08 22:57:26,293][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing WebApplicationContext for namespace 'springMVC-servlet': startup date [Fri Jan 08 22:57:26 CST 2016]; parent: Root WebApplicationContext
+[INFO][2016-01-08 22:57:26,294][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mvc.xml]
+[INFO][2016-01-08 22:57:26,478][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO][2016-01-08 22:57:26,739][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/showMyOrderList],methods=[POST]}" onto public vo.RestResult controller.DriverController.showMyOrderList(pojo.OrderListType)
+[INFO][2016-01-08 22:57:26,740][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/showAllOrders],methods=[POST]}" onto public vo.RestResult controller.DriverController.showAllOrders(pojo.TokenAuthInfo)
+[INFO][2016-01-08 22:57:26,741][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/setRealNameAuthInfo],methods=[POST]}" onto public vo.RestResult controller.DriverController.setRealNameAuthInfo(pojo.RealNameAuthInfo)
+[INFO][2016-01-08 22:57:26,741][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/cancelOrder],methods=[POST]}" onto public vo.RestResult controller.DriverController.cancelOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-08 22:57:26,741][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/grabOrder],methods=[POST]}" onto public vo.RestResult controller.DriverController.grabOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-08 22:57:26,742][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/setTruckInfo],methods=[POST]}" onto public vo.RestResult controller.DriverController.setTruckInfo(pojo.TruckInfo)
+[INFO][2016-01-08 22:57:26,742][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/deleteOrder],methods=[POST]}" onto public vo.RestResult controller.DriverController.deleteOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-08 22:57:26,742][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/setTruckAuthInfo],methods=[POST]}" onto public vo.RestResult controller.DriverController.setTruckAuthInfo(pojo.TruckAuthInfo)
+[INFO][2016-01-08 22:57:26,743][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/home]}" onto public java.lang.String controller.HomeController.home(org.springframework.ui.Model)
+[INFO][2016-01-08 22:57:26,750][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/showMyOrderList],methods=[POST]}" onto public vo.RestResult controller.ShipperController.showMyOrderList(pojo.OrderListType)
+[INFO][2016-01-08 22:57:26,751][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/addFrequentDriver],methods=[POST]}" onto public vo.RestResult controller.ShipperController.addFrequentDriver(pojo.UserIdInfoWithAuth)
+[INFO][2016-01-08 22:57:26,751][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/getFrequentDrivers],methods=[POST]}" onto public vo.RestResult controller.ShipperController.getFrequentDrivers(pojo.TokenAuthInfo)
+[INFO][2016-01-08 22:57:26,752][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/getFrequentAddresses],methods=[POST]}" onto public vo.RestResult controller.ShipperController.getFrequentAddresses(pojo.TokenAuthInfo)
+[INFO][2016-01-08 22:57:26,752][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/cancelOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.cancelOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-08 22:57:26,752][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/deleteOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.deleteOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-08 22:57:26,753][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/getOrderDetail],methods=[POST]}" onto public vo.RestResult controller.ShipperController.getOrderDetail(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-08 22:57:26,753][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/placeOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.placeOrder(pojo.OrderInfo)
+[INFO][2016-01-08 22:57:26,754][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/finishOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.finishOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-08 22:57:26,754][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/evaluateOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.evaluateOrder(pojo.EvaluateInfo)
+[INFO][2016-01-08 22:57:26,761][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/register],methods=[POST]}" onto public vo.RestResult controller.UserController.register(pojo.UserAuthInfo)
+[INFO][2016-01-08 22:57:26,763][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/count],methods=[GET]}" onto public int controller.UserController.getCount()
+[INFO][2016-01-08 22:57:26,763][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/login],methods=[POST]}" onto public vo.RestResult controller.UserController.login(pojo.UserAuthInfo)
+[INFO][2016-01-08 22:57:26,763][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/getAllTruckTypes],methods=[POST]}" onto public vo.RestResult controller.UserController.getAllTruckTypes()
+[INFO][2016-01-08 22:57:26,764][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/userRegister]}" onto public java.lang.String controller.UserController.userRegister(org.springframework.ui.Model)
+[INFO][2016-01-08 22:57:26,764][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/modifyNickName],methods=[POST]}" onto public vo.RestResult controller.UserController.modifyNickName(pojo.ModifiedNickName)
+[INFO][2016-01-08 22:57:26,764][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/modifyPassword],methods=[POST]}" onto public vo.RestResult controller.UserController.modifyPassword(pojo.ModifiedPassword)
+[INFO][2016-01-08 22:57:26,765][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/modifyIcon],methods=[POST]}" onto public vo.RestResult controller.UserController.modifyIcon(pojo.ModifiedIcon)
+[INFO][2016-01-08 22:57:26,765][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/showAccount],methods=[POST]}" onto public vo.RestResult controller.UserController.showAccount(pojo.TokenAuthInfo)
+[INFO][2016-01-08 22:57:26,765][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/getMyMessages],methods=[POST]}" onto public vo.RestResult controller.UserController.getMyMessages(pojo.TokenAuthInfo)
+[INFO][2016-01-08 22:57:26,766][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/id/{id}],methods=[GET]}" onto public vo.RestResult controller.UserController.getUser(int)
+[INFO][2016-01-08 22:57:26,766][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/getContactDetail],methods=[POST]}" onto public vo.RestResult controller.UserController.getContactDetail(pojo.UserIdInfoWithAuth)
+[INFO][2016-01-08 22:57:26,766][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/getContacts],methods=[POST]}" onto public vo.RestResult controller.UserController.getContacts(pojo.TokenAuthInfo)
+[INFO][2016-01-08 22:57:26,766][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/recharge],methods=[POST]}" onto public vo.RestResult controller.UserController.recharge(pojo.RechargeInfo)
+[INFO][2016-01-08 22:57:26,915][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMVC-servlet': startup date [Fri Jan 08 22:57:26 CST 2016]; parent: Root WebApplicationContext
+[INFO][2016-01-08 22:57:27,041][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMVC-servlet': startup date [Fri Jan 08 22:57:26 CST 2016]; parent: Root WebApplicationContext
+[INFO][2016-01-08 22:57:27,199][org.springframework.web.servlet.DispatcherServlet]FrameworkServlet 'springMVC': initialization completed in 911 ms
+[WARN][2016-01-08 23:11:43,239][org.springframework.web.servlet.PageNotFound]Request method 'GET' not supported
+[INFO][2016-01-09 21:06:06,007][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization started
+[INFO][2016-01-09 21:06:06,104][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing Root WebApplicationContext: startup date [Sat Jan 09 21:06:06 CST 2016]; root of context hierarchy
+[INFO][2016-01-09 21:06:06,150][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring.xml]
+[INFO][2016-01-09 21:06:06,438][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-hiber.xml]
+[INFO][2016-01-09 21:06:06,991][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [config.properties]
+[INFO][2016-01-09 21:06:07,002][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[ERROR][2016-01-09 21:06:07,432][com.alibaba.druid.pool.DruidAbstractDataSource]maxIdle is deprecated
+[INFO][2016-01-09 21:06:07,489][com.alibaba.druid.pool.DruidDataSource]{dataSource-1} inited
+[INFO][2016-01-09 21:06:07,818][org.hibernate.annotations.common.Version]HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+[INFO][2016-01-09 21:06:07,826][org.hibernate.Version]HHH000412: Hibernate Core {4.3.8.Final}
+[INFO][2016-01-09 21:06:07,829][org.hibernate.cfg.Environment]HHH000206: hibernate.properties not found
+[INFO][2016-01-09 21:06:07,831][org.hibernate.cfg.Environment]HHH000021: Bytecode provider name : javassist
+[INFO][2016-01-09 21:06:08,457][org.hibernate.dialect.Dialect]HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+[INFO][2016-01-09 21:06:08,664][org.hibernate.engine.transaction.internal.TransactionFactoryInitiator]HHH000399: Using default transaction strategy (direct JDBC transactions)
+[INFO][2016-01-09 21:06:08,673][org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory]HHH000397: Using ASTQueryTranslatorFactory
+[INFO][2016-01-09 21:06:09,424][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000228: Running hbm2ddl schema update
+[INFO][2016-01-09 21:06:09,424][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000102: Fetching database metadata
+[INFO][2016-01-09 21:06:09,430][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000396: Updating schema
+[INFO][2016-01-09 21:06:09,467][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.account
+[INFO][2016-01-09 21:06:09,468][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [money, build_time, id, type, order_id]
+[INFO][2016-01-09 21:06:09,468][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-09 21:06:09,468][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-09 21:06:09,487][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.account_type_name_t
+[INFO][2016-01-09 21:06:09,488][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [name, type]
+[INFO][2016-01-09 21:06:09,488][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-09 21:06:09,488][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-09 21:06:09,509][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.auth_state_name_t
+[INFO][2016-01-09 21:06:09,509][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [name, state]
+[INFO][2016-01-09 21:06:09,509][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-09 21:06:09,509][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-09 21:06:09,530][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.contacts
+[INFO][2016-01-09 21:06:09,531][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [driver_id, shipper_to_driver, shipper_id, id, driver_to_shipper]
+[INFO][2016-01-09 21:06:09,531][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-09 21:06:09,531][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-09 21:06:09,561][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.driver_auth
+[INFO][2016-01-09 21:06:09,562][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [truck_license, driving_license, user_id, truck_num, auth_state, phone_num, real_name, id, type, truck_picture]
+[INFO][2016-01-09 21:06:09,562][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-09 21:06:09,562][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-09 21:06:09,587][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.frequent_address
+[INFO][2016-01-09 21:06:09,587][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [address, shipper_id, id]
+[INFO][2016-01-09 21:06:09,587][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-09 21:06:09,588][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-09 21:06:09,607][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.frequent_driver
+[INFO][2016-01-09 21:06:09,608][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [driver_id, shipper_id, id]
+[INFO][2016-01-09 21:06:09,609][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-09 21:06:09,609][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-09 21:06:09,628][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.message
+[INFO][2016-01-09 21:06:09,629][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [user_id, id, time, type, object_id, content, has_read]
+[INFO][2016-01-09 21:06:09,629][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-09 21:06:09,629][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-09 21:06:09,676][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.order_state_name_t
+[INFO][2016-01-09 21:06:09,676][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [name, state]
+[INFO][2016-01-09 21:06:09,676][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-09 21:06:09,676][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-09 21:06:09,723][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.orders
+[INFO][2016-01-09 21:06:09,724][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [truck_type, driver_id, from_contact_name, address_to, build_time, remark, evaluate_point, address_from, to_contact_name, goods_size, from_contact_phone, load_time, evaluate_content, price, pay_type, shipper_id, id, goods_type, state, goods_weight, to_contact_phone]
+[INFO][2016-01-09 21:06:09,724][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-09 21:06:09,724][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-09 21:06:09,748][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.truck_type
+[INFO][2016-01-09 21:06:09,748][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [over_price, base_price, length, name, width, type, capacity, height]
+[INFO][2016-01-09 21:06:09,748][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-09 21:06:09,748][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-09 21:06:09,768][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.user
+[INFO][2016-01-09 21:06:09,768][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [icon_url, password, money, nick_name, phone_number, id, type, point, register_time, token]
+[INFO][2016-01-09 21:06:09,768][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-09 21:06:09,769][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [uk_4bgmpi98dylab6qdvf9xyaxu4, primary]
+[INFO][2016-01-09 21:06:09,786][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.user_type_name_t
+[INFO][2016-01-09 21:06:09,786][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [name, type]
+[INFO][2016-01-09 21:06:09,786][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-09 21:06:09,786][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-09 21:06:09,788][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000232: Schema update complete
+[INFO][2016-01-09 21:06:10,008][org.springframework.orm.hibernate4.HibernateTransactionManager]Using DataSource [{
+	CreateTime:"2016-01-09 21:06:07",
+	ActiveCount:0,
+	PoolingCount:1,
+	CreateCount:1,
+	DestroyCount:0,
+	CloseCount:2,
+	ConnectCount:2,
+	Connections:[
+		{ID:418494497, ConnectTime:"2016-01-09 21:06:08", UseCount:2, LastActiveTime:"2016-01-09 21:06:09"}
+	]
+}] of Hibernate SessionFactory for HibernateTransactionManager
+[INFO][2016-01-09 21:06:10,128][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization completed in 4119 ms
+[INFO][2016-01-09 21:06:10,498][org.springframework.web.servlet.DispatcherServlet]FrameworkServlet 'springMVC': initialization started
+[INFO][2016-01-09 21:06:10,501][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing WebApplicationContext for namespace 'springMVC-servlet': startup date [Sat Jan 09 21:06:10 CST 2016]; parent: Root WebApplicationContext
+[INFO][2016-01-09 21:06:10,503][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mvc.xml]
+[INFO][2016-01-09 21:06:10,696][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO][2016-01-09 21:06:10,955][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/grabOrder],methods=[POST]}" onto public vo.RestResult controller.DriverController.grabOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-09 21:06:10,957][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/deleteOrder],methods=[POST]}" onto public vo.RestResult controller.DriverController.deleteOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-09 21:06:10,957][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/setTruckAuthInfo],methods=[POST]}" onto public vo.RestResult controller.DriverController.setTruckAuthInfo(pojo.TruckAuthInfo)
+[INFO][2016-01-09 21:06:10,958][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/cancelOrder],methods=[POST]}" onto public vo.RestResult controller.DriverController.cancelOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-09 21:06:10,958][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/setTruckInfo],methods=[POST]}" onto public vo.RestResult controller.DriverController.setTruckInfo(pojo.TruckInfo)
+[INFO][2016-01-09 21:06:10,958][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/showAllOrders],methods=[POST]}" onto public vo.RestResult controller.DriverController.showAllOrders(pojo.TokenAuthInfo)
+[INFO][2016-01-09 21:06:10,959][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/showMyOrderList],methods=[POST]}" onto public vo.RestResult controller.DriverController.showMyOrderList(pojo.OrderListType)
+[INFO][2016-01-09 21:06:10,959][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/setRealNameAuthInfo],methods=[POST]}" onto public vo.RestResult controller.DriverController.setRealNameAuthInfo(pojo.RealNameAuthInfo)
+[INFO][2016-01-09 21:06:10,960][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/home]}" onto public java.lang.String controller.HomeController.home(org.springframework.ui.Model)
+[INFO][2016-01-09 21:06:10,965][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/placeOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.placeOrder(pojo.OrderInfo)
+[INFO][2016-01-09 21:06:10,965][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/finishOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.finishOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-09 21:06:10,966][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/deleteOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.deleteOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-09 21:06:10,966][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/cancelOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.cancelOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-09 21:06:10,966][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/getOrderDetail],methods=[POST]}" onto public vo.RestResult controller.ShipperController.getOrderDetail(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-09 21:06:10,966][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/evaluateOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.evaluateOrder(pojo.EvaluateInfo)
+[INFO][2016-01-09 21:06:10,967][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/showMyOrderList],methods=[POST]}" onto public vo.RestResult controller.ShipperController.showMyOrderList(pojo.OrderListType)
+[INFO][2016-01-09 21:06:10,967][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/addFrequentDriver],methods=[POST]}" onto public vo.RestResult controller.ShipperController.addFrequentDriver(pojo.UserIdInfoWithAuth)
+[INFO][2016-01-09 21:06:10,968][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/getFrequentDrivers],methods=[POST]}" onto public vo.RestResult controller.ShipperController.getFrequentDrivers(pojo.TokenAuthInfo)
+[INFO][2016-01-09 21:06:10,968][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/getFrequentAddresses],methods=[POST]}" onto public vo.RestResult controller.ShipperController.getFrequentAddresses(pojo.TokenAuthInfo)
+[INFO][2016-01-09 21:06:10,975][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/register],methods=[POST]}" onto public vo.RestResult controller.UserController.register(pojo.UserAuthInfo)
+[INFO][2016-01-09 21:06:10,976][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/count],methods=[GET]}" onto public int controller.UserController.getCount()
+[INFO][2016-01-09 21:06:10,976][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/login],methods=[POST]}" onto public vo.RestResult controller.UserController.login(pojo.UserAuthInfo)
+[INFO][2016-01-09 21:06:10,976][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/showAccount],methods=[POST]}" onto public vo.RestResult controller.UserController.showAccount(pojo.TokenAuthInfo)
+[INFO][2016-01-09 21:06:10,977][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/getContacts],methods=[POST]}" onto public vo.RestResult controller.UserController.getContacts(pojo.TokenAuthInfo)
+[INFO][2016-01-09 21:06:10,977][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/recharge],methods=[POST]}" onto public vo.RestResult controller.UserController.recharge(pojo.RechargeInfo)
+[INFO][2016-01-09 21:06:10,977][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/getContactDetail],methods=[POST]}" onto public vo.RestResult controller.UserController.getContactDetail(pojo.UserIdInfoWithAuth)
+[INFO][2016-01-09 21:06:10,977][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/modifyNickName],methods=[POST]}" onto public vo.RestResult controller.UserController.modifyNickName(pojo.ModifiedNickName)
+[INFO][2016-01-09 21:06:10,978][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/modifyPassword],methods=[POST]}" onto public vo.RestResult controller.UserController.modifyPassword(pojo.ModifiedPassword)
+[INFO][2016-01-09 21:06:10,978][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/modifyIcon],methods=[POST]}" onto public vo.RestResult controller.UserController.modifyIcon(pojo.ModifiedIcon)
+[INFO][2016-01-09 21:06:10,978][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/getAllTruckTypes],methods=[POST]}" onto public vo.RestResult controller.UserController.getAllTruckTypes()
+[INFO][2016-01-09 21:06:10,978][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/userRegister]}" onto public java.lang.String controller.UserController.userRegister(org.springframework.ui.Model)
+[INFO][2016-01-09 21:06:10,979][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/getMyMessages],methods=[POST]}" onto public vo.RestResult controller.UserController.getMyMessages(pojo.TokenAuthInfo)
+[INFO][2016-01-09 21:06:10,979][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/id/{id}],methods=[GET]}" onto public vo.RestResult controller.UserController.getUser(int)
+[INFO][2016-01-09 21:06:11,117][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMVC-servlet': startup date [Sat Jan 09 21:06:10 CST 2016]; parent: Root WebApplicationContext
+[INFO][2016-01-09 21:06:11,223][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMVC-servlet': startup date [Sat Jan 09 21:06:10 CST 2016]; parent: Root WebApplicationContext
+[INFO][2016-01-09 21:06:11,357][org.springframework.web.servlet.DispatcherServlet]FrameworkServlet 'springMVC': initialization completed in 859 ms
+[ERROR][2016-01-09 21:06:21,174][org.hibernate.property.BasicPropertyAccessor]HHH000123: IllegalArgumentException in class: model.User, setter method of property: money
+[ERROR][2016-01-09 21:06:21,175][org.hibernate.property.BasicPropertyAccessor]HHH000091: Expected type: int, actual value: java.lang.Double
+[INFO][2016-01-09 21:08:39,880][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization started
+[INFO][2016-01-09 21:08:39,994][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing Root WebApplicationContext: startup date [Sat Jan 09 21:08:39 CST 2016]; root of context hierarchy
+[INFO][2016-01-09 21:08:40,038][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring.xml]
+[INFO][2016-01-09 21:08:40,316][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-hiber.xml]
+[INFO][2016-01-09 21:08:40,731][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [config.properties]
+[INFO][2016-01-09 21:08:40,739][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[ERROR][2016-01-09 21:08:41,134][com.alibaba.druid.pool.DruidAbstractDataSource]maxIdle is deprecated
+[INFO][2016-01-09 21:08:41,196][com.alibaba.druid.pool.DruidDataSource]{dataSource-1} inited
+[INFO][2016-01-09 21:08:41,492][org.hibernate.annotations.common.Version]HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+[INFO][2016-01-09 21:08:41,503][org.hibernate.Version]HHH000412: Hibernate Core {4.3.8.Final}
+[INFO][2016-01-09 21:08:41,506][org.hibernate.cfg.Environment]HHH000206: hibernate.properties not found
+[INFO][2016-01-09 21:08:41,508][org.hibernate.cfg.Environment]HHH000021: Bytecode provider name : javassist
+[INFO][2016-01-09 21:08:42,196][org.hibernate.dialect.Dialect]HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+[INFO][2016-01-09 21:08:42,425][org.hibernate.engine.transaction.internal.TransactionFactoryInitiator]HHH000399: Using default transaction strategy (direct JDBC transactions)
+[INFO][2016-01-09 21:08:42,434][org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory]HHH000397: Using ASTQueryTranslatorFactory
+[INFO][2016-01-09 21:08:43,032][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000228: Running hbm2ddl schema update
+[INFO][2016-01-09 21:08:43,033][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000102: Fetching database metadata
+[INFO][2016-01-09 21:08:43,038][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000396: Updating schema
+[INFO][2016-01-09 21:08:43,044][java.sql.DatabaseMetaData]HHH000262: Table not found: account
+[INFO][2016-01-09 21:08:43,047][java.sql.DatabaseMetaData]HHH000262: Table not found: account_type_name_t
+[INFO][2016-01-09 21:08:43,049][java.sql.DatabaseMetaData]HHH000262: Table not found: auth_state_name_t
+[INFO][2016-01-09 21:08:43,050][java.sql.DatabaseMetaData]HHH000262: Table not found: contacts
+[INFO][2016-01-09 21:08:43,052][java.sql.DatabaseMetaData]HHH000262: Table not found: driver_auth
+[INFO][2016-01-09 21:08:43,054][java.sql.DatabaseMetaData]HHH000262: Table not found: frequent_address
+[INFO][2016-01-09 21:08:43,056][java.sql.DatabaseMetaData]HHH000262: Table not found: frequent_driver
+[INFO][2016-01-09 21:08:43,057][java.sql.DatabaseMetaData]HHH000262: Table not found: message
+[INFO][2016-01-09 21:08:43,058][java.sql.DatabaseMetaData]HHH000262: Table not found: order_state_name_t
+[INFO][2016-01-09 21:08:43,060][java.sql.DatabaseMetaData]HHH000262: Table not found: orders
+[INFO][2016-01-09 21:08:43,062][java.sql.DatabaseMetaData]HHH000262: Table not found: truck_type
+[INFO][2016-01-09 21:08:43,063][java.sql.DatabaseMetaData]HHH000262: Table not found: user
+[INFO][2016-01-09 21:08:43,069][java.sql.DatabaseMetaData]HHH000262: Table not found: user_type_name_t
+[INFO][2016-01-09 21:08:43,071][java.sql.DatabaseMetaData]HHH000262: Table not found: account
+[INFO][2016-01-09 21:08:43,072][java.sql.DatabaseMetaData]HHH000262: Table not found: account_type_name_t
+[INFO][2016-01-09 21:08:43,074][java.sql.DatabaseMetaData]HHH000262: Table not found: auth_state_name_t
+[INFO][2016-01-09 21:08:43,075][java.sql.DatabaseMetaData]HHH000262: Table not found: contacts
+[INFO][2016-01-09 21:08:43,076][java.sql.DatabaseMetaData]HHH000262: Table not found: driver_auth
+[INFO][2016-01-09 21:08:43,078][java.sql.DatabaseMetaData]HHH000262: Table not found: frequent_address
+[INFO][2016-01-09 21:08:43,079][java.sql.DatabaseMetaData]HHH000262: Table not found: frequent_driver
+[INFO][2016-01-09 21:08:43,080][java.sql.DatabaseMetaData]HHH000262: Table not found: message
+[INFO][2016-01-09 21:08:43,082][java.sql.DatabaseMetaData]HHH000262: Table not found: order_state_name_t
+[INFO][2016-01-09 21:08:43,083][java.sql.DatabaseMetaData]HHH000262: Table not found: orders
+[INFO][2016-01-09 21:08:43,084][java.sql.DatabaseMetaData]HHH000262: Table not found: truck_type
+[INFO][2016-01-09 21:08:43,086][java.sql.DatabaseMetaData]HHH000262: Table not found: user
+[INFO][2016-01-09 21:08:43,087][java.sql.DatabaseMetaData]HHH000262: Table not found: user_type_name_t
+[INFO][2016-01-09 21:08:43,089][java.sql.DatabaseMetaData]HHH000262: Table not found: account
+[INFO][2016-01-09 21:08:43,090][java.sql.DatabaseMetaData]HHH000262: Table not found: account_type_name_t
+[INFO][2016-01-09 21:08:43,091][java.sql.DatabaseMetaData]HHH000262: Table not found: auth_state_name_t
+[INFO][2016-01-09 21:08:43,093][java.sql.DatabaseMetaData]HHH000262: Table not found: contacts
+[INFO][2016-01-09 21:08:43,094][java.sql.DatabaseMetaData]HHH000262: Table not found: driver_auth
+[INFO][2016-01-09 21:08:43,095][java.sql.DatabaseMetaData]HHH000262: Table not found: frequent_address
+[INFO][2016-01-09 21:08:43,097][java.sql.DatabaseMetaData]HHH000262: Table not found: frequent_driver
+[INFO][2016-01-09 21:08:43,099][java.sql.DatabaseMetaData]HHH000262: Table not found: message
+[INFO][2016-01-09 21:08:43,101][java.sql.DatabaseMetaData]HHH000262: Table not found: order_state_name_t
+[INFO][2016-01-09 21:08:43,102][java.sql.DatabaseMetaData]HHH000262: Table not found: orders
+[INFO][2016-01-09 21:08:43,103][java.sql.DatabaseMetaData]HHH000262: Table not found: truck_type
+[INFO][2016-01-09 21:08:43,105][java.sql.DatabaseMetaData]HHH000262: Table not found: user
+[INFO][2016-01-09 21:08:43,106][java.sql.DatabaseMetaData]HHH000262: Table not found: user_type_name_t
+[INFO][2016-01-09 21:08:43,679][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000232: Schema update complete
+[INFO][2016-01-09 21:08:43,896][org.springframework.orm.hibernate4.HibernateTransactionManager]Using DataSource [{
+	CreateTime:"2016-01-09 21:08:41",
+	ActiveCount:0,
+	PoolingCount:1,
+	CreateCount:1,
+	DestroyCount:0,
+	CloseCount:2,
+	ConnectCount:2,
+	Connections:[
+		{ID:2125763519, ConnectTime:"2016-01-09 21:08:42", UseCount:2, LastActiveTime:"2016-01-09 21:08:43"}
+	]
+}] of Hibernate SessionFactory for HibernateTransactionManager
+[INFO][2016-01-09 21:08:44,010][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization completed in 4129 ms
+[INFO][2016-01-09 21:08:44,333][org.springframework.web.servlet.DispatcherServlet]FrameworkServlet 'springMVC': initialization started
+[INFO][2016-01-09 21:08:44,336][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing WebApplicationContext for namespace 'springMVC-servlet': startup date [Sat Jan 09 21:08:44 CST 2016]; parent: Root WebApplicationContext
+[INFO][2016-01-09 21:08:44,337][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mvc.xml]
+[INFO][2016-01-09 21:08:44,474][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO][2016-01-09 21:08:44,688][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/setRealNameAuthInfo],methods=[POST]}" onto public vo.RestResult controller.DriverController.setRealNameAuthInfo(pojo.RealNameAuthInfo)
+[INFO][2016-01-09 21:08:44,690][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/setTruckInfo],methods=[POST]}" onto public vo.RestResult controller.DriverController.setTruckInfo(pojo.TruckInfo)
+[INFO][2016-01-09 21:08:44,690][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/grabOrder],methods=[POST]}" onto public vo.RestResult controller.DriverController.grabOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-09 21:08:44,690][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/cancelOrder],methods=[POST]}" onto public vo.RestResult controller.DriverController.cancelOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-09 21:08:44,691][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/deleteOrder],methods=[POST]}" onto public vo.RestResult controller.DriverController.deleteOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-09 21:08:44,691][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/setTruckAuthInfo],methods=[POST]}" onto public vo.RestResult controller.DriverController.setTruckAuthInfo(pojo.TruckAuthInfo)
+[INFO][2016-01-09 21:08:44,691][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/showAllOrders],methods=[POST]}" onto public vo.RestResult controller.DriverController.showAllOrders(pojo.TokenAuthInfo)
+[INFO][2016-01-09 21:08:44,691][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/showMyOrderList],methods=[POST]}" onto public vo.RestResult controller.DriverController.showMyOrderList(pojo.OrderListType)
+[INFO][2016-01-09 21:08:44,692][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/home]}" onto public java.lang.String controller.HomeController.home(org.springframework.ui.Model)
+[INFO][2016-01-09 21:08:44,699][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/addFrequentDriver],methods=[POST]}" onto public vo.RestResult controller.ShipperController.addFrequentDriver(pojo.UserIdInfoWithAuth)
+[INFO][2016-01-09 21:08:44,699][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/placeOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.placeOrder(pojo.OrderInfo)
+[INFO][2016-01-09 21:08:44,699][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/evaluateOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.evaluateOrder(pojo.EvaluateInfo)
+[INFO][2016-01-09 21:08:44,700][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/finishOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.finishOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-09 21:08:44,700][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/cancelOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.cancelOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-09 21:08:44,700][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/deleteOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.deleteOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-09 21:08:44,702][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/getOrderDetail],methods=[POST]}" onto public vo.RestResult controller.ShipperController.getOrderDetail(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-09 21:08:44,703][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/showMyOrderList],methods=[POST]}" onto public vo.RestResult controller.ShipperController.showMyOrderList(pojo.OrderListType)
+[INFO][2016-01-09 21:08:44,703][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/getFrequentDrivers],methods=[POST]}" onto public vo.RestResult controller.ShipperController.getFrequentDrivers(pojo.TokenAuthInfo)
+[INFO][2016-01-09 21:08:44,703][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/getFrequentAddresses],methods=[POST]}" onto public vo.RestResult controller.ShipperController.getFrequentAddresses(pojo.TokenAuthInfo)
+[INFO][2016-01-09 21:08:44,710][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/register],methods=[POST]}" onto public vo.RestResult controller.UserController.register(pojo.UserAuthInfo)
+[INFO][2016-01-09 21:08:44,712][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/count],methods=[GET]}" onto public int controller.UserController.getCount()
+[INFO][2016-01-09 21:08:44,712][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/login],methods=[POST]}" onto public vo.RestResult controller.UserController.login(pojo.UserAuthInfo)
+[INFO][2016-01-09 21:08:44,712][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/id/{id}],methods=[GET]}" onto public vo.RestResult controller.UserController.getUser(int)
+[INFO][2016-01-09 21:08:44,712][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/showAccount],methods=[POST]}" onto public vo.RestResult controller.UserController.showAccount(pojo.TokenAuthInfo)
+[INFO][2016-01-09 21:08:44,713][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/getContacts],methods=[POST]}" onto public vo.RestResult controller.UserController.getContacts(pojo.TokenAuthInfo)
+[INFO][2016-01-09 21:08:44,713][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/recharge],methods=[POST]}" onto public vo.RestResult controller.UserController.recharge(pojo.RechargeInfo)
+[INFO][2016-01-09 21:08:44,713][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/getContactDetail],methods=[POST]}" onto public vo.RestResult controller.UserController.getContactDetail(pojo.UserIdInfoWithAuth)
+[INFO][2016-01-09 21:08:44,713][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/modifyNickName],methods=[POST]}" onto public vo.RestResult controller.UserController.modifyNickName(pojo.ModifiedNickName)
+[INFO][2016-01-09 21:08:44,713][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/getMyMessages],methods=[POST]}" onto public vo.RestResult controller.UserController.getMyMessages(pojo.TokenAuthInfo)
+[INFO][2016-01-09 21:08:44,713][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/modifyPassword],methods=[POST]}" onto public vo.RestResult controller.UserController.modifyPassword(pojo.ModifiedPassword)
+[INFO][2016-01-09 21:08:44,713][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/userRegister]}" onto public java.lang.String controller.UserController.userRegister(org.springframework.ui.Model)
+[INFO][2016-01-09 21:08:44,714][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/getAllTruckTypes],methods=[POST]}" onto public vo.RestResult controller.UserController.getAllTruckTypes()
+[INFO][2016-01-09 21:08:44,714][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/modifyIcon],methods=[POST]}" onto public vo.RestResult controller.UserController.modifyIcon(pojo.ModifiedIcon)
+[INFO][2016-01-09 21:08:44,859][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMVC-servlet': startup date [Sat Jan 09 21:08:44 CST 2016]; parent: Root WebApplicationContext
+[INFO][2016-01-09 21:08:44,948][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMVC-servlet': startup date [Sat Jan 09 21:08:44 CST 2016]; parent: Root WebApplicationContext
+[INFO][2016-01-09 21:08:45,083][org.springframework.web.servlet.DispatcherServlet]FrameworkServlet 'springMVC': initialization completed in 750 ms
+[ERROR][2016-01-09 21:09:17,627][org.hibernate.property.BasicPropertyAccessor]HHH000123: IllegalArgumentException in class: model.User, setter method of property: money
+[ERROR][2016-01-09 21:09:17,628][org.hibernate.property.BasicPropertyAccessor]HHH000091: Expected type: int, actual value: java.lang.Double
+[INFO][2016-01-09 21:10:27,376][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization started
+[INFO][2016-01-09 21:10:27,465][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing Root WebApplicationContext: startup date [Sat Jan 09 21:10:27 CST 2016]; root of context hierarchy
+[INFO][2016-01-09 21:10:27,520][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring.xml]
+[INFO][2016-01-09 21:10:27,776][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-hiber.xml]
+[INFO][2016-01-09 21:10:28,161][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [config.properties]
+[INFO][2016-01-09 21:10:28,168][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[ERROR][2016-01-09 21:10:28,650][com.alibaba.druid.pool.DruidAbstractDataSource]maxIdle is deprecated
+[INFO][2016-01-09 21:10:28,707][com.alibaba.druid.pool.DruidDataSource]{dataSource-1} inited
+[INFO][2016-01-09 21:10:28,957][org.hibernate.annotations.common.Version]HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+[INFO][2016-01-09 21:10:28,964][org.hibernate.Version]HHH000412: Hibernate Core {4.3.8.Final}
+[INFO][2016-01-09 21:10:28,967][org.hibernate.cfg.Environment]HHH000206: hibernate.properties not found
+[INFO][2016-01-09 21:10:28,969][org.hibernate.cfg.Environment]HHH000021: Bytecode provider name : javassist
+[INFO][2016-01-09 21:10:29,520][org.hibernate.dialect.Dialect]HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+[INFO][2016-01-09 21:10:29,728][org.hibernate.engine.transaction.internal.TransactionFactoryInitiator]HHH000399: Using default transaction strategy (direct JDBC transactions)
+[INFO][2016-01-09 21:10:29,735][org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory]HHH000397: Using ASTQueryTranslatorFactory
+[INFO][2016-01-09 21:10:30,482][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000228: Running hbm2ddl schema update
+[INFO][2016-01-09 21:10:30,482][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000102: Fetching database metadata
+[INFO][2016-01-09 21:10:30,488][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000396: Updating schema
+[INFO][2016-01-09 21:10:30,518][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.account
+[INFO][2016-01-09 21:10:30,518][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [money, build_time, id, type, order_id]
+[INFO][2016-01-09 21:10:30,518][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-09 21:10:30,519][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-09 21:10:30,532][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.account_type_name_t
+[INFO][2016-01-09 21:10:30,532][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [name, type]
+[INFO][2016-01-09 21:10:30,532][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-09 21:10:30,532][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-09 21:10:30,546][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.auth_state_name_t
+[INFO][2016-01-09 21:10:30,546][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [name, state]
+[INFO][2016-01-09 21:10:30,546][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-09 21:10:30,547][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-09 21:10:30,560][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.contacts
+[INFO][2016-01-09 21:10:30,560][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [driver_id, shipper_to_driver, shipper_id, id, driver_to_shipper]
+[INFO][2016-01-09 21:10:30,560][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-09 21:10:30,561][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-09 21:10:30,574][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.driver_auth
+[INFO][2016-01-09 21:10:30,575][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [truck_license, driving_license, user_id, truck_num, auth_state, phone_num, real_name, id, type, truck_picture]
+[INFO][2016-01-09 21:10:30,575][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-09 21:10:30,575][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-09 21:10:30,590][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.frequent_address
+[INFO][2016-01-09 21:10:30,590][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [address, shipper_id, id]
+[INFO][2016-01-09 21:10:30,591][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-09 21:10:30,591][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-09 21:10:30,604][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.frequent_driver
+[INFO][2016-01-09 21:10:30,604][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [driver_id, shipper_id, id]
+[INFO][2016-01-09 21:10:30,604][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-09 21:10:30,604][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-09 21:10:30,619][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.message
+[INFO][2016-01-09 21:10:30,619][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [user_id, id, time, type, object_id, content, has_read]
+[INFO][2016-01-09 21:10:30,619][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-09 21:10:30,620][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-09 21:10:30,629][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.order_state_name_t
+[INFO][2016-01-09 21:10:30,629][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [name, state]
+[INFO][2016-01-09 21:10:30,629][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-09 21:10:30,629][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-09 21:10:30,645][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.orders
+[INFO][2016-01-09 21:10:30,645][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [truck_type, driver_id, from_contact_name, address_to, build_time, remark, evaluate_point, address_from, to_contact_name, goods_size, from_contact_phone, load_time, evaluate_content, price, pay_type, shipper_id, id, goods_type, state, goods_weight, to_contact_phone]
+[INFO][2016-01-09 21:10:30,646][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-09 21:10:30,646][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-09 21:10:30,659][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.truck_type
+[INFO][2016-01-09 21:10:30,659][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [over_price, base_price, length, name, width, type, capacity, height]
+[INFO][2016-01-09 21:10:30,659][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-09 21:10:30,660][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-09 21:10:30,672][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.user
+[INFO][2016-01-09 21:10:30,673][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [icon_url, password, money, nick_name, phone_number, id, type, point, register_time, token]
+[INFO][2016-01-09 21:10:30,673][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-09 21:10:30,673][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [uk_4bgmpi98dylab6qdvf9xyaxu4, primary]
+[INFO][2016-01-09 21:10:30,682][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.user_type_name_t
+[INFO][2016-01-09 21:10:30,682][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [name, type]
+[INFO][2016-01-09 21:10:30,682][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-01-09 21:10:30,682][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-01-09 21:10:30,684][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000232: Schema update complete
+[INFO][2016-01-09 21:10:30,888][org.springframework.orm.hibernate4.HibernateTransactionManager]Using DataSource [{
+	CreateTime:"2016-01-09 21:10:28",
+	ActiveCount:0,
+	PoolingCount:1,
+	CreateCount:1,
+	DestroyCount:0,
+	CloseCount:2,
+	ConnectCount:2,
+	Connections:[
+		{ID:720934362, ConnectTime:"2016-01-09 21:10:29", UseCount:2, LastActiveTime:"2016-01-09 21:10:30"}
+	]
+}] of Hibernate SessionFactory for HibernateTransactionManager
+[INFO][2016-01-09 21:10:31,013][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization completed in 3636 ms
+[INFO][2016-01-09 21:10:31,326][org.springframework.web.servlet.DispatcherServlet]FrameworkServlet 'springMVC': initialization started
+[INFO][2016-01-09 21:10:31,330][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing WebApplicationContext for namespace 'springMVC-servlet': startup date [Sat Jan 09 21:10:31 CST 2016]; parent: Root WebApplicationContext
+[INFO][2016-01-09 21:10:31,330][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mvc.xml]
+[INFO][2016-01-09 21:10:31,473][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO][2016-01-09 21:10:31,678][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/showMyOrderList],methods=[POST]}" onto public vo.RestResult controller.DriverController.showMyOrderList(pojo.OrderListType)
+[INFO][2016-01-09 21:10:31,679][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/showAllOrders],methods=[POST]}" onto public vo.RestResult controller.DriverController.showAllOrders(pojo.TokenAuthInfo)
+[INFO][2016-01-09 21:10:31,679][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/setRealNameAuthInfo],methods=[POST]}" onto public vo.RestResult controller.DriverController.setRealNameAuthInfo(pojo.RealNameAuthInfo)
+[INFO][2016-01-09 21:10:31,679][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/deleteOrder],methods=[POST]}" onto public vo.RestResult controller.DriverController.deleteOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-09 21:10:31,680][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/grabOrder],methods=[POST]}" onto public vo.RestResult controller.DriverController.grabOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-09 21:10:31,680][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/cancelOrder],methods=[POST]}" onto public vo.RestResult controller.DriverController.cancelOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-09 21:10:31,680][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/setTruckAuthInfo],methods=[POST]}" onto public vo.RestResult controller.DriverController.setTruckAuthInfo(pojo.TruckAuthInfo)
+[INFO][2016-01-09 21:10:31,680][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/setTruckInfo],methods=[POST]}" onto public vo.RestResult controller.DriverController.setTruckInfo(pojo.TruckInfo)
+[INFO][2016-01-09 21:10:31,681][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/home]}" onto public java.lang.String controller.HomeController.home(org.springframework.ui.Model)
+[INFO][2016-01-09 21:10:31,686][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/showMyOrderList],methods=[POST]}" onto public vo.RestResult controller.ShipperController.showMyOrderList(pojo.OrderListType)
+[INFO][2016-01-09 21:10:31,686][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/addFrequentDriver],methods=[POST]}" onto public vo.RestResult controller.ShipperController.addFrequentDriver(pojo.UserIdInfoWithAuth)
+[INFO][2016-01-09 21:10:31,687][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/placeOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.placeOrder(pojo.OrderInfo)
+[INFO][2016-01-09 21:10:31,687][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/deleteOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.deleteOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-09 21:10:31,687][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/getOrderDetail],methods=[POST]}" onto public vo.RestResult controller.ShipperController.getOrderDetail(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-09 21:10:31,688][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/cancelOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.cancelOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-09 21:10:31,688][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/finishOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.finishOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-01-09 21:10:31,688][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/evaluateOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.evaluateOrder(pojo.EvaluateInfo)
+[INFO][2016-01-09 21:10:31,688][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/getFrequentDrivers],methods=[POST]}" onto public vo.RestResult controller.ShipperController.getFrequentDrivers(pojo.TokenAuthInfo)
+[INFO][2016-01-09 21:10:31,689][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/getFrequentAddresses],methods=[POST]}" onto public vo.RestResult controller.ShipperController.getFrequentAddresses(pojo.TokenAuthInfo)
+[INFO][2016-01-09 21:10:31,696][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/register],methods=[POST]}" onto public vo.RestResult controller.UserController.register(pojo.UserAuthInfo)
+[INFO][2016-01-09 21:10:31,696][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/count],methods=[GET]}" onto public int controller.UserController.getCount()
+[INFO][2016-01-09 21:10:31,697][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/login],methods=[POST]}" onto public vo.RestResult controller.UserController.login(pojo.UserAuthInfo)
+[INFO][2016-01-09 21:10:31,697][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/modifyNickName],methods=[POST]}" onto public vo.RestResult controller.UserController.modifyNickName(pojo.ModifiedNickName)
+[INFO][2016-01-09 21:10:31,697][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/userRegister]}" onto public java.lang.String controller.UserController.userRegister(org.springframework.ui.Model)
+[INFO][2016-01-09 21:10:31,698][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/modifyPassword],methods=[POST]}" onto public vo.RestResult controller.UserController.modifyPassword(pojo.ModifiedPassword)
+[INFO][2016-01-09 21:10:31,698][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/modifyIcon],methods=[POST]}" onto public vo.RestResult controller.UserController.modifyIcon(pojo.ModifiedIcon)
+[INFO][2016-01-09 21:10:31,698][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/getAllTruckTypes],methods=[POST]}" onto public vo.RestResult controller.UserController.getAllTruckTypes()
+[INFO][2016-01-09 21:10:31,698][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/getMyMessages],methods=[POST]}" onto public vo.RestResult controller.UserController.getMyMessages(pojo.TokenAuthInfo)
+[INFO][2016-01-09 21:10:31,699][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/id/{id}],methods=[GET]}" onto public vo.RestResult controller.UserController.getUser(int)
+[INFO][2016-01-09 21:10:31,699][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/showAccount],methods=[POST]}" onto public vo.RestResult controller.UserController.showAccount(pojo.TokenAuthInfo)
+[INFO][2016-01-09 21:10:31,699][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/getContacts],methods=[POST]}" onto public vo.RestResult controller.UserController.getContacts(pojo.TokenAuthInfo)
+[INFO][2016-01-09 21:10:31,700][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/recharge],methods=[POST]}" onto public vo.RestResult controller.UserController.recharge(pojo.RechargeInfo)
+[INFO][2016-01-09 21:10:31,700][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/getContactDetail],methods=[POST]}" onto public vo.RestResult controller.UserController.getContactDetail(pojo.UserIdInfoWithAuth)
+[INFO][2016-01-09 21:10:31,828][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMVC-servlet': startup date [Sat Jan 09 21:10:31 CST 2016]; parent: Root WebApplicationContext
+[INFO][2016-01-09 21:10:31,905][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMVC-servlet': startup date [Sat Jan 09 21:10:31 CST 2016]; parent: Root WebApplicationContext
+[INFO][2016-01-09 21:10:32,039][org.springframework.web.servlet.DispatcherServlet]FrameworkServlet 'springMVC': initialization completed in 713 ms
+[WARN][2016-01-09 21:11:01,705][org.hibernate.engine.jdbc.spi.SqlExceptionHelper]SQL Error: 1062, SQLState: 23000
+[ERROR][2016-01-09 21:11:01,705][org.hibernate.engine.jdbc.spi.SqlExceptionHelper]Duplicate entry '15851813131' for key 'UK_4bgmpi98dylab6qdvf9xyaxu4'
+[INFO][2016-01-09 21:11:01,707][org.hibernate.engine.jdbc.batch.internal.AbstractBatchImpl]HHH000010: On release of batch it still contained JDBC statements
+[WARN][2016-01-09 21:11:01,708][org.hibernate.engine.jdbc.spi.SqlExceptionHelper]SQL Warning Code: 1062, SQLState: 23000
+[WARN][2016-01-09 21:11:01,708][org.hibernate.engine.jdbc.spi.SqlExceptionHelper]Duplicate entry '15851813131' for key 'UK_4bgmpi98dylab6qdvf9xyaxu4'

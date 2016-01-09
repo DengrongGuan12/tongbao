@@ -67,7 +67,7 @@ public class UserController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
         @ResponseBody
     public RestResult login(@ModelAttribute("UserAuthInfo")UserAuthInfo userAuthInfo){
-        User user = userService.login(userAuthInfo.getPhoneNumber(),userAuthInfo.getPassword());
+        vo.User user = userService.login(userAuthInfo.getPhoneNumber(),userAuthInfo.getPassword());
 
         if(user == null){
             return RestResult.CreateResult(0,"登录失败");
@@ -80,7 +80,6 @@ public class UserController {
         @ResponseBody
     public RestResult modifyNickName(@ModelAttribute("ModifiedNickName")ModifiedNickName modifiedNickName){
         int id = userService.hasLogin(modifiedNickName.getToken());
-        System.out.print("modify"+id);
         if(id == 0){
             return RestResult.CreateResult(0,"尚未登录!");
         }else{

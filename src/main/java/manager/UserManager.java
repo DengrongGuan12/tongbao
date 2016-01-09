@@ -53,6 +53,10 @@ public class UserManager {
         all_user_online.put(key,new user_online(userId,userType));
         return key;
     }
+    public int getUserType(int id){
+        user_online user_online=(user_online) all_user_online.get(user_auth_code.get(id));
+        return user_online.userType;
+    }
     public int getUserIdByKey(String key){
         user_online temp=(user_online)all_user_online.get(key);
         if(temp!=null){
@@ -91,7 +95,7 @@ public class UserManager {
     private class user_online{
         int userId;
         private long addTime;
-        private int userType;
+        int userType;
         user_online(int userId,int userType){
             this.userId=userId;
             this.userType=userType;

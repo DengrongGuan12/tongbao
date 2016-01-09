@@ -7,6 +7,7 @@ public class Account {
     private int type;
     private String time;
     private double money;
+    private Order order;
 
     public Order getOrder() {
         return order;
@@ -40,6 +41,6 @@ public class Account {
         this.money = money;
     }
 
-    private Order order;
+
 
 }
