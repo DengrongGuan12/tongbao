@@ -1,10 +1,14 @@
 package service.impl;
 
+import dao.OrderDao;
+import model.Order;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pojo.OrderInfo;
 import service.OrderService;
-import vo.Order;
 
+
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +17,21 @@ import java.util.List;
  */
 @Service
 public class OrderServiceImpl implements OrderService {
+    @Autowired
+    OrderDao orderDao;
     public boolean createOrder(int userId, OrderInfo orderInfo) {
+        Order orderTemp=new Order();
+        orderTemp.setShipperId(userId);
+        orderTemp.setBuildTime(new Timestamp(System.currentTimeMillis()));
+//        orderTemp.setLoadTime(orderInfo.getLoadTime());
+        orderTemp.setAddressFrom(orderInfo.getAddressFrom());
+        orderTemp.setAddressTo(orderInfo.getAddressTo());
+//        orderTemp.setGoodsType(orderInfo.getGoodsType());
+//        orderTemp.setGoodsWeight(orderInfo.getGoodsWeight());
+//        orderTemp.setGoodsSize(orderInfo.getGoodsSize());
+//        orderTemp.setTruckType(orderInfo.getTruckType());
+
+
         return false;
     }
 
@@ -24,6 +42,8 @@ public class OrderServiceImpl implements OrderService {
         List list = new ArrayList();
         list.add("sddfdf");
         list.add("dsfsdfsdf");
+
+
         return list;
     }
 
@@ -51,7 +71,7 @@ public class OrderServiceImpl implements OrderService {
 
     public List getAllNoGrabOrder() {
         List list = new ArrayList();
-        Order order = new Order();
+        vo.Order order = new vo.Order();
         order.setAddressFrom("汉口路22号");
         order.setAddressTo("汉口路24号");
         order.setId(1);
@@ -61,8 +81,8 @@ public class OrderServiceImpl implements OrderService {
         return list;
     }
 
-    public Order getOrderDetail(int orderId) {
-        Order order = new Order();
+    public vo.Order getOrderDetail(int orderId) {
+        vo.Order order = new vo.Order();
         order.setId(orderId);
         order.setTime("2015-11-11 00:00:00");
         order.setMoney(23);

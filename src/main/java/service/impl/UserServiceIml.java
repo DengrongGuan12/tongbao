@@ -1,13 +1,16 @@
 package service.impl;
 
+import dao.ContactsDao;
 import dao.UserDao;
 import manager.UserManager;
+import model.Contacts;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.UserService;
 import vo.*;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +23,8 @@ public class UserServiceIml implements UserService {
     UserManager userManager=UserManager.getInstance();
     @Autowired
     private UserDao userDao;
+    @Autowired
+    private ContactsDao contactsDao;
 
 
     public User getUserByPhoneNumber(String phoneNumber) {
@@ -35,18 +40,25 @@ public class UserServiceIml implements UserService {
          */
     public boolean register(String phoneNumber, String password,Byte type) {
         User user=new User(phoneNumber,password,type);
+        user.setRegister_time(new Timestamp(System.currentTimeMillis()));
         return userDao.registerUser(user);
     }
 
     /*
     登录,登录成功返回用户信息,否则返回null
      */
-    public User login(String phoneNumber, String password) {
+    public vo.User login(String phoneNumber, String password) {
         User userTemp=userDao.getUserByPhoneNumber(phoneNumber);
         if(userTemp!=null&&userTemp.getPassword().equals(password)){
             String token=userManager.addToOnlineList(userTemp.getId(),userTemp.getType());
+            vo.User userReturn=new vo.User();
+            userReturn.setIconUrl(userTemp.getIcon());
+            userReturn.setMoney(userTemp.getMoney());
+            userReturn.setNickName(userTemp.getNick_name());
+            userReturn.setToken(token);
+            userReturn.setPoint(userTemp.getPoint());
             userTemp.setToken(token);
-            return userTemp;
+            return userReturn;
         }else {
             return null;
         }
@@ -113,29 +125,44 @@ public class UserServiceIml implements UserService {
     }
 
     public List getContacts(int userId) {
-        List list = new ArrayList();
-        ContactSimple contactSimple1 = new ContactSimple();
-        contactSimple1.setId(1);
-        contactSimple1.setNickName("dsfsdf");
-        contactSimple1.setPhoneNum("1232143242");
-        contactSimple1.setType(0);
-        ContactSimple contactSimple2 = new ContactSimple();
-        contactSimple2.setId(2);
-        contactSimple2.setType(1);
-        contactSimple2.setNickName("sdfsdfdsf");
-        contactSimple2.setPhoneNum("2143234345345");
-        list.add(contactSimple1);
-        list.add(contactSimple2);
-        return list;
+        int userType=userManager.getUserType(userId);
+        List contacts;
+        List returnContacts=new ArrayList();
+        if(userType==0){
+            contacts=contactsDao.getShipperContacts(userId);
+        }else if(userType==1){
+            contacts=contactsDao.getDriverContacts(userId);
+        }else{
+            return null;
+        }
+        for(int i=0;i<contacts.size();i++){
+            Contacts contactsTemp=(Contacts)contacts.get(i);
+            User userTemp;
+            if(userType==0){
+                 userTemp=getUserById(contactsTemp.getDriverId());
+            }else{
+                 userTemp=getUserById(contactsTemp.getShipperId());
+            }
+            vo.ContactSimple contactSimple=new vo.ContactSimple();
+            contactSimple.setId(userTemp.getId());
+            contactSimple.setNickName(userTemp.getNick_name());
+            contactSimple.setPhoneNum(userTemp.getPhone_number());
+            contactSimple.setType(userTemp.getType());
+            returnContacts.add(contactSimple);
+
+        }
+
+        return returnContacts;
     }
 
     public ContactDetail getContactDetail(int contactId) {
+        User userTemp=userDao.getUserById(contactId);
         ContactDetail contactDetail = new ContactDetail();
-        contactDetail.setNickName("sdfsdf");
-        contactDetail.setPhoneNum("121212121212");
-        contactDetail.setType(0);
-        contactDetail.setSex(0);
-        contactDetail.setRegTime("2015-11-02 00:00:00");
+        contactDetail.setId(userTemp.getId());
+        contactDetail.setNickName(userTemp.getNick_name());
+        contactDetail.setPhoneNum(userTemp.getPhone_number());
+        contactDetail.setType(userTemp.getType());
+        contactDetail.setRegTime(userTemp.getRegister_time()+"");
         return contactDetail;
     }
 

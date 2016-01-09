@@ -9,6 +9,8 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * Created by dengrong on 2015/12/29.
  */
@@ -50,7 +52,13 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao{
 
     }
     public User getUserByPhoneNumber(String phoneNumber) {
-        return (User)super.getList(User.class,"phone_number",phoneNumber).get(0);
+        List list=super.getList(User.class,"phone_number",phoneNumber);
+        if(list.isEmpty()){
+            return null;
+        }else {
+            return (User)list.get(0);
+        }
+
     }
 
 }

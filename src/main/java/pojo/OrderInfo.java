@@ -71,6 +71,7 @@ public class OrderInfo extends TokenAuthInfo{
 
     private String truckTypes;
     private int payType;
+    private double price;
 
     public double getPrice() {
         return price;
@@ -138,5 +139,5 @@ public class OrderInfo extends TokenAuthInfo{
         this.payType = payType;
     }
 
-    private double price;
+
 }
