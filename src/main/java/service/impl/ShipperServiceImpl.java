@@ -21,9 +21,7 @@ public class ShipperServiceImpl implements ShipperService{
     public List getFrequentDrivers(int userId) {
         List list = new ArrayList();
         User user = new User();
-        user.setId(1);
         user.setNickName("sdfsdf");
-        user.setPhoneNum("1212121212");
         list.add(user);
         return list;
 
