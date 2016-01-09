@@ -1,14 +1,14 @@
 package service.impl;
 
-import dao.ContactsDao;
-import dao.UserDao;
+import dao.*;
 import manager.UserManager;
-import model.Contacts;
+import model.*;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.UserService;
 import vo.*;
+import vo.Account;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -25,6 +25,12 @@ public class UserServiceIml implements UserService {
     private UserDao userDao;
     @Autowired
     private ContactsDao contactsDao;
+    @Autowired
+    private MessageDao messageDao;
+    @Autowired
+    private Truck_type_Dao trucks_type_dao;
+    @Autowired
+    private AccountDao accountDao;
 
 
     public User getUserByPhoneNumber(String phoneNumber) {
@@ -114,13 +120,21 @@ public class UserServiceIml implements UserService {
     }
 
     public List getUserAccount(int userId) {
+        List listTemp=accountDao.getAccounts(userId);
         List list = new ArrayList();
-        Account account = new Account();
-        account.setMoney(12.3);
-        account.setType(0);
-        account.setTime("2013-11-11 00:00:00");
-        account.setOrder(null);
-        list.add(account);
+        for(int i=0;i<listTemp.size();i++){
+            model.Account accountTemp=(model.Account)listTemp.get(i);
+            Account account = new Account();
+            account.setMoney(accountTemp.getMoney());
+            account.setType(accountTemp.getType());
+            account.setTime(accountTemp.getBuildTime().toString());
+
+            account.setOrder(null);
+
+            list.add(account);
+        }
+
+
         return list;
     }
 
@@ -167,24 +181,50 @@ public class UserServiceIml implements UserService {
     }
 
     public List getTruckTypes() {
+        List listTemp=trucks_type_dao.getAllTruckType();
         List list = new ArrayList();
-        TruckType truckType = new TruckType();
-        truckType.setType(0);
-        truckType.setName("敞篷车");
-        truckType.setBasePrice(10);
-        truckType.setCapacity(30);
-        truckType.setOverPrice(3);
-        truckType.setLength(10);
-        truckType.setWidth(3.5);
-        truckType.setHeight(2.5);
-        list.add(truckType);
+        for(int i=0;i<listTemp.size();i++){
+            Trucks_type trucksTemp=(Trucks_type)listTemp.get(i);
+            TruckType truckType = new TruckType();
+            truckType.setType(trucksTemp.getType());
+            truckType.setName(trucksTemp.getName());
+            truckType.setBasePrice(trucksTemp.getBase_price());
+            truckType.setCapacity(trucksTemp.getCapacity());
+            truckType.setOverPrice(trucksTemp.getOver_price());
+            truckType.setLength(trucksTemp.getLength());
+            truckType.setWidth(trucksTemp.getWidth());
+            truckType.setHeight(trucksTemp.getHeight());
+            list.add(truckType);
+        }
+
         return list;
     }
 
     public List getMessagesByUserId(int userId) {
-        return null;
+        List listTemp=messageDao.getMyMessage(userId);
+        List returnList=new ArrayList();
+        for(int i=0;i<listTemp.size();i++){
+            model.Message messageTemp=(model.Message)listTemp.get(i);
+            vo.Message message=new vo.Message();
+            message.setContent(messageTemp.getContent());
+            message.setHasRead(messageTemp.getHas_read());
+            message.setId(messageTemp.getId());
+            message.setTime(messageTemp.getTime().toString());
+            message.setObjectId(messageTemp.getObject_id());
+            message.setType(messageTemp.getType());
+            returnList.add(message);
+        }
+        return returnList;
     }
     public boolean recharge(int userId, double money) {
-        return false;
+        User user=getUserById(userId);
+        double moneyTemp=user.getMoney();
+        user.setMoney(moneyTemp+money);
+        model.Account account=new model.Account();
+        account.setBuildTime(new Timestamp(System.currentTimeMillis()));
+        account.setType(new Byte("0"));
+        account.setMoney(money);
+        accountDao.addAccount(account);
+        return userDao.updateUser(user);
     }
 }

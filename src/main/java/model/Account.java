@@ -14,9 +14,13 @@ import java.util.Date;
 @Table(name="account")
 public class Account implements Serializable {
     private int id;
+    private int userId;
     private Timestamp buildTime;
+
+
+
     private Byte type;
-    private int money;
+    private double money;
     private int orderId;
     @Id
     @Column(name="id",nullable = true)
@@ -28,6 +32,14 @@ public class Account implements Serializable {
 
     public void setId(int id) {
         this.id = id;
+    }
+    @Column(name="user_id")
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
     @Column(name="build_time")
     public Timestamp getBuildTime() {
@@ -46,11 +58,11 @@ public class Account implements Serializable {
         this.type = type;
     }
     @Column
-    public int getMoney() {
+    public double getMoney() {
         return money;
     }
 
-    public void setMoney(int money) {
+    public void setMoney(double money) {
         this.money = money;
     }
     @Column(name="order_id")

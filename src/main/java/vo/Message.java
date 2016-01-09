@@ -9,6 +9,7 @@ public class Message {
     private String content;
     private Byte hasRead;
     private String time;
+    private int objectId;
 
     public int getObjectId() {
         return objectId;
@@ -58,5 +59,5 @@ public class Message {
         this.time = time;
     }
 
-    private int objectId;
+
 }

@@ -13,7 +13,29 @@ import java.util.List;
 public class AccountDaoImpl extends BaseDaoImpl implements AccountDao {
 
 
-    public List<Object> showAccount(int userId) {
-        return null;
+    public List<Object> getAccounts(int userId) {
+        return super.getList(Account.class,"userId",userId+"");
+    }
+
+    public boolean addAccount(Account account) {
+        try {
+            super.save(account);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+
+    }
+
+    public boolean findAccount() {
+        return false;
+    }
+
+    public boolean updateAccount(Account account) {
+        return false;
+    }
+
+    public boolean deleteAccount(int id) {
+        return false;
     }
 }
