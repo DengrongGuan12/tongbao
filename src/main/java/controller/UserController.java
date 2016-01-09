@@ -13,6 +13,7 @@ import vo.ContactDetail;
 import vo.Order;
 import vo.RestResult;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 /**
@@ -56,11 +57,17 @@ public class UserController {
     @RequestMapping(value = "/register",method = RequestMethod.POST)
         @ResponseBody
     public RestResult register(@ModelAttribute("UserAuthInfo")UserAuthInfo userAuthInfo){
-        if(userService.register(userAuthInfo.getPhoneNumber(),userAuthInfo.getPassword(),userAuthInfo.getType())){
-            return RestResult.CreateResult(1);
-        }else{
-            return RestResult.CreateResult(0,"注册失败");
-        }
+//        try {
+//            userAuthInfo.setPhoneNumber(new String(userAuthInfo.getPhoneNumber().getBytes("ISO-8859-1"),"UTF-8"));
+//        } catch (UnsupportedEncodingException e) {
+//            e.printStackTrace();
+//        }
+        return RestResult.CreateResult(1,userAuthInfo);
+//        if(userService.register(userAuthInfo.getPhoneNumber(),userAuthInfo.getPassword(),userAuthInfo.getType())){
+//            return RestResult.CreateResult(1);
+//        }else{
+//            return RestResult.CreateResult(0,"注册失败");
+//        }
 
     }
 
