@@ -76,7 +76,7 @@ public class DriverController {
         if(userId == 0){
             return RestResult.CreateResult(0,"尚未登录!");
         }else{
-            List list = orderService.getOrderList(userId,orderListType.getType());
+            List list = orderService.getMyOrderList(userId,orderListType.getType());
             return RestResult.CreateResult(1,list);
         }
 

@@ -9,6 +9,7 @@ import service.OrderService;
 import service.ShipperService;
 import service.UserService;
 import vo.Order;
+import vo.OrderDetail;
 import vo.RestResult;
 
 import java.util.ArrayList;
@@ -148,6 +149,7 @@ public class ShipperController {
         @ResponseBody
     public RestResult showMyOrderList(@ModelAttribute("OrderListType")OrderListType orderListType){
         int userId = userService.hasLogin(orderListType.getToken());
+//        userId = 1;
         if(userId == 0){
             return RestResult.CreateResult(0,"尚未登录!");
         }else{
@@ -213,8 +215,8 @@ public class ShipperController {
         if(userId == 0){
             return RestResult.CreateResult(0,"尚未登录!");
         }else{
-            Order order = orderService.getOrderDetail(orderIdInfoWithAuth.getId());
-            return RestResult.CreateResult(1,order);
+            OrderDetail orderDetail = orderService.getOrderDetail(userId,orderIdInfoWithAuth.getId());
+            return RestResult.CreateResult(1,orderDetail);
         }
     }
 

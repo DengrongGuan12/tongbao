@@ -2,6 +2,7 @@ package service;
 
 import pojo.OrderInfo;
 import vo.Order;
+import vo.OrderDetail;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ public interface OrderService {
     public boolean finishOrder(int userId, int orderId);
     public boolean grabOrder(int userId, int orderId);
     public List getAllNoGrabOrder();
-    public Order getOrderDetail(int orderId);
+    public OrderDetail getOrderDetail(int userId, int orderId);
     public boolean splitOrder(int userId, OrderInfo orderInfo);
     public List getMyOrderList(int userId, int type);
 }
