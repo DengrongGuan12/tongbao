@@ -10,6 +10,7 @@ import pojo.*;
 import service.DriverService;
 import service.OrderService;
 import service.UserService;
+import vo.OrderDetail;
 import vo.RestResult;
 import vo.TruckType;
 
@@ -27,17 +28,18 @@ public class DriverController {
     DriverService driverService;
     @Autowired
     OrderService orderService;
-    @RequestMapping(value = "setTruckInfo",method = RequestMethod.POST)
+
+    @RequestMapping(value = "addTruck", method = RequestMethod.POST)
     @ResponseBody
-    public RestResult setTruckInfo(@ModelAttribute("TruckInfo")TruckInfo truckInfo){
+    public RestResult addTruck(@ModelAttribute("TrcukInfo")TruckInfo truckInfo){
         int userId = userService.hasLogin(truckInfo.getToken());
         if(userId == 0){
             return RestResult.CreateResult(0,"尚未登录!");
         }else{
-            if(driverService.setTruckInfo(userId,truckInfo)){
+            if(driverService.addTruck(userId, truckInfo)){
                 return RestResult.CreateResult(1);
             }else{
-                return RestResult.CreateResult(0,"设置失败!");
+                return RestResult.CreateResult(0,"操作失败!");
             }
         }
     }
@@ -125,13 +127,25 @@ public class DriverController {
     }
     @RequestMapping(value = "showAllOrders",method = RequestMethod.POST)
     @ResponseBody
-    public RestResult showAllOrders(@ModelAttribute("TokenAuthInfo")TokenAuthInfo tokenAuthInfo){
-        int userId = userService.hasLogin(tokenAuthInfo.getToken());
+    public RestResult showAllOrders(@ModelAttribute("OrderFilterInfo")OrderFilterInfo orderFilterInfo){
+        int userId = userService.hasLogin(orderFilterInfo.getToken());
         if(userId == 0){
             return RestResult.CreateResult(0,"尚未登录!");
         }else{
-            List list = orderService.getAllNoGrabOrder();
+            List list = orderService.getAllNoGrabOrder(userId,orderFilterInfo);
             return RestResult.CreateResult(1,list);
+        }
+    }
+
+    @RequestMapping(value = "getOrderDetail",method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult getOrderDetail(@ModelAttribute("OrderIdInfoWithAuth")OrderIdInfoWithAuth orderIdInfoWithAuth){
+        int userId = userService.hasLogin(orderIdInfoWithAuth.getToken());
+        if(userId == 0){
+            return RestResult.CreateResult(0,"尚未登录!");
+        }else{
+            OrderDetail orderDetail = orderService.getOrderDetail(userId,orderIdInfoWithAuth.getId());
+            return RestResult.CreateResult(1,orderDetail);
         }
     }
 

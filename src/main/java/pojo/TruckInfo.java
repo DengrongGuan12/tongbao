@@ -5,9 +5,16 @@ package pojo;
  */
 public class TruckInfo extends TokenAuthInfo {
     private String truckNum;
-    private int truckType;
-    private int lengthType;
-    private int capacityType;
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    private int type;
 
     public String getPhoneNum() {
         return phoneNum;
@@ -23,30 +30,6 @@ public class TruckInfo extends TokenAuthInfo {
 
     public void setTruckNum(String truckNum) {
         this.truckNum = truckNum;
-    }
-
-    public int getTruckType() {
-        return truckType;
-    }
-
-    public void setTruckType(int truckType) {
-        this.truckType = truckType;
-    }
-
-    public int getLengthType() {
-        return lengthType;
-    }
-
-    public void setLengthType(int lengthType) {
-        this.lengthType = lengthType;
-    }
-
-    public int getCapacityType() {
-        return capacityType;
-    }
-
-    public void setCapacityType(int capacityType) {
-        this.capacityType = capacityType;
     }
 
     private String phoneNum;

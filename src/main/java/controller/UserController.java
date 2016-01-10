@@ -1,6 +1,5 @@
 package controller;
 
-import manager.UserManager;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,10 +9,7 @@ import pojo.*;
 import service.OrderService;
 import service.UserService;
 import vo.ContactDetail;
-import vo.Order;
 import vo.RestResult;
-
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 /**

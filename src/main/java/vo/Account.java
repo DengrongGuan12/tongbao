@@ -7,13 +7,13 @@ public class Account {
     private int type;
     private String time;
     private double money;
-    private Order order;
+    private OrderSimple order;
 
-    public Order getOrder() {
+    public OrderSimple getOrder() {
         return order;
     }
 
-    public void setOrder(Order order) {
+    public void setOrder(OrderSimple order) {
         this.order = order;
     }
 

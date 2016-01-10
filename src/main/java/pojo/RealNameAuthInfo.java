@@ -4,6 +4,15 @@ package pojo;
  * Created by I322233 on 1/5/2016.
  */
 public class RealNameAuthInfo extends TokenAuthInfo{
+    public String getTruckNum() {
+        return truckNum;
+    }
+
+    public void setTruckNum(String truckNum) {
+        this.truckNum = truckNum;
+    }
+
+    private String truckNum;
     private String realName;
     private String licenseNum;
     private String licensePicUrl;

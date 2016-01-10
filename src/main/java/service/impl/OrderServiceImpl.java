@@ -6,6 +6,7 @@ import dao.OrderDao;
 import model.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pojo.OrderFilterInfo;
 import pojo.OrderInfo;
 import service.OrderService;
 import vo.OrderDetail;
@@ -50,6 +51,11 @@ public class OrderServiceImpl implements OrderService {
     /*
     要判断一下这个订单是不是该用户发布的以及该订单的状态是否允许删除
     只要是正在进行的都不允许删除
+    设置删除状态:
+    5:被货主删除
+    6:被司机删除
+    7:被司机和货主都删除
+
      */
     public boolean deleteOrder(int userId, int orderId) {
         return false;
@@ -71,19 +77,36 @@ public class OrderServiceImpl implements OrderService {
         return false;
     }
 
+    /*
+    需要判断该用户是否司机以及该订单是否是处在尚未被抢的状态
+     */
     public boolean grabOrder(int userId, int orderId) {
         return false;
     }
 
-    public List getAllNoGrabOrder() {
+    /*
+    只有司机能获取所有未被强到订单
+    根据起点终点过滤订单
+    是根据名字还是根据经纬度过滤待定，需要看一下百度地图
+     */
+    public List getAllNoGrabOrder(int userId, OrderFilterInfo orderFilterInfo) {
         List list = new ArrayList();
-        vo.Order order = new vo.Order();
-        order.setAddressFrom("汉口路22号");
-        order.setAddressTo("汉口路24号");
-        order.setId(1);
-        order.setMoney(23);
-        order.setTime("2015-11-11 00:00:00");
-        list.add(order);
+        OrderSimple orderSimple = new OrderSimple();
+        orderSimple.setId(1);
+        orderSimple.setAddressFrom("dsfsdf");
+        orderSimple.setAddressTo("dsfsdf");
+        orderSimple.setFromContactName("sdfsdf");
+        orderSimple.setFromContactPhone("1231234");
+        orderSimple.setMoney(12.3);
+        orderSimple.setLoadTime("2015-11-02 11:00:00");
+        orderSimple.setToContactName("asdasd");
+        orderSimple.setToContactPhone("121212");
+        orderSimple.setTime("2015-11-11 00:00:00");
+        List truckTypes = new ArrayList();
+        truckTypes.add("中型货车");
+        truckTypes.add("小型面包车");
+        orderSimple.setTruckTypes(truckTypes);
+        list.add(orderSimple);
         return list;
     }
 

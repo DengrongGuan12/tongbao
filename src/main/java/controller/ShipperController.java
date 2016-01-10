@@ -1,6 +1,5 @@
 package controller;
 
-import org.apache.taglibs.standard.extra.spath.Token;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -8,12 +7,8 @@ import pojo.*;
 import service.OrderService;
 import service.ShipperService;
 import service.UserService;
-import vo.Order;
 import vo.OrderDetail;
 import vo.RestResult;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 /**
