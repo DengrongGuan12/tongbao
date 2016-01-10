@@ -63,7 +63,7 @@ public class UserServiceIml implements UserService {
             userReturn.setNickName(userTemp.getNick_name());
             userReturn.setToken(token);
             userReturn.setPoint(userTemp.getPoint());
-            userTemp.setToken(token);
+            userReturn.setToken(token);
             return userReturn;
         }else {
             return null;
@@ -119,6 +119,13 @@ public class UserServiceIml implements UserService {
         }
     }
 
+
+    /**
+     *
+     * 还缺少获取order的部分
+     * @param userId
+     * @return
+     */
     public List getUserAccount(int userId) {
         List listTemp=accountDao.getAccounts(userId);
         List list = new ArrayList();

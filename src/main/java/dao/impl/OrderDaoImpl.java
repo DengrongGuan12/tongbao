@@ -49,11 +49,10 @@ public class OrderDaoImpl extends BaseDaoImpl implements OrderDao{
 //
     public boolean updateOrder(Order order) {
         try {
-//            Order orderTemp=(Order)super.load(Order.class,order.getOrderId());
-
+            super.update(order);
+            return true;
         }catch (Exception e){
             return false;
         }
-        return false;
     }
 }

@@ -22,15 +22,6 @@ public class User implements Serializable{
     private double point;
     private double money;
     private Timestamp register_time;
-    private String token;
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
 
     public User(){super();}
 

@@ -15,6 +15,25 @@ public class Frequent_addresses implements Serializable{
 
     private int shipper_id;
     private String address;
+    private double lat;
+    private double lng;
+    @Column
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+    @Column
+    public double getLng() {
+        return lng;
+    }
+
+    public void setLng(double lng) {
+        this.lng = lng;
+    }
+
     @Id
     @Column(name="id",nullable = true)
     @GeneratedValue(generator = "generator")

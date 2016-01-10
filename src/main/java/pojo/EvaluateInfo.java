@@ -6,15 +6,15 @@ package pojo;
 public class EvaluateInfo extends TokenAuthInfo{
     private int id;
 
-    public int getEvaluatePoint() {
+    public Byte getEvaluatePoint() {
         return evaluatePoint;
     }
 
-    public void setEvaluatePoint(int evaluatePoint) {
+    public void setEvaluatePoint(Byte evaluatePoint) {
         this.evaluatePoint = evaluatePoint;
     }
 
-    private int evaluatePoint;
+    private Byte evaluatePoint;
 
     public String getEvaluate() {
         return evaluate;
