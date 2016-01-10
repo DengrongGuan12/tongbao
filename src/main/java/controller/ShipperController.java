@@ -67,6 +67,33 @@ public class ShipperController {
         }
     }
 
+    @RequestMapping(value = "searchDriver", method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult searchDriver(@ModelAttribute("SearchInfoWithAuth")SearchInfoWithAuth searchInfoWithAuth){
+        int userId = userService.hasLogin(searchInfoWithAuth.getToken());
+        if(userId == 0){
+            return RestResult.CreateResult(0,"尚未登录!");
+        }else{
+            List list = shipperService.searchDriversByPhoneNum(searchInfoWithAuth.getPhoneNum());
+            return RestResult.CreateResult(1,list);
+        }
+    }
+
+    @RequestMapping(value = "addFrequentAddress", method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult addFrequentAddress(@ModelAttribute("AddressInfo")AddressInfo addressInfo){
+        int userId = userService.hasLogin(addressInfo.getToken());
+        if(userId == 0){
+            return RestResult.CreateResult(0,"尚未登录!");
+        }else{
+            if(shipperService.addFrequentAddress(userId,addressInfo)){
+                return RestResult.CreateResult(1);
+            }else{
+                return RestResult.CreateResult(0,"操作失败!");
+            }
+        }
+    }
+
     @RequestMapping(value = "placeOrder", method = RequestMethod.POST)
         @ResponseBody
     public RestResult placeOrder(@ModelAttribute("OrderInfo")OrderInfo orderInfo){
