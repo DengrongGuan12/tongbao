@@ -16,7 +16,11 @@ import java.util.List;
 @Service
 public class ShipperServiceImpl implements ShipperService{
 
-    public boolean evaluateOrder(int userId, int id, int evaluateType, String content) {
+
+    /*
+    这边要判断该user是否是订单的发出者，如果不是返回false
+     */
+    public boolean evaluateOrder(int userId, int id, int evaluatePoint, String content) {
         return false;
     }
 

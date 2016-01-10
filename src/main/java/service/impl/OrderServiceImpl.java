@@ -19,7 +19,11 @@ import java.util.List;
 public class OrderServiceImpl implements OrderService {
     @Autowired
     OrderDao orderDao;
-    public boolean createOrder(int userId, OrderInfo orderInfo) {
+
+    /*
+    创建订单时要考虑是否有匹配的司机，如果成功返回1，找不到匹配的司机返回2，其他失败(如用户不是货主就没有权限创建)返回0
+     */
+    public int createOrder(int userId, OrderInfo orderInfo) {
         Order orderTemp=new Order();
         orderTemp.setShipperId(userId);
         orderTemp.setBuildTime(new Timestamp(System.currentTimeMillis()));
@@ -32,20 +36,9 @@ public class OrderServiceImpl implements OrderService {
 //        orderTemp.setTruckType(orderInfo.getTruckType());
 
 
-        return false;
+        return 1;
     }
 
-    /*
-    0表示尚未开始(只有货主有),1表示正在进行,2表示已经完成,3表示被取消
-     */
-    public List getOrderList(int userId, int type) {
-        List list = new ArrayList();
-        list.add("sddfdf");
-        list.add("dsfsdfsdf");
-
-
-        return list;
-    }
 
     /*
     要判断一下这个订单是不是该用户发布的以及该订单的状态是否允许删除
@@ -89,5 +82,21 @@ public class OrderServiceImpl implements OrderService {
         order.setAddressTo("sdfsdfsdf");
         order.setAddressFrom("dsfdfgdfg");
         return order;
+    }
+
+    /*
+    根据订单信息进行拆单
+     */
+    public boolean splitOrder(int userId, OrderInfo orderInfo) {
+        return false;
+    }
+
+    /*
+    先根据userId 判断用户类型，
+    如果是货主,type:0表示尚未开始,1表示正在进行,2表示已经完成,3表示被取消
+    如果是司机,type:1表示正在进行,2表示已经完成
+     */
+    public List getMyOrderList(int userId, int type) {
+        return null;
     }
 }
