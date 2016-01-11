@@ -58,12 +58,12 @@ public class UserController {
 //        } catch (UnsupportedEncodingException e) {
 //            e.printStackTrace();
 //        }
-        return RestResult.CreateResult(1,userAuthInfo);
-//        if(userService.register(userAuthInfo.getPhoneNumber(),userAuthInfo.getPassword(),userAuthInfo.getType())){
-//            return RestResult.CreateResult(1);
-//        }else{
-//            return RestResult.CreateResult(0,"注册失败");
-//        }
+//        return RestResult.CreateResult(1,userAuthInfo);
+        if(userService.register(userAuthInfo.getPhoneNumber(),userAuthInfo.getPassword(),userAuthInfo.getType())){
+            return RestResult.CreateResult(1);
+        }else{
+            return RestResult.CreateResult(0,"注册失败");
+        }
 
     }
 

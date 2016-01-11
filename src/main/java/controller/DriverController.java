@@ -31,7 +31,9 @@ public class DriverController {
 
     @RequestMapping(value = "addTruck", method = RequestMethod.POST)
     @ResponseBody
-    public RestResult addTruck(@ModelAttribute("TrcukInfo")TruckInfo truckInfo){
+    public RestResult addTruck(@ModelAttribute("TruckInfo")TruckInfo truckInfo){
+//        driverService.addTruck(1,truckInfo);
+//        return RestResult.CreateResult(1,truckInfo);
         int userId = userService.hasLogin(truckInfo.getToken());
         if(userId == 0){
             return RestResult.CreateResult(0,"尚未登录!");

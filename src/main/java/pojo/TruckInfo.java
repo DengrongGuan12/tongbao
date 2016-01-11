@@ -6,15 +6,15 @@ package pojo;
 public class TruckInfo extends TokenAuthInfo {
     private String truckNum;
 
-    public int getType() {
+    public Byte getType() {
         return type;
     }
 
-    public void setType(int type) {
+    public void setType(Byte type) {
         this.type = type;
     }
 
-    private int type;
+    private Byte type;
 
     public String getPhoneNum() {
         return phoneNum;

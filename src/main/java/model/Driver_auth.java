@@ -63,6 +63,7 @@ public class Driver_auth implements Serializable{
     public void setType(Byte type) {
         this.type = type;
     }
+
     @Column(name="auth_state")
     public Byte getAuthState() {
         return authState;

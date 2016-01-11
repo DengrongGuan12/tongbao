@@ -60,6 +60,7 @@ public class UserManager {
     public int getUserIdByKey(String key){
         user_online temp=(user_online)all_user_online.get(key);
         if(temp!=null){
+            temp.setAddTime(System.currentTimeMillis());
             return temp.userId;
         }else{
             return 0;
@@ -100,6 +101,9 @@ public class UserManager {
             this.userId=userId;
             this.userType=userType;
             this.addTime=System.currentTimeMillis();
+        }
+        public void setAddTime(long time){
+            this.addTime = time;
         }
     }
 

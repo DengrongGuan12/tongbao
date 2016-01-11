@@ -2,6 +2,7 @@ package service.impl;
 
 import dao.Driver_auth_Dao;
 import manager.UserManager;
+import model.Driver_auth;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pojo.RealNameAuthInfo;
@@ -45,17 +46,28 @@ public class DriverServiceImpl implements DriverService {
     注：
     1.不能重复添加，根据车牌号判断
     2.只能司机添加，不能是货主
+    3.type要存在
      */
     public boolean addTruck(int userId, TruckInfo truckInfo) {
         //判断是否为司机
         int userType = userManager.getUserType(userId);
         if(userType == 1){
-            //判断车牌号是否已存在
 
+            Driver_auth driver_auth = new Driver_auth();
+            driver_auth.setPhoneNum(truckInfo.getPhoneNum());
+            driver_auth.setUserId(userId);
+            driver_auth.setAuthState((byte)0);
+            driver_auth.setTruckNum(truckInfo.getTruckNum());
+            Byte type = truckInfo.getType();
+            driver_auth.setType(type);
+            if(driver_auth_dao.addDriverAuth(driver_auth)){
+                return true;
+            }else{
+                return false;
+            }
         }else{
             //货主
             return false;
         }
-        return false;
     }
 }
