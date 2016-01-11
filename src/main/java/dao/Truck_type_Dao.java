@@ -7,4 +7,5 @@ import java.util.List;
  */
 public interface Truck_type_Dao {
     public List getAllTruckType();
+    public boolean hasType(Byte type);
 }

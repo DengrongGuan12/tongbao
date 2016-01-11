@@ -43,6 +43,10 @@ public class BaseDaoImpl implements BaseDao {
 //        Session session = HibernateUtil.getSession();
         return session.get(c, id);
     }
+    public Object load(Class c, Byte id){
+        Session session = getSession();
+        return session.get(c,id);
+    }
 
     public List getAllList(Class c) {
         String hql = "from " + c.getName();

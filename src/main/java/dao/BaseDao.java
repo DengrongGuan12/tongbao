@@ -18,6 +18,8 @@ public interface BaseDao {
 
     public Object load(Class c, int id);
 
+    public Object load(Class c, Byte id);
+
     public List getAllList(Class c);
 
     public List getList(Class c, String para, String val);

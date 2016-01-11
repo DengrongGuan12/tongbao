@@ -1,8 +1,10 @@
 package service.impl;
 
 import dao.Driver_auth_Dao;
+import dao.Truck_type_Dao;
 import manager.UserManager;
 import model.Driver_auth;
+import model.Trucks_type;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pojo.RealNameAuthInfo;
@@ -19,6 +21,9 @@ public class DriverServiceImpl implements DriverService {
 
     @Autowired
     private Driver_auth_Dao driver_auth_dao;
+
+    @Autowired
+    private Truck_type_Dao truck_type_dao;
     /*
     注:
     1.根据车牌号设置认证状态
@@ -59,9 +64,14 @@ public class DriverServiceImpl implements DriverService {
             driver_auth.setAuthState((byte)0);
             driver_auth.setTruckNum(truckInfo.getTruckNum());
             Byte type = truckInfo.getType();
-            driver_auth.setType(type);
-            if(driver_auth_dao.addDriverAuth(driver_auth)){
-                return true;
+           //判断type是否存在
+            if (truck_type_dao.hasType(type)){
+                driver_auth.setType(type);
+                if(driver_auth_dao.addDriverAuth(driver_auth)){
+                    return true;
+                }else{
+                    return false;
+                }
             }else{
                 return false;
             }
