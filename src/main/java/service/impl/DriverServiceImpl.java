@@ -1,5 +1,8 @@
 package service.impl;
 
+import dao.Driver_auth_Dao;
+import manager.UserManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pojo.RealNameAuthInfo;
 import pojo.TruckAuthInfo;
@@ -11,7 +14,10 @@ import service.DriverService;
  */
 @Service
 public class DriverServiceImpl implements DriverService {
+    UserManager userManager = UserManager.getInstance();
 
+    @Autowired
+    private Driver_auth_Dao driver_auth_dao;
     /*
     注:
     1.根据车牌号设置认证状态
@@ -41,6 +47,15 @@ public class DriverServiceImpl implements DriverService {
     2.只能司机添加，不能是货主
      */
     public boolean addTruck(int userId, TruckInfo truckInfo) {
+        //判断是否为司机
+        int userType = userManager.getUserType(userId);
+        if(userType == 1){
+            //判断车牌号是否已存在
+
+        }else{
+            //货主
+            return false;
+        }
         return false;
     }
 }

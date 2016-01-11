@@ -52,7 +52,7 @@ public class UserController {
 
     @RequestMapping(value = "/register",method = RequestMethod.POST)
         @ResponseBody
-    public RestResult register(@RequestBody UserAuthInfo userAuthInfo){
+    public RestResult register(UserAuthInfo userAuthInfo){
 //        try {
 //            userAuthInfo.setPhoneNumber(new String(userAuthInfo.getPhoneNumber().getBytes("ISO-8859-1"),"UTF-8"));
 //        } catch (UnsupportedEncodingException e) {

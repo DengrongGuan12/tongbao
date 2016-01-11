@@ -63,6 +63,18 @@
     <filter-name>HttpMethodFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+  <filter>
+    <filter-name>CharSetFilter</filter-name>
+    <filter-class>filter.CharFilter</filter-class>
+    <init-param>
+      <param-name>chars</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>CharSetFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
 
 
   <listener>
