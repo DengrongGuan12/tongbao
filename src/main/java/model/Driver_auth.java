@@ -21,9 +21,11 @@ public class Driver_auth implements Serializable{
     private Byte authState;
     private String realName;
     private String truckLicense;
+    private String licenseNum;
     private String drivingLicense;
     private String truckPicture;
     private String phoneNum;
+    private String headPicture;
 
     @Id
     @Column(name="id",nullable = true)
@@ -88,6 +90,20 @@ public class Driver_auth implements Serializable{
 
     public void setTruckLicense(String truckLicense) {
         this.truckLicense = truckLicense;
+    }
+    @Column(name = "license_num")
+    public String getLicenseNum(){
+        return licenseNum;
+    }
+    public void setLicenseNum(String licenseNum){
+        this.licenseNum = licenseNum;
+    }
+    @Column(name = "head_picture")
+    public String getHeadPicture(){
+        return headPicture;
+    }
+    public void setHeadPicture(String headPicture){
+        this.headPicture = headPicture;
     }
     @Column(name="truck_picture")
     public String getTruckPicture() {

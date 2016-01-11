@@ -17,7 +17,7 @@ public class Truck_type_Dao_impl extends BaseDaoImpl implements Truck_type_Dao{
 
     public boolean hasType(Byte type) {
         Trucks_type trucks_type = (Trucks_type) super.load(Trucks_type.class,type);
-        if(type == null){
+        if(trucks_type == null){
             return false;
         }else{
             return true;

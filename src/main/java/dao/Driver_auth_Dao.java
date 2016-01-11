@@ -7,4 +7,6 @@ import model.Driver_auth;
  */
 public interface Driver_auth_Dao {
     public boolean addDriverAuth(Driver_auth driver_auth);
+    public Driver_auth getDriverAuthByTruckNum(String truckNum);
+    public boolean updateDriverAuth(Driver_auth driver_auth);
 }

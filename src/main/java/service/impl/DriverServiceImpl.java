@@ -32,7 +32,45 @@ public class DriverServiceImpl implements DriverService {
     4.只有当两种认证都填写完整时才设置正在认证的状态
      */
     public boolean setRealNameInfo(int userId, RealNameAuthInfo realNameAuthInfo) {
-        return false;
+        int userType = userManager.getUserType(userId);
+        if(userType == 1){
+            String truckNum = realNameAuthInfo.getTruckNum();
+            if(truckNum == null){
+                return false;
+            }
+            Driver_auth driver_auth = driver_auth_dao.getDriverAuthByTruckNum(truckNum);
+            if(driver_auth != null){
+                if(driver_auth.getUserId() == userId && (driver_auth.getAuthState() == 0 || driver_auth.getAuthState() == 3)){
+                    if(realNameAuthInfo.getDriverHeadPicUrl() == null || realNameAuthInfo.getLicenseNum() == null
+                            || realNameAuthInfo.getLicensePicUrl() == null || realNameAuthInfo.getRealName() == null){
+                        return false;
+                    }else{
+                        driver_auth.setTruckLicense(realNameAuthInfo.getLicensePicUrl());
+                        driver_auth.setLicenseNum(realNameAuthInfo.getLicenseNum());
+                        driver_auth.setRealName(realNameAuthInfo.getRealName());
+                        driver_auth.setHeadPicture(realNameAuthInfo.getDriverHeadPicUrl());
+                        if(driver_auth.getDrivingLicense() != null){
+                            //因为插入的时候已经做了限制，所以只要判断一个是否为null就行了
+                            driver_auth.setAuthState((byte)1);
+
+                        }
+                        if(driver_auth_dao.updateDriverAuth(driver_auth)){
+                            return true;
+                        }else{
+                            return false;
+                        }
+
+                    }
+
+                }else{
+                    return false;
+                }
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
     }
 
     /*
@@ -43,7 +81,38 @@ public class DriverServiceImpl implements DriverService {
     4.只有当两种认证都填写完整时才设置正在认证的状态
      */
     public boolean setTruckAuthInfo(int userId, TruckAuthInfo truckAuthInfo) {
-        return false;
+        int userType = userManager.getUserType(userId);
+        if(userId == 1){
+            String truckNum = truckAuthInfo.getTruckNum();
+            if(truckNum == null){
+                return false;
+            }
+            Driver_auth driver_auth = driver_auth_dao.getDriverAuthByTruckNum(truckNum);
+            if(driver_auth != null){
+                if(driver_auth.getUserId() == userId && (driver_auth.getAuthState() == 0 || driver_auth.getAuthState() == 3)){
+                    if(truckAuthInfo.getDriveLicensePicUrl() == null || truckAuthInfo.getTruckHeadPicUrl() == null){
+                        return false;
+                    }else{
+                        driver_auth.setDrivingLicense(truckAuthInfo.getDriveLicensePicUrl());
+                        driver_auth.setTruckPicture(truckAuthInfo.getTruckHeadPicUrl());
+                        if(driver_auth.getRealName() != null){
+                            driver_auth.setAuthState((byte)1);
+                        }
+                        if(driver_auth_dao.updateDriverAuth(driver_auth)){
+                            return true;
+                        }else{
+                            return false;
+                        }
+                    }
+                }else{
+                    return false;
+                }
+            }else{
+                return false;
+            }
+        }else{
+            return  false;
+        }
     }
 
     /*
