@@ -3,7 +3,12 @@ package service.impl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import dao.OrderDao;
+import dao.OrderTruckTypeDao;
+import dao.Truck_type_Dao;
+import manager.UserManager;
 import model.Order;
+import model.OrderTruckType;
+import model.Trucks_type;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pojo.OrderFilterInfo;
@@ -11,6 +16,7 @@ import pojo.OrderInfo;
 import service.OrderService;
 import vo.OrderDetail;
 import vo.OrderSimple;
+import vo.TruckType;
 
 
 import java.sql.Timestamp;
@@ -22,8 +28,13 @@ import java.util.List;
  */
 @Service
 public class OrderServiceImpl implements OrderService {
+    UserManager userManager = UserManager.getInstance();
     @Autowired
     OrderDao orderDao;
+    @Autowired
+    OrderTruckTypeDao orderTruckTypeDao;
+    @Autowired
+    Truck_type_Dao truckTypeDao;
 
     /*
     创建订单时要考虑是否有匹配的司机，如果成功返回1，找不到匹配的司机返回2，其他失败(如用户不是货主就没有权限创建)返回0
@@ -146,25 +157,85 @@ public class OrderServiceImpl implements OrderService {
     先根据userId 判断用户类型，
     如果是货主,type:0表示尚未开始,1表示正在进行,2表示已经完成,3表示被取消
     如果是司机,type:1表示正在进行,2表示已经完成
+    by DengrongGuan
      */
     public List getMyOrderList(int userId, int type) {
-        List list = new ArrayList();
+        int userType = userManager.getUserType(userId);
+        if(userType == 1){
+            //司机
+            if(type == 1 || type == 2){
+                List list = orderDao.showDriverOrders(userId);
+                List resultList = new ArrayList();
+                if(type == 1){
+                    for(Object o:list){
+                        Order order = (Order)o;
+                        if (order.getState() == 1 || order.getState() == 4){
+
+                            resultList.add(genOrderSimpleFromOrder(order));
+                        }
+                    }
+                }else{
+                    for(Object o: list){
+                        Order order = (Order)o;
+                        if(order.getState() == type){
+                            resultList.add(genOrderSimpleFromOrder(order));
+                        }
+                    }
+                }
+                return resultList;
+            }else{
+                return null;
+            }
+        }else{
+            //货主
+            if(type == 0 || type == 1 || type == 2 || type == 3){
+                List list = orderDao.showShippersOrders(userId);
+                List resultList = new ArrayList();
+                if(type == 1){
+                    for(Object o:list){
+                        Order order = (Order)o;
+                        if (order.getState() == 1 || order.getState() == 4){
+
+                            resultList.add(genOrderSimpleFromOrder(order));
+                        }
+                    }
+                }else{
+                    for(Object o: list){
+                        Order order = (Order)o;
+                        if(order.getState() == type){
+                            resultList.add(genOrderSimpleFromOrder(order));
+                        }
+                    }
+                }
+                return resultList;
+            }else{
+                return null;
+            }
+        }
+    }
+
+    /*
+    根据order 生成orderSimple
+     */
+    private OrderSimple genOrderSimpleFromOrder(Order order){
         OrderSimple orderSimple = new OrderSimple();
-        orderSimple.setId(1);
-        orderSimple.setAddressFrom("dsfsdf");
-        orderSimple.setAddressTo("dsfsdf");
-        orderSimple.setFromContactName("sdfsdf");
-        orderSimple.setFromContactPhone("1231234");
-        orderSimple.setMoney(12.3);
-        orderSimple.setLoadTime("2015-11-02 11:00:00");
-        orderSimple.setToContactName("asdasd");
-        orderSimple.setToContactPhone("121212");
-        orderSimple.setTime("2015-11-11 00:00:00");
-        List truckTypes = new ArrayList();
-        truckTypes.add("中型货车");
-        truckTypes.add("小型面包车");
-        orderSimple.setTruckTypes(truckTypes);
-        list.add(orderSimple);
-        return list;
+        orderSimple.setId(order.getId());
+        orderSimple.setTime(order.getBuildTime()+"");
+        orderSimple.setAddressFrom(order.getAddressFrom());
+        orderSimple.setAddressTo(order.getAddressTo());
+        orderSimple.setFromContactName(order.getFrom_contact_name());
+        orderSimple.setFromContactPhone(order.getFrom_contact_phone());
+        orderSimple.setToContactName(order.getTo_contact_name());
+        orderSimple.setToContactPhone(order.getTo_contact_phone());
+        orderSimple.setMoney(order.getPrice());
+        orderSimple.setLoadTime(order.getLoadTime()+"");
+        List truckNames = new ArrayList();
+        List truckTypes = orderTruckTypeDao.getTruckTypesByOrderId(order.getId());
+        for (Object object:truckTypes){
+            OrderTruckType orderTruckType = (OrderTruckType)object;
+            Trucks_type trucks_type = truckTypeDao.getTruckType(orderTruckType.getTruckType());
+            truckNames.add(trucks_type.getName());
+        }
+        return orderSimple;
     }
 }

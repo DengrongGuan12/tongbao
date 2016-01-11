@@ -1,5 +1,7 @@
 package dao;
 
+import model.Trucks_type;
+
 import java.util.List;
 
 /**
@@ -8,4 +10,5 @@ import java.util.List;
 public interface Truck_type_Dao {
     public List getAllTruckType();
     public boolean hasType(Byte type);
+    public Trucks_type getTruckType(Byte type);
 }

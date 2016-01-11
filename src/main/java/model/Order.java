@@ -27,7 +27,6 @@ public class Order implements Serializable{
     private Byte goodsType;
     private String goodsWeight;
     private String goodsSize;
-    private Byte truckType;
     private Byte payType;
     private int price;
     private Byte evaluate_point;
@@ -117,14 +116,6 @@ public class Order implements Serializable{
 
     public void setGoodsSize(String goodsSize) {
         this.goodsSize = goodsSize;
-    }
-    @Column(name="truck_type")
-    public Byte getTruckType() {
-        return truckType;
-    }
-
-    public void setTruckType(Byte truckType) {
-        this.truckType = truckType;
     }
 
     @Column(name="pay_type")
