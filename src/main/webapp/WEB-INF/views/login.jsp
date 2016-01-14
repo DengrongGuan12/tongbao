@@ -1,8 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<html>
 <head>
     <meta charset="utf-8">
-    <title>Bootstrap Admin</title>
+    <title>Admin</title>
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="../stylesheets/theme.css">
     <link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.css">
 
-    <script src="./lib/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="../lib/jquery-1.7.2.min.js" type="text/javascript"></script>
 
     <!-- Demo page code -->
 
@@ -60,7 +60,7 @@
         <ul class="nav pull-right">
 
         </ul>
-        <a class="brand" href="index.html"><span class="first">Your</span> <span class="second">Company</span></a>
+        <a class="brand" href="index.html"><span class="first">通宝</span> <span class="second">后台管理</span></a>
     </div>
 </div>
 
@@ -72,21 +72,19 @@
 <div class="row-fluid">
     <div class="dialog">
         <div class="block">
-            <p class="block-heading">Sign In</p>
+            <p class="block-heading">登录</p>
             <div class="block-body">
-                <form>
-                    <label>Username</label>
-                    <input type="text" class="span12">
-                    <label>Password</label>
-                    <input type="password" class="span12">
-                    <a href="index.html" class="btn btn-primary pull-right">Sign In</a>
-                    <label class="remember-me"><input type="checkbox"> Remember me</label>
+                <form onsubmit="return login();">
+                    <label>用户名</label>
+                    <input type="text" class="span12" id="username" required>
+                    <label>密码</label>
+                    <input type="password" class="span12" id="password" required>
+                    <button type="submit" class="btn btn-primary pull-right">登录</button>
+                    <label class="remember-me"><input type="checkbox">记住我</label>
                     <div class="clearfix"></div>
                 </form>
             </div>
         </div>
-        <p class="pull-right" style=""><a href="#" target="blank">Theme by Portnine</a></p>
-        <p><a href="reset-password.html">Forgot your password?</a></p>
     </div>
 </div>
 
@@ -94,12 +92,16 @@
 
 
 
-<script src="lib/bootstrap/js/bootstrap.js"></script>
+<script src="../lib/bootstrap/js/bootstrap.js"></script>
 <script type="text/javascript">
         $("[rel=tooltip]").tooltip();
         $(function() {
             $('.demo-cancel-click').click(function(){return false;});
         });
+        function login(){
+            
+        }
+
     </script>
 
 </body>
