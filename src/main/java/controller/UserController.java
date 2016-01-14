@@ -16,7 +16,7 @@ import java.util.List;
  * Created by cg on 2015/12/29.
  */
 @Controller
-@RequestMapping("/user")
+@RequestMapping("user")
 public class UserController {
     public static int count = 0;
     @Autowired
@@ -79,97 +79,68 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "/modifyNickName", method = RequestMethod.POST)
+    @RequestMapping(value = "/auth/modifyNickName", method = RequestMethod.POST)
         @ResponseBody
     public RestResult modifyNickName(@ModelAttribute("ModifiedNickName")ModifiedNickName modifiedNickName){
         int id = userService.hasLogin(modifiedNickName.getToken());
-        if(id == 0){
-            return RestResult.CreateResult(0,"尚未登录!");
+        if(userService.changeNickName(id,modifiedNickName.getNickName())){
+            return RestResult.CreateResult(1);
         }else{
-            if(userService.changeNickName(id,modifiedNickName.getNickName())){
-                return RestResult.CreateResult(1);
-            }else{
-                return RestResult.CreateResult(0,"操作失败!");
-            }
+            return RestResult.CreateResult(0,"操作失败!");
         }
     }
 
-    @RequestMapping(value = "/modifyPassword", method = RequestMethod.POST)
+    @RequestMapping(value = "/auth/modifyPassword", method = RequestMethod.POST)
         @ResponseBody
     public RestResult modifyPassword(@ModelAttribute("ModifiedPassword")ModifiedPassword modifiedPassword){
         int id = userService.hasLogin(modifiedPassword.getToken());
-        if(id == 0){
-            return RestResult.CreateResult(0,"尚未登录!");
+        if(userService.changePassword(id,modifiedPassword.getOldPassword(),modifiedPassword.getNewPassword())){
+            return RestResult.CreateResult(1);
         }else{
-            if(userService.changePassword(id,modifiedPassword.getOldPassword(),modifiedPassword.getNewPassword())){
-                return RestResult.CreateResult(1);
-            }else{
-                return RestResult.CreateResult(0,"操作失败!");
-            }
+            return RestResult.CreateResult(0,"操作失败!");
         }
     }
 
-    @RequestMapping(value = "/modifyIcon", method = RequestMethod.POST)
+    @RequestMapping(value = "/auth/modifyIcon", method = RequestMethod.POST)
         @ResponseBody
     public RestResult modifyIcon(@ModelAttribute("ModifiedIcon")ModifiedIcon modifiedIcon){
         int id = userService.hasLogin(modifiedIcon.getToken());
-        if(id == 0){
-            return RestResult.CreateResult(0,"尚未登录!");
+        if(userService.changeIconUrl(id,modifiedIcon.getIconUrl())){
+            return RestResult.CreateResult(1);
         }else{
-            if(userService.changeIconUrl(id,modifiedIcon.getIconUrl())){
-                return RestResult.CreateResult(1);
-            }else{
-                return RestResult.CreateResult(0,"操作失败!");
-            }
+            return RestResult.CreateResult(0,"操作失败!");
         }
     }
-    @RequestMapping(value = "showAccount",method = RequestMethod.POST)
+    @RequestMapping(value = "/auth/showAccount",method = RequestMethod.POST)
     @ResponseBody
     public RestResult showAccount(@ModelAttribute("TokenAuthInfo") TokenAuthInfo tokenAuthInfo){
 //        List list = userService.getUserAccount(1);
 //        return RestResult.CreateResult(1,list);
         int userId = userService.hasLogin(tokenAuthInfo.getToken());
-        if(userId == 0){
-            return RestResult.CreateResult(0,"尚未登录!");
-        }else {
-            List list = userService.getUserAccount(userId);
-            return RestResult.CreateResult(1,list);
-        }
+        List list = userService.getUserAccount(userId);
+        return RestResult.CreateResult(1,list);
     }
 
-    @RequestMapping(value = "getContacts",method = RequestMethod.POST)
+    @RequestMapping(value = "/auth/getContacts",method = RequestMethod.POST)
         @ResponseBody
     public RestResult getContacts(@ModelAttribute("TokenAuthInfo") TokenAuthInfo tokenAuthInfo){
         int userId = userService.hasLogin(tokenAuthInfo.getToken());
-        if(userId == 0){
-            return RestResult.CreateResult(0,"尚未登录!");
-        }else{
-            List list = userService.getContacts(userId);
-            return RestResult.CreateResult(1,list);
-        }
+        List list = userService.getContacts(userId);
+        return RestResult.CreateResult(1,list);
     }
-    @RequestMapping(value = "getContactDetail",method = RequestMethod.POST)
+    @RequestMapping(value = "/auth/getContactDetail",method = RequestMethod.POST)
         @ResponseBody
     public RestResult getContactDetail(@ModelAttribute("UserIdInfoWithAuth")UserIdInfoWithAuth userIdInfoWithAuth){
         int userId = userService.hasLogin(userIdInfoWithAuth.getToken());
-        if(userId == 0){
-            return RestResult.CreateResult(0,"尚未登录!");
-        }else{
-            ContactDetail contactDetail = userService.getContactDetail(userIdInfoWithAuth.getId());
-            return RestResult.CreateResult(1,contactDetail);
-
-        }
+        ContactDetail contactDetail = userService.getContactDetail(userIdInfoWithAuth.getId());
+        return RestResult.CreateResult(1,contactDetail);
     }
-    @RequestMapping(value = "getMyMessages",method = RequestMethod.POST)
+    @RequestMapping(value = "/auth/getMyMessages",method = RequestMethod.POST)
     @ResponseBody
     public RestResult getMyMessages(@ModelAttribute("TokenAuthInfo")TokenAuthInfo tokenAuthInfo){
         int userId = userService.hasLogin(tokenAuthInfo.getToken());
-        if(userId == 0){
-            return RestResult.CreateResult(0,"尚未登录!");
-        }else{
-            List list = userService.getMessagesByUserId(userId);
-            return RestResult.CreateResult(1,list);
-        }
+        List list = userService.getMessagesByUserId(userId);
+        return RestResult.CreateResult(1,list);
 
     }
     @RequestMapping(value = "getAllTruckTypes",method = RequestMethod.POST)
@@ -179,18 +150,14 @@ public class UserController {
         return RestResult.CreateResult(1,list);
 
     }
-    @RequestMapping(value = "recharge",method = RequestMethod.POST)
+    @RequestMapping(value = "/auth/recharge",method = RequestMethod.POST)
     @ResponseBody
     public RestResult recharge(@ModelAttribute("RechargeInfo")RechargeInfo rechargeInfo){
         int userId = userService.hasLogin(rechargeInfo.getToken());
-        if(userId == 0){
-            return RestResult.CreateResult(0,"尚未登录!");
+        if(userService.recharge(userId,rechargeInfo.getMoney())){
+            return RestResult.CreateResult(1);
         }else{
-            if(userService.recharge(userId,rechargeInfo.getMoney())){
-                return RestResult.CreateResult(1);
-            }else{
-                return RestResult.CreateResult(0,"充值失败!");
-            }
+            return RestResult.CreateResult(0,"充值失败!");
         }
     }
 

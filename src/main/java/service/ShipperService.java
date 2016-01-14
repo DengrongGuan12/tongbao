@@ -13,4 +13,5 @@ public interface ShipperService {
     public List getFrequentAddresses(int userId);
     public List searchDriversByPhoneNum(String phoneNum);
     public boolean addFrequentAddress(int userId, AddressInfo addressInfo);
+    public boolean addFrequentDriver(int userId, int driverId);
 }
