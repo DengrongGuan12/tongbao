@@ -128,8 +128,6 @@ public class ShipperServiceImpl implements ShipperService{
         return frequent_address_dao.addFrequentAddress(fa);
     }
 
-    public boolean addFrequentDriver(int userId, int driverId) {
-        return false;
-    }
+
 
 }
