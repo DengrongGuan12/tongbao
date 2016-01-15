@@ -1,5 +1,7 @@
 package dao;
 
+import model.OrderTruckType;
+
 import java.util.List;
 
 /**
@@ -7,4 +9,5 @@ import java.util.List;
  */
 public interface OrderTruckTypeDao {
     public List getTruckTypesByOrderId(int orderId);
+    public boolean addTruckTypes(OrderTruckType orderTruckType);
 }

@@ -126,7 +126,6 @@ public class DriverServiceImpl implements DriverService {
         //判断是否为司机
         int userType = userManager.getUserType(userId);
         if(userType == 1){
-
             Driver_auth driver_auth = new Driver_auth();
             driver_auth.setPhoneNum(truckInfo.getPhoneNum());
             driver_auth.setUserId(userId);

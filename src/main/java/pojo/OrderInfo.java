@@ -11,6 +11,16 @@ public class OrderInfo extends TokenAuthInfo{
     private String fromContactName;
     private String fromContactPhone;
     private String toContactName;
+    private String toContactPhone;
+    private String loadTime;
+    private String goodsType;
+    private double goodsWeight;
+    private double goodsSize;
+    private String truckTypes;
+    private Byte payType;
+    private double price;
+    //备注信息
+    private String remark;
 
     public String getRemark() {
         return remark;
@@ -20,8 +30,6 @@ public class OrderInfo extends TokenAuthInfo{
         this.remark = remark;
     }
 
-    //备注信息
-    private String remark;
 
     public String getToContactPhone() {
         return toContactPhone;
@@ -55,11 +63,6 @@ public class OrderInfo extends TokenAuthInfo{
         this.toContactName = toContactName;
     }
 
-    private String toContactPhone;
-    private String loadTime;
-    private String goodsType;
-    private double goodsWeight;
-    private double goodsSize;
 
     public String getTruckTypes() {
         return truckTypes;
@@ -69,9 +72,7 @@ public class OrderInfo extends TokenAuthInfo{
         this.truckTypes = truckTypes;
     }
 
-    private String truckTypes;
-    private int payType;
-    private double price;
+
 
     public double getPrice() {
         return price;
@@ -131,11 +132,11 @@ public class OrderInfo extends TokenAuthInfo{
 
 
 
-    public int getPayType() {
+    public Byte getPayType() {
         return payType;
     }
 
-    public void setPayType(int payType) {
+    public void setPayType(Byte payType) {
         this.payType = payType;
     }
 

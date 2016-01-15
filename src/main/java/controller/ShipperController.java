@@ -56,7 +56,11 @@ public class ShipperController {
         if(userId == 0){
             return RestResult.CreateResult(0,"尚未登录!");
         }else{
-            return null;
+            if(shipperService.addFrequentDriver(userId,userIdInfoWithAuth.getId())){
+                return RestResult.CreateResult(1);
+            }else {
+                return RestResult.CreateResult(0,"操作失败");
+            }
         }
     }
 

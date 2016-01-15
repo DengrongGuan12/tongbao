@@ -39,7 +39,7 @@ public class Message implements Serializable{
     public void setType(Byte type) {
         this.type = type;
     }
-    @Column
+    @Column(columnDefinition = "INT default 0")
     public int getObject_id() {
         return object_id;
     }

@@ -170,7 +170,6 @@ public class UserServiceIml implements UserService {
             contactSimple.setPhoneNum(userTemp.getPhone_number());
             contactSimple.setType(userTemp.getType());
             returnContacts.add(contactSimple);
-
         }
 
         return returnContacts;
@@ -229,6 +228,8 @@ public class UserServiceIml implements UserService {
         user.setMoney(moneyTemp+money);
         model.Account account=new model.Account();
         account.setBuildTime(new Timestamp(System.currentTimeMillis()));
+        account.setUserId(userId);
+        //0代表充值
         account.setType(new Byte("0"));
         account.setMoney(money);
         accountDao.addAccount(account);

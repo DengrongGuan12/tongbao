@@ -17,18 +17,18 @@ public class Order implements Serializable{
     private Timestamp buildTime;
     private int shipperId;
     private int driverId;
-    private Date loadTime;
+    private String loadTime;
     private String addressFrom;
     private String addressTo;
     private String from_contact_name;
     private String from_contact_phone;
     private String to_contact_name;
     private String to_contact_phone;
-    private Byte goodsType;
-    private String goodsWeight;
-    private String goodsSize;
+    private String goodsType;
+    private double goodsWeight;
+    private double goodsSize;
     private Byte payType;
-    private int price;
+    private double price;
     private Byte evaluate_point;
     private String evaluate_content;
     private String remark;
@@ -70,11 +70,11 @@ public class Order implements Serializable{
         this.driverId = driverId;
     }
     @Column(name="load_time")
-    public Date getLoadTime() {
+    public String getLoadTime() {
         return loadTime;
     }
 
-    public void setLoadTime(Date loadTime) {
+    public void setLoadTime(String loadTime) {
         this.loadTime = loadTime;
     }
     @Column(name="address_from")
@@ -94,27 +94,27 @@ public class Order implements Serializable{
         this.addressTo = addressTo;
     }
     @Column(name="goods_type")
-    public Byte getGoodsType() {
+    public String getGoodsType() {
         return goodsType;
     }
 
-    public void setGoodsType(Byte goodsType) {
+    public void setGoodsType(String goodsType) {
         this.goodsType = goodsType;
     }
     @Column(name="goods_weight")
-    public String getGoodsWeight() {
+    public double getGoodsWeight() {
         return goodsWeight;
     }
 
-    public void setGoodsWeight(String goodsWeight) {
+    public void setGoodsWeight(double goodsWeight) {
         this.goodsWeight = goodsWeight;
     }
     @Column(name="goods_size")
-    public String getGoodsSize() {
+    public double getGoodsSize() {
         return goodsSize;
     }
 
-    public void setGoodsSize(String goodsSize) {
+    public void setGoodsSize(double goodsSize) {
         this.goodsSize = goodsSize;
     }
 
@@ -127,11 +127,11 @@ public class Order implements Serializable{
         this.payType = payType;
     }
     @Column
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
     @Column

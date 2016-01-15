@@ -13,7 +13,7 @@ import java.util.*;
 
 public class UserManager {
     private static final int UNIQUE_CODE_LENGTH=16;//token长度
-    private static final long DEFAULT_TIMEOUT=30000;//设置定时清理过期用户时间间隔
+    private static final long DEFAULT_TIMEOUT=900000;//设置定时清理过期用户时间间隔
     private static final long OVERDUE_TIME=1800000;//设置用户过期时长为30分钟
     private static Map<String,Object> all_user_online=new HashMap<String, Object>();
     private static Map<Integer,String>user_auth_code=new HashMap<Integer,String>();

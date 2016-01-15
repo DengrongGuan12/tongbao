@@ -2,6 +2,7 @@ package dao.impl;
 
 import dao.Driver_auth_Dao;
 import model.Driver_auth;
+import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -22,8 +23,9 @@ public class Driver_auth_Dao_Impl extends BaseDaoImpl implements Driver_auth_Dao
     }
 
     public Driver_auth getDriverAuthByTruckNum(String truckNum) {
-        List<Driver_auth> driver_auths = super.getList(Driver_auth.class,"truck_num","'"+truckNum+"'");
-        return driver_auths.get(0);
+//        List<Driver_auth> driver_auths = super.getList(Driver_auth.class,"truck_num","'"+truckNum+"'");
+//        return driver_auths.get(0);
+        return null;
     }
 
     public boolean updateDriverAuth(Driver_auth driver_auth) {
@@ -34,5 +36,11 @@ public class Driver_auth_Dao_Impl extends BaseDaoImpl implements Driver_auth_Dao
             e.printStackTrace();
             return false;
         }
+    }
+
+    public List getDriverByTruckType(String truckType) {
+        String hql = "from " + Driver_auth.class.getName() + " where authState = 2 and type = " + truckType;
+        Session session = getSession();
+        return session.createQuery(hql).list();
     }
 }

@@ -11,6 +11,25 @@ import java.util.List;
  */
 @Repository
 public class Frequent_driver_Dao_impl extends BaseDaoImpl implements Frequent_driver_Dao {
+
+    public boolean addFrequentDriver(Frequent_driver fD) {
+        try {
+            super.save(fD);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    public boolean deleteFrequentDriver(Frequent_driver fD) {
+        try {
+            super.delete(fD);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
     public List getFrequentDriversByShipperId(int shipperId) {
         return super.getList(Frequent_driver.class,"shipper_id",shipperId+"");
     }

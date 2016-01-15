@@ -2,6 +2,9 @@ package dao.impl;
 
 import dao.OrderTruckTypeDao;
 import model.OrderTruckType;
+import model.Trucks_type;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -17,6 +20,15 @@ public class OrderTruckTypeDaoImpl extends BaseDaoImpl implements OrderTruckType
         }catch (Exception e){
             e.printStackTrace();
             return null;
+        }
+    }
+
+    public boolean addTruckTypes(OrderTruckType orderTruckType) {
+        try{
+            super.save(orderTruckType);
+            return true;
+        }catch (Exception e){
+            return false;
         }
     }
 }

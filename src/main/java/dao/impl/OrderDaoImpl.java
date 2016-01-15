@@ -2,8 +2,10 @@ package dao.impl;
 
 import dao.OrderDao;
 import model.Order;
+import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -12,7 +14,25 @@ import java.util.List;
 @Repository
 public class OrderDaoImpl extends BaseDaoImpl implements OrderDao{
 
-    public boolean placeOrder(Order order) {
+    public boolean deleteOrder(int orderId) {
+        try {
+            super.delete(Order.class,orderId+"");
+            return true;
+        }catch(Exception e){
+            return false;
+        }
+
+    }
+
+    public Order getOrderByShipperIdAndBuildTime(int shipperId, Timestamp buildTime) {
+//        String hql = "from " + Order.class.getName() + " where " + "shipperId = " + shipperId +" and "+" buildTime = "+buildTime ;
+        String hql = "from " + Order.class.getName() + " where " + "shipperId = " + shipperId + "order by id desc";
+        Session session = getSession();
+        return (Order)session.createQuery(hql).list().get(0);
+
+    }
+
+    public boolean createOrder(Order order) {
         try {
             super.save(order);
             return true;
