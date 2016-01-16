@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.css">
 
     <script src="../lib/jquery-1.7.2.min.js" type="text/javascript"></script>
-
     <!-- Demo page code -->
 
     <style type="text/css">
@@ -96,10 +95,45 @@
 <script type="text/javascript">
         $("[rel=tooltip]").tooltip();
         $(function() {
+            // var token = $.cookie("token");
             $('.demo-cancel-click').click(function(){return false;});
         });
         function login(){
-            
+            // alert("login");
+            $.ajax({
+                type:"POST",
+                url:"/tongbao/user/login",
+                //提交的数据
+                data:{type:1,phoneNumber:"12345",password:"12345"},
+                //返回数据的格式
+                datatype: "json",//"xml", "html", "script", "json", "jsonp", "text".
+                //在请求之前调用的函数
+                beforeSend:function(){
+                    // alert("beforeSend");
+                },
+                //成功返回之后调用的函数             
+                success:function(data){
+                    // alert(data); 
+                    if(data.result == 1){
+                        location.href = "/tongbao/admin/index";
+                    }else{
+                        alert("用户名或密码错误!");
+                    }     
+                },
+                //调用执行后调用的函数
+                complete: function(XMLHttpRequest, textStatus){
+                   // alert(XMLHttpRequest.responseText);
+                   // alert(textStatus);
+                    //HideLoading();
+                },
+                //调用出错执行的函数
+                error: function(){
+                    //请求出错处理
+                    alert("error");
+                } 
+            }
+            );
+            return false;
         }
 
     </script>

@@ -10,6 +10,7 @@ import service.UserService;
 import vo.*;
 import vo.Account;
 
+import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +54,7 @@ public class UserServiceIml implements UserService {
     /*
     登录,登录成功返回用户信息,否则返回null
      */
-    public vo.User login(String phoneNumber, String password) {
+    public vo.User login(String phoneNumber, String password, HttpSession session) {
         User userTemp=userDao.getUserByPhoneNumber(phoneNumber);
         if(userTemp!=null&&userTemp.getPassword().equals(password)){
             String token=userManager.addToOnlineList(userTemp.getId(),userTemp.getType());
@@ -64,6 +65,7 @@ public class UserServiceIml implements UserService {
             userReturn.setToken(token);
             userReturn.setPoint(userTemp.getPoint());
             userReturn.setToken(token);
+            session.setAttribute("type",userTemp.getType());
             return userReturn;
         }else {
             return null;

@@ -3,6 +3,7 @@ package service;
 import model.User;
 import vo.ContactDetail;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ public interface UserService {
     public boolean register(String phoneNumber, String password,Byte type);
     public User getUserByPhoneNumber(String  phoneNumber);
     public User getUserById(int id);
-    public vo.User login(String phoneNumber,String password);
+    public vo.User login(String phoneNumber, String password, HttpSession session);
     public int hasLogin(String token);
     public boolean changeNickName(int id, String nickName);
     public boolean changePassword(int id, String oldPassword, String newPassword);

@@ -10,6 +10,8 @@ import service.OrderService;
 import service.UserService;
 import vo.ContactDetail;
 import vo.RestResult;
+
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -69,8 +71,8 @@ public class UserController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
         @ResponseBody
-    public RestResult login(@ModelAttribute("UserAuthInfo")UserAuthInfo userAuthInfo){
-        vo.User user = userService.login(userAuthInfo.getPhoneNumber(),userAuthInfo.getPassword());
+    public RestResult login(@ModelAttribute("UserAuthInfo")UserAuthInfo userAuthInfo, HttpSession session){
+        vo.User user = userService.login(userAuthInfo.getPhoneNumber(),userAuthInfo.getPassword(),session);
 
         if(user == null){
             return RestResult.CreateResult(0,"登录失败");
