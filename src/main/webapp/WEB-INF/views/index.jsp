@@ -77,7 +77,7 @@
                     </li>
 
                 </ul>
-                <a class="brand" href="index.html"><span class="first">Your</span> <span class="second">Company</span></a>
+                <a class="brand" href="index.html"><span class="first">通宝</span> <span class="second">后台管理</span></a>
         </div>
     </div>
 
