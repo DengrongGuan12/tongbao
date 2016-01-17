@@ -82,29 +82,24 @@
         </div>
     </div>
 
-
-
-    <div class="copyrights">Collect from <a href="http://www.cssmoban.com/"  title="网站模板">网站模板</a></div>
     <div class="sidebar-nav">
         <form class="search form-inline">
             <input type="text" placeholder="Search...">
         </form>
-
-        <a href="#dashboard-menu" class="nav-header" data-toggle="collapse"><i class="icon-dashboard"></i>Dashboard</a>
+        <a href="#dashboard-menu" class="nav-header" data-toggle="collapse"><i class="icon-dashboard"></i>管理</a>
         <ul id="dashboard-menu" class="nav nav-list collapse in">
-            <li><a href="index.html">Home</a></li>
-            <li ><a href="users.html">Sample List</a></li>
-            <li ><a href="user.html">Sample Item</a></li>
-            <li ><a href="media.html">Media</a></li>
-            <li ><a href="calendar.html">Calendar</a></li>
+            <li><a href="/tongbao/admin/index">首页</a></li>
+            <li ><a href="#">用户管理</a></li>
+            <li ><a href="#">司机审核</a></li>
+            <li ><a href="#">订单管理</a></li>
+            <li ><a href="#">账单管理</a></li>
 
         </ul>
 
-        <a href="#accounts-menu" class="nav-header" data-toggle="collapse"><i class="icon-briefcase"></i>Account<span class="label label-info">+3</span></a>
+        <a href="#accounts-menu" class="nav-header" data-toggle="collapse"><i class="icon-briefcase"></i>我的账户</a>
         <ul id="accounts-menu" class="nav nav-list collapse">
-            <li ><a href="sign-in.html">Sign In</a></li>
-            <li ><a href="sign-up.html">Sign Up</a></li>
-            <li ><a href="reset-password.html">Reset Password</a></li>
+            <li ><a href="/tongbao/admin/logout">退出登录</a></li>
+            <li ><a href="/tongbao/admin/resetPassword">重设密码</a></li>
         </ul>
 
         <a href="#error-menu" class="nav-header collapsed" data-toggle="collapse"><i class="icon-exclamation-sign"></i>Error Pages <i class="icon-chevron-up"></i></a>
