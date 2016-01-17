@@ -66,6 +66,9 @@ public class UserServiceIml implements UserService {
             userReturn.setPoint(userTemp.getPoint());
             userReturn.setToken(token);
             session.setAttribute("type",userTemp.getType());
+            session.setAttribute("name",userTemp.getNick_name());
+            session.setAttribute("id",userTemp.getId());
+            session.setAttribute("password",userTemp.getPassword());
             return userReturn;
         }else {
             return null;

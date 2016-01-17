@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -60,19 +61,19 @@
         <div class="navbar-inner">
                 <ul class="nav pull-right">
 
-                    <li><a href="#" class="hidden-phone visible-tablet visible-desktop" role="button">Settings</a></li>
+                    <!-- <li><a href="#" class="hidden-phone visible-tablet visible-desktop" role="button">Settings</a></li> -->
                     <li id="fat-menu" class="dropdown">
                         <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="icon-user"></i> Jack Smith
+                            <i class="icon-user"></i> <c:out value="${name}" />
                             <i class="icon-caret-down"></i>
                         </a>
 
                         <ul class="dropdown-menu">
-                            <li><a tabindex="-1" href="#">My Account</a></li>
+                            <li><a tabindex="-1" href="/tongbao/admin/resetPassword">重设密码</a></li>
                             <li class="divider"></li>
                             <li><a tabindex="-1" class="visible-phone" href="#">Settings</a></li>
                             <li class="divider visible-phone"></li>
-                            <li><a tabindex="-1" href="sign-in.html">Logout</a></li>
+                            <li><a tabindex="-1" href="/tongbao/admin/logout">退出登录</a></li>
                         </ul>
                     </li>
 
