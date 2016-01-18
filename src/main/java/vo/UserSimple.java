@@ -7,6 +7,16 @@ public class UserSimple {
     private String phoneNum;
     private String nickName;
 
+    public String getRegisterTime() {
+        return registerTime;
+    }
+
+    public void setRegisterTime(String registerTime) {
+        this.registerTime = registerTime;
+    }
+
+    private String registerTime;
+
     public int getId() {
         return id;
     }

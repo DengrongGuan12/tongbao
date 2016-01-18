@@ -255,4 +255,9 @@ public class UserServiceIml implements UserService {
     public int getTotalAccountNum() {
         return 0;
     }
+
+    //获取最近注册的用户,type 是用户类型, num 是需要获取的数量, 返回类型是userSimple 的列表, 按注册时间倒序排序, 注意userSimple添加了一个属性注册时间
+    public List getRecentRegUsers(Byte type, int num) {
+        return null;
+    }
 }

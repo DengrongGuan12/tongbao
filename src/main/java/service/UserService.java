@@ -27,5 +27,6 @@ public interface UserService {
     public int getTotalShipperNum();
     public int getTotalDriverNum();
     public int getTotalAccountNum();
+    public List getRecentRegUsers(Byte type, int num);
 
 }

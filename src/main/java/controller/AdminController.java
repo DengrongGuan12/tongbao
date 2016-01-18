@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import pojo.ModifiedPassword;
 import pojo.TokenAuthInfo;
@@ -17,6 +18,7 @@ import vo.RestResult;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * Created by I322233 on 1/14/2016.
@@ -120,6 +122,13 @@ public class AdminController {
         latestNumInfo.setAccountNum(accountNum);
         latestNumInfo.setOrderNum(orderNum);
         return RestResult.CreateResult(1,latestNumInfo);
+    }
+
+    @RequestMapping(value = "/getRecentRegisterUsers",method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult getRecentRegisterUsers(@RequestParam(value = "type")Byte type, @RequestParam(value = "num")int num){
+        List list = userService.getRecentRegUsers(type,num);
+        return RestResult.CreateResult(1,list);
     }
 
 
