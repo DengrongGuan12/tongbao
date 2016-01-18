@@ -17,6 +17,11 @@ public class AccountDaoImpl extends BaseDaoImpl implements AccountDao {
         return super.getList(Account.class,"userId",userId+"");
     }
 
+    public int getTotalAccountNum() {
+        int count = ((Long)getSession().createQuery("select count(*) from Account").uniqueResult()).intValue();
+        return count;
+    }
+
     public boolean addAccount(Account account) {
         try {
             super.save(account);

@@ -24,6 +24,11 @@ public class OrderDaoImpl extends BaseDaoImpl implements OrderDao{
 
     }
 
+    public int getTotalOrderNum() {
+        int count = ((Long)getSession().createQuery("select count(*) from Order").uniqueResult()).intValue();
+        return count;
+    }
+
     public Order getOrderByShipperIdAndBuildTime(int shipperId, Timestamp buildTime) {
 //        String hql = "from " + Order.class.getName() + " where " + "shipperId = " + shipperId +" and "+" buildTime = "+buildTime ;
         String hql = "from " + Order.class.getName() + " where " + "shipperId = " + shipperId + "order by id desc";

@@ -85,7 +85,6 @@ public class OrderServiceImpl implements OrderService {
         order.setRemark(orderInfo.getRemark());
         order.setState(new Byte("0"));
         orderDao.createOrder(order);
-        System.out.print(order.getId()+"!!!!!!");
         Order orderTemp = orderDao.getOrderByShipperIdAndBuildTime(userId,order.getBuildTime());
         for(int i=0;i<tTypes.length;i++){
             OrderTruckType orderTruckType = new OrderTruckType();
@@ -316,7 +315,8 @@ public class OrderServiceImpl implements OrderService {
         for(int i=0;i<truckTypes.size();i++){
             tTypes[i]=truckTypes.get(i)+"";
         }
-
+        //取已经选择过的司机，防止二次选择
+//        Set set = new HashSet();
         while (tTypes.length>0){
             if(tTypes.length==1){
                 this.saveOrder(userId,orderInfo,tTypes);
@@ -324,11 +324,18 @@ public class OrderServiceImpl implements OrderService {
             }
             MatchDriverModel m = this.maxMatchDriver(tTypes);
             Iterator iterator=m.carType.keySet().iterator();
+
             String [] tT = new String[m.carType.size()];
             int index=0;
             while (iterator.hasNext()){
-                tT[index]=m.carType.get(iterator.next())+"";
+                int driverAuthId = Integer.parseInt(iterator.next() + "");
+                tT[index]=m.carType.get(driverAuthId)+"";
                 index++;
+//                if(!set.contains(driverAuthId)){
+//                    set.add(driverAuthId);
+//
+//                }
+
             }
             this.saveOrder(userId,orderInfo,tT);
             for (int i=0;i<tT.length;i++){
@@ -415,7 +422,7 @@ public class OrderServiceImpl implements OrderService {
 
     //获取总的订单数量
     public int getTotalOrderNum() {
-        return 0;
+        return orderDao.getTotalOrderNum();
     }
 
     /*

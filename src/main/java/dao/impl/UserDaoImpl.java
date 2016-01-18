@@ -19,6 +19,23 @@ import java.util.List;
 public class UserDaoImpl extends BaseDaoImpl implements UserDao{
 
 
+    public int getTotalShipperNum() {
+        int count = ((Long)getSession().createQuery("select count(*) from User where type = '0'").uniqueResult()).intValue();
+        return count;
+    }
+
+    public int getTotalDriverNum() {
+        int count = ((Long)getSession().createQuery("select count(*) from User where type = '1'").uniqueResult()).intValue();
+        return count;
+    }
+
+    public List getRecentRegUsers(Byte type, int num) {
+        Session session=getSession();
+        String strSQL="from User as u where u.type = "+type+" order by register_time desc limit 0, "+num;
+        Query query = session.createQuery(strSQL);
+        return query.list();
+    }
+
     public boolean deleteUser(int id) {
         try{
             super.delete(User.class,id+"");

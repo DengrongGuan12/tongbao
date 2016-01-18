@@ -14,5 +14,9 @@ public interface UserDao {
     public boolean updateUser(User user);
     public boolean deleteUser(int id);
     public List searchDriver(String phoneNumber);
+    public int getTotalShipperNum();
+    public int getTotalDriverNum();
+    public List getRecentRegUsers(Byte type, int num);
+
 
 }

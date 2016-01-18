@@ -62,13 +62,12 @@ public class UserServiceIml implements UserService {
             userReturn.setIconUrl(userTemp.getIcon());
             userReturn.setMoney(userTemp.getMoney());
             userReturn.setNickName(userTemp.getNick_name());
-            userReturn.setToken(token);
             userReturn.setPoint(userTemp.getPoint());
             userReturn.setToken(token);
-            session.setAttribute("type",userTemp.getType());
-            session.setAttribute("name",userTemp.getNick_name());
-            session.setAttribute("id",userTemp.getId());
-            session.setAttribute("password",userTemp.getPassword());
+            session.setAttribute("type", userTemp.getType());
+            session.setAttribute("name", userTemp.getNick_name());
+            session.setAttribute("id", userTemp.getId());
+            session.setAttribute("password", userTemp.getPassword());
             return userReturn;
         }else {
             return null;
@@ -243,21 +242,33 @@ public class UserServiceIml implements UserService {
 
     //获取货主总人数
     public int getTotalShipperNum() {
-        return 0;
+        return userDao.getTotalShipperNum();
     }
 
     //获取司机总人数
     public int getTotalDriverNum() {
-        return 0;
+        return userDao.getTotalDriverNum();
     }
 
     //获取总的账单数量
     public int getTotalAccountNum() {
-        return 0;
+        return accountDao.getTotalAccountNum();
     }
 
     //获取最近注册的用户,type 是用户类型, num 是需要获取的数量, 返回类型是userSimple 的列表, 按注册时间倒序排序, 注意userSimple添加了一个属性注册时间
     public List getRecentRegUsers(Byte type, int num) {
-        return null;
+        List listTemp = userDao.getRecentRegUsers(type,num);
+        List list = new ArrayList();
+        for(int i=0;i<listTemp.size();i++){
+            User user = (User) listTemp.get(i);
+            UserSimple simple = new UserSimple();
+            simple.setId(user.getId());
+            simple.setPhoneNum(user.getPhone_number());
+            simple.setNickName(user.getNick_name());
+            simple.setRegisterTime(user.getRegister_time().toString());
+            list.add(simple);
+
+        }
+        return list;
     }
 }

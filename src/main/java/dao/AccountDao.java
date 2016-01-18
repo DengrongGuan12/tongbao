@@ -13,4 +13,5 @@ public interface AccountDao {
     public boolean updateAccount(Account account);
     public boolean deleteAccount(int id);
     public List<Object>getAccounts(int id);
+    public int getTotalAccountNum();
 }

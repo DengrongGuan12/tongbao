@@ -151,16 +151,16 @@ public class DriverServiceImpl implements DriverService {
 
     //获取尚未验证和验证失败的司机数量
     public int getUnSubmittedDriverNum() {
-        return 0;
+        return driver_auth_dao.getUnSubmittedDriverNum();
     }
 
     //获取正在验证的司机数量
     public int getWaitingExamineDriverNum() {
-        return 0;
+        return driver_auth_dao.getWaitingExamineDriverNum();
     }
 
     //获取验证成功和验证失败的司机数量
     public int getExaminedDriverNum() {
-        return 0;
+        return driver_auth_dao.getExaminedDriverNum();
     }
 }

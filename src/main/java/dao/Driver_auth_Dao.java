@@ -12,4 +12,7 @@ public interface Driver_auth_Dao {
     public Driver_auth getDriverAuthByTruckNum(String truckNum);
     public boolean updateDriverAuth(Driver_auth driver_auth);
     public List getDriverByTruckType(String truckType);
+    public int getUnSubmittedDriverNum();
+    public int getWaitingExamineDriverNum();
+    public int getExaminedDriverNum();
 }
