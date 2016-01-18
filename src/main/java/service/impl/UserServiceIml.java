@@ -240,4 +240,19 @@ public class UserServiceIml implements UserService {
         accountDao.addAccount(account);
         return userDao.updateUser(user);
     }
+
+    //获取货主总人数
+    public int getTotalShipperNum() {
+        return 0;
+    }
+
+    //获取司机总人数
+    public int getTotalDriverNum() {
+        return 0;
+    }
+
+    //获取总的账单数量
+    public int getTotalAccountNum() {
+        return 0;
+    }
 }

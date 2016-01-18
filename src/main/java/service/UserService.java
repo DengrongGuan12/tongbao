@@ -24,5 +24,8 @@ public interface UserService {
     public List getTruckTypes();
     public List getMessagesByUserId(int userId);
     public boolean recharge(int userId, double money);
+    public int getTotalShipperNum();
+    public int getTotalDriverNum();
+    public int getTotalAccountNum();
 
 }

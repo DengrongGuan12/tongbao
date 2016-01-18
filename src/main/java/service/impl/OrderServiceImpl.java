@@ -413,6 +413,11 @@ public class OrderServiceImpl implements OrderService {
         }
     }
 
+    //获取总的订单数量
+    public int getTotalOrderNum() {
+        return 0;
+    }
+
     /*
     根据order 生成orderSimple
      */

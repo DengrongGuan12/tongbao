@@ -132,7 +132,7 @@
                 //调用出错执行的函数
                 error: function(){
                     //请求出错处理
-                    alert("error");
+                    alert("error!");
                 } 
             }
             );

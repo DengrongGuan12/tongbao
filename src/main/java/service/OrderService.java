@@ -19,4 +19,5 @@ public interface OrderService {
     public OrderDetail getOrderDetail(int userId, int orderId);
     public boolean splitOrder(int userId, OrderInfo orderInfo);
     public List getMyOrderList(int userId, int type);
+    public int getTotalOrderNum();
 }

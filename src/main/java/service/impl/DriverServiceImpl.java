@@ -148,4 +148,19 @@ public class DriverServiceImpl implements DriverService {
             return false;
         }
     }
+
+    //获取尚未验证和验证失败的司机数量
+    public int getUnSubmittedDriverNum() {
+        return 0;
+    }
+
+    //获取正在验证的司机数量
+    public int getWaitingExamineDriverNum() {
+        return 0;
+    }
+
+    //获取验证成功和验证失败的司机数量
+    public int getExaminedDriverNum() {
+        return 0;
+    }
 }

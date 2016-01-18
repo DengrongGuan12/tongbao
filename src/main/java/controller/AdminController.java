@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import pojo.ModifiedPassword;
 import pojo.TokenAuthInfo;
+import service.DriverService;
+import service.OrderService;
 import service.UserService;
+import vo.LatestNumInfo;
 import vo.RestResult;
 
 import javax.servlet.http.HttpServletResponse;
@@ -23,6 +26,13 @@ import javax.servlet.http.HttpSession;
 public class AdminController {
     @Autowired
     UserService userService;
+
+    @Autowired
+    DriverService driverService;
+
+    @Autowired
+    OrderService orderService;
+
     @RequestMapping("/login")
     public String login(HttpSession session){
         Object o = session.getAttribute("type");
@@ -52,6 +62,22 @@ public class AdminController {
     @RequestMapping("/index")
     public String index(Model model,HttpSession session){
         model.addAttribute("name",session.getAttribute("name"));
+        int unSubmittedDriverNum = driverService.getUnSubmittedDriverNum();
+        int waitingExamineDriverNum = driverService.getWaitingExamineDriverNum();
+        int examinedDriverNum = driverService.getExaminedDriverNum();
+        model.addAttribute("unSubmittedDriverNum",unSubmittedDriverNum);
+        model.addAttribute("waitingExamineDriverNum",waitingExamineDriverNum);
+        model.addAttribute("examinedDriverNum",examinedDriverNum);
+
+        int shipperNum = userService.getTotalShipperNum();
+        int driverNum = userService.getTotalDriverNum();
+        int orderNum = orderService.getTotalOrderNum();
+        int accountNum = userService.getTotalAccountNum();
+        model.addAttribute("shipperNum",shipperNum);
+        model.addAttribute("driverNum",driverNum);
+        model.addAttribute("orderNum",orderNum);
+        model.addAttribute("accountNum",accountNum);
+
         return "index";
     }
 
@@ -80,6 +106,20 @@ public class AdminController {
         }else {
             return RestResult.CreateResult(0,"原密码不正确!");
         }
+    }
+    @RequestMapping(value = "/getLatestNumInfo",method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult getLatestNumInfo(){
+        int shipperNum = userService.getTotalShipperNum();
+        int driverNum = userService.getTotalDriverNum();
+        int accountNum = userService.getTotalAccountNum();
+        int orderNum = orderService.getTotalOrderNum();
+        LatestNumInfo latestNumInfo = new LatestNumInfo();
+        latestNumInfo.setShipperNum(shipperNum);
+        latestNumInfo.setDriverNum(driverNum);
+        latestNumInfo.setAccountNum(accountNum);
+        latestNumInfo.setOrderNum(orderNum);
+        return RestResult.CreateResult(1,latestNumInfo);
     }
 
 

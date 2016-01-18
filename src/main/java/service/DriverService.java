@@ -11,4 +11,7 @@ public interface DriverService {
     public boolean setRealNameInfo(int userId, RealNameAuthInfo realNameAuthInfo);
     public boolean setTruckAuthInfo(int userId, TruckAuthInfo truckAuthInfo);
     public boolean addTruck(int userId,TruckInfo truckInfo);
+    public int getUnSubmittedDriverNum();
+    public int getWaitingExamineDriverNum();
+    public int getExaminedDriverNum();
 }
