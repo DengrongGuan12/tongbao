@@ -145,5 +145,11 @@ public class AdminController {
         return RestResult.CreateResult(1,list);
     }
 
+    @RequestMapping(value = "/shipperManage")
+    public String shipperManage(Model model,HttpSession session){
+        model.addAttribute("name",session.getAttribute("name"));
+        return "shipperManage";
+    }
+
 
 }

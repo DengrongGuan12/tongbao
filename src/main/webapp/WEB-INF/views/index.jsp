@@ -65,56 +65,7 @@
   <body class="">
   <!--<![endif]-->
 
-    <div class="navbar">
-        <div class="navbar-inner">
-                <ul class="nav pull-right">
-
-                    <!-- <li><a href="#" class="hidden-phone visible-tablet visible-desktop" role="button">Settings</a></li> -->
-                    <li id="fat-menu" class="dropdown">
-                        <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="icon-user"></i> <c:out value="${name}" />
-                            <i class="icon-caret-down"></i>
-                        </a>
-
-                        <ul class="dropdown-menu">
-                            <li><a tabindex="-1" href="/tongbao/admin/resetPassword">重设密码</a></li>
-                            <li class="divider"></li>
-                            <li><a tabindex="-1" class="visible-phone" href="#">Settings</a></li>
-                            <li class="divider visible-phone"></li>
-                            <li><a tabindex="-1" href="/tongbao/admin/logout">退出登录</a></li>
-                        </ul>
-                    </li>
-
-                </ul>
-                <a class="brand" href="index.html"><span class="first">通宝</span> <span class="second">后台管理</span></a>
-        </div>
-    </div>
-
-    <div class="sidebar-nav">
-        <form class="search form-inline">
-            <input type="text" placeholder="搜索...">
-        </form>
-        <a href="#dashboard-menu" class="nav-header" data-toggle="collapse"><i class="icon-dashboard"></i>主控面板</a>
-        <ul id="dashboard-menu" class="nav nav-list collapse in">
-            <li><a href="/tongbao/admin/index">首页</a></li>
-            <li ><a href="#">订单管理</a></li>
-            <li ><a href="#">账单管理</a></li>
-
-        </ul>
-
-        <a href="#usermanager-menu" class="nav-header" data-toggle="collapse"><i class="icon-user"></i>用户管理</a>
-        <ul id="usermanager-menu" class="nav nav-list collapse">
-            <li ><a href="#">货主管理</a></li>
-            <li ><a href="#">司机管理</a></li>
-
-        </ul>
-        <a href="#accounts-menu" class="nav-header" data-toggle="collapse"><i class="icon-briefcase"></i>我的账户</a>
-        <ul id="accounts-menu" class="nav nav-list collapse">
-            <li ><a href="/tongbao/admin/logout">退出登录</a></li>
-            <li ><a href="/tongbao/admin/resetPassword">重设密码</a></li>
-        </ul>
-
-    </div>
+    <%@include file="header.jsp" %>
 
 
 
@@ -253,7 +204,7 @@
                 </tr>
               </tbody>
             </table>
-            <p><a href="users.html">更多...</a></p>
+            <p><a href="/tongbao/admin/shipperManage">更多...</a></p>
         </div>
     </div>
     <div class="block span6">
@@ -328,7 +279,7 @@
             <a href="#tablewidget3" data-toggle="collapse">订单</a>
         </div>
         <div id="tablewidget3" class="block-body collapse in">
-            <table class="table list">
+            <table class="table list" id="orderTable">
               <thead>
                 <tr>
                   <th>id</th>
@@ -403,7 +354,7 @@
             <a href="#tablewidget4" data-toggle="collapse">账单</a>
         </div>
         <div id="tablewidget4" class="block-body collapse in">
-            <table class="table list">
+            <table class="table list" id="accountTable">
               <thead>
                 <tr>
                   <th>id</th>
@@ -457,13 +408,7 @@
 </div>
 
 
-                    <footer>
-                        <hr>
-
-
-
-                        <p>&copy; 2015 <a href="http://software.nju.edu.cn" target="_blank">南京大学软件学院</a></p>
-                    </footer>
+                    <%@include file="footer.jsp"%>
 
             </div>
         </div>
@@ -546,6 +491,53 @@
           }else{
             $('#driverTable tr:last').after(trs);
           }
+        }
+        function getRecentOrders(){
+          $.ajax({
+            type: "POST",
+            url: "/tongbao/admin/getRecentOrders",
+            data: {num: 6},
+            datatype: "json",
+            success: function(data){
+              if(data.result == 1){
+                addOrdersToTable(data.data);
+              }else{
+                alert("error");
+              }
+            },
+            error: function(){
+              alert("error!");
+            }
+          });
+        }
+        function addOrdersToTable(data){
+          var trs = "";
+          for (var i = 0; i <= data.length - 1; i++) {
+            trs += "<tr><td>"+data[i].id+"</td><td>"+data[i].money+"</td><td>"+data[i].time+"</td><td>"+data[i].stateStr
+            +"</td><td>"+data[i].addressFrom+"</td><td>"+data[i].addressTo+"</td></tr>"
+          };
+          $('#orderTable tr:last').after(trs);
+        }
+        function getRecentAccounts(){
+          $.ajax({
+            type: "POST",
+            url: "/tongbao/admin/getRecentAccounts",
+            data: {num: 6},
+            datatype: "json",
+            success: function(data){
+              if(data.result == 1){
+                addAccountsToTable(data.data);
+              }else{
+                alert("error");
+              }
+            },
+            error: function(){
+              alert("error!");
+            }
+          });
+        }
+        function addAccountsToTable(data){
+
         }
     </script>
 
