@@ -4,6 +4,25 @@ package vo;
  * Created by dengrong on 2016/1/3.
  */
 public class Account {
+    private int id;
+
+    public String getTypeStr() {
+        return typeStr;
+    }
+
+    public void setTypeStr(String typeStr) {
+        this.typeStr = typeStr;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    private String typeStr;
     private int type;
     private String time;
     private double money;

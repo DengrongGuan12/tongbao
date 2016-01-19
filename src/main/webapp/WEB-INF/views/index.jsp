@@ -199,13 +199,13 @@
     <div class="block span6">
         <div class="block-heading">
             <span class="block-icon pull-right">
-                <a href="#" class="demo-cancel-click" rel="tooltip" title="点击刷新"><i class="icon-refresh"></i></a>
+                <a href="#" class="demo-cancel-click" rel="tooltip" title="点击刷新" id="refreshShipper"><i class="icon-refresh"></i></a>
             </span>
 
             <a href="#tablewidget1" data-toggle="collapse">货主</a>
         </div>
         <div id="tablewidget1" class="block-body collapse in">
-            <table class="table">
+            <table class="table" id="shipperTable">
               <thead>
                 <tr>
                   <th>id</th>
@@ -259,13 +259,13 @@
     <div class="block span6">
         <div class="block-heading">
             <span class="block-icon pull-right">
-                <a href="#" class="demo-cancel-click" rel="tooltip" title="点击刷新"><i class="icon-refresh"></i></a>
+                <a href="#" class="demo-cancel-click" rel="tooltip" title="点击刷新" id="refreshDriver"><i class="icon-refresh"></i></a>
             </span>
 
             <a href="#tablewidget2" data-toggle="collapse">司机</a>
         </div>
         <div id="tablewidget2" class="block-body collapse in">
-            <table class="table">
+            <table class="table" id="driverTable">
               <thead>
                 <tr>
                   <th>id</th>
@@ -322,63 +322,73 @@
     <div class="block span6">
         <div class="block-heading">
             <span class="block-icon pull-right">
-                <a href="#" class="demo-cancel-click" rel="tooltip" title="点击刷新"><i class="icon-refresh"></i></a>
+                <a href="#" class="demo-cancel-click" rel="tooltip" title="点击刷新" id="refreshOrder"><i class="icon-refresh"></i></a>
             </span>
 
             <a href="#tablewidget3" data-toggle="collapse">订单</a>
         </div>
         <div id="tablewidget3" class="block-body collapse in">
             <table class="table list">
+              <thead>
+                <tr>
+                  <th>id</th>
+                  <th>支付金额</th>
+                  <th>发布时间</th>
+                  <th>当前状态</th>
+                  <th>起点</th>
+                  <th>终点</th>
+                </tr>
+              </thead>
               <tbody>
-                  <tr>
-                      <td>
-                          <p><i class="icon-user"></i> Mark Otto</p>
-                      </td>
-                      <td>
-                          <p>Amount: $1,247</p>
-                      </td>
-                      <td>
-                          <p>Date: 7/19/2012</p>
-                          <a href="#">View Transaction</a>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>
-                          <p><i class="icon-user"></i> Audrey Ann</p>
-                      </td>
-                      <td>
-                          <p>Amount: $2,793</p>
-                      </td>
-                      <td>
-                          <p>Date: 7/12/2012</p>
-                          <a href="#">View Transaction</a>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>
-                          <p><i class="icon-user"></i> Mark Tompson</p>
-                      </td>
-                      <td>
-                          <p>Amount: $2,349</p>
-                      </td>
-                      <td>
-                          <p>Date: 3/10/2012</p>
-                          <a href="#">View Transaction</a>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>
-                          <p><i class="icon-user"></i> Ashley Jacobs</p>
-                      </td>
-                      <td>
-                          <p>Amount: $1,192</p>
-                      </td>
-                      <td>
-                          <p>Date: 1/19/2012</p>
-                          <a href="#">View Transaction</a>
-                      </td>
-                  </tr>
-
+                <tr>
+                  <td>1</td>
+                  <td>Mark</td>
+                  <td>Tompson</td>
+                  <td>the_mark7</td>
+                  <td>the_mark7</td>
+                  <td>the_mark7</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>Ashley</td>
+                  <td>Jacobs</td>
+                  <td>ash11927</td>
+                  <td>the_mark7</td>
+                  <td>the_mark7</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>Audrey</td>
+                  <td>Ann</td>
+                  <td>audann84</td>
+                  <td>the_mark7</td>
+                  <td>the_mark7</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>Mark</td>
+                  <td>Tompson</td>
+                  <td>the_mark7</td>
+                  <td>the_mark7</td>
+                  <td>the_mark7</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>Ashley</td>
+                  <td>Jacobs</td>
+                  <td>ash11927</td>
+                  <td>the_mark7</td>
+                  <td>the_mark7</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>Audrey</td>
+                  <td>Ann</td>
+                  <td>audann84</td>
+                  <td>the_mark7</td>
+                  <td>the_mark7</td>
+                </tr>
+                
               </tbody>
             </table>
             <p><a href="users.html">更多...</a></p>
@@ -387,63 +397,58 @@
     <div class="block span6">
         <div class="block-heading">
             <span class="block-icon pull-right">
-                <a href="#" class="demo-cancel-click" rel="tooltip" title="点击刷新"><i class="icon-refresh"></i></a>
+                <a href="#" class="demo-cancel-click" rel="tooltip" title="点击刷新" id="refreshAccount"><i class="icon-refresh"></i></a>
             </span>
 
             <a href="#tablewidget4" data-toggle="collapse">账单</a>
         </div>
         <div id="tablewidget4" class="block-body collapse in">
             <table class="table list">
+              <thead>
+                <tr>
+                  <th>id</th>
+                  <th>交易时间</th>
+                  <th>交易金额</th>
+                  <th>类型</th>
+                </tr>
+              </thead>
               <tbody>
-                  <tr>
-                      <td>
-                          <p><i class="icon-user"></i> Mark Otto</p>
-                      </td>
-                      <td>
-                          <p>Amount: $1,247</p>
-                      </td>
-                      <td>
-                          <p>Date: 7/19/2012</p>
-                          <a href="#">View Transaction</a>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>
-                          <p><i class="icon-user"></i> Audrey Ann</p>
-                      </td>
-                      <td>
-                          <p>Amount: $2,793</p>
-                      </td>
-                      <td>
-                          <p>Date: 7/12/2012</p>
-                          <a href="#">View Transaction</a>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>
-                          <p><i class="icon-user"></i> Mark Tompson</p>
-                      </td>
-                      <td>
-                          <p>Amount: $2,349</p>
-                      </td>
-                      <td>
-                          <p>Date: 3/10/2012</p>
-                          <a href="#">View Transaction</a>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>
-                          <p><i class="icon-user"></i> Ashley Jacobs</p>
-                      </td>
-                      <td>
-                          <p>Amount: $1,192</p>
-                      </td>
-                      <td>
-                          <p>Date: 1/19/2012</p>
-                          <a href="#">View Transaction</a>
-                      </td>
-                  </tr>
-
+                <tr>
+                  <td>1</td>
+                  <td>Mark</td>
+                  <td>Tompson</td>
+                  <td>the_mark7</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>Mark</td>
+                  <td>Tompson</td>
+                  <td>the_mark7</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>Mark</td>
+                  <td>Tompson</td>
+                  <td>the_mark7</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>Mark</td>
+                  <td>Tompson</td>
+                  <td>the_mark7</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>Mark</td>
+                  <td>Tompson</td>
+                  <td>the_mark7</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>Mark</td>
+                  <td>Tompson</td>
+                  <td>the_mark7</td>
+                </tr>
               </tbody>
             </table>
             <p><a href="users.html">更多...</a></p>
@@ -472,6 +477,8 @@
         $("[rel=tooltip]").tooltip();
         $(function() {
             $('.demo-cancel-click').click(function(){return false;});
+            getRecentUsers(0);
+            getRecentUsers(1);
         });
         $('#refreshNum').click(function(){
           $.ajax({
@@ -506,9 +513,40 @@
                 error: function(){
                     //请求出错处理
                     location.href = "/tongbao/admin/login";
+                    alert("err/or!");
                 } 
           });
         });
+        function getRecentUsers(type){
+          $.ajax({
+            type: "POST",
+            url: "/tongbao/admin/getRecentRegisterUsers",
+            data: {type: type, num: 6},
+            datatype: "json",
+            success: function(data){
+              if(data.result == 1){
+                addUsersToTable(type,data.data);
+              }else{
+                alert("error!");
+              }
+            },
+            error: function(){
+              // location.href = "/tongbao/admin/login"
+              alert('error');
+            }
+          });
+        }
+        function addUsersToTable(type,data){
+          var trs = "";
+          for (var i = 0; i <= data.length - 1; i++) {
+            trs += "<tr><td>"+data[i].id+"</td><td>"+data[i].phoneNum+"</td><td>"+data[i].nickName+"</td><td>"+data[i].registerTime+"</td></tr>"
+          };
+          if(type == 0){
+            $('#shipperTable tr:last').after(trs);
+          }else{
+            $('#driverTable tr:last').after(trs);
+          }
+        }
     </script>
 
   </body>

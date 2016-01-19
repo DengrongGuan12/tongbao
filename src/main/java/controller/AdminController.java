@@ -131,5 +131,19 @@ public class AdminController {
         return RestResult.CreateResult(1,list);
     }
 
+    @RequestMapping(value = "/getRecentOrders", method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult getRecentOrders(@RequestParam(value = "num")int num){
+        List list = orderService.getRecentOrders(num);
+        return RestResult.CreateResult(1,list);
+    }
+
+    @RequestMapping(value = "/getRecentAccounts", method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult getRecentAccounts(@RequestParam(value = "num")int num){
+        List list = userService.getRecentAccounts(num);
+        return RestResult.CreateResult(1,list);
+    }
+
 
 }

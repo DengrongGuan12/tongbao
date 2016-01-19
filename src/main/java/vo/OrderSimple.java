@@ -18,6 +18,16 @@ public class OrderSimple {
     private String toContactPhone;
     private int state;
 
+    public String getStateStr() {
+        return stateStr;
+    }
+
+    public void setStateStr(String stateStr) {
+        this.stateStr = stateStr;
+    }
+
+    private String stateStr = "";
+
     public int getState() {
         return state;
     }

@@ -426,6 +426,24 @@ public class OrderServiceImpl implements OrderService {
     }
 
     /*
+    获取最近的订单列表,按时间倒序排序, 使用OrderSimple, 需要set的值有:
+    id,money,time,state,addressFrom, addressTo,
+    stateStr: 状态描述,根据state的值,这样就不需要前台去解析了,对应关系如下
+    0:待处理
+    1:进行中
+    2:已完成
+    3:被取消
+    4:待取消
+    5:货主删除
+    6:司机删除
+    7:删除
+     */
+
+    public List getRecentOrders(int num) {
+        return null;
+    }
+
+    /*
     根据order 生成orderSimple
      */
     private OrderSimple genOrderSimpleFromOrder(Order order){

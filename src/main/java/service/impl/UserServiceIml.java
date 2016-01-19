@@ -271,4 +271,15 @@ public class UserServiceIml implements UserService {
         }
         return list;
     }
+
+
+    /*
+    返回最近生成的账单, 使用Account,按时间倒序,需要设置的值有
+    id, type, time, money,
+    typeStr 根据type生成,对应关系看一下数据库的表
+    有这几种类型 充值,提现,支付,收益,退款
+     */
+    public List getRecentAccounts(int num) {
+        return null;
+    }
 }
