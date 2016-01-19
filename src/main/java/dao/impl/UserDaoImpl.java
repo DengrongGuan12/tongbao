@@ -31,8 +31,10 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao{
 
     public List getRecentRegUsers(Byte type, int num) {
         Session session=getSession();
-        String strSQL="from User as u where u.type = "+type+" order by register_time desc limit 0, "+num;
+        String strSQL="from User as u where u.type = "+type+" order by register_time desc";
         Query query = session.createQuery(strSQL);
+        query.setFirstResult(0);
+        query.setMaxResults(num);
         return query.list();
     }
 
