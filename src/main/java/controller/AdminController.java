@@ -151,12 +151,34 @@ public class AdminController {
         return "shipperManage";
     }
 
-    @RequestMapping(value = "/getPageNumOfUsers", method = RequestMethod.POST)
+    @RequestMapping(value = "/getAllUsersByType",method = RequestMethod.POST)
     @ResponseBody
-    public RestResult getPageNumOfUsers(@RequestParam(value = "type")Byte type,@RequestParam(value = "num")int num){
-        int pages = userService.getPageNumOfUsers(type,num);
-        return RestResult.CreateResult(1,pages);
+    public RestResult getAllUsersByType(@RequestParam(value = "type")Byte type){
+        List list = userService.getAllUsersByType(type);
+        return RestResult.CreateResult(1,list);
     }
+
+
+    @RequestMapping(value = "/deleteUser",method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult deleteUser(@RequestParam(value = "id")int id){
+        if(userService.deleteUser(id)){
+            return RestResult.CreateResult(1);
+        }else {
+            return RestResult.CreateResult(0,"删除失败!");
+        }
+    }
+
+    @RequestMapping(value = "/resetUserPassword",method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult resetUserPassword(@RequestParam(value = "id")int id, @RequestParam(value = "password")String password){
+        if(userService.resetPassword(id,password)){
+            return RestResult.CreateResult(1);
+        }else{
+            return RestResult.CreateResult(0,"重置失败");
+        }
+    }
+
 
 
 }

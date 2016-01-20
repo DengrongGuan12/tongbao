@@ -11,6 +11,27 @@ public class User {
     private String token;
     private int id;
 
+    public String getPhoneNum() {
+        return phoneNum;
+    }
+
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum;
+    }
+
+    private String phoneNum;
+
+
+    public Byte getState() {
+        return state;
+    }
+
+    public void setState(Byte state) {
+        this.state = state;
+    }
+
+    private Byte state;
+
     public String getRegisterTime() {
         return registerTime;
     }

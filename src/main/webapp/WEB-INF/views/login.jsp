@@ -107,7 +107,7 @@
                 type:"POST",
                 url:"/tongbao/user/login",
                 //提交的数据
-                data:{type:1,phoneNumber:phoneNumber,password:password},
+                data:{type:2,phoneNumber:phoneNumber,password:password},
                 //返回数据的格式
                 datatype: "json",//"xml", "html", "script", "json", "jsonp", "text".
                 //在请求之前调用的函数

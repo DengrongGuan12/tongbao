@@ -29,6 +29,9 @@ public interface UserService {
     public int getTotalAccountNum();
     public List getRecentRegUsers(Byte type, int num);
     public List getRecentAccounts(int num);
-    public int getPageNumOfUsers(Byte type, int num);
+
+    public boolean deleteUser(int userId);
+    public boolean resetPassword(int userId, String newPassword);
+    public List getAllUsersByType(Byte type);
 
 }

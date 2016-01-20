@@ -15,8 +15,9 @@
     <link rel="stylesheet" type="text/css" href="../stylesheets/theme.css">
     <link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.css">
 
-    <script src="../lib/jquery-1.7.2.min.js" type="text/javascript"></script>
-
+    <script src="../lib/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../lib/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/jquery.dataTables.min.css">
     <!-- Demo page code -->
 
     <style type="text/css">
@@ -34,6 +35,9 @@
         .brand .second {
             color: #fff;
             font-weight: bold;
+        }
+        #example td{
+          text-align: center;
         }
     </style>
 
@@ -75,109 +79,194 @@
             <div class="row-fluid">
 
 <div class="btn-toolbar">
-    <button class="btn btn-primary"><i class="icon-plus"></i> New User</button>
-    <button class="btn">Import</button>
-    <button class="btn">Export</button>
-  <div class="btn-group">
-  </div>
+    <button class="btn btn-primary"><i class="icon-plus"></i> 添加货主</button>
 </div>
 <div class="well">
-    <table class="table">
+    <table id="example" class="display" cellspacing="0" width="100%">
       <thead>
         <tr>
-          <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
+          <th>id</th>
+          <th>手机号</th>
+          <th>昵称</th>
+          <th>积分</th>
+          <th>金币</th>
+          <th>注册时间</th>
           <th style="width: 26px;"></th>
         </tr>
       </thead>
+      <tfoot>
+        <tr>
+          <th>id</th>
+          <th>手机号</th>
+          <th>昵称</th>
+          <th>积分</th>
+          <th>金币</th>
+          <th>注册时间</th>
+          <th style="width: 26px;"></th>
+        </tr>
+      </tfoot>
       <tbody>
         <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Tompson</td>
-          <td>the_mark7</td>
-          <td>
-              <a href="user.html"><i class="icon-pencil"></i></a>
-              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          <td align="center">1</td>
+          <td align="center">Mark</td>
+          <td align="center">Tompson</td>
+          <td align="center">the_mark7</td>
+          <td align="center">Tompson</td>
+          <td align="center">the_mark7</td>
+          <td align="center">
+              <a href="javascript:void(0)" title="重置密码" role="button" onclick="resetPassword(12);"><i class="icon-exclamation-sign"></i></a>
+              <a href="javascript:void(0)" role="button" title="删除" onclick="showModal(12);"><i class="icon-remove"></i></a>
           </td>
         </tr>
         <tr>
-          <td>2</td>
-          <td>Ashley</td>
-          <td>Jacobs</td>
-          <td>ash11927</td>
-          <td>
-              <a href="user.html"><i class="icon-pencil"></i></a>
-              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          <td align="center">1</td>
+          <td align="center">Mark</td>
+          <td align="center">Tompson</td>
+          <td align="center">the_mark7</td>
+          <td align="center">Tompson</td>
+          <td align="center">the_mark7</td>
+          <td align="center">
+              <a href="javascript:void(0)" title="重置密码" role="button" onclick="resetPassword(12);"><i class="icon-exclamation-sign"></i></a>
+              <a href="javascript:void(0)" role="button" title="删除" onclick="showModal(12);"><i class="icon-remove"></i></a>
           </td>
         </tr>
         <tr>
-          <td>3</td>
-          <td>Audrey</td>
-          <td>Ann</td>
-          <td>audann84</td>
-          <td>
-              <a href="user.html"><i class="icon-pencil"></i></a>
-              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          <td align="center">1</td>
+          <td align="center">Mark</td>
+          <td align="center">Tompson</td>
+          <td align="center">the_mark7</td>
+          <td align="center">Tompson</td>
+          <td align="center">the_mark7</td>
+          <td align="center">
+              <a href="javascript:void(0)" title="重置密码" role="button" onclick="resetPassword(12);"><i class="icon-exclamation-sign"></i></a>
+              <a href="javascript:void(0)" role="button" title="删除" onclick="showModal(12);"><i class="icon-remove"></i></a>
           </td>
         </tr>
         <tr>
-          <td>4</td>
-          <td>John</td>
-          <td>Robinson</td>
-          <td>jr5527</td>
-          <td>
-              <a href="user.html"><i class="icon-pencil"></i></a>
-              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          <td align="center">1</td>
+          <td align="center">Mark</td>
+          <td align="center">Tompson</td>
+          <td align="center">the_mark7</td>
+          <td align="center">Tompson</td>
+          <td align="center">the_mark7</td>
+          <td align="center">
+              <a href="javascript:void(0)" title="重置密码" role="button" onclick="resetPassword(12);"><i class="icon-exclamation-sign"></i></a>
+              <a href="javascript:void(0)" role="button" title="删除" onclick="showModal(12);"><i class="icon-remove"></i></a>
           </td>
         </tr>
         <tr>
-          <td>5</td>
-          <td>Aaron</td>
-          <td>Butler</td>
-          <td>aaron_butler</td>
-          <td>
-              <a href="user.html"><i class="icon-pencil"></i></a>
-              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          <td align="center">1</td>
+          <td align="center">Mark</td>
+          <td align="center">Tompson</td>
+          <td align="center">the_mark7</td>
+          <td align="center">Tompson</td>
+          <td align="center">the_mark7</td>
+          <td align="center">
+              <a href="javascript:void(0)" title="重置密码" role="button" onclick="resetPassword(12);"><i class="icon-exclamation-sign"></i></a>
+              <a href="javascript:void(0)" role="button" title="删除" onclick="showModal(12);"><i class="icon-remove"></i></a>
           </td>
         </tr>
         <tr>
-          <td>6</td>
-          <td>Chris</td>
-          <td>Albert</td>
-          <td>cab79</td>
-          <td>
-              <a href="user.html"><i class="icon-pencil"></i></a>
-              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          <td align="center">1</td>
+          <td align="center">Mark</td>
+          <td align="center">Tompson</td>
+          <td align="center">the_mark7</td>
+          <td align="center">Tompson</td>
+          <td align="center">the_mark7</td>
+          <td align="center">
+              <a href="javascript:void(0)" title="重置密码" role="button" onclick="resetPassword(12);"><i class="icon-exclamation-sign"></i></a>
+              <a href="javascript:void(0)" role="button" title="删除" onclick="showModal(12);"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td align="center">1</td>
+          <td align="center">Mark</td>
+          <td align="center">Tompson</td>
+          <td align="center">the_mark7</td>
+          <td align="center">Tompson</td>
+          <td align="center">the_mark7</td>
+          <td align="center">
+              <a href="javascript:void(0)" title="重置密码" role="button" onclick="resetPassword(12);"><i class="icon-exclamation-sign"></i></a>
+              <a href="javascript:void(0)" role="button" title="删除" onclick="showModal(12);"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td align="center">1</td>
+          <td align="center">Mark</td>
+          <td align="center">Tompson</td>
+          <td align="center">the_mark7</td>
+          <td align="center">Tompson</td>
+          <td align="center">the_mark7</td>
+          <td align="center">
+              <a href="javascript:void(0)" title="重置密码" role="button" onclick="resetPassword(12);"><i class="icon-exclamation-sign"></i></a>
+              <a href="javascript:void(0)" role="button" title="删除" onclick="showModal(12);"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td align="center">1</td>
+          <td align="center">Mark</td>
+          <td align="center">Tompson</td>
+          <td align="center">the_mark7</td>
+          <td align="center">Tompson</td>
+          <td align="center">the_mark7</td>
+          <td align="center">
+              <a href="javascript:void(0)" title="重置密码" role="button" onclick="resetPassword(12);"><i class="icon-exclamation-sign"></i></a>
+              <a href="javascript:void(0)" role="button" title="删除" onclick="showModal(12);"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td align="center">1</td>
+          <td align="center">Mark</td>
+          <td align="center">Tompson</td>
+          <td align="center">the_mark7</td>
+          <td align="center">Tompson</td>
+          <td align="center">the_mark7</td>
+          <td align="center">
+              <a href="javascript:void(0)" title="重置密码" role="button" onclick="resetPassword(12);"><i class="icon-exclamation-sign"></i></a>
+              <a href="javascript:void(0)" role="button" title="删除" onclick="showModal(12);"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td align="center">1</td>
+          <td align="center">Mark</td>
+          <td align="center">Tompson</td>
+          <td align="center">the_mark7</td>
+          <td align="center">Tompson</td>
+          <td align="center">the_mark7</td>
+          <td align="center">
+              <a href="javascript:void(0)" title="重置密码" role="button" onclick="resetPassword(12);"><i class="icon-exclamation-sign"></i></a>
+              <a href="javascript:void(0)" role="button" title="删除" onclick="showModal(12);"><i class="icon-remove"></i></a>
           </td>
         </tr>
       </tbody>
     </table>
 </div>
-<div class="pagination">
-    <ul>
-        <li><a href="#">Prev</a></li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">Next</a></li>
-    </ul>
-</div>
 
 <div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="myModalLabel">Delete Confirmation</h3>
+        <h3 id="myModalLabel">删除确认</h3>
     </div>
     <div class="modal-body">
-        <p class="error-text"><i class="icon-warning-sign modal-icon"></i>Are you sure you want to delete the user?</p>
+        <p class="error-text"><i class="icon-warning-sign modal-icon"></i>你确定要删除id为<span id="user-id">10</span>用户吗?</p>
     </div>
     <div class="modal-footer">
-        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-        <button class="btn btn-danger" data-dismiss="modal">Delete</button>
+        <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+        <button class="btn btn-danger" data-dismiss="modal">删除</button>
+    </div>
+</div>
+
+<div class="modal small hide fade" id="yourModal" tabindex="-1" role="dialog" aria-labelledby="yourModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">重置确认</h3>
+    </div>
+    <div class="modal-body">
+        <p class="error-text"><i class="icon-warning-sign modal-icon"></i>你确定要重置id为<span id="user-id-reset">10</span>用户的密码为12345吗?</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+        <button class="btn btn-danger" data-dismiss="modal">重置</button>
     </div>
 </div>
 
@@ -193,10 +282,75 @@
 
     <script src="../lib/bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript">
+        var t;
+        $(document).ready(function() {
+            t = $('#example').DataTable();
+            getShippersList();
+        } );
         $("[rel=tooltip]").tooltip();
         $(function() {
             $('.demo-cancel-click').click(function(){return false;});
         });
+        function showModal(id){
+          $('#user-id').text(id);
+          $('#myModal').modal();
+        }
+        function resetPassword(id){
+          $('#user-id-reset').text(id);
+          $('#yourModal').modal();
+        }
+        function getShippersList(){
+          $.ajax({
+            type:"POST",
+            url:"/tongbao/admin/getAllUsersByType",
+            //提交的数据
+            data:{type:0},
+            //返回数据的格式
+            datatype: "json",//"xml", "html", "script", "json", "jsonp", "text".
+            //在请求之前调用的函数
+            beforeSend:function(){
+                // alert("beforeSend");
+            },
+            //成功返回之后调用的函数             
+            success:function(data){
+                // alert(data); 
+                if(data.result == 1){
+                    addUsersToTable(data.data);
+                }else{
+                    alert(data.errorMsg);
+                }     
+            },
+            //调用执行后调用的函数
+            complete: function(XMLHttpRequest, textStatus){
+               // alert(XMLHttpRequest.responseText);
+               // alert(textStatus);
+                //HideLoading();
+            },
+            //调用出错执行的函数
+            error: function(){
+                //请求出错处理
+                alert("error!");
+            } 
+          });
+        }
+        function addUsersToTable(data){
+          t.clear().draw();
+          if(data != null){
+            var operation = "<a href='javascript:void(0)' title='重置密码' role='button' onclick='resetPassword(12);'><i class='icon-exclamation-sign'></i></a><a href='javascript:void(0)' role='button' title='删除' onclick='showModal(12);'><i class='icon-remove'></i></a>";
+            for(var i = 0;i<data.length;i++){
+              t.row.add([
+                data[i].id,
+                data[i].phoneNum,
+                data[i].nickName,
+                data[i].point,
+                data[i].money,
+                data[i].registerTime,
+                operation
+              ]).draw(false);
+            }
+            
+          }
+        }
     </script>
 
   </body>

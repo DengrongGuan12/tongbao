@@ -279,15 +279,47 @@ public class UserServiceIml implements UserService {
     typeStr 根据type生成,对应关系看一下数据库的表
     有这几种类型 充值,提现,支付,收益,退款
      */
+    // TODO: 1/20/2016
     public List getRecentAccounts(int num) {
         return null;
     }
 
+
+
+    // TODO: 1/20/2016
     /*
-    获取某种类型用户的页数
-    type 是类型 , num 是每页的数量
+    删除用户,注意如果是司机则连带删除它的认证信息
      */
-    public int getPageNumOfUsers(Byte type, int num) {
-        return 0;
+    public boolean deleteUser(int userId) {
+        return false;
+    }
+
+    // TODO: 1/20/2016
+    //重置某个用户的密码
+    public boolean resetPassword(int userId, String newPassword) {
+        return false;
+    }
+
+    // TODO: 1/20/2016
+    /*
+    获取某种类型的所有用户
+    如果没有值则返回长度为0 的list，不要返回null,都使用vo.user
+    货主需要设置的信息有:id,手机号,昵称，积分,金币,注册时间
+    司机需要设置的信息有:id,手机号,昵称,积分,金币,注册时间,审核状态state:0未验证，1正在验证，2验证成功,3验证失败
+     */
+    public List getAllUsersByType(Byte type) {
+        List list = new ArrayList();
+        for(int i = 0;i<50;i++){
+            vo.User user = new vo.User();
+            user.setPhoneNum("213123213");
+            user.setNickName("我是谁");
+            user.setId(i);
+            user.setPoint(i+100);
+            user.setMoney(i+50);
+            user.setRegisterTime("2012-11-11 11:11:11");
+            list.add(user);
+        }
+
+        return list;
     }
 }
