@@ -9,6 +9,25 @@ public class User {
     private double point;
     private double money;
     private String token;
+    private int id;
+
+    public String getRegisterTime() {
+        return registerTime;
+    }
+
+    public void setRegisterTime(String registerTime) {
+        this.registerTime = registerTime;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    private String registerTime;
 
 
 

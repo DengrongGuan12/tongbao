@@ -29,5 +29,6 @@ public interface UserService {
     public int getTotalAccountNum();
     public List getRecentRegUsers(Byte type, int num);
     public List getRecentAccounts(int num);
+    public int getPageNumOfUsers(Byte type, int num);
 
 }

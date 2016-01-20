@@ -282,4 +282,12 @@ public class UserServiceIml implements UserService {
     public List getRecentAccounts(int num) {
         return null;
     }
+
+    /*
+    获取某种类型用户的页数
+    type 是类型 , num 是每页的数量
+     */
+    public int getPageNumOfUsers(Byte type, int num) {
+        return 0;
+    }
 }

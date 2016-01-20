@@ -63,12 +63,12 @@
 
         <div class="header">
 
-            <h1 class="page-title">Users</h1>
+            <h1 class="page-title">货主管理</h1>
         </div>
 
                 <ul class="breadcrumb">
-            <li><a href="index.html">Home</a> <span class="divider">/</span></li>
-            <li class="active">Users</li>
+            <li><a href="#">用户管理</a> <span class="divider">/</span></li>
+            <li class="active">货主管理</li>
         </ul>
 
         <div class="container-fluid">

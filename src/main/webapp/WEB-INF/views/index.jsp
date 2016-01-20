@@ -204,7 +204,7 @@
                 </tr>
               </tbody>
             </table>
-            <p><a href="/tongbao/admin/shipperManage">更多...</a></p>
+            <p id="shipperMore"><a href="/tongbao/admin/shipperManage">更多...</a></p>
         </div>
     </div>
     <div class="block span6">
@@ -264,7 +264,7 @@
                 </tr>
               </tbody>
             </table>
-            <p><a href="users.html">更多...</a></p>
+            <p id="driverMore"><a href="users.html">更多...</a></p>
         </div>
     </div>
 </div>
@@ -342,7 +342,7 @@
                 
               </tbody>
             </table>
-            <p><a href="users.html">更多...</a></p>
+            <p id="orderMore"><a href="users.html">更多...</a></p>
         </div>
     </div>
     <div class="block span6">
@@ -402,7 +402,7 @@
                 </tr>
               </tbody>
             </table>
-            <p><a href="users.html">更多...</a></p>
+            <p id="accountMore"><a href="users.html">更多...</a></p>
         </div>
     </div>
 </div>
@@ -424,6 +424,8 @@
             $('.demo-cancel-click').click(function(){return false;});
             getRecentUsers(0);
             getRecentUsers(1);
+            getRecentOrders();
+            getRecentAccounts();
         });
         $('#refreshNum').click(function(){
           $.ajax({
@@ -458,11 +460,17 @@
                 error: function(){
                     //请求出错处理
                     location.href = "/tongbao/admin/login";
-                    alert("err/or!");
+                    alert("error!");
                 } 
           });
         });
-        function getRecentUsers(type){
+        $('#refreshShipper').click(function(){
+          getRecentUsers(0,1);
+        });
+        $('#refreshDriver').click(function(){
+          getRecentUsers(1,1);
+        })
+        function getRecentUsers(type,state){
           $.ajax({
             type: "POST",
             url: "/tongbao/admin/getRecentRegisterUsers",
@@ -471,6 +479,10 @@
             success: function(data){
               if(data.result == 1){
                 addUsersToTable(type,data.data);
+                if(state == 1){
+                  //表示刷新
+                  humane.log("刷新成功!");
+                }
               }else{
                 alert("error!");
               }
@@ -487,12 +499,27 @@
             trs += "<tr><td>"+data[i].id+"</td><td>"+data[i].phoneNum+"</td><td>"+data[i].nickName+"</td><td>"+data[i].registerTime+"</td></tr>"
           };
           if(type == 0){
-            $('#shipperTable tr:last').after(trs);
+            $('#shipperTable tbody').empty();
+            $('#shipperTable tbody').append(trs);
+            if(data.length == 0){
+              $('#shipperMore').hide();
+            }else{
+              $('#shipperMore').show();
+            }
           }else{
-            $('#driverTable tr:last').after(trs);
+            $('#driverTable tbody').empty();
+            $('#driverTable tbody').append(trs);
+            if(data.length == 0){
+              $('#driverMore').hide();
+            }else{
+              $('#driverMore').show();
+            }
           }
         }
-        function getRecentOrders(){
+        $('#refreshOrder').click(function(){
+          getRecentOrders(1);
+        });
+        function getRecentOrders(state){
           $.ajax({
             type: "POST",
             url: "/tongbao/admin/getRecentOrders",
@@ -501,6 +528,9 @@
             success: function(data){
               if(data.result == 1){
                 addOrdersToTable(data.data);
+                if(state == 1){
+                  humane.log("刷新成功!");
+                }
               }else{
                 alert("error");
               }
@@ -511,14 +541,28 @@
           });
         }
         function addOrdersToTable(data){
-          var trs = "";
-          for (var i = 0; i <= data.length - 1; i++) {
-            trs += "<tr><td>"+data[i].id+"</td><td>"+data[i].money+"</td><td>"+data[i].time+"</td><td>"+data[i].stateStr
-            +"</td><td>"+data[i].addressFrom+"</td><td>"+data[i].addressTo+"</td></tr>"
-          };
-          $('#orderTable tr:last').after(trs);
+          $('#orderTable tbody').empty();
+          if(data === null){
+            $('#orderMore').hide();
+          }else{
+            var trs = "";
+            for (var i = 0; i <= data.length - 1; i++) {
+              trs += "<tr><td>"+data[i].id+"</td><td>"+data[i].money+"</td><td>"+data[i].time+"</td><td>"+data[i].stateStr
+              +"</td><td>"+data[i].addressFrom+"</td><td>"+data[i].addressTo+"</td></tr>"
+            };
+            $('#orderTable tbody').append(trs);
+            if(data.length == 0){
+              $('#orderMore').hide();
+            }else{
+              $('#orderMore').show();
+            }
+          }
+          
         }
-        function getRecentAccounts(){
+        $('#refreshAccount').click(function(){
+          getRecentAccounts(1);
+        });
+        function getRecentAccounts(state){
           $.ajax({
             type: "POST",
             url: "/tongbao/admin/getRecentAccounts",
@@ -527,6 +571,9 @@
             success: function(data){
               if(data.result == 1){
                 addAccountsToTable(data.data);
+                if(state == 1){
+                  humane.log("刷新成功!");
+                }
               }else{
                 alert("error");
               }
@@ -537,7 +584,22 @@
           });
         }
         function addAccountsToTable(data){
-
+          $('#accountTable tbody').empty();
+          if(data === null){
+            $('#accountMore').hide();
+          }else{
+             var trs = "";
+            for(var i = 0;i<data.length;i++){
+              trs+="<tr><td>"+data[i].id+"</td><td>"+data[i].time+"</td><td>"+data[i].money+"</td><td>"+data[i].type+"</td></tr>"
+            }
+            $('#accountTable tbody').append(trs);
+            if(data.length == 0){
+              $('#accountMore').hide();
+            }else{
+              $('#accountMore').show();
+            }
+          }
+         
         }
     </script>
 

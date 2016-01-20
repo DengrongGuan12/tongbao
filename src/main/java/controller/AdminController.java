@@ -151,5 +151,12 @@ public class AdminController {
         return "shipperManage";
     }
 
+    @RequestMapping(value = "/getPageNumOfUsers", method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult getPageNumOfUsers(@RequestParam(value = "type")Byte type,@RequestParam(value = "num")int num){
+        int pages = userService.getPageNumOfUsers(type,num);
+        return RestResult.CreateResult(1,pages);
+    }
+
 
 }
