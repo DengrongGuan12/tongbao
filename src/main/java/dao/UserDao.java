@@ -17,6 +17,7 @@ public interface UserDao {
     public int getTotalShipperNum();
     public int getTotalDriverNum();
     public List getRecentRegUsers(Byte type, int num);
+    public List getAllUsersByType(Byte type);
 
 
 }

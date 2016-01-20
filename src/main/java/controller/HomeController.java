@@ -21,6 +21,7 @@ public class HomeController {
     @RequestMapping("/testEncoding")
     @ResponseBody
     public RestResult testEncoding(ModifiedNickName modifiedNickName){
+        System.out.print(modifiedNickName.getNickName());
         return RestResult.CreateResult(1,modifiedNickName);
     }
 

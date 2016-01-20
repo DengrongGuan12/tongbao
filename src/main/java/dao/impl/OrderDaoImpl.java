@@ -2,6 +2,7 @@ package dao.impl;
 
 import dao.OrderDao;
 import model.Order;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
@@ -21,6 +22,16 @@ public class OrderDaoImpl extends BaseDaoImpl implements OrderDao{
         }catch(Exception e){
             return false;
         }
+
+    }
+
+    public List getRecentOrders(int num) {
+        Session session=getSession();
+        String strSQL="from Order as o order by buildTime desc";
+        Query query = session.createQuery(strSQL);
+        query.setFirstResult(0);
+        query.setMaxResults(num);
+        return query.list();
 
     }
 

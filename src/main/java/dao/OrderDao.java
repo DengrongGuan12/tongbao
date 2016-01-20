@@ -17,4 +17,5 @@ public interface OrderDao {
     public boolean deleteOrder(int orderId);
     public Order getOrderByShipperIdAndBuildTime(int shipperId,Timestamp buildTime);
     public int getTotalOrderNum();
+    public List getRecentOrders(int num);
 }

@@ -436,11 +436,50 @@ public class OrderServiceImpl implements OrderService {
     4:待取消
     5:货主删除
     6:司机删除
-    7:删除
+    7:已删除
      */
 
     public List getRecentOrders(int num) {
-        return null;
+
+        List listTemp = orderDao.getRecentOrders(num);
+        List list = new ArrayList();
+        for(int i=0;i<listTemp.size();i++){
+            model.Order orderTemp = (model.Order)listTemp.get(i);
+            vo.OrderSimple order = new vo.OrderSimple();
+            order.setId(orderTemp.getId());
+            order.setMoney(orderTemp.getPrice());
+            order.setTime(orderTemp.getBuildTime().toString());
+            order.setAddressFrom(orderTemp.getAddressFrom());
+            order.setAddressTo(orderTemp.getAddressTo());
+            int state = orderTemp.getState();
+            order.setState(state);
+            String stateStr;
+            switch (state){
+                case 0:
+                    stateStr="待处理";
+                case 1:
+                    stateStr="进行中";
+                case 2:
+                    stateStr="已完成";
+                case 3:
+                    stateStr="被取消";
+                case 4:
+                    stateStr="待取消";
+                case 5:
+                    stateStr="货主删除";
+                case 6:
+                    stateStr="司机删除";
+                case 7:
+                    stateStr="已删除";
+                default:
+                    stateStr="";
+            }
+            order.setStateStr(stateStr);
+            list.add(order);
+
+
+        }
+        return list;
     }
 
     /*

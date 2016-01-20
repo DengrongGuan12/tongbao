@@ -95,4 +95,9 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao{
 
     }
 
+    public List getAllUsersByType(Byte type) {
+        List list = super.getList(User.class,"type",type.toString());
+
+        return list;
+    }
 }

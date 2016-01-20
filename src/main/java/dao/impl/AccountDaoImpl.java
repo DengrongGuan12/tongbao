@@ -1,6 +1,8 @@
 package dao.impl;
 
 import dao.AccountDao;
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 import model.Account;
 
@@ -32,12 +34,27 @@ public class AccountDaoImpl extends BaseDaoImpl implements AccountDao {
 
     }
 
+    public List getRecentAccounts(int num) {
+        Session session=getSession();
+        String strSQL="from Account as a order by buildTime desc";
+        Query query = session.createQuery(strSQL);
+        query.setFirstResult(0);
+        query.setMaxResults(num);
+        return query.list();
+    }
+
     public boolean findAccount() {
         return false;
     }
 
     public boolean updateAccount(Account account) {
-        return false;
+
+        try{
+            super.update(account);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
     }
 
     public boolean deleteAccount(int id) {

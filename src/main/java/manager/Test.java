@@ -20,12 +20,14 @@ public class Test {
 //        userManager.addToOnlineList(1,1);
 //        userManager.addToOnlineList(1,1);
 //        userManager.addToOnlineList(1,1);
-//        System.out.print(System.currentTimeMillis());
-        String t = "[1,2,3,4]";
-        JSONArray truckTypes = JSON.parseArray(t);
-        for(int i=0;i<truckTypes.size();i++){
-            System.out.print(truckTypes.get(i));
-        }
+        Timestamp time = new Timestamp(System.currentTimeMillis());
+
+        System.out.print(time+"");
+//        String t = "[1,2,3,4]";
+//        JSONArray truckTypes = JSON.parseArray(t);
+//        for(int i=0;i<truckTypes.size();i++){
+//            System.out.print(truckTypes.get(i));
+//        }
 //        Timestamp t=new Timestamp(System.currentTimeMillis());
 //        Date date=new Date(System.currentTimeMillis());
 //        System.out.println(date);

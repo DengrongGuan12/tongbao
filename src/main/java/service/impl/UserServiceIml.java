@@ -4,6 +4,7 @@ import dao.*;
 import manager.UserManager;
 import model.*;
 import model.User;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.UserService;
@@ -32,6 +33,8 @@ public class UserServiceIml implements UserService {
     private Truck_type_Dao trucks_type_dao;
     @Autowired
     private AccountDao accountDao;
+    @Autowired
+    private Driver_auth_Dao driver_auth_dao;
 
 
     public User getUserByPhoneNumber(String phoneNumber) {
@@ -48,7 +51,17 @@ public class UserServiceIml implements UserService {
     public boolean register(String phoneNumber, String password,Byte type) {
         User user=new User(phoneNumber,password,type);
         user.setRegister_time(new Timestamp(System.currentTimeMillis()));
-        return userDao.registerUser(user);
+        if(userDao.registerUser(user)){
+            if(type.equals(1)){
+                Driver_auth driver_auth = new Driver_auth();
+                driver_auth.setUserId(user.getId());
+                driver_auth.setAuthState(new Byte("0"));
+                driver_auth_dao.addDriverAuth(driver_auth);
+            }
+            return true;
+        }
+
+        return false;
     }
 
     /*
@@ -281,7 +294,37 @@ public class UserServiceIml implements UserService {
      */
     // TODO: 1/20/2016
     public List getRecentAccounts(int num) {
-        return null;
+        List listTemp = accountDao.getRecentAccounts(num);
+        List list = new ArrayList();
+        for(int i=0;i<listTemp.size();i++){
+            model.Account accountTemp = (model.Account)listTemp.get(i);
+            vo.Account account = new vo.Account();
+            account.setId(accountTemp.getId());
+            account.setMoney(accountTemp.getMoney());
+            account.setTime(accountTemp.getBuildTime().toString());
+            int type = accountTemp.getType();
+            account.setType(type);
+            String typeStr;
+            switch (type){
+                case 0:
+                    typeStr="充值";
+                case 1:
+                    typeStr="提现";
+                case 2:
+                    typeStr="支付";
+                case 3:
+                    typeStr="收益";
+                case 4:
+                    typeStr="退款";
+                default:
+                    typeStr="";
+            }
+            account.setTypeStr(typeStr);
+            list.add(account);
+
+
+        }
+        return list;
     }
 
 
@@ -291,13 +334,21 @@ public class UserServiceIml implements UserService {
     删除用户,注意如果是司机则连带删除它的认证信息
      */
     public boolean deleteUser(int userId) {
-        return false;
+        User userTemp = userDao.getUserById(userId);
+        Byte type = userTemp.getType();
+        if(type.equals(1)){
+            System.out.print(userTemp.getId()+"!!!!!!!");
+            return userDao.deleteUser(userId)&&driver_auth_dao.deleteDriverAuth(userTemp.getId());
+        }
+        return userDao.deleteUser(userId);
     }
 
     // TODO: 1/20/2016
     //重置某个用户的密码
     public boolean resetPassword(int userId, String newPassword) {
-        return false;
+        User user = userDao.getUserById(userId);
+        user.setPassword(newPassword);
+        return userDao.updateUser(user);
     }
 
     // TODO: 1/20/2016
@@ -308,15 +359,25 @@ public class UserServiceIml implements UserService {
     司机需要设置的信息有:id,手机号,昵称,积分,金币,注册时间,审核状态state:0未验证，1正在验证，2验证成功,3验证失败
      */
     public List getAllUsersByType(Byte type) {
+        List listTemp = userDao.getAllUsersByType(type);
         List list = new ArrayList();
-        for(int i = 0;i<50;i++){
+        for(int i = 0;i<listTemp.size();i++){
+            model.User userTemp = (model.User) listTemp.get(i);
+            int typeTemp = userTemp.getType();
             vo.User user = new vo.User();
-            user.setPhoneNum("213123213");
-            user.setNickName("我是谁");
-            user.setId(i);
-            user.setPoint(i+100);
-            user.setMoney(i+50);
-            user.setRegisterTime("2012-11-11 11:11:11");
+            if(typeTemp==1){
+                model.Driver_auth driver_auth = driver_auth_dao.getDriverAuthByUserId(userTemp.getId());
+                user.setState(driver_auth.getAuthState());
+            }else if(typeTemp==2){
+                break;
+            }
+
+            user.setPhoneNum(userTemp.getPhone_number());
+            user.setNickName(userTemp.getNick_name());
+            user.setId(userTemp.getId());
+            user.setPoint(userTemp.getPoint());
+            user.setMoney(userTemp.getMoney());
+            user.setRegisterTime(userTemp.getRegister_time().toString());
             list.add(user);
         }
 
