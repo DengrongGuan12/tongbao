@@ -179,6 +179,14 @@ public class AdminController {
         }
     }
 
+    @RequestMapping(value = "/driverManage", method = RequestMethod.POST)
+    @ResponseBody
+    public String driverManage(Model model, HttpSession session){
+        model.addAttribute("name",session.getAttribute("name"));
+        return "driverManage";
+
+    }
+
 
 
 }

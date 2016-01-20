@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>货主管理</title>
+    <title>司机管理</title>
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -67,19 +67,19 @@
 
         <div class="header">
 
-            <h1 class="page-title">货主管理</h1>
+            <h1 class="page-title">司机管理</h1>
         </div>
 
                 <ul class="breadcrumb">
             <li><a href="#">用户管理</a> <span class="divider">/</span></li>
-            <li class="active">货主管理</li>
+            <li class="active">司机管理</li>
         </ul>
 
         <div class="container-fluid">
             <div class="row-fluid">
 
 <div class="btn-toolbar">
-    <button class="btn btn-primary"><i class="icon-plus"></i> 添加货主</button>
+    <button class="btn btn-primary"><i class="icon-plus"></i> 添加司机</button>
 </div>
 <div class="well">
     <table id="example" class="display" cellspacing="0" width="100%">
@@ -91,6 +91,7 @@
           <th>积分</th>
           <th>金币</th>
           <th>注册时间</th>
+          <th>审核状态</th>
           <th style="width: 26px;"></th>
         </tr>
       </thead>
@@ -102,142 +103,12 @@
           <th>积分</th>
           <th>金币</th>
           <th>注册时间</th>
+          <th>审核状态</th>
           <th style="width: 26px;"></th>
         </tr>
       </tfoot>
       <tbody>
-        <tr>
-          <td align="center">1</td>
-          <td align="center">Mark</td>
-          <td align="center">Tompson</td>
-          <td align="center">the_mark7</td>
-          <td align="center">Tompson</td>
-          <td align="center">the_mark7</td>
-          <td align="center">
-              <a href="javascript:void(0)" title="重置密码" role="button" onclick="resetPassword(12);"><i class="icon-exclamation-sign"></i></a>
-              <a href="javascript:void(0)" role="button" title="删除" onclick="showModal(12);"><i class="icon-remove"></i></a>
-          </td>
-        </tr>
-        <tr>
-          <td align="center">1</td>
-          <td align="center">Mark</td>
-          <td align="center">Tompson</td>
-          <td align="center">the_mark7</td>
-          <td align="center">Tompson</td>
-          <td align="center">the_mark7</td>
-          <td align="center">
-              <a href="javascript:void(0)" title="重置密码" role="button" onclick="resetPassword(12);"><i class="icon-exclamation-sign"></i></a>
-              <a href="javascript:void(0)" role="button" title="删除" onclick="showModal(12);"><i class="icon-remove"></i></a>
-          </td>
-        </tr>
-        <tr>
-          <td align="center">1</td>
-          <td align="center">Mark</td>
-          <td align="center">Tompson</td>
-          <td align="center">the_mark7</td>
-          <td align="center">Tompson</td>
-          <td align="center">the_mark7</td>
-          <td align="center">
-              <a href="javascript:void(0)" title="重置密码" role="button" onclick="resetPassword(12);"><i class="icon-exclamation-sign"></i></a>
-              <a href="javascript:void(0)" role="button" title="删除" onclick="showModal(12);"><i class="icon-remove"></i></a>
-          </td>
-        </tr>
-        <tr>
-          <td align="center">1</td>
-          <td align="center">Mark</td>
-          <td align="center">Tompson</td>
-          <td align="center">the_mark7</td>
-          <td align="center">Tompson</td>
-          <td align="center">the_mark7</td>
-          <td align="center">
-              <a href="javascript:void(0)" title="重置密码" role="button" onclick="resetPassword(12);"><i class="icon-exclamation-sign"></i></a>
-              <a href="javascript:void(0)" role="button" title="删除" onclick="showModal(12);"><i class="icon-remove"></i></a>
-          </td>
-        </tr>
-        <tr>
-          <td align="center">1</td>
-          <td align="center">Mark</td>
-          <td align="center">Tompson</td>
-          <td align="center">the_mark7</td>
-          <td align="center">Tompson</td>
-          <td align="center">the_mark7</td>
-          <td align="center">
-              <a href="javascript:void(0)" title="重置密码" role="button" onclick="resetPassword(12);"><i class="icon-exclamation-sign"></i></a>
-              <a href="javascript:void(0)" role="button" title="删除" onclick="showModal(12);"><i class="icon-remove"></i></a>
-          </td>
-        </tr>
-        <tr>
-          <td align="center">1</td>
-          <td align="center">Mark</td>
-          <td align="center">Tompson</td>
-          <td align="center">the_mark7</td>
-          <td align="center">Tompson</td>
-          <td align="center">the_mark7</td>
-          <td align="center">
-              <a href="javascript:void(0)" title="重置密码" role="button" onclick="resetPassword(12);"><i class="icon-exclamation-sign"></i></a>
-              <a href="javascript:void(0)" role="button" title="删除" onclick="showModal(12);"><i class="icon-remove"></i></a>
-          </td>
-        </tr>
-        <tr>
-          <td align="center">1</td>
-          <td align="center">Mark</td>
-          <td align="center">Tompson</td>
-          <td align="center">the_mark7</td>
-          <td align="center">Tompson</td>
-          <td align="center">the_mark7</td>
-          <td align="center">
-              <a href="javascript:void(0)" title="重置密码" role="button" onclick="resetPassword(12);"><i class="icon-exclamation-sign"></i></a>
-              <a href="javascript:void(0)" role="button" title="删除" onclick="showModal(12);"><i class="icon-remove"></i></a>
-          </td>
-        </tr>
-        <tr>
-          <td align="center">1</td>
-          <td align="center">Mark</td>
-          <td align="center">Tompson</td>
-          <td align="center">the_mark7</td>
-          <td align="center">Tompson</td>
-          <td align="center">the_mark7</td>
-          <td align="center">
-              <a href="javascript:void(0)" title="重置密码" role="button" onclick="resetPassword(12);"><i class="icon-exclamation-sign"></i></a>
-              <a href="javascript:void(0)" role="button" title="删除" onclick="showModal(12);"><i class="icon-remove"></i></a>
-          </td>
-        </tr>
-        <tr>
-          <td align="center">1</td>
-          <td align="center">Mark</td>
-          <td align="center">Tompson</td>
-          <td align="center">the_mark7</td>
-          <td align="center">Tompson</td>
-          <td align="center">the_mark7</td>
-          <td align="center">
-              <a href="javascript:void(0)" title="重置密码" role="button" onclick="resetPassword(12);"><i class="icon-exclamation-sign"></i></a>
-              <a href="javascript:void(0)" role="button" title="删除" onclick="showModal(12);"><i class="icon-remove"></i></a>
-          </td>
-        </tr>
-        <tr>
-          <td align="center">1</td>
-          <td align="center">Mark</td>
-          <td align="center">Tompson</td>
-          <td align="center">the_mark7</td>
-          <td align="center">Tompson</td>
-          <td align="center">the_mark7</td>
-          <td align="center">
-              <a href="javascript:void(0)" title="重置密码" role="button" onclick="resetPassword(12);"><i class="icon-exclamation-sign"></i></a>
-              <a href="javascript:void(0)" role="button" title="删除" onclick="showModal(12);"><i class="icon-remove"></i></a>
-          </td>
-        </tr>
-        <tr>
-          <td align="center">1</td>
-          <td align="center">Mark</td>
-          <td align="center">Tompson</td>
-          <td align="center">the_mark7</td>
-          <td align="center">Tompson</td>
-          <td align="center">the_mark7</td>
-          <td align="center">
-              <a href="javascript:void(0)" title="重置密码" role="button" onclick="resetPassword(12);"><i class="icon-exclamation-sign"></i></a>
-              <a href="javascript:void(0)" role="button" title="删除" onclick="showModal(12);"><i class="icon-remove"></i></a>
-          </td>
-        </tr>
+
       </tbody>
     </table>
 </div>
@@ -311,14 +182,14 @@
             beforeSend:function(){
                 // alert("beforeSend");
             },
-            //成功返回之后调用的函数             
+            //成功返回之后调用的函数
             success:function(data){
-                // alert(data); 
+                // alert(data);
                 if(data.result == 1){
                     addUsersToTable(data.data);
                 }else{
                     alert(data.errorMsg);
-                }     
+                }
             },
             //调用执行后调用的函数
             complete: function(XMLHttpRequest, textStatus){
@@ -330,7 +201,7 @@
             error: function(){
                 //请求出错处理
                 alert("error!");
-            } 
+            }
           });
         }
         function addUsersToTable(data){
@@ -338,6 +209,18 @@
           if(data != null){
             var operation = "<a href='javascript:void(0)' title='重置密码' role='button' onclick='resetPassword(12);'><i class='icon-exclamation-sign'></i></a>  <a href='javascript:void(0)' role='button' title='删除' onclick='showModal(12);'><i class='icon-remove'></i></a>";
             for(var i = 0;i<data.length;i++){
+              var state;
+              //0未验证，1正在验证，2验证成功,3验证失败
+              if(data[i].state == 0){
+                state = "尚未提交审核";
+              }else if(data[i].state == 1){
+                state = "已提交审核";
+                operation += " <a href='javascript:void(0)' role='button' title='审核' onclick='showModal(12);'><i class='icon-edit'></i></a>"
+              }else if(data[i].state == 2){
+                state = "审核成功";
+              }else{
+                state = "审核失败";
+              }
               t.row.add([
                 data[i].id,
                 data[i].phoneNum,
@@ -345,10 +228,11 @@
                 data[i].point,
                 data[i].money,
                 data[i].registerTime,
+                state,
                 operation
               ]).draw(false);
             }
-            
+
           }
         }
     </script>

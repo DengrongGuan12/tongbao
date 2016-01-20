@@ -30,7 +30,7 @@ public class User {
         this.state = state;
     }
 
-    private Byte state;
+    private Byte state = 0;
 
     public String getRegisterTime() {
         return registerTime;
