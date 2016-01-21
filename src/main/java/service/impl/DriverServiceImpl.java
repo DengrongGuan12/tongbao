@@ -12,6 +12,9 @@ import pojo.TruckAuthInfo;
 import pojo.TruckInfo;
 import service.DriverService;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by I322233 on 1/4/2016.
  */
@@ -162,5 +165,32 @@ public class DriverServiceImpl implements DriverService {
     //获取验证成功和验证失败的司机数量
     public int getExaminedDriverNum() {
         return driver_auth_dao.getExaminedDriverNum();
+    }
+
+    // TODO: 1/21/2016
+    //获取某个用户的尚未验证和验证失败的司机数量
+    public int getUnSubmittedDriverNum(int userId) {
+        return 0;
+    }
+
+    // TODO: 1/21/2016
+    //获取某个用户的正在验证的司机数量
+    public int getWaitingExamineDriverNum(int userId) {
+        return 0;
+    }
+
+    // TODO: 1/21/2016
+    // 获取某个用户验证成功和验证失败的司机数量
+    public int getExaminedDriverNum(int userId) {
+        return 0;
+    }
+
+    // TODO: 1/21/2016
+    //获取某个用户的所有车辆信息
+    //需要设置的信息有
+    //id,车牌号,车辆类型名称,车辆载重,车辆长度,车辆宽度,车辆高度,驾驶人姓名,驾驶证号码,随车电话,审核状态
+    public List getAllTruckInfoByUserId(int userId) {
+        List list = new ArrayList();
+        return list;
     }
 }

@@ -73,9 +73,9 @@
         
         <div class="header">
             <div class="stats">
-    <p class="stat"><span class="number">48</span>未提交审核(审核不过)</p>
-    <p class="stat"><span class="number">4</span>正在审核</p>
-    <p class="stat"><span class="number">4</span>审核通过</p>
+    <p class="stat"><span class="number">48</span>未提交审核</p>
+    <p class="stat"><span class="number">4</span>待审核</p>
+    <p class="stat"><span class="number">4</span>已审核</p>
 </div>
 
             <h1 class="page-title">司机详情</h1>
@@ -83,7 +83,7 @@
         
                 <ul class="breadcrumb">
             <li>用户管理 <span class="divider">/</span></li>
-            <li>司机管理 <span class="divider">/</span></li>
+            <li><a href="/tongbao/admin/driverManage">司机管理</a><span class="divider">/</span></li>
             <li class="active">司机详情</li>
         </ul>
 
@@ -129,8 +129,14 @@
     </div>
 
     <div class="block">
-        <p class="block-heading">车辆信息</p>
-        <div class="block-body">
+        <div class="block-heading">
+            <span class="block-icon pull-right">
+                <a href="#" class="demo-cancel-click" rel="tooltip" title="点击刷新" id="refreshNum"><i class="icon-refresh"></i></a>
+            </span>
+
+            <a href="#page-stats" data-toggle="collapse">车辆信息</a>
+        </div>
+        <div id="page-stats" class="block-body collapse in" style="margin-top:1em;">
             <table id="example" class="display" cellspacing="0" width="100%">
                   <thead>
                     <tr>
