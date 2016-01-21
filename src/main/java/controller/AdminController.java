@@ -162,6 +162,7 @@ public class AdminController {
     @RequestMapping(value = "/deleteUser",method = RequestMethod.POST)
     @ResponseBody
     public RestResult deleteUser(@RequestParam(value = "id")int id){
+        System.out.println(id);
         if(userService.deleteUser(id)){
             return RestResult.CreateResult(1);
         }else {

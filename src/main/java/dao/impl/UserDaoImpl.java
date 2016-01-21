@@ -40,10 +40,11 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao{
 
     public boolean deleteUser(int id) {
         try{
-            super.delete(User.class,id+"");
+            super.delete(User.class,id);
             return true;
         }catch (Exception e)
         {
+            e.printStackTrace();
             return false;
         }
     }

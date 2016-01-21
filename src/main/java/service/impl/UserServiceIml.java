@@ -356,7 +356,7 @@ public class UserServiceIml implements UserService {
     获取某种类型的所有用户
     如果没有值则返回长度为0 的list，不要返回null,都使用vo.user
     货主需要设置的信息有:id,手机号,昵称，积分,金币,注册时间
-    司机需要设置的信息有:id,手机号,昵称,积分,金币,注册时间,审核状态state:0未验证，1正在验证，2验证成功,3验证失败
+    司机需要设置的信息有:id,手机号,昵称,积分,金币,注册时间,
      */
     public List getAllUsersByType(Byte type) {
         List listTemp = userDao.getAllUsersByType(type);
@@ -365,12 +365,6 @@ public class UserServiceIml implements UserService {
             model.User userTemp = (model.User) listTemp.get(i);
             int typeTemp = userTemp.getType();
             vo.User user = new vo.User();
-            if(typeTemp==1){
-                model.Driver_auth driver_auth = driver_auth_dao.getDriverAuthByUserId(userTemp.getId());
-                user.setState(driver_auth.getAuthState());
-            }else if(typeTemp==2){
-                break;
-            }
 
             user.setPhoneNum(userTemp.getPhone_number());
             user.setNickName(userTemp.getNick_name());

@@ -39,8 +39,8 @@
 
         <a href="#usermanager-menu" class="nav-header" data-toggle="collapse"><i class="icon-user"></i>用户管理</a>
         <ul id="usermanager-menu" class="nav nav-list collapse">
-            <li ><a href="#">货主管理</a></li>
-            <li ><a href="#">司机管理</a></li>
+            <li ><a href="/tongbao/admin/shipperManage">货主管理</a></li>
+            <li ><a href="/tongbao/admin/driverManage">司机管理</a></li>
 
         </ul>
         <a href="#accounts-menu" class="nav-header" data-toggle="collapse"><i class="icon-briefcase"></i>我的账户</a>

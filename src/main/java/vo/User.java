@@ -22,15 +22,6 @@ public class User {
     private String phoneNum;
 
 
-    public Byte getState() {
-        return state;
-    }
-
-    public void setState(Byte state) {
-        this.state = state;
-    }
-
-    private Byte state = 0;
 
     public String getRegisterTime() {
         return registerTime;

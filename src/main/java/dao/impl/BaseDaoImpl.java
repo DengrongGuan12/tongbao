@@ -160,6 +160,14 @@ public class BaseDaoImpl implements BaseDao {
         clear();
     }
 
+    public void delete(Class c, int id){
+        Session session = getNewSession();
+        Object object = session.get(c,id);
+        session.delete(object);
+        flush();
+        clear();
+    }
+
     public void delete(Class c, String[] ids) {
         for (String id : ids) {
             Object obj = getSession().get(c, id);

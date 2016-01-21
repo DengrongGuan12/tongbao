@@ -91,8 +91,7 @@
           <th>积分</th>
           <th>金币</th>
           <th>注册时间</th>
-          <th>审核状态</th>
-          <th style="width: 26px;"></th>
+          <th style="width: 40px;"></th>
         </tr>
       </thead>
       <tfoot>
@@ -103,8 +102,7 @@
           <th>积分</th>
           <th>金币</th>
           <th>注册时间</th>
-          <th>审核状态</th>
-          <th style="width: 26px;"></th>
+          <th style="width: 40px;"></th>
         </tr>
       </tfoot>
       <tbody>
@@ -123,7 +121,7 @@
     </div>
     <div class="modal-footer">
         <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
-        <button class="btn btn-danger" data-dismiss="modal">删除</button>
+        <button class="btn btn-danger" data-dismiss="modal" id="delete">删除</button>
     </div>
 </div>
 
@@ -137,7 +135,7 @@
     </div>
     <div class="modal-footer">
         <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
-        <button class="btn btn-danger" data-dismiss="modal">重置</button>
+        <button class="btn btn-danger" data-dismiss="modal" id="reset">重置</button>
     </div>
 </div>
 
@@ -154,9 +152,11 @@
     <script src="../lib/bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript">
         var t;
+        var resetId;
+        var deleteId;
         $(document).ready(function() {
             t = $('#example').DataTable();
-            getShippersList();
+            getDriversList();
         } );
         $("[rel=tooltip]").tooltip();
         $(function() {
@@ -165,17 +165,91 @@
         function showModal(id){
           $('#user-id').text(id);
           $('#myModal').modal();
+          deleteId = id;
         }
         function resetPassword(id){
           $('#user-id-reset').text(id);
           $('#yourModal').modal();
+          resetId = id;
         }
-        function getShippersList(){
+        $('#delete').click(function(){
+          var child = '#'+deleteId;
+          $.ajax({
+            type:"POST",
+            url:"/tongbao/admin/deleteUser",
+            //提交的数据
+            data:{id:deleteId},
+            //返回数据的格式
+            datatype: "json",//"xml", "html", "script", "json", "jsonp", "text".
+            //在请求之前调用的函数
+            beforeSend:function(){
+                // alert("beforeSend");
+            },
+            //成功返回之后调用的函数
+            success:function(data){
+                // alert(data);
+                if(data.result == 1){
+                    t
+                    .row( $(child).parents('tr') )
+                    .remove()
+                    .draw();
+                }else{
+                    alert(data.errorMsg);
+                }
+            },
+            //调用执行后调用的函数
+            complete: function(XMLHttpRequest, textStatus){
+               // alert(XMLHttpRequest.responseText);
+               // alert(textStatus);
+                //HideLoading();
+            },
+            //调用出错执行的函数
+            error: function(){
+                //请求出错处理
+                alert("error!");
+            }
+          });
+        });
+        $('#reset').click(function(){
+          $.ajax({
+            type:"POST",
+            url:"/tongbao/admin/resetUserPassword",
+            //提交的数据
+            data:{id:resetId,password:12345},
+            //返回数据的格式
+            datatype: "json",//"xml", "html", "script", "json", "jsonp", "text".
+            //在请求之前调用的函数
+            beforeSend:function(){
+                // alert("beforeSend");
+            },
+            //成功返回之后调用的函数
+            success:function(data){
+                // alert(data);
+                if(data.result == 1){
+                    humane.log("设置成功!");
+                }else{
+                    alert(data.errorMsg);
+                }
+            },
+            //调用执行后调用的函数
+            complete: function(XMLHttpRequest, textStatus){
+               // alert(XMLHttpRequest.responseText);
+               // alert(textStatus);
+                //HideLoading();
+            },
+            //调用出错执行的函数
+            error: function(){
+                //请求出错处理
+                alert("error!");
+            }
+          });
+        });
+        function getDriversList(){
           $.ajax({
             type:"POST",
             url:"/tongbao/admin/getAllUsersByType",
             //提交的数据
-            data:{type:0},
+            data:{type:1},
             //返回数据的格式
             datatype: "json",//"xml", "html", "script", "json", "jsonp", "text".
             //在请求之前调用的函数
@@ -207,20 +281,9 @@
         function addUsersToTable(data){
           t.clear().draw();
           if(data != null){
-            var operation = "<a href='javascript:void(0)' title='重置密码' role='button' onclick='resetPassword(12);'><i class='icon-exclamation-sign'></i></a>  <a href='javascript:void(0)' role='button' title='删除' onclick='showModal(12);'><i class='icon-remove'></i></a>";
+            
             for(var i = 0;i<data.length;i++){
-              var state;
-              //0未验证，1正在验证，2验证成功,3验证失败
-              if(data[i].state == 0){
-                state = "尚未提交审核";
-              }else if(data[i].state == 1){
-                state = "已提交审核";
-                operation += " <a href='javascript:void(0)' role='button' title='审核' onclick='showModal(12);'><i class='icon-edit'></i></a>"
-              }else if(data[i].state == 2){
-                state = "审核成功";
-              }else{
-                state = "审核失败";
-              }
+              var operation = "<a href='javascript:void(0)' role='button' title='详情'><i class='icon-edit'></i></a>  <a href='javascript:void(0)' title='重置密码' role='button' onclick='resetPassword("+data[i].id+");' id='"+data[i].id+"'><i class='icon-exclamation-sign'></i></a>  <a href='javascript:void(0)' role='button' title='删除' onclick='showModal("+data[i].id+");'><i class='icon-remove'></i></a>";
               t.row.add([
                 data[i].id,
                 data[i].phoneNum,
@@ -228,7 +291,6 @@
                 data[i].point,
                 data[i].money,
                 data[i].registerTime,
-                state,
                 operation
               ]).draw(false);
             }

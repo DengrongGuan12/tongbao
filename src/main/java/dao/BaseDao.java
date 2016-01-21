@@ -44,6 +44,8 @@ public interface BaseDao {
 
     public void delete(Class c, String[] ids);
 
+    public void delete(Class c, int id);
+
     public void delete(Class c, String para, String val);
 
     public Object getLast(Class c);
