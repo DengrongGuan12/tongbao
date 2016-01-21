@@ -356,7 +356,7 @@ public class UserServiceIml implements UserService {
     获取某种类型的所有用户
     如果没有值则返回长度为0 的list，不要返回null,都使用vo.user
     货主需要设置的信息有:id,手机号,昵称，积分,金币,注册时间
-    司机需要设置的信息有:id,手机号,昵称,积分,金币,注册时间,
+    司机需要设置的信息有:id,手机号,昵称,积分,金币,注册时间,待审核车辆数(不包括未提交审核，审核成功，审核失败的车辆)
      */
     public List getAllUsersByType(Byte type) {
         List listTemp = userDao.getAllUsersByType(type);

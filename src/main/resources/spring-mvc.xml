@@ -10,6 +10,9 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
     <mvc:resources mapping="/lib/**" location="/WEB-INF/views/lib/"></mvc:resources>
     <mvc:resources mapping="/stylesheets/**" location="/WEB-INF/views/stylesheets/"></mvc:resources>
     <mvc:resources mapping="/images/**" location="/WEB-INF/views/images/"></mvc:resources>
+    <mvc:resources mapping="/admin/images/**" location="/WEB-INF/views/images/"></mvc:resources>
+    <mvc:resources mapping="/admin/lib/**" location="/WEB-INF/views/lib/"></mvc:resources>
+    <mvc:resources mapping="/admin/stylesheets/**" location="/WEB-INF/views/stylesheets/"></mvc:resources>
     <!-- Scans the classpath of this application for @Components to deploy as beans -->
     <context:component-scan base-package="controller" />
     <!-- Configures the @Controller programming model -->

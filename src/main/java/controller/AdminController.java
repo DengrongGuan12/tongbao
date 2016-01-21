@@ -1,13 +1,11 @@
 package controller;
 
 import manager.UserManager;
+import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import pojo.ModifiedPassword;
 import pojo.TokenAuthInfo;
 import service.DriverService;
@@ -184,7 +182,18 @@ public class AdminController {
     public String driverManage(Model model, HttpSession session){
         model.addAttribute("name",session.getAttribute("name"));
         return "driverManage";
-
+    }
+    @RequestMapping(value = "/driverDetail/{id}")
+    public String driverDetail(@PathVariable int id, Model model, HttpSession session){
+        model.addAttribute("name",session.getAttribute("name"));
+        model.addAttribute("id",id);
+        User user = userService.getUserById(id);
+        model.addAttribute("nickName",user.getNick_name());
+        model.addAttribute("money",user.getMoney());
+        model.addAttribute("phoneNum",user.getPhone_number());
+        model.addAttribute("point",user.getPoint());
+        model.addAttribute("registerTime",user.getRegister_time());
+        return "driverDetail";
     }
 
 

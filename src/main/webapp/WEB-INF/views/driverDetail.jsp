@@ -1,3 +1,5 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,13 +10,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/bootstrap.css">
     
-    <link rel="stylesheet" type="text/css" href="stylesheets/theme.css">
-    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/theme.css">
+    <link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.css">
 
-    <script src="lib/jquery-1.7.2.min.js" type="text/javascript"></script>
-
+    <script src="../lib/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../lib/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/jquery.dataTables.min.css">
     <!-- Demo page code -->
 
     <style type="text/css">
@@ -32,6 +35,12 @@
         .brand .second {
             color: #fff;
             font-weight: bold;
+        }
+        #table td{
+            text-align: center;
+        }
+        #example td{
+            text-align: center;
         }
     </style>
 
@@ -56,73 +65,7 @@
   <body class=""> 
   <!--<![endif]-->
     
-    <div class="navbar">
-        <div class="navbar-inner">
-                <ul class="nav pull-right">
-                    
-                    <li><a href="#" class="hidden-phone visible-tablet visible-desktop" role="button">Settings</a></li>
-                    <li id="fat-menu" class="dropdown">
-                        <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="icon-user"></i> Jack Smith
-                            <i class="icon-caret-down"></i>
-                        </a>
-
-                        <ul class="dropdown-menu">
-                            <li><a tabindex="-1" href="#">My Account</a></li>
-                            <li class="divider"></li>
-                            <li><a tabindex="-1" class="visible-phone" href="#">Settings</a></li>
-                            <li class="divider visible-phone"></li>
-                            <li><a tabindex="-1" href="sign-in.html">Logout</a></li>
-                        </ul>
-                    </li>
-                    
-                </ul>
-                <a class="brand" href="index.html"><span class="first">Your</span> <span class="second">Company</span></a>
-        </div>
-    </div>
-    
-
-
-    
-    <div class="sidebar-nav">
-        <form class="search form-inline">
-            <input type="text" placeholder="Search...">
-        </form>
-
-        <a href="#dashboard-menu" class="nav-header" data-toggle="collapse"><i class="icon-dashboard"></i>Dashboard</a>
-        <ul id="dashboard-menu" class="nav nav-list collapse in">
-            <li><a href="index.html">Home</a></li>
-            <li ><a href="users.html">Sample List</a></li>
-            <li ><a href="user.html">Sample Item</a></li>
-            <li class="active"><a href="media.html">Media</a></li>
-            <li ><a href="calendar.html">Calendar</a></li>
-            
-        </ul>
-
-        <a href="#accounts-menu" class="nav-header" data-toggle="collapse"><i class="icon-briefcase"></i>Account<span class="label label-info">+3</span></a>
-        <ul id="accounts-menu" class="nav nav-list collapse">
-            <li ><a href="sign-in.html">Sign In</a></li>
-            <li ><a href="sign-up.html">Sign Up</a></li>
-            <li ><a href="reset-password.html">Reset Password</a></li>
-        </ul>
-
-        <a href="#error-menu" class="nav-header collapsed" data-toggle="collapse"><i class="icon-exclamation-sign"></i>Error Pages <i class="icon-chevron-up"></i></a>
-        <ul id="error-menu" class="nav nav-list collapse">
-            <li ><a href="403.html">403 page</a></li>
-            <li ><a href="404.html">404 page</a></li>
-            <li ><a href="500.html">500 page</a></li>
-            <li ><a href="503.html">503 page</a></li>
-        </ul>
-
-        <a href="#legal-menu" class="nav-header" data-toggle="collapse"><i class="icon-legal"></i>Legal</a>
-        <ul id="legal-menu" class="nav nav-list collapse">
-            <li ><a href="privacy-policy.html">Privacy Policy</a></li>
-            <li ><a href="terms-and-conditions.html">Terms and Conditions</a></li>
-        </ul>
-
-        <a href="help.html" class="nav-header" ><i class="icon-question-sign"></i>Help</a>
-        <a href="faq.html" class="nav-header" ><i class="icon-comment"></i>Faq</a>
-    </div>
+    <%@include file="header.jsp" %>
     
 
     
@@ -130,16 +73,18 @@
         
         <div class="header">
             <div class="stats">
-    <p class="stat"><span class="number">48</span>images</p>
-    <p class="stat"><span class="number">4</span>galleries</p>
+    <p class="stat"><span class="number">48</span>未提交审核(审核不过)</p>
+    <p class="stat"><span class="number">4</span>正在审核</p>
+    <p class="stat"><span class="number">4</span>审核通过</p>
 </div>
 
-            <h1 class="page-title">Media</h1>
+            <h1 class="page-title">司机详情</h1>
         </div>
         
                 <ul class="breadcrumb">
-            <li><a href="index.html">Home</a> <span class="divider">/</span></li>
-            <li class="active">Gallery</li>
+            <li>用户管理 <span class="divider">/</span></li>
+            <li>司机管理 <span class="divider">/</span></li>
+            <li class="active">司机详情</li>
         </ul>
 
         <div class="container-fluid">
@@ -147,94 +92,84 @@
                     
 
     <div class="block">
-        <p class="block-heading">Gallery of Things</p>
-        <div class="block-body gallery">
+        <p class="block-heading">个人信息</p>
+        <div class="block-body">
             
-                <img src="images/140x140.gif" class="img-polaroid">
-            
-                <img src="images/140x140.gif" class="img-polaroid">
-            
-                <img src="images/140x140.gif" class="img-polaroid">
-            
-                <img src="images/140x140.gif" class="img-polaroid">
-            
-                <img src="images/140x140.gif" class="img-polaroid">
-            
-            <div class="clearfix"></div>
-        </div>
-    </div>
-
-    <div class="row-fluid">
-        <div class="block span6">
-            <p class="block-heading">Gallery of Stuff</p>
-            <div class="block-body gallery">
-                
-                    <img src="images/170x170.gif" class="img-polaroid">
-                
-                    <img src="images/170x170.gif" class="img-polaroid">
-                
-                    <img src="images/170x170.gif" class="img-polaroid">
-                
-                    <img src="images/170x170.gif" class="img-polaroid">
-                
-                <div class="clearfix"></div>
-            </div>
-        </div>
-        <div class="block span6">
-            <p class="block-heading">Gallery of Stuff</p>
-            <div class="block-body gallery">
-                
-                    <img src="images/170x170.gif" class="img-polaroid">
-                
-                    <img src="images/170x170.gif" class="img-polaroid">
-                
-                    <img src="images/170x170.gif" class="img-polaroid">
-                
-                    <img src="images/170x170.gif" class="img-polaroid">
-                
-                <div class="clearfix"></div>
-            </div>
+                <img src="http://i8.tietuku.com/c745ecd88b59126ct.jpg" class="img-polaroid" style="position:absolute;left:3%;">
+                <table class="table" id="table" style="position:relative;left:30%;width:60%;">
+                  <tbody>
+                    <tr>
+                        <td>id</td>
+                        <td>${id}</td>
+                    </tr>
+                    <tr>
+                        <td>昵称</td>
+                        <td>${nickName}</td>
+                    </tr>
+                    <tr>
+                        <td>金币</td>
+                        <td>${money}</td>
+                    </tr>
+                    <tr>
+                        <td>手机号</td>
+                        <td>${phoneNum}</td>
+                    </tr>
+                    <tr>
+                        <td>积分</td>
+                        <td>${point}</td>
+                    </tr>
+                    <tr>
+                        <td>注册时间</td>
+                        <td>${registerTime}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                    
         </div>
     </div>
 
     <div class="block">
-        <p class="block-heading">Gallery of Stuff</p>
-        <div class="block-body gallery">
-            
-                <img src="images/140x140.gif" class="img-polaroid">
-            
-                <img src="images/140x140.gif" class="img-polaroid">
-            
-                <img src="images/140x140.gif" class="img-polaroid">
-            
-                <img src="images/140x140.gif" class="img-polaroid">
-            
-                <img src="images/140x140.gif" class="img-polaroid">
-            
-                <img src="images/140x140.gif" class="img-polaroid">
-            
-                <img src="images/140x140.gif" class="img-polaroid">
-            
-                <img src="images/140x140.gif" class="img-polaroid">
-            
-                <img src="images/140x140.gif" class="img-polaroid">
-            
-                <img src="images/140x140.gif" class="img-polaroid">
-            
-            <div class="clearfix"></div>
+        <p class="block-heading">车辆信息</p>
+        <div class="block-body">
+            <table id="example" class="display" cellspacing="0" width="100%">
+                  <thead>
+                    <tr>
+                      <th>id</th>
+                      <th>车牌号</th>
+                      <th>车辆类型</th>
+                      <th>车辆信息(载重/长/宽/高)</th>
+                      <th>驾驶人姓名</th>
+                      <th>驾驶证号码</th>
+                      <th>随车电话</th>
+                      <th>审核状态</th>
+                      <th style="width: 40px;"></th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>id</th>
+                      <th>车牌号</th>
+                      <th>车辆类型</th>
+                      <th>车辆信息(载重/长/宽/高)</th>
+                      <th>驾驶人姓名</th>
+                      <th>驾驶证号码</th>
+                      <th>随车电话</th>
+                      <th>审核状态</th>
+                      <th style="width: 40px;"></th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                  </tbody>
+            </table>
+
+
         </div>
+
     </div>
 
 
                     
-                    <footer>
-                        <hr>
-                        
-                        <p class="pull-right">Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
-                        
-
-                        <p>&copy; 2012 <a href="#" target="_blank">Portnine</a></p>
-                    </footer>
+           <%@include file="footer.jsp" %>
                     
             </div>
         </div>
@@ -242,8 +177,12 @@
     
 
 
-    <script src="lib/bootstrap/js/bootstrap.js"></script>
+    <script src="../lib/bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript">
+        var t;
+        $(document).ready(function() {
+           t = $('#example').DataTable();
+        } );
         $("[rel=tooltip]").tooltip();
         $(function() {
             $('.demo-cancel-click').click(function(){return false;});

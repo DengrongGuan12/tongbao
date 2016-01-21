@@ -91,6 +91,7 @@
           <th>积分</th>
           <th>金币</th>
           <th>注册时间</th>
+          <th>待审核车辆(辆)</th>
           <th style="width: 40px;"></th>
         </tr>
       </thead>
@@ -102,6 +103,7 @@
           <th>积分</th>
           <th>金币</th>
           <th>注册时间</th>
+          <th>待审核车辆(辆)</th>
           <th style="width: 40px;"></th>
         </tr>
       </tfoot>
@@ -283,7 +285,7 @@
           if(data != null){
             
             for(var i = 0;i<data.length;i++){
-              var operation = "<a href='javascript:void(0)' role='button' title='详情'><i class='icon-edit'></i></a>  <a href='javascript:void(0)' title='重置密码' role='button' onclick='resetPassword("+data[i].id+");' id='"+data[i].id+"'><i class='icon-exclamation-sign'></i></a>  <a href='javascript:void(0)' role='button' title='删除' onclick='showModal("+data[i].id+");'><i class='icon-remove'></i></a>";
+              var operation = "<a href='/tongbao/admin/driverDetail/"+data[i].id+"' role='button' title='详情'><i class='icon-edit'></i></a>  <a href='javascript:void(0)' title='重置密码' role='button' onclick='resetPassword("+data[i].id+");' id='"+data[i].id+"'><i class='icon-exclamation-sign'></i></a>  <a href='javascript:void(0)' role='button' title='删除' onclick='showModal("+data[i].id+");'><i class='icon-remove'></i></a>";
               t.row.add([
                 data[i].id,
                 data[i].phoneNum,
@@ -291,6 +293,7 @@
                 data[i].point,
                 data[i].money,
                 data[i].registerTime,
+                data[i].waitingAuthNum,
                 operation
               ]).draw(false);
             }

@@ -11,6 +11,17 @@ public class User {
     private String token;
     private int id;
 
+    public int getWaitingAuthNum() {
+        return waitingAuthNum;
+    }
+
+    public void setWaitingAuthNum(int waitingAuthNum) {
+        this.waitingAuthNum = waitingAuthNum;
+    }
+
+    private int waitingAuthNum=0;
+
+
     public String getPhoneNum() {
         return phoneNum;
     }
