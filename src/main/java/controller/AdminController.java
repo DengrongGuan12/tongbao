@@ -196,6 +196,27 @@ public class AdminController {
         return "driverDetail";
     }
 
+    @RequestMapping(value = "/getAllTruckInfo", method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult getAllTruckInfo(@RequestParam(value = "userId") int userId){
+        List list = driverService.getAllTruckInfoByUserId(userId);
+        return RestResult.CreateResult(1,list);
+    }
+
+    @RequestMapping(value = "/truckDetail/{id}")
+    public String truckDetail(@PathVariable int id,Model model,HttpSession session){
+        return "truckDetail";
+    }
+    @RequestMapping(value = "/deleteTruck", method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult deleteTruck(@RequestParam(value = "id") int id){
+        if(driverService.deleteTruckById(id)){
+            return RestResult.CreateResult(1);
+        }else{
+            return RestResult.CreateResult(0,"操作失败!");
+        }
+    }
+
 
 
 }

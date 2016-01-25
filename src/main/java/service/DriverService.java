@@ -20,4 +20,5 @@ public interface DriverService {
     public int getWaitingExamineDriverNum(int userId);
     public int getExaminedDriverNum(int userId);
     public List getAllTruckInfoByUserId(int userId);
+    public boolean deleteTruckById(int id);
 }

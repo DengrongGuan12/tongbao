@@ -191,6 +191,15 @@ public class DriverServiceImpl implements DriverService {
     //id,车牌号,车辆类型名称,车辆载重,车辆长度,车辆宽度,车辆高度,驾驶人姓名,驾驶证号码,随车电话,审核状态
     public List getAllTruckInfoByUserId(int userId) {
         List list = new ArrayList();
+        vo.TruckInfo truckInfo = new vo.TruckInfo();
+        //...
+//        list.add(truckInfo);
         return list;
+    }
+
+    // TODO: 1/25/2016
+    //根据driver_auth 中的id 删除司机的某辆车的信息
+    public boolean deleteTruckById(int id) {
+        return true;
     }
 }
