@@ -292,7 +292,7 @@ public class UserServiceIml implements UserService {
     typeStr 根据type生成,对应关系看一下数据库的表
     有这几种类型 充值,提现,支付,收益,退款
      */
-    // TODO: 1/20/2016
+    // : 1/20/2016
     public List getRecentAccounts(int num) {
         List listTemp = accountDao.getRecentAccounts(num);
         List list = new ArrayList();
@@ -329,7 +329,7 @@ public class UserServiceIml implements UserService {
 
 
 
-    // TODO: 1/20/2016
+    // : 1/20/2016
     /*
     删除用户,注意如果是司机则连带删除它的认证信息
      */
@@ -337,13 +337,12 @@ public class UserServiceIml implements UserService {
         User userTemp = userDao.getUserById(userId);
         Byte type = userTemp.getType();
         if(type.equals(1)){
-            System.out.print(userTemp.getId()+"!!!!!!!");
-            return userDao.deleteUser(userId)&&driver_auth_dao.deleteDriverAuth(userTemp.getId());
+            driver_auth_dao.deleteDriverAuth(userId);
         }
         return userDao.deleteUser(userId);
     }
 
-    // TODO: 1/20/2016
+    // : 1/20/2016
     //重置某个用户的密码
     public boolean resetPassword(int userId, String newPassword) {
         User user = userDao.getUserById(userId);
@@ -351,7 +350,7 @@ public class UserServiceIml implements UserService {
         return userDao.updateUser(user);
     }
 
-    // TODO: 1/20/2016
+    // : 1/20/2016Done
     /*
     获取某种类型的所有用户
     如果没有值则返回长度为0 的list，不要返回null,都使用vo.user

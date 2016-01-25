@@ -2,9 +2,13 @@ package dao.impl;
 
 import dao.Driver_auth_Dao;
 import model.Driver_auth;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Driver;
 import java.util.List;
 
 /**
@@ -12,8 +16,38 @@ import java.util.List;
  */
 @Repository
 public class Driver_auth_Dao_Impl extends BaseDaoImpl implements Driver_auth_Dao{
+    public int getUnSubmittedDriverNum(int userId) {
+        int count = ((Long)getSession().createQuery("select count(*) from Driver_auth where userId = "+userId+" and (auth_state = '0' or auth_state='3')").uniqueResult()).intValue();
+        return count;
+
+    }
+
+    public int getWaitingExamineDriverNum(int userId) {
+        int count = ((Long)getSession().createQuery("select count(*) from Driver_auth where userId = "+userId+" and auth_state = '1'").uniqueResult()).intValue();
+        return count;
+    }
+
+    public int getExaminedDriverNum(int userId) {
+        int count = ((Long)getSession().createQuery("select count(*) from Driver_auth where userId = "+userId+" and (auth_state = '2' or auth_state='3')").uniqueResult()).intValue();
+        return count;
+    }
+
+    public List getAllTruckInfoByUserId(int userId) {
+        List list = super.getList(Driver_auth.class,"userId",userId+"");
+        return list;
+    }
+
+    public boolean deleteTruckById(int id) {
+        try {
+            super.delete(Driver_auth.class,id);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
     public int getUnSubmittedDriverNum() {
-        int count = ((Long)getSession().createQuery("select count(*) from Driver_auth where auth_state = '0' or auth_state='3'").uniqueResult()).intValue();
+        int count = ((Long)getSession().createQuery("select count(*) from Driver_auth where auth_state = '0' or auth_state='3' ").uniqueResult()).intValue();
         return count;
     }
 

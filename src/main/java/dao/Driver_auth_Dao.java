@@ -17,4 +17,9 @@ public interface Driver_auth_Dao {
     public int getUnSubmittedDriverNum();
     public int getWaitingExamineDriverNum();
     public int getExaminedDriverNum();
+    public int getUnSubmittedDriverNum(int userId);
+    public int getWaitingExamineDriverNum(int userId);
+    public int getExaminedDriverNum(int userId);
+    public List getAllTruckInfoByUserId(int userId);
+    public boolean deleteTruckById(int id);
 }

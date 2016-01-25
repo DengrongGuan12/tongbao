@@ -83,6 +83,8 @@ public class OrderServiceImpl implements OrderService {
         order.setPayType(orderInfo.getPayType());
         order.setPrice(orderInfo.getPrice());
         order.setRemark(orderInfo.getRemark());
+        order.setEvaluate_point(new Byte("0"));
+        order.setEvaluate_content("");
         order.setState(new Byte("0"));
         orderDao.createOrder(order);
         Order orderTemp = orderDao.getOrderByShipperIdAndBuildTime(userId,order.getBuildTime());

@@ -28,7 +28,23 @@ public class DriverController {
     DriverService driverService;
     @Autowired
     OrderService orderService;
+    //test
+    @RequestMapping(value = "/auth/checkTruck", method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult addTruck(){
+        int count  = driverService.getWaitingExamineDriverNum(6);
+        int count1 = driverService.getExaminedDriverNum(6);
+        int count2 = driverService.getUnSubmittedDriverNum(6);
+        System.out.println("count is"+count+" "+count1+" "+count2);
+        List list = driverService.getAllTruckInfoByUserId(6);
+        System.out.print("test");
+        driverService.deleteTruckById(5);
 
+        return RestResult.CreateResult(1);
+
+
+    }
+    //test
     @RequestMapping(value = "/auth/addTruck", method = RequestMethod.POST)
     @ResponseBody
     public RestResult addTruck(@ModelAttribute("TruckInfo")TruckInfo truckInfo){

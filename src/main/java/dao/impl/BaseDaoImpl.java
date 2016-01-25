@@ -162,8 +162,10 @@ public class BaseDaoImpl implements BaseDao {
 
     public void delete(Class c, int id){
         Session session = getNewSession();
-        Object object = session.get(c,id);
-        session.delete(object);
+        String delete = "delete "+c.getName()+" where id = "+id;
+        System.out.print(delete);
+        Query q =session.createQuery(delete);
+        q.executeUpdate();
         flush();
         clear();
     }
