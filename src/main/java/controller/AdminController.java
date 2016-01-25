@@ -13,6 +13,7 @@ import service.OrderService;
 import service.UserService;
 import vo.LatestNumInfo;
 import vo.RestResult;
+import vo.TruckInfo;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -193,6 +194,7 @@ public class AdminController {
         model.addAttribute("phoneNum",user.getPhone_number());
         model.addAttribute("point",user.getPoint());
         model.addAttribute("registerTime",user.getRegister_time());
+        model.addAttribute("url",user.getIcon());
         return "driverDetail";
     }
 
@@ -205,6 +207,24 @@ public class AdminController {
 
     @RequestMapping(value = "/truckDetail/{id}")
     public String truckDetail(@PathVariable int id,Model model,HttpSession session){
+        model.addAttribute("name",session.getAttribute("name"));
+        TruckInfo truckInfo = driverService.getTruckInfoById(id);
+        model.addAttribute("id",id);
+        model.addAttribute("userId",truckInfo.getUserId());
+        model.addAttribute("authState",truckInfo.getAuthState());
+        model.addAttribute("drivingLicense",truckInfo.getDrivingLicense());
+        model.addAttribute("headPicture",truckInfo.getHeadPicture());
+        model.addAttribute("licenseNum",truckInfo.getLicenseNum());
+        model.addAttribute("phoneNum",truckInfo.getPhoneNum());
+        model.addAttribute("realName",truckInfo.getRealName());
+        model.addAttribute("truckLicense",truckInfo.getTruckLicense());
+        model.addAttribute("truckNum",truckInfo.getTruckNum());
+        model.addAttribute("truckPicture",truckInfo.getTruckPicture());
+        model.addAttribute("typeName",truckInfo.getTypeName());
+        model.addAttribute("capacity",truckInfo.getCapacity());
+        model.addAttribute("length",truckInfo.getLength());
+        model.addAttribute("width",truckInfo.getWidth());
+        model.addAttribute("height",truckInfo.getHeight());
         return "truckDetail";
     }
     @RequestMapping(value = "/deleteTruck", method = RequestMethod.POST)

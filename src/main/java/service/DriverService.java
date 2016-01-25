@@ -21,4 +21,5 @@ public interface DriverService {
     public int getExaminedDriverNum(int userId);
     public List getAllTruckInfoByUserId(int userId);
     public boolean deleteTruckById(int id);
+    public vo.TruckInfo getTruckInfoById(int id);
 }
