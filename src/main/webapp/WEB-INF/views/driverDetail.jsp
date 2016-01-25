@@ -104,7 +104,7 @@
         <p class="block-heading">个人信息</p>
         <div class="block-body">
             
-                <img src="http://i8.tietuku.com/c745ecd88b59126ct.jpg" class="img-polaroid" style="position:absolute;left:3%;">
+                <img src="${url}" class="img-polaroid" style="position:absolute;left:3%;">
                 <table class="table" id="table" style="position:relative;left:30%;width:60%;">
                   <tbody>
                     <tr>
@@ -327,7 +327,7 @@
               switch(data[i].authState){
                 case 1:
                   state = "正在审核";
-                  operation += "<a href='/tongbao/admin/truckDetail/'"+data[i].id+" title='审核' role='button' ><i class='icon-edit'></i></a>"
+                  operation += "<a href='/tongbao/admin/truckDetail/"+data[i].id+"' title='审核' role='button' ><i class='icon-edit'></i></a>"
                   break;
                 case 0:
                   state = "未提交审核";
@@ -340,12 +340,12 @@
                   break;
               }
               operation += "  <a href='javascript:void(0)' role='button' title='删除' onclick='showModal("+data[i].id+");' id='"+data[i].id+"'><i class='icon-remove'></i></a>";
-              var truckInfo = data[i].capacity+"吨/"+data[i].length+"米/"+data[i].width+"米/"+data[i].height+"米"
+              var truckInfo = data[i].capacity+"吨/"+data[i].length+"米/"+data[i].width+"米/"+data[i].height+"米";
               t.row.add([
                 data[i].id,
                 data[i].truckNum,
                 data[i].typeName,
-                data[i].truckInfo,
+                truckInfo,
                 data[i].realName,
                 data[i].licenseNum,
                 data[i].phoneNum,

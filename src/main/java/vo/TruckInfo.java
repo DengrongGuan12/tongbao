@@ -6,33 +6,44 @@ package vo;
 public class TruckInfo {
     private int id;
     //0未验证，1正在验证，2验证成功，3验证失败
-    private Byte authState;
+    private Byte authState = 0;
     //行驶证图片
-    private String drivingLicense;
+    private String drivingLicense = "";
     //驾驶人头像
-    private String headPicture;
+    private String headPicture = "";
     //驾驶证号码
-    private String licenseNum;
+    private String licenseNum = "";
     //随车电话
-    private String phoneNum;
+    private String phoneNum = "";
     //真实姓名
-    private String realName;
+    private String realName = "";
     //驾驶证图片
-    private String truckLicense;
+    private String truckLicense = "";
     //车牌号
-    private String truckNum;
+    private String truckNum = "";
     //货车图片
-    private String truckPicture;
+    private String truckPicture = "";
     //类型名称
-    private String typeName;
+    private String typeName = "";
     //载重
-    private double capacity;
+    private double capacity = 0;
     //长
-    private double length;
+    private double length = 0;
     //宽
-    private double width;
+    private double width = 0;
     //高
-    private double height;
+    private double height = 0;
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    //user id
+    private int userId = 0;
 
     public double getHeight() {
         return height;

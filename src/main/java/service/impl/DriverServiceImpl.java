@@ -193,7 +193,18 @@ public class DriverServiceImpl implements DriverService {
         List list = new ArrayList();
         vo.TruckInfo truckInfo = new vo.TruckInfo();
         //...
-//        list.add(truckInfo);
+        truckInfo.setId(1);
+        truckInfo.setTruckNum("wrwer");
+        truckInfo.setCapacity(11);
+        truckInfo.setLength(11);
+        truckInfo.setWidth(12);
+        truckInfo.setHeight(12);
+        truckInfo.setRealName("addssdf");
+        truckInfo.setLicenseNum("adsfadsf");
+        truckInfo.setPhoneNum("213123123");
+        truckInfo.setAuthState(new Byte("1"));
+        truckInfo.setTypeName("面包车");
+        list.add(truckInfo);
         return list;
     }
 
@@ -201,5 +212,28 @@ public class DriverServiceImpl implements DriverService {
     //根据driver_auth 中的id 删除司机的某辆车的信息
     public boolean deleteTruckById(int id) {
         return true;
+    }
+
+    // TODO: 1/25/2016
+    //根据id 获取某辆车的具体信息
+    public vo.TruckInfo getTruckInfoById(int id) {
+        vo.TruckInfo truckInfo = new vo.TruckInfo();
+        truckInfo.setId(1);
+        truckInfo.setTruckNum("wrwer");
+        truckInfo.setTypeName("面包车");
+        truckInfo.setCapacity(11);
+        truckInfo.setLength(11);
+        truckInfo.setWidth(12);
+        truckInfo.setHeight(12);
+        truckInfo.setRealName("addssdf");
+        truckInfo.setLicenseNum("adsfadsf");
+        truckInfo.setPhoneNum("213123123");
+        truckInfo.setAuthState(new Byte("1"));
+        truckInfo.setDrivingLicense("http://i8.tietuku.com/c745ecd88b59126ct.jpg");
+        truckInfo.setHeadPicture("http://i8.tietuku.com/c745ecd88b59126ct.jpg");
+        truckInfo.setTruckLicense("http://i8.tietuku.com/c745ecd88b59126ct.jpg");
+        truckInfo.setTruckPicture("http://i8.tietuku.com/c745ecd88b59126ct.jpg");
+        truckInfo.setUserId(1);
+        return truckInfo;
     }
 }
