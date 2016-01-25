@@ -163,11 +163,10 @@ public class BaseDaoImpl implements BaseDao {
     public void delete(Class c, int id){
         Session session = getNewSession();
         String delete = "delete "+c.getName()+" where id = "+id;
-        System.out.print(delete);
         Query q =session.createQuery(delete);
         q.executeUpdate();
-        flush();
-        clear();
+        session.flush();
+        session.clear();
     }
 
     public void delete(Class c, String[] ids) {

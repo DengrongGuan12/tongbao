@@ -167,73 +167,80 @@ public class DriverServiceImpl implements DriverService {
         return driver_auth_dao.getExaminedDriverNum();
     }
 
-    // TODO: 1/21/2016
+
     //获取某个用户的尚未验证和验证失败的司机数量
     public int getUnSubmittedDriverNum(int userId) {
-        return 0;
+        return driver_auth_dao.getUnSubmittedDriverNum(userId);
     }
 
-    // TODO: 1/21/2016
+
     //获取某个用户的正在验证的司机数量
     public int getWaitingExamineDriverNum(int userId) {
-        return 0;
+        return driver_auth_dao.getWaitingExamineDriverNum(userId);
     }
 
-    // TODO: 1/21/2016
     // 获取某个用户验证成功和验证失败的司机数量
     public int getExaminedDriverNum(int userId) {
-        return 0;
+        return driver_auth_dao.getExaminedDriverNum(userId);
     }
 
-    // TODO: 1/21/2016
     //获取某个用户的所有车辆信息
     //需要设置的信息有
     //id,车牌号,车辆类型名称,车辆载重,车辆长度,车辆宽度,车辆高度,驾驶人姓名,驾驶证号码,随车电话,审核状态
     public List getAllTruckInfoByUserId(int userId) {
         List list = new ArrayList();
-        vo.TruckInfo truckInfo = new vo.TruckInfo();
-        //...
-        truckInfo.setId(1);
-        truckInfo.setTruckNum("wrwer");
-        truckInfo.setCapacity(11);
-        truckInfo.setLength(11);
-        truckInfo.setWidth(12);
-        truckInfo.setHeight(12);
-        truckInfo.setRealName("addssdf");
-        truckInfo.setLicenseNum("adsfadsf");
-        truckInfo.setPhoneNum("213123123");
-        truckInfo.setAuthState(new Byte("1"));
-        truckInfo.setTypeName("面包车");
-        list.add(truckInfo);
+        List listTemp = driver_auth_dao.getAllTruckInfoByUserId(userId);
+        for (int i=0;i<listTemp.size();i++){
+            vo.TruckInfo truckInfo = new vo.TruckInfo();
+            Driver_auth driver_auth = (Driver_auth) listTemp.get(i);
+            //...
+            truckInfo.setId(driver_auth.getId());
+            truckInfo.setTruckNum(driver_auth.getTruckNum());
+            Byte type = driver_auth.getType();
+            Trucks_type trucks_type = truck_type_dao.getTruckType(type);
+            truckInfo.setCapacity(trucks_type.getCapacity());
+            truckInfo.setLength(trucks_type.getLength());
+            truckInfo.setWidth(trucks_type.getWidth());
+            truckInfo.setHeight(trucks_type.getHeight());
+            truckInfo.setRealName(driver_auth.getRealName());
+            truckInfo.setLicenseNum(driver_auth.getLicenseNum());
+            truckInfo.setPhoneNum(driver_auth.getPhoneNum());
+            truckInfo.setAuthState(driver_auth.getAuthState());
+            truckInfo.setTypeName(trucks_type.getName());
+            list.add(truckInfo);
+
+        }
         return list;
+
     }
 
-    // TODO: 1/25/2016
     //根据driver_auth 中的id 删除司机的某辆车的信息
     public boolean deleteTruckById(int id) {
-        return true;
+        return driver_auth_dao.deleteTruckById(id);
     }
 
-    // TODO: 1/25/2016
+
     //根据id 获取某辆车的具体信息
     public vo.TruckInfo getTruckInfoById(int id) {
+        Driver_auth driver_auth = driver_auth_dao.getDriverAuthMessage(id);
+        Trucks_type trucks_type = truck_type_dao.getTruckType(driver_auth.getType());
         vo.TruckInfo truckInfo = new vo.TruckInfo();
-        truckInfo.setId(1);
-        truckInfo.setTruckNum("wrwer");
-        truckInfo.setTypeName("面包车");
-        truckInfo.setCapacity(11);
-        truckInfo.setLength(11);
-        truckInfo.setWidth(12);
-        truckInfo.setHeight(12);
-        truckInfo.setRealName("addssdf");
-        truckInfo.setLicenseNum("adsfadsf");
-        truckInfo.setPhoneNum("213123123");
-        truckInfo.setAuthState(new Byte("1"));
-        truckInfo.setDrivingLicense("http://i8.tietuku.com/c745ecd88b59126ct.jpg");
-        truckInfo.setHeadPicture("http://i8.tietuku.com/c745ecd88b59126ct.jpg");
-        truckInfo.setTruckLicense("http://i8.tietuku.com/c745ecd88b59126ct.jpg");
-        truckInfo.setTruckPicture("http://i8.tietuku.com/c745ecd88b59126ct.jpg");
-        truckInfo.setUserId(1);
+        truckInfo.setId(driver_auth.getId());
+        truckInfo.setTruckNum(driver_auth.getTruckNum());
+        truckInfo.setTypeName(trucks_type.getName());
+        truckInfo.setCapacity(trucks_type.getCapacity());
+        truckInfo.setLength(trucks_type.getLength());
+        truckInfo.setWidth(trucks_type.getWidth());
+        truckInfo.setHeight(trucks_type.getHeight());
+        truckInfo.setRealName(driver_auth.getRealName());
+        truckInfo.setLicenseNum(driver_auth.getLicenseNum());
+        truckInfo.setPhoneNum(driver_auth.getPhoneNum());
+        truckInfo.setAuthState(driver_auth.getAuthState());
+        truckInfo.setDrivingLicense(driver_auth.getDrivingLicense());
+        truckInfo.setHeadPicture(driver_auth.getHeadPicture());
+        truckInfo.setTruckLicense(driver_auth.getTruckLicense());
+        truckInfo.setTruckPicture(driver_auth.getTruckPicture());
+        truckInfo.setUserId(driver_auth.getUserId());
         return truckInfo;
     }
 }

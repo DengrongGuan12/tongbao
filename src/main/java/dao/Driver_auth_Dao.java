@@ -8,6 +8,7 @@ import java.util.List;
  * Created by cg on 2015/12/31.
  */
 public interface Driver_auth_Dao {
+
     public boolean addDriverAuth(Driver_auth driver_auth);
     public Driver_auth getDriverAuthByUserId(int userId);
     public Driver_auth getDriverAuthByTruckNum(String truckNum);
@@ -22,4 +23,5 @@ public interface Driver_auth_Dao {
     public int getExaminedDriverNum(int userId);
     public List getAllTruckInfoByUserId(int userId);
     public boolean deleteTruckById(int id);
+    public Driver_auth getDriverAuthMessage(int id);
 }

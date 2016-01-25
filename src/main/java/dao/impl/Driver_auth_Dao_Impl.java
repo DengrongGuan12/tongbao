@@ -16,6 +16,7 @@ import java.util.List;
  */
 @Repository
 public class Driver_auth_Dao_Impl extends BaseDaoImpl implements Driver_auth_Dao{
+
     public int getUnSubmittedDriverNum(int userId) {
         int count = ((Long)getSession().createQuery("select count(*) from Driver_auth where userId = "+userId+" and (auth_state = '0' or auth_state='3')").uniqueResult()).intValue();
         return count;
@@ -94,6 +95,10 @@ public class Driver_auth_Dao_Impl extends BaseDaoImpl implements Driver_auth_Dao
             e.printStackTrace();
             return false;
         }
+    }
+
+    public Driver_auth getDriverAuthMessage(int id) {
+        return (Driver_auth)super.load(Driver_auth.class,id);
     }
 
     public List getDriverByTruckType(String truckType) {

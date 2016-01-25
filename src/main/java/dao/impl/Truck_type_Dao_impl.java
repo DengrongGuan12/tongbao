@@ -24,6 +24,7 @@ public class Truck_type_Dao_impl extends BaseDaoImpl implements Truck_type_Dao{
         }
     }
 
+
     public Trucks_type getTruckType(Byte type) {
         return (Trucks_type)super.load(Trucks_type.class,type);
     }
