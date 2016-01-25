@@ -29,6 +29,7 @@ public class DriverController {
     @Autowired
     OrderService orderService;
 
+
     @RequestMapping(value = "/auth/addTruck", method = RequestMethod.POST)
     @ResponseBody
     public RestResult addTruck(@ModelAttribute("TruckInfo")TruckInfo truckInfo){
