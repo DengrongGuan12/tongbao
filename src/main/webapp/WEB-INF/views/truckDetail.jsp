@@ -138,26 +138,26 @@
               <tr>
                   <td>
                     <div>
-                      <img src="http://i8.tietuku.com/c745ecd88b59126ct.jpg" class="img-polaroid" style="position:relative;left:3%;margin-bottom: 15px;">
-                      <div>图片1</div>
+                      <img src="${drivingLicense}" class="img-polaroid" style="position:relative;left:3%;margin-bottom: 15px;">
+                      <div>行驶证照片</div>
                     </div>
                   </td>
                   <td>
                     <div>
-                      <img src="http://i8.tietuku.com/c745ecd88b59126ct.jpg" class="img-polaroid" style="position:relative;left:3%;margin-bottom: 15px;">
-                      <div>图片1</div>
+                      <img src="${truckLicense}" class="img-polaroid" style="position:relative;left:3%;margin-bottom: 15px;">
+                      <div>驾驶证照片</div>
                     </div>
                   </td>
                   <td>
                     <div>
-                      <img src="http://i8.tietuku.com/c745ecd88b59126ct.jpg" class="img-polaroid" style="position:relative;left:3%;margin-bottom: 15px;">
-                      <div>图片1</div>
+                      <img src="${headPicture}" class="img-polaroid" style="position:relative;left:3%;margin-bottom: 15px;">
+                      <div>司机头像</div>
                     </div>
                   </td>
                   <td>
                     <div>
-                      <img src="http://i8.tietuku.com/c745ecd88b59126ct.jpg" class="img-polaroid" style="position:relative;left:3%;margin-bottom: 15px;">
-                      <div>图片1</div>
+                      <img src="${truckPicture}" class="img-polaroid" style="position:relative;left:3%;margin-bottom: 15px;">
+                      <div>车头照</div>
                     </div>
                   </td>
               </tr>
@@ -165,123 +165,42 @@
           </table>
           
         </div>
-
     </div>
-
-    <div class="block">
-        <div class="block-heading">
-
-            <a href="#driving-info" data-toggle="collapse">行驶证信息</a>
+    <c:choose>
+      <c:when test="${authState == 1}">
+        <div style="width:100%;text-align:center;">
+          <button id="pass">通过</button>
+          <button id="reject">不通过</button>
         </div>
-        <div id="driving-info" class="block-body collapse in" style="margin-top:1em;">
-          <img src="http://i8.tietuku.com/c745ecd88b59126ct.jpg" class="img-polaroid" style="position:relative;left:3%;margin-bottom: 15px;">
-          <table class="table" id="table" style="position:absolute;left:30%;width:60%;top:0">
-            <tbody>
-              <tr>
-                  <td>车牌号</td>
-                  <td>${truckNum}</td>
-              </tr>
-              <tr>
-                  <td>车辆类型</td>
-                  <td>${typeName}</td>
-              </tr>
-              <tr>
-                  <td>所有人</td>
-                  <td>${realName}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-    </div>
-    <div class="block">
-        <div class="block-heading">
-
-            <a href="#driving-info" data-toggle="collapse">驾驶证信息</a>
-        </div>
-        <div id="driving-info" class="block-body collapse in" style="margin-top:1em;">
-          <img src="http://i8.tietuku.com/c745ecd88b59126ct.jpg" class="img-polaroid" style="position:relative;left:3%;margin-bottom: 15px;">
-          <table class="table" id="table" style="position:absolute;left:30%;width:60%;top:0">
-            <tbody>
-              <tr>
-                  <td>姓名</td>
-                  <td>${realName}</td>
-              </tr>
-              <tr>
-                  <td>驾驶证号码</td>
-                  <td>${licenseNum}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-    </div>
-    <div class="block">
-        <div class="block-heading">
-
-            <a href="#driving-info" data-toggle="collapse">驾驶人信息</a>
-        </div>
-        <div id="driving-info" class="block-body collapse in" style="margin-top:1em;">
-          <img src="http://i8.tietuku.com/c745ecd88b59126ct.jpg" class="img-polaroid" style="position:relative;left:3%;margin-bottom: 15px;">
-          <table class="table" id="table" style="position:absolute;left:30%;width:60%;top:0">
-            <tbody>
-              <tr>
-                  <td>姓名</td>
-                  <td>${realName}</td>
-              </tr>
-              <tr>
-                  <td>联系方式</td>
-                  <td>${phoneNum}</td>
-              </tr>
-              <tr>
-                  <td>所有人</td>
-                  <td>${realName}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-    </div>
-    <div class="block">
-        <div class="block-heading">
-
-            <a href="#driving-info" data-toggle="collapse">行驶证信息</a>
-        </div>
-        <div id="driving-info" class="block-body collapse in" style="margin-top:1em;">
-          <img src="http://i8.tietuku.com/c745ecd88b59126ct.jpg" class="img-polaroid" style="position:relative;left:3%;margin-bottom: 15px;">
-          <table class="table" id="table" style="position:absolute;left:30%;width:60%;top:0">
-            <tbody>
-              <tr>
-                  <td>车牌号</td>
-                  <td>${truckNum}</td>
-              </tr>
-              <tr>
-                  <td>车辆类型</td>
-                  <td>${typeName}</td>
-              </tr>
-              <tr>
-                  <td>所有人</td>
-                  <td>${realName}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-    </div>
-    <div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      </c:when>
+    </c:choose>
+    
+    <div class="modal small hide fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="myModalLabel">删除确认</h3>
+            <h3 id="myModalLabel">审核确认</h3>
         </div>
         <div class="modal-body">
-            <p class="error-text"><i class="icon-warning-sign modal-icon"></i>你确定要删除id为<span id="truck-id">10</span>的车辆信息吗?</p>
+            <p class="error-text"><i class="icon-warning-sign modal-icon"></i>你确定要审核状态设为<span id="truck-id">通过</span>吗?</p>
         </div>
         <div class="modal-footer">
             <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
-            <button class="btn btn-danger" data-dismiss="modal" id="delete">删除</button>
+            <button class="btn btn-danger" data-dismiss="modal" id="sure-pass">通过</button>
         </div>
     </div>
-
+    <div class="modal small hide fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel">审核确认</h3>
+        </div>
+        <div class="modal-body">
+            <p class="error-text"><i class="icon-warning-sign modal-icon"></i>你确定要审核状态设为<span id="truck-id">不通过</span>吗?</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+            <button class="btn btn-danger" data-dismiss="modal" id="sure-reject">不通过</button>
+        </div>
+    </div>
 
                     
            <%@include file="footer.jsp" %>
@@ -318,11 +237,52 @@
         $(function() {
             $('.demo-cancel-click').click(function(){return false;});
 
-        });    
-        function showModel(truckId){
-          $('#truck-id').text(truckId);
-          deleteId = truckId;
-          $('#myModal').modal();
+        });
+        $('#pass').click(function(){
+          $('#myModal1').modal();
+        });
+        $('#reject').click(function(){
+          $('#myModal2').modal();
+        });
+        $('#sure-pass').click(function(){
+          auth(2);
+        });
+        $('#sure-reject').click(function(){
+          auth(3);
+        });
+        function auth(state){
+          $.ajax({
+                type:"POST",
+                url:"/tongbao/admin/setAuthState",
+                data:{id:${id},state:state},
+                //返回数据的格式
+                datatype: "json",//"xml", "html", "script", "json", "jsonp", "text".
+                //在请求之前调用的函数
+                beforeSend:function(){
+                    // alert("beforeSend");
+                },
+                //成功返回之后调用的函数             
+                success:function(data){
+                    // alert(data); 
+                    if(data.result == 1){
+                        window.location.reload();
+                    }else{
+                        alert(data.errorMsg);
+                    }     
+                },
+                //调用执行后调用的函数
+                complete: function(XMLHttpRequest, textStatus){
+                   // alert(XMLHttpRequest.responseText);
+                   // alert(textStatus);
+                    //HideLoading();
+                },
+                //调用出错执行的函数
+                error: function(){
+                    //请求出错处理
+                    // location.href = "/tongbao/admin/login";
+                    alert("error!");
+                } 
+          });
         }
     </script>
     

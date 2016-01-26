@@ -22,4 +22,5 @@ public interface DriverService {
     public List getAllTruckInfoByUserId(int userId);
     public boolean deleteTruckById(int id);
     public vo.TruckInfo getTruckInfoById(int id);
+    public boolean setAuthState(int id, Byte state);
 }

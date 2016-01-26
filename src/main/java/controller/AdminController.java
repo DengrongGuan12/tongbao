@@ -236,6 +236,15 @@ public class AdminController {
             return RestResult.CreateResult(0,"操作失败!");
         }
     }
+    @RequestMapping(value = "/setAuthState",method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult setAuthState(@RequestParam(value = "id") int id, @RequestParam(value = "state")byte state){
+        if(driverService.setAuthState(id,state)){
+            return RestResult.CreateResult(1);
+        }else{
+            return RestResult.CreateResult(0,"设置失败!");
+        }
+    }
 
 
 

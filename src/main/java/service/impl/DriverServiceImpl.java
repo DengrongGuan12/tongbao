@@ -243,4 +243,11 @@ public class DriverServiceImpl implements DriverService {
         truckInfo.setUserId(driver_auth.getUserId());
         return truckInfo;
     }
+
+    // TODO: 1/26/2016
+    //设置某辆车的认证状态
+    //注意认证状态的转化方式 只能 1->2 或者1->3 ,否则返回false
+    public boolean setAuthState(int id, Byte state) {
+        return true;
+    }
 }
