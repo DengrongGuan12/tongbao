@@ -1,5 +1,6 @@
 package controller;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import manager.UserManager;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -245,7 +246,39 @@ public class AdminController {
             return RestResult.CreateResult(0,"设置失败!");
         }
     }
-
-
+    @RequestMapping(value = "/orderManage")
+    public String orderManage(Model model,HttpSession session){
+        model.addAttribute("name",session.getAttribute("name"));
+        return "orderManage";
+    }
+    @RequestMapping(value = "/accountManage")
+    public String accountManage(Model model,HttpSession session){
+        model.addAttribute("name",session.getAttribute("name"));
+        return "accountManage";
+    }
+    @RequestMapping(value = "/getAllOrders", method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult getAllOrders(){
+        List list = orderService.getAllOrders();
+        return RestResult.CreateResult(1,list);
+    }
+    @RequestMapping(value = "/deleteOrder",method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult deleteOrder(@RequestParam(value = "id")int id){
+        if(orderService.deleteOrder(id)){
+            return RestResult.CreateResult(1);
+        }else{
+            return RestResult.CreateResult(0,"删除失败!");
+        }
+    }
+    @RequestMapping(value = "/cancelOrder",method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult cancelOrder(@RequestParam(value = "id")int id){
+        if(orderService.cancelOrder(id)){
+            return RestResult.CreateResult(1);
+        }else{
+            return RestResult.CreateResult(0,"取消失败!");
+        }
+    }
 
 }

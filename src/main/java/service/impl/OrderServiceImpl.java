@@ -484,6 +484,44 @@ public class OrderServiceImpl implements OrderService {
         return list;
     }
 
+    // TODO: 1/26/2016
+    //获取所有订单
+    //使用orderDetail, 需要设置的值有id,addressFrom, addressTo, time, loadTime, driverPhoneNum, shipperPhoneNum,money,goodsType,goodsWeight,state
+    public List getAllOrders() {
+        List list = new ArrayList();
+
+        for(int i = 0;i<8;i++){
+            OrderDetail orderDetail = new OrderDetail();
+            orderDetail.setId(i);
+            orderDetail.setAddressFrom("sdfsdf");
+            orderDetail.setAddressTo("werwer");
+            orderDetail.setTime("2015-11-11 11:11:11");
+            orderDetail.setLoadTime("2015-11-11 11:11:11");
+            orderDetail.setDriverPhoneNum("123132132");
+            orderDetail.setShipperPhoneNum("234234234");
+            orderDetail.setMoney(12.3);
+            orderDetail.setGoodsType("毒品");
+            orderDetail.setGoodsWeight(2);
+            orderDetail.setState(i);
+            list.add(orderDetail);
+        }
+
+        return list;
+    }
+
+    // TODO: 1/26/2016
+    //管理员删除订单，只能删除已经完成的或者被取消或者被司机货主删除的订单（即state只能为2，3，5，6，7），否则返回false
+    public boolean deleteOrder(int id) {
+        return true;
+    }
+
+    // TODO: 1/26/2016
+    //管理员取消订单，只能取消正在进行或者等待司机取消的订单（即state 只能为1，4），否则返回false
+    //注意取消订单需要退还相应金额
+    public boolean cancelOrder(int id) {
+        return true;
+    }
+
     /*
     根据order 生成orderSimple
      */

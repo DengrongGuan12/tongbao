@@ -21,4 +21,7 @@ public interface OrderService {
     public List getMyOrderList(int userId, int type);
     public int getTotalOrderNum();
     public List getRecentOrders(int num);
+    public List getAllOrders();
+    public boolean deleteOrder(int id);
+    public boolean cancelOrder(int id);
 }

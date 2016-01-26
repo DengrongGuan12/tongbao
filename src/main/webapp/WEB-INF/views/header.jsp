@@ -32,8 +32,8 @@
         <a href="#dashboard-menu" class="nav-header" data-toggle="collapse"><i class="icon-dashboard"></i>主控面板</a>
         <ul id="dashboard-menu" class="nav nav-list collapse in">
             <li><a href="/tongbao/admin/index">首页</a></li>
-            <li ><a href="#">订单管理</a></li>
-            <li ><a href="#">账单管理</a></li>
+            <li ><a href="/tongbao/admin/orderManage">订单管理</a></li>
+            <li ><a href="/tongbao/admin/accountManage">账单管理</a></li>
 
         </ul>
 
