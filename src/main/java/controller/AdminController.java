@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pojo.ModifiedPassword;
 import pojo.TokenAuthInfo;
+import service.AccountService;
 import service.DriverService;
 import service.OrderService;
 import service.UserService;
@@ -34,6 +35,9 @@ public class AdminController {
 
     @Autowired
     OrderService orderService;
+
+    @Autowired
+    AccountService accountService;
 
     @RequestMapping("/login")
     public String login(HttpSession session){
@@ -280,5 +284,22 @@ public class AdminController {
             return RestResult.CreateResult(0,"取消失败!");
         }
     }
+
+    @RequestMapping(value = "/deleteAccount",method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult deleteAccount(@RequestParam(value = "id")int id){
+        if(accountService.deleteAccount(id)){
+            return RestResult.CreateResult(1);
+        }else{
+            return RestResult.CreateResult(0,"删除失败!");
+        }
+    }
+    @RequestMapping(value = "/getAllAccounts",method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult getAllAccounts(){
+        List list = accountService.getAllAccounts();
+        return RestResult.CreateResult(1,list);
+    }
+
 
 }
