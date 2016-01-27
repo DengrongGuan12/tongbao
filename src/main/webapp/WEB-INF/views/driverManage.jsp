@@ -79,7 +79,7 @@
             <div class="row-fluid">
 
 <div class="btn-toolbar">
-    <button class="btn btn-primary"><i class="icon-plus"></i> 添加司机</button>
+
 </div>
 <div class="well">
     <table id="example" class="display" cellspacing="0" width="100%">
