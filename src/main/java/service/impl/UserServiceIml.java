@@ -76,6 +76,9 @@ public class UserServiceIml implements UserService {
             userReturn.setMoney(userTemp.getMoney());
             userReturn.setNickName(userTemp.getNick_name());
             userReturn.setPoint(userTemp.getPoint());
+            userReturn.setPhoneNum(userTemp.getPhone_number());
+            userReturn.setRegisterTime(userTemp.getRegister_time()+"");
+            userReturn.setId(userTemp.getId());
             userReturn.setToken(token);
             session.setAttribute("type", userTemp.getType());
             session.setAttribute("name", userTemp.getNick_name());
