@@ -25623,3 +25623,340 @@ line 1:66: unexpected token: 21
 [INFO][2016-01-18 22:39:46,211][org.springframework.web.servlet.DispatcherServlet]FrameworkServlet 'springMVC': initialization completed in 1119 ms
 [WARN][2016-01-18 22:43:14,178][org.springframework.web.servlet.PageNotFound]No mapping found for HTTP request with URI [/tongbao/admin/users.html] in DispatcherServlet with name 'springMVC'
 [WARN][2016-01-18 22:43:20,363][org.springframework.web.servlet.PageNotFound]No mapping found for HTTP request with URI [/tongbao/admin/users.html] in DispatcherServlet with name 'springMVC'
+[INFO][2016-02-15 21:31:27,754][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization started
+[INFO][2016-02-15 21:31:28,090][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing Root WebApplicationContext: startup date [Mon Feb 15 21:31:28 CST 2016]; root of context hierarchy
+[INFO][2016-02-15 21:31:28,226][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring.xml]
+[INFO][2016-02-15 21:31:29,065][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-hiber.xml]
+[INFO][2016-02-15 21:31:30,696][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [config.properties]
+[ERROR][2016-02-15 21:31:31,875][com.alibaba.druid.pool.DruidAbstractDataSource]maxIdle is deprecated
+[INFO][2016-02-15 21:31:32,027][com.alibaba.druid.pool.DruidDataSource]{dataSource-1} inited
+[INFO][2016-02-15 21:31:32,773][org.hibernate.annotations.common.Version]HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+[INFO][2016-02-15 21:31:32,806][org.hibernate.Version]HHH000412: Hibernate Core {4.3.8.Final}
+[INFO][2016-02-15 21:31:32,818][org.hibernate.cfg.Environment]HHH000206: hibernate.properties not found
+[INFO][2016-02-15 21:31:32,823][org.hibernate.cfg.Environment]HHH000021: Bytecode provider name : javassist
+[INFO][2016-02-15 21:31:34,239][org.hibernate.dialect.Dialect]HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+[INFO][2016-02-15 21:31:34,892][org.hibernate.engine.transaction.internal.TransactionFactoryInitiator]HHH000399: Using default transaction strategy (direct JDBC transactions)
+[INFO][2016-02-15 21:31:34,912][org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory]HHH000397: Using ASTQueryTranslatorFactory
+[INFO][2016-02-15 21:31:35,936][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000228: Running hbm2ddl schema update
+[INFO][2016-02-15 21:31:35,936][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000102: Fetching database metadata
+[INFO][2016-02-15 21:31:35,947][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000396: Updating schema
+[INFO][2016-02-15 21:31:36,026][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.account
+[INFO][2016-02-15 21:31:36,027][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [money, user_id, build_time, id, type, order_id]
+[INFO][2016-02-15 21:31:36,027][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-02-15 21:31:36,028][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-02-15 21:31:36,075][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.account_type_name_t
+[INFO][2016-02-15 21:31:36,076][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [name, type]
+[INFO][2016-02-15 21:31:36,076][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-02-15 21:31:36,076][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-02-15 21:31:36,115][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.auth_state_name_t
+[INFO][2016-02-15 21:31:36,115][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [name, state]
+[INFO][2016-02-15 21:31:36,115][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-02-15 21:31:36,115][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-02-15 21:31:36,169][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.contacts
+[INFO][2016-02-15 21:31:36,170][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [driver_id, shipper_to_driver, shipper_id, id, driver_to_shipper]
+[INFO][2016-02-15 21:31:36,170][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-02-15 21:31:36,170][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-02-15 21:31:36,226][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.driver_auth
+[INFO][2016-02-15 21:31:36,227][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [truck_license, driving_license, user_id, truck_num, license_num, auth_state, phone_num, real_name, id, head_picture, type, truck_picture]
+[INFO][2016-02-15 21:31:36,227][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-02-15 21:31:36,227][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-02-15 21:31:36,274][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.frequent_address
+[INFO][2016-02-15 21:31:36,274][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [address, lng, shipper_id, id, lat]
+[INFO][2016-02-15 21:31:36,275][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-02-15 21:31:36,275][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-02-15 21:31:36,314][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.frequent_driver
+[INFO][2016-02-15 21:31:36,314][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [driver_id, shipper_id, id]
+[INFO][2016-02-15 21:31:36,314][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-02-15 21:31:36,314][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-02-15 21:31:36,353][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.message
+[INFO][2016-02-15 21:31:36,353][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [user_id, id, time, type, object_id, content, has_read]
+[INFO][2016-02-15 21:31:36,353][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-02-15 21:31:36,353][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-02-15 21:31:36,396][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.message_type
+[INFO][2016-02-15 21:31:36,399][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [name, type]
+[INFO][2016-02-15 21:31:36,399][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-02-15 21:31:36,400][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-02-15 21:31:36,442][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.order_state_name_t
+[INFO][2016-02-15 21:31:36,443][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [name, state]
+[INFO][2016-02-15 21:31:36,443][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-02-15 21:31:36,443][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-02-15 21:31:36,488][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.order_truck_type
+[INFO][2016-02-15 21:31:36,488][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [truck_type, id, order_id]
+[INFO][2016-02-15 21:31:36,488][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-02-15 21:31:36,488][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-02-15 21:31:36,530][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.orders
+[INFO][2016-02-15 21:31:36,531][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [driver_id, from_contact_name, address_to, build_time, remark, evaluate_point, address_from, to_contact_name, goods_size, from_contact_phone, load_time, evaluate_content, price, pay_type, shipper_id, id, goods_type, state, goods_weight, to_contact_phone]
+[INFO][2016-02-15 21:31:36,532][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-02-15 21:31:36,532][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-02-15 21:31:36,576][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.truck_type
+[INFO][2016-02-15 21:31:36,576][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [over_price, base_price, length, name, width, type, capacity, height]
+[INFO][2016-02-15 21:31:36,576][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-02-15 21:31:36,576][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-02-15 21:31:36,619][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.user
+[INFO][2016-02-15 21:31:36,619][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [icon_url, password, money, nick_name, phone_number, id, type, point, register_time]
+[INFO][2016-02-15 21:31:36,619][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-02-15 21:31:36,619][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [uk_4bgmpi98dylab6qdvf9xyaxu4, primary]
+[INFO][2016-02-15 21:31:36,664][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.user_type_name_t
+[INFO][2016-02-15 21:31:36,664][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [name, type]
+[INFO][2016-02-15 21:31:36,665][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-02-15 21:31:36,666][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-02-15 21:31:36,670][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000232: Schema update complete
+[INFO][2016-02-15 21:31:37,858][org.springframework.orm.hibernate4.HibernateTransactionManager]Using DataSource [{
+	CreateTime:"2016-02-15 21:31:31",
+	ActiveCount:0,
+	PoolingCount:1,
+	CreateCount:1,
+	DestroyCount:0,
+	CloseCount:2,
+	ConnectCount:2,
+	Connections:[
+		{ID:1243904563, ConnectTime:"2016-02-15 21:31:34", UseCount:2, LastActiveTime:"2016-02-15 21:31:36"}
+	]
+}] of Hibernate SessionFactory for HibernateTransactionManager
+[INFO][2016-02-15 21:31:38,280][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization completed in 10518 ms
+[INFO][2016-02-15 21:31:39,323][org.springframework.web.servlet.DispatcherServlet]FrameworkServlet 'springMVC': initialization started
+[INFO][2016-02-15 21:31:39,336][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing WebApplicationContext for namespace 'springMVC-servlet': startup date [Mon Feb 15 21:31:39 CST 2016]; parent: Root WebApplicationContext
+[INFO][2016-02-15 21:31:39,341][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mvc.xml]
+[INFO][2016-02-15 21:31:40,310][org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]Mapped URL path [/lib/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+[INFO][2016-02-15 21:31:40,354][org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]Mapped URL path [/stylesheets/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1'
+[INFO][2016-02-15 21:31:40,360][org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]Mapped URL path [/images/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#2'
+[INFO][2016-02-15 21:31:40,367][org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]Mapped URL path [/admin/images/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#3'
+[INFO][2016-02-15 21:31:40,374][org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]Mapped URL path [/admin/lib/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#4'
+[INFO][2016-02-15 21:31:40,382][org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]Mapped URL path [/admin/stylesheets/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#5'
+[INFO][2016-02-15 21:31:41,275][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/index]}" onto public java.lang.String controller.AdminController.index(org.springframework.ui.Model,javax.servlet.http.HttpSession)
+[INFO][2016-02-15 21:31:41,277][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/logout]}" onto public java.lang.String controller.AdminController.logout(javax.servlet.http.HttpSession)
+[INFO][2016-02-15 21:31:41,281][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/login]}" onto public java.lang.String controller.AdminController.login(javax.servlet.http.HttpSession)
+[INFO][2016-02-15 21:31:41,281][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/shipperManage]}" onto public java.lang.String controller.AdminController.shipperManage(org.springframework.ui.Model,javax.servlet.http.HttpSession)
+[INFO][2016-02-15 21:31:41,282][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/modifyPassword],methods=[POST]}" onto public vo.RestResult controller.AdminController.modifyPassword(pojo.ModifiedPassword,javax.servlet.http.HttpSession)
+[INFO][2016-02-15 21:31:41,283][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/driverManage]}" onto public java.lang.String controller.AdminController.driverManage(org.springframework.ui.Model,javax.servlet.http.HttpSession)
+[INFO][2016-02-15 21:31:41,284][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/getLatestNumInfo],methods=[POST]}" onto public vo.RestResult controller.AdminController.getLatestNumInfo()
+[INFO][2016-02-15 21:31:41,286][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/getAllTruckInfo],methods=[POST]}" onto public vo.RestResult controller.AdminController.getAllTruckInfo(int)
+[INFO][2016-02-15 21:31:41,287][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/accountManage]}" onto public java.lang.String controller.AdminController.accountManage(org.springframework.ui.Model,javax.servlet.http.HttpSession)
+[INFO][2016-02-15 21:31:41,287][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/orderManage]}" onto public java.lang.String controller.AdminController.orderManage(org.springframework.ui.Model,javax.servlet.http.HttpSession)
+[INFO][2016-02-15 21:31:41,289][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/truckDetail/{id}]}" onto public java.lang.String controller.AdminController.truckDetail(int,org.springframework.ui.Model,javax.servlet.http.HttpSession)
+[INFO][2016-02-15 21:31:41,289][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/driverDetail/{id}]}" onto public java.lang.String controller.AdminController.driverDetail(int,org.springframework.ui.Model,javax.servlet.http.HttpSession)
+[INFO][2016-02-15 21:31:41,290][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/deleteTruck],methods=[POST]}" onto public vo.RestResult controller.AdminController.deleteTruck(int)
+[INFO][2016-02-15 21:31:41,292][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/deleteOrder],methods=[POST]}" onto public vo.RestResult controller.AdminController.deleteOrder(int)
+[INFO][2016-02-15 21:31:41,293][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/getRecentOrders],methods=[POST]}" onto public vo.RestResult controller.AdminController.getRecentOrders(int)
+[INFO][2016-02-15 21:31:41,294][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/deleteAccount],methods=[POST]}" onto public vo.RestResult controller.AdminController.deleteAccount(int)
+[INFO][2016-02-15 21:31:41,295][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/deleteUser],methods=[POST]}" onto public vo.RestResult controller.AdminController.deleteUser(int)
+[INFO][2016-02-15 21:31:41,296][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/setAuthState],methods=[POST]}" onto public vo.RestResult controller.AdminController.setAuthState(int,byte)
+[INFO][2016-02-15 21:31:41,300][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/getAllAccounts],methods=[POST]}" onto public vo.RestResult controller.AdminController.getAllAccounts()
+[INFO][2016-02-15 21:31:41,304][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/getAllOrders],methods=[POST]}" onto public vo.RestResult controller.AdminController.getAllOrders()
+[INFO][2016-02-15 21:31:41,307][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/cancelOrder],methods=[POST]}" onto public vo.RestResult controller.AdminController.cancelOrder(int)
+[INFO][2016-02-15 21:31:41,308][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/hasLogin],methods=[POST]}" onto public vo.RestResult controller.AdminController.hasLogin(pojo.TokenAuthInfo)
+[INFO][2016-02-15 21:31:41,309][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/resetPassword]}" onto public java.lang.String controller.AdminController.resetPassword()
+[INFO][2016-02-15 21:31:41,310][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/getRecentRegisterUsers],methods=[POST]}" onto public vo.RestResult controller.AdminController.getRecentRegisterUsers(java.lang.Byte,int)
+[INFO][2016-02-15 21:31:41,311][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/resetUserPassword],methods=[POST]}" onto public vo.RestResult controller.AdminController.resetUserPassword(int,java.lang.String)
+[INFO][2016-02-15 21:31:41,312][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/getRecentAccounts],methods=[POST]}" onto public vo.RestResult controller.AdminController.getRecentAccounts(int)
+[INFO][2016-02-15 21:31:41,313][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/getAllUsersByType],methods=[POST]}" onto public vo.RestResult controller.AdminController.getAllUsersByType(java.lang.Byte)
+[INFO][2016-02-15 21:31:41,324][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/auth/showAllOrders],methods=[POST]}" onto public vo.RestResult controller.DriverController.showAllOrders(pojo.OrderFilterInfo)
+[INFO][2016-02-15 21:31:41,324][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/auth/showMyOrderList],methods=[POST]}" onto public vo.RestResult controller.DriverController.showMyOrderList(pojo.OrderListType)
+[INFO][2016-02-15 21:31:41,326][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/auth/deleteOrder],methods=[POST]}" onto public vo.RestResult controller.DriverController.deleteOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-02-15 21:31:41,327][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/auth/addTruck],methods=[POST]}" onto public vo.RestResult controller.DriverController.addTruck(pojo.TruckInfo)
+[INFO][2016-02-15 21:31:41,328][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/auth/setTruckAuthInfo],methods=[POST]}" onto public vo.RestResult controller.DriverController.setTruckAuthInfo(pojo.TruckAuthInfo)
+[INFO][2016-02-15 21:31:41,330][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/auth/grabOrder],methods=[POST]}" onto public vo.RestResult controller.DriverController.grabOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-02-15 21:31:41,331][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/auth/cancelOrder],methods=[POST]}" onto public vo.RestResult controller.DriverController.cancelOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-02-15 21:31:41,332][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/auth/getOrderDetail],methods=[POST]}" onto public vo.RestResult controller.DriverController.getOrderDetail(pojo.OrderIdInfoWithAuth)
+[INFO][2016-02-15 21:31:41,333][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/auth/setRealNameAuthInfo],methods=[POST]}" onto public vo.RestResult controller.DriverController.setRealNameAuthInfo(pojo.RealNameAuthInfo)
+[INFO][2016-02-15 21:31:41,338][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/home/index]}" onto public java.lang.String controller.HomeController.home(org.springframework.ui.Model)
+[INFO][2016-02-15 21:31:41,341][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/home/testEncoding]}" onto public vo.RestResult controller.HomeController.testEncoding(pojo.ModifiedNickName)
+[INFO][2016-02-15 21:31:41,362][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/auth/placeOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.placeOrder(pojo.OrderInfo)
+[INFO][2016-02-15 21:31:41,363][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/auth/showMyOrderList],methods=[POST]}" onto public vo.RestResult controller.ShipperController.showMyOrderList(pojo.OrderListType)
+[INFO][2016-02-15 21:31:41,364][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/auth/deleteOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.deleteOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-02-15 21:31:41,365][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/auth/searchDriver],methods=[POST]}" onto public vo.RestResult controller.ShipperController.searchDriver(pojo.SearchInfoWithAuth)
+[INFO][2016-02-15 21:31:41,365][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/auth/cancelOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.cancelOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-02-15 21:31:41,367][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/auth/getOrderDetail],methods=[POST]}" onto public vo.RestResult controller.ShipperController.getOrderDetail(pojo.OrderIdInfoWithAuth)
+[INFO][2016-02-15 21:31:41,368][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/auth/splitOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.splitOrder(pojo.OrderInfo)
+[INFO][2016-02-15 21:31:41,368][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/auth/finishOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.finishOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-02-15 21:31:41,369][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/auth/evaluateOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.evaluateOrder(pojo.EvaluateInfo)
+[INFO][2016-02-15 21:31:41,370][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/auth/addFrequentDriver],methods=[POST]}" onto public vo.RestResult controller.ShipperController.addFrequentDriver(pojo.UserIdInfoWithAuth)
+[INFO][2016-02-15 21:31:41,370][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/auth/addFrequentAddress],methods=[POST]}" onto public vo.RestResult controller.ShipperController.addFrequentAddress(pojo.AddressInfo)
+[INFO][2016-02-15 21:31:41,371][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/auth/getFrequentAddresses],methods=[POST]}" onto public vo.RestResult controller.ShipperController.getFrequentAddresses(pojo.TokenAuthInfo)
+[INFO][2016-02-15 21:31:41,372][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/auth/getFrequentDrivers],methods=[POST]}" onto public vo.RestResult controller.ShipperController.getFrequentDrivers(pojo.TokenAuthInfo)
+[INFO][2016-02-15 21:31:41,385][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/register],methods=[POST]}" onto public vo.RestResult controller.UserController.register(pojo.UserAuthInfo)
+[INFO][2016-02-15 21:31:41,385][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/count],methods=[GET]}" onto public int controller.UserController.getCount()
+[INFO][2016-02-15 21:31:41,385][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/login],methods=[POST]}" onto public vo.RestResult controller.UserController.login(pojo.UserAuthInfo,javax.servlet.http.HttpSession)
+[INFO][2016-02-15 21:31:41,386][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/id/{id}],methods=[GET]}" onto public vo.RestResult controller.UserController.getUser(int)
+[INFO][2016-02-15 21:31:41,387][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/auth/modifyPassword],methods=[POST]}" onto public vo.RestResult controller.UserController.modifyPassword(pojo.ModifiedPassword)
+[INFO][2016-02-15 21:31:41,387][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/getAllTruckTypes],methods=[POST]}" onto public vo.RestResult controller.UserController.getAllTruckTypes()
+[INFO][2016-02-15 21:31:41,390][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/auth/showAccount],methods=[POST]}" onto public vo.RestResult controller.UserController.showAccount(pojo.TokenAuthInfo)
+[INFO][2016-02-15 21:31:41,391][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/userRegister]}" onto public java.lang.String controller.UserController.userRegister(org.springframework.ui.Model)
+[INFO][2016-02-15 21:31:41,392][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/auth/modifyNickName],methods=[POST]}" onto public vo.RestResult controller.UserController.modifyNickName(pojo.ModifiedNickName)
+[INFO][2016-02-15 21:31:41,393][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/auth/modifyIcon],methods=[POST]}" onto public vo.RestResult controller.UserController.modifyIcon(pojo.ModifiedIcon)
+[INFO][2016-02-15 21:31:41,394][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/auth/getMyMessages],methods=[POST]}" onto public vo.RestResult controller.UserController.getMyMessages(pojo.TokenAuthInfo)
+[INFO][2016-02-15 21:31:41,395][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/auth/getContactDetail],methods=[POST]}" onto public vo.RestResult controller.UserController.getContactDetail(pojo.UserIdInfoWithAuth)
+[INFO][2016-02-15 21:31:41,396][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/auth/recharge],methods=[POST]}" onto public vo.RestResult controller.UserController.recharge(pojo.RechargeInfo)
+[INFO][2016-02-15 21:31:41,397][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/auth/getContacts],methods=[POST]}" onto public vo.RestResult controller.UserController.getContacts(pojo.TokenAuthInfo)
+[INFO][2016-02-15 21:31:41,853][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMVC-servlet': startup date [Mon Feb 15 21:31:39 CST 2016]; parent: Root WebApplicationContext
+[INFO][2016-02-15 21:31:42,049][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMVC-servlet': startup date [Mon Feb 15 21:31:39 CST 2016]; parent: Root WebApplicationContext
+[INFO][2016-02-15 21:31:42,362][org.springframework.web.servlet.DispatcherServlet]FrameworkServlet 'springMVC': initialization completed in 3039 ms
+[INFO][2016-02-16 22:02:56,340][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization started
+[INFO][2016-02-16 22:02:56,634][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing Root WebApplicationContext: startup date [Tue Feb 16 22:02:56 CST 2016]; root of context hierarchy
+[INFO][2016-02-16 22:02:56,745][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring.xml]
+[INFO][2016-02-16 22:02:57,571][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-hiber.xml]
+[INFO][2016-02-16 22:02:58,609][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [config.properties]
+[ERROR][2016-02-16 22:02:59,823][com.alibaba.druid.pool.DruidAbstractDataSource]maxIdle is deprecated
+[INFO][2016-02-16 22:02:59,960][com.alibaba.druid.pool.DruidDataSource]{dataSource-1} inited
+[INFO][2016-02-16 22:03:00,865][org.hibernate.annotations.common.Version]HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+[INFO][2016-02-16 22:03:00,891][org.hibernate.Version]HHH000412: Hibernate Core {4.3.8.Final}
+[INFO][2016-02-16 22:03:00,902][org.hibernate.cfg.Environment]HHH000206: hibernate.properties not found
+[INFO][2016-02-16 22:03:00,908][org.hibernate.cfg.Environment]HHH000021: Bytecode provider name : javassist
+[INFO][2016-02-16 22:03:02,406][org.hibernate.dialect.Dialect]HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+[INFO][2016-02-16 22:03:03,007][org.hibernate.engine.transaction.internal.TransactionFactoryInitiator]HHH000399: Using default transaction strategy (direct JDBC transactions)
+[INFO][2016-02-16 22:03:03,040][org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory]HHH000397: Using ASTQueryTranslatorFactory
+[INFO][2016-02-16 22:03:04,043][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000228: Running hbm2ddl schema update
+[INFO][2016-02-16 22:03:04,043][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000102: Fetching database metadata
+[INFO][2016-02-16 22:03:04,054][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000396: Updating schema
+[INFO][2016-02-16 22:03:04,150][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.account
+[INFO][2016-02-16 22:03:04,150][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [money, user_id, build_time, id, type, order_id]
+[INFO][2016-02-16 22:03:04,156][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-02-16 22:03:04,157][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-02-16 22:03:04,199][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.account_type_name_t
+[INFO][2016-02-16 22:03:04,199][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [name, type]
+[INFO][2016-02-16 22:03:04,200][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-02-16 22:03:04,200][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-02-16 22:03:04,240][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.auth_state_name_t
+[INFO][2016-02-16 22:03:04,244][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [name, state]
+[INFO][2016-02-16 22:03:04,245][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-02-16 22:03:04,245][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-02-16 22:03:04,310][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.contacts
+[INFO][2016-02-16 22:03:04,310][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [driver_id, shipper_to_driver, shipper_id, id, driver_to_shipper]
+[INFO][2016-02-16 22:03:04,310][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-02-16 22:03:04,311][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-02-16 22:03:04,364][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.driver_auth
+[INFO][2016-02-16 22:03:04,364][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [truck_license, driving_license, user_id, truck_num, license_num, auth_state, phone_num, real_name, id, head_picture, type, truck_picture]
+[INFO][2016-02-16 22:03:04,364][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-02-16 22:03:04,365][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-02-16 22:03:04,409][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.frequent_address
+[INFO][2016-02-16 22:03:04,410][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [address, lng, shipper_id, id, lat]
+[INFO][2016-02-16 22:03:04,410][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-02-16 22:03:04,410][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-02-16 22:03:04,450][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.frequent_driver
+[INFO][2016-02-16 22:03:04,450][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [driver_id, shipper_id, id]
+[INFO][2016-02-16 22:03:04,451][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-02-16 22:03:04,451][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-02-16 22:03:04,490][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.message
+[INFO][2016-02-16 22:03:04,491][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [user_id, id, time, type, object_id, content, has_read]
+[INFO][2016-02-16 22:03:04,491][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-02-16 22:03:04,492][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-02-16 22:03:04,550][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.message_type
+[INFO][2016-02-16 22:03:04,550][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [name, type]
+[INFO][2016-02-16 22:03:04,550][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-02-16 22:03:04,551][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-02-16 22:03:04,593][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.order_state_name_t
+[INFO][2016-02-16 22:03:04,594][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [name, state]
+[INFO][2016-02-16 22:03:04,594][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-02-16 22:03:04,594][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-02-16 22:03:04,635][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.order_truck_type
+[INFO][2016-02-16 22:03:04,637][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [truck_type, id, order_id]
+[INFO][2016-02-16 22:03:04,637][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-02-16 22:03:04,638][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-02-16 22:03:04,681][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.orders
+[INFO][2016-02-16 22:03:04,682][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [driver_id, from_contact_name, address_to, build_time, remark, evaluate_point, address_from, to_contact_name, goods_size, from_contact_phone, load_time, evaluate_content, price, pay_type, shipper_id, id, goods_type, state, goods_weight, to_contact_phone]
+[INFO][2016-02-16 22:03:04,682][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-02-16 22:03:04,683][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-02-16 22:03:04,721][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.truck_type
+[INFO][2016-02-16 22:03:04,721][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [over_price, base_price, length, name, width, type, capacity, height]
+[INFO][2016-02-16 22:03:04,722][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-02-16 22:03:04,722][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-02-16 22:03:04,761][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.user
+[INFO][2016-02-16 22:03:04,762][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [icon_url, password, money, nick_name, phone_number, id, type, point, register_time]
+[INFO][2016-02-16 22:03:04,762][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-02-16 22:03:04,763][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [uk_4bgmpi98dylab6qdvf9xyaxu4, primary]
+[INFO][2016-02-16 22:03:04,818][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000261: Table found: tongbao.user_type_name_t
+[INFO][2016-02-16 22:03:04,820][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000037: Columns: [name, type]
+[INFO][2016-02-16 22:03:04,820][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000108: Foreign keys: []
+[INFO][2016-02-16 22:03:04,821][org.hibernate.tool.hbm2ddl.TableMetadata]HHH000126: Indexes: [primary]
+[INFO][2016-02-16 22:03:04,832][org.hibernate.tool.hbm2ddl.SchemaUpdate]HHH000232: Schema update complete
+[INFO][2016-02-16 22:03:05,733][org.springframework.orm.hibernate4.HibernateTransactionManager]Using DataSource [{
+	CreateTime:"2016-02-16 22:02:59",
+	ActiveCount:0,
+	PoolingCount:1,
+	CreateCount:1,
+	DestroyCount:0,
+	CloseCount:2,
+	ConnectCount:2,
+	Connections:[
+		{ID:1572808761, ConnectTime:"2016-02-16 22:03:02", UseCount:2, LastActiveTime:"2016-02-16 22:03:04"}
+	]
+}] of Hibernate SessionFactory for HibernateTransactionManager
+[INFO][2016-02-16 22:03:06,064][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization completed in 9721 ms
+[INFO][2016-02-16 22:03:06,884][org.springframework.web.servlet.DispatcherServlet]FrameworkServlet 'springMVC': initialization started
+[INFO][2016-02-16 22:03:06,895][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing WebApplicationContext for namespace 'springMVC-servlet': startup date [Tue Feb 16 22:03:06 CST 2016]; parent: Root WebApplicationContext
+[INFO][2016-02-16 22:03:06,898][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mvc.xml]
+[INFO][2016-02-16 22:03:07,684][org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]Mapped URL path [/lib/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+[INFO][2016-02-16 22:03:07,715][org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]Mapped URL path [/stylesheets/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1'
+[INFO][2016-02-16 22:03:07,720][org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]Mapped URL path [/images/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#2'
+[INFO][2016-02-16 22:03:07,725][org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]Mapped URL path [/admin/images/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#3'
+[INFO][2016-02-16 22:03:07,730][org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]Mapped URL path [/admin/lib/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#4'
+[INFO][2016-02-16 22:03:07,736][org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]Mapped URL path [/admin/stylesheets/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#5'
+[INFO][2016-02-16 22:03:08,060][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/index]}" onto public java.lang.String controller.AdminController.index(org.springframework.ui.Model,javax.servlet.http.HttpSession)
+[INFO][2016-02-16 22:03:08,065][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/login]}" onto public java.lang.String controller.AdminController.login(javax.servlet.http.HttpSession)
+[INFO][2016-02-16 22:03:08,071][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/logout]}" onto public java.lang.String controller.AdminController.logout(javax.servlet.http.HttpSession)
+[INFO][2016-02-16 22:03:08,072][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/resetUserPassword],methods=[POST]}" onto public vo.RestResult controller.AdminController.resetUserPassword(int,java.lang.String)
+[INFO][2016-02-16 22:03:08,075][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/getRecentRegisterUsers],methods=[POST]}" onto public vo.RestResult controller.AdminController.getRecentRegisterUsers(java.lang.Byte,int)
+[INFO][2016-02-16 22:03:08,077][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/modifyPassword],methods=[POST]}" onto public vo.RestResult controller.AdminController.modifyPassword(pojo.ModifiedPassword,javax.servlet.http.HttpSession)
+[INFO][2016-02-16 22:03:08,078][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/getLatestNumInfo],methods=[POST]}" onto public vo.RestResult controller.AdminController.getLatestNumInfo()
+[INFO][2016-02-16 22:03:08,079][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/shipperManage]}" onto public java.lang.String controller.AdminController.shipperManage(org.springframework.ui.Model,javax.servlet.http.HttpSession)
+[INFO][2016-02-16 22:03:08,080][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/driverManage]}" onto public java.lang.String controller.AdminController.driverManage(org.springframework.ui.Model,javax.servlet.http.HttpSession)
+[INFO][2016-02-16 22:03:08,084][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/driverDetail/{id}]}" onto public java.lang.String controller.AdminController.driverDetail(int,org.springframework.ui.Model,javax.servlet.http.HttpSession)
+[INFO][2016-02-16 22:03:08,085][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/getAllTruckInfo],methods=[POST]}" onto public vo.RestResult controller.AdminController.getAllTruckInfo(int)
+[INFO][2016-02-16 22:03:08,087][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/truckDetail/{id}]}" onto public java.lang.String controller.AdminController.truckDetail(int,org.springframework.ui.Model,javax.servlet.http.HttpSession)
+[INFO][2016-02-16 22:03:08,088][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/accountManage]}" onto public java.lang.String controller.AdminController.accountManage(org.springframework.ui.Model,javax.servlet.http.HttpSession)
+[INFO][2016-02-16 22:03:08,089][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/deleteTruck],methods=[POST]}" onto public vo.RestResult controller.AdminController.deleteTruck(int)
+[INFO][2016-02-16 22:03:08,091][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/orderManage]}" onto public java.lang.String controller.AdminController.orderManage(org.springframework.ui.Model,javax.servlet.http.HttpSession)
+[INFO][2016-02-16 22:03:08,092][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/deleteOrder],methods=[POST]}" onto public vo.RestResult controller.AdminController.deleteOrder(int)
+[INFO][2016-02-16 22:03:08,093][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/getRecentOrders],methods=[POST]}" onto public vo.RestResult controller.AdminController.getRecentOrders(int)
+[INFO][2016-02-16 22:03:08,094][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/deleteAccount],methods=[POST]}" onto public vo.RestResult controller.AdminController.deleteAccount(int)
+[INFO][2016-02-16 22:03:08,095][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/deleteUser],methods=[POST]}" onto public vo.RestResult controller.AdminController.deleteUser(int)
+[INFO][2016-02-16 22:03:08,096][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/getAllAccounts],methods=[POST]}" onto public vo.RestResult controller.AdminController.getAllAccounts()
+[INFO][2016-02-16 22:03:08,096][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/setAuthState],methods=[POST]}" onto public vo.RestResult controller.AdminController.setAuthState(int,byte)
+[INFO][2016-02-16 22:03:08,097][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/cancelOrder],methods=[POST]}" onto public vo.RestResult controller.AdminController.cancelOrder(int)
+[INFO][2016-02-16 22:03:08,098][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/getAllOrders],methods=[POST]}" onto public vo.RestResult controller.AdminController.getAllOrders()
+[INFO][2016-02-16 22:03:08,099][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/hasLogin],methods=[POST]}" onto public vo.RestResult controller.AdminController.hasLogin(pojo.TokenAuthInfo)
+[INFO][2016-02-16 22:03:08,100][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/resetPassword]}" onto public java.lang.String controller.AdminController.resetPassword()
+[INFO][2016-02-16 22:03:08,100][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/getRecentAccounts],methods=[POST]}" onto public vo.RestResult controller.AdminController.getRecentAccounts(int)
+[INFO][2016-02-16 22:03:08,101][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/admin/getAllUsersByType],methods=[POST]}" onto public vo.RestResult controller.AdminController.getAllUsersByType(java.lang.Byte)
+[INFO][2016-02-16 22:03:08,120][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/auth/setRealNameAuthInfo],methods=[POST]}" onto public vo.RestResult controller.DriverController.setRealNameAuthInfo(pojo.RealNameAuthInfo)
+[INFO][2016-02-16 22:03:08,121][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/auth/showMyOrderList],methods=[POST]}" onto public vo.RestResult controller.DriverController.showMyOrderList(pojo.OrderListType)
+[INFO][2016-02-16 22:03:08,122][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/auth/showAllOrders],methods=[POST]}" onto public vo.RestResult controller.DriverController.showAllOrders(pojo.OrderFilterInfo)
+[INFO][2016-02-16 22:03:08,123][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/auth/deleteOrder],methods=[POST]}" onto public vo.RestResult controller.DriverController.deleteOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-02-16 22:03:08,123][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/auth/setTruckAuthInfo],methods=[POST]}" onto public vo.RestResult controller.DriverController.setTruckAuthInfo(pojo.TruckAuthInfo)
+[INFO][2016-02-16 22:03:08,124][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/auth/addTruck],methods=[POST]}" onto public vo.RestResult controller.DriverController.addTruck(pojo.TruckInfo)
+[INFO][2016-02-16 22:03:08,125][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/auth/getOrderDetail],methods=[POST]}" onto public vo.RestResult controller.DriverController.getOrderDetail(pojo.OrderIdInfoWithAuth)
+[INFO][2016-02-16 22:03:08,126][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/auth/grabOrder],methods=[POST]}" onto public vo.RestResult controller.DriverController.grabOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-02-16 22:03:08,127][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/driver/auth/cancelOrder],methods=[POST]}" onto public vo.RestResult controller.DriverController.cancelOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-02-16 22:03:08,130][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/home/index]}" onto public java.lang.String controller.HomeController.home(org.springframework.ui.Model)
+[INFO][2016-02-16 22:03:08,131][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/home/testEncoding]}" onto public vo.RestResult controller.HomeController.testEncoding(pojo.ModifiedNickName)
+[INFO][2016-02-16 22:03:08,140][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/auth/showMyOrderList],methods=[POST]}" onto public vo.RestResult controller.ShipperController.showMyOrderList(pojo.OrderListType)
+[INFO][2016-02-16 22:03:08,142][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/auth/placeOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.placeOrder(pojo.OrderInfo)
+[INFO][2016-02-16 22:03:08,142][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/auth/deleteOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.deleteOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-02-16 22:03:08,142][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/auth/searchDriver],methods=[POST]}" onto public vo.RestResult controller.ShipperController.searchDriver(pojo.SearchInfoWithAuth)
+[INFO][2016-02-16 22:03:08,143][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/auth/getOrderDetail],methods=[POST]}" onto public vo.RestResult controller.ShipperController.getOrderDetail(pojo.OrderIdInfoWithAuth)
+[INFO][2016-02-16 22:03:08,143][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/auth/cancelOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.cancelOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-02-16 22:03:08,144][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/auth/finishOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.finishOrder(pojo.OrderIdInfoWithAuth)
+[INFO][2016-02-16 22:03:08,144][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/auth/splitOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.splitOrder(pojo.OrderInfo)
+[INFO][2016-02-16 22:03:08,145][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/auth/evaluateOrder],methods=[POST]}" onto public vo.RestResult controller.ShipperController.evaluateOrder(pojo.EvaluateInfo)
+[INFO][2016-02-16 22:03:08,145][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/auth/addFrequentDriver],methods=[POST]}" onto public vo.RestResult controller.ShipperController.addFrequentDriver(pojo.UserIdInfoWithAuth)
+[INFO][2016-02-16 22:03:08,146][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/auth/addFrequentAddress],methods=[POST]}" onto public vo.RestResult controller.ShipperController.addFrequentAddress(pojo.AddressInfo)
+[INFO][2016-02-16 22:03:08,146][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/auth/getFrequentDrivers],methods=[POST]}" onto public vo.RestResult controller.ShipperController.getFrequentDrivers(pojo.TokenAuthInfo)
+[INFO][2016-02-16 22:03:08,146][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/shipper/auth/getFrequentAddresses],methods=[POST]}" onto public vo.RestResult controller.ShipperController.getFrequentAddresses(pojo.TokenAuthInfo)
+[INFO][2016-02-16 22:03:08,162][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/register],methods=[POST]}" onto public vo.RestResult controller.UserController.register(pojo.UserAuthInfo)
+[INFO][2016-02-16 22:03:08,163][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/count],methods=[GET]}" onto public int controller.UserController.getCount()
+[INFO][2016-02-16 22:03:08,163][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/login],methods=[POST]}" onto public vo.RestResult controller.UserController.login(pojo.UserAuthInfo,javax.servlet.http.HttpSession)
+[INFO][2016-02-16 22:03:08,164][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/id/{id}],methods=[GET]}" onto public vo.RestResult controller.UserController.getUser(int)
+[INFO][2016-02-16 22:03:08,166][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/auth/modifyPassword],methods=[POST]}" onto public vo.RestResult controller.UserController.modifyPassword(pojo.ModifiedPassword)
+[INFO][2016-02-16 22:03:08,167][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/userRegister]}" onto public java.lang.String controller.UserController.userRegister(org.springframework.ui.Model)
+[INFO][2016-02-16 22:03:08,167][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/auth/modifyNickName],methods=[POST]}" onto public vo.RestResult controller.UserController.modifyNickName(pojo.ModifiedNickName)
+[INFO][2016-02-16 22:03:08,170][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/auth/showAccount],methods=[POST]}" onto public vo.RestResult controller.UserController.showAccount(pojo.TokenAuthInfo)
+[INFO][2016-02-16 22:03:08,170][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/auth/modifyIcon],methods=[POST]}" onto public vo.RestResult controller.UserController.modifyIcon(pojo.ModifiedIcon)
+[INFO][2016-02-16 22:03:08,172][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/auth/getMyMessages],methods=[POST]}" onto public vo.RestResult controller.UserController.getMyMessages(pojo.TokenAuthInfo)
+[INFO][2016-02-16 22:03:08,173][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/getAllTruckTypes],methods=[POST]}" onto public vo.RestResult controller.UserController.getAllTruckTypes()
+[INFO][2016-02-16 22:03:08,175][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/auth/getContactDetail],methods=[POST]}" onto public vo.RestResult controller.UserController.getContactDetail(pojo.UserIdInfoWithAuth)
+[INFO][2016-02-16 22:03:08,177][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/auth/getContacts],methods=[POST]}" onto public vo.RestResult controller.UserController.getContacts(pojo.TokenAuthInfo)
+[INFO][2016-02-16 22:03:08,178][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/user/auth/recharge],methods=[POST]}" onto public vo.RestResult controller.UserController.recharge(pojo.RechargeInfo)
+[INFO][2016-02-16 22:03:08,601][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMVC-servlet': startup date [Tue Feb 16 22:03:06 CST 2016]; parent: Root WebApplicationContext
+[INFO][2016-02-16 22:03:08,738][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMVC-servlet': startup date [Tue Feb 16 22:03:06 CST 2016]; parent: Root WebApplicationContext
+[INFO][2016-02-16 22:03:09,002][org.springframework.web.servlet.DispatcherServlet]FrameworkServlet 'springMVC': initialization completed in 2118 ms
+[WARN][2016-02-16 22:04:04,035][org.springframework.web.servlet.PageNotFound]No mapping found for HTTP request with URI [/tongbao/assets/ico/favicon.ico] in DispatcherServlet with name 'springMVC'
