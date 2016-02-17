@@ -9,8 +9,7 @@ import java.io.Serializable;
 /**
  * Created by cg on 2016/1/8.
  */
-@Entity
-@Table(name="truck_type")
+@Entity(name="truck_type")
 public class Trucks_type implements Serializable{
     private Byte type;
     private String name;

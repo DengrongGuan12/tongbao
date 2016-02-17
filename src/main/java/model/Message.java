@@ -9,8 +9,7 @@ import java.sql.Timestamp;
 /**
  * Created by cg on 2016/1/8.
  */
-@Entity
-@Table(name="message")
+@Entity(name="message")
 public class Message implements Serializable{
     private int id;
     private Byte type;

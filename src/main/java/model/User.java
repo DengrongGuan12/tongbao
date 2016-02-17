@@ -10,8 +10,7 @@ import java.util.Date;
 /**
  * Created by cg on 2015/12/29.
  */
-@Entity
-@Table(name = "user")
+@Entity(name = "user")
 public class User implements Serializable{
     private int id;
     private Byte type;

@@ -9,8 +9,7 @@ import java.io.Serializable;
 /**
  * Created by cg on 2016/1/8.
  */
-@Entity
-@Table(name="order_state_name_t")
+@Entity(name="order_state_name_t")
 public class Order_state_name_t implements Serializable{
     private Byte state;
     private String name;

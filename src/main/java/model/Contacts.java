@@ -8,8 +8,7 @@ import java.io.Serializable;
 /**
  * Created by cg on 2015/12/30.
  */
-@Entity
-@Table(name="contacts")
+@Entity(name="contacts")
 public class Contacts implements Serializable {
     private int id;
     @Id

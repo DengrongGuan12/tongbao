@@ -9,8 +9,7 @@ import java.io.Serializable;
 /**
  * Created by cg on 2015/12/30.
  */
-@Entity
-@Table(name="user_type_name_t")
+@Entity(name="user_type_name_t")
 public class User_type_name_t implements Serializable{
     private Byte type;
     private String name;

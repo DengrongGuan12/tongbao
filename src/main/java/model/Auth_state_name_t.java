@@ -6,8 +6,7 @@ import java.io.Serializable;
 /**
  * Created by cg on 2015/12/30.
  */
-@Entity
-@Table(name="auth_state_name_t")
+@Entity(name="auth_state_name_t")
 public class Auth_state_name_t implements Serializable{
     private Byte state;
     private String name;

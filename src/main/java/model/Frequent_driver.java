@@ -8,8 +8,7 @@ import java.io.Serializable;
 /**
  * Created by cg on 2016/1/8.
  */
-@Entity
-@Table(name="frequent_driver")
+@Entity(name="frequent_driver")
 public class Frequent_driver implements Serializable{
     private int id;
     private int shipper_id;

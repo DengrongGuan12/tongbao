@@ -10,8 +10,7 @@ import java.util.Date;
 /**
  * Created by cg on 2015/12/30.
  */
-@Entity
-@Table(name="account")
+@Entity(name="account")
 public class Account implements Serializable {
     private int id;
     private int userId;

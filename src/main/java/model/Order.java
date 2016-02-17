@@ -10,8 +10,7 @@ import java.util.Date;
 /**
  * Created by cg on 2015/12/31.
  */
-@Entity
-@Table(name="orders")
+@Entity(name="orders")
 public class Order implements Serializable{
     private int id;
     private Timestamp buildTime;

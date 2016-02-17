@@ -7,8 +7,7 @@ import javax.persistence.*;
 /**
  * Created by I322233 on 1/11/2016.
  */
-@Entity
-@Table(name = "order_truck_type")
+@Entity(name = "order_truck_type")
 public class OrderTruckType {
     private int id;
     private int orderId;

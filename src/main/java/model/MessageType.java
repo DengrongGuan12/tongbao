@@ -8,8 +8,7 @@ import javax.persistence.Table;
 /**
  * Created by cg on 2016/1/23.
  */
-@Entity
-@Table(name = "message_type")
+@Entity(name = "message_type")
 public class MessageType {
     private Byte type;
     private String name;

@@ -11,8 +11,7 @@ import java.io.Serializable;
 /**
  * Created by cg on 2015/12/30.
  */
-@Entity
-@Table(name = "driver_auth")
+@Entity(name = "driver_auth")
 public class Driver_auth implements Serializable{
     private int id;
     private int userId;
