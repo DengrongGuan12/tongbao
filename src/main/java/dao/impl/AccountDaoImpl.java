@@ -20,7 +20,7 @@ public class AccountDaoImpl extends BaseDaoImpl implements AccountDao {
     }
 
     public int getTotalAccountNum() {
-        int count = ((Long)getSession().createQuery("select count(*) from Account").uniqueResult()).intValue();
+        int count = ((Long)getSession().createQuery("select count(*) from account").uniqueResult()).intValue();
         return count;
     }
 
@@ -36,7 +36,7 @@ public class AccountDaoImpl extends BaseDaoImpl implements AccountDao {
 
     public List getRecentAccounts(int num) {
         Session session=getSession();
-        String strSQL="from Account as a order by buildTime desc";
+        String strSQL="from account as a order by buildTime desc";
         Query query = session.createQuery(strSQL);
         query.setFirstResult(0);
         query.setMaxResults(num);

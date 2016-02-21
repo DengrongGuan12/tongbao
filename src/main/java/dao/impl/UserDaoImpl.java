@@ -20,18 +20,18 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao{
 
 
     public int getTotalShipperNum() {
-        int count = ((Long)getSession().createQuery("select count(*) from User where type = '0'").uniqueResult()).intValue();
+        int count = ((Long)getSession().createQuery("select count(*) from user where type = '0'").uniqueResult()).intValue();
         return count;
     }
 
     public int getTotalDriverNum() {
-        int count = ((Long)getSession().createQuery("select count(*) from User where type = '1'").uniqueResult()).intValue();
+        int count = ((Long)getSession().createQuery("select count(*) from user where type = '1'").uniqueResult()).intValue();
         return count;
     }
 
     public List getRecentRegUsers(Byte type, int num) {
         Session session=getSession();
-        String strSQL="from User as u where u.type = "+type+" order by register_time desc";
+        String strSQL="from user as u where u.type = "+type+" order by register_time desc";
         Query query = session.createQuery(strSQL);
         query.setFirstResult(0);
         query.setMaxResults(num);
@@ -51,7 +51,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao{
 
     public List searchDriver(String phoneNumber) {
         Session session=getSession();
-        String strSQL="from User as u where u.type = 1 and u.phone_number like :phone";
+        String strSQL="from user as u where u.type = 1 and u.phone_number like :phone";
         Query query = session.createQuery(strSQL);
         query.setString("phone","%"+phoneNumber+"%");
         return query.list();

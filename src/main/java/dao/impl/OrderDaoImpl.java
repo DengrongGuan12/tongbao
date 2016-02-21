@@ -27,7 +27,7 @@ public class OrderDaoImpl extends BaseDaoImpl implements OrderDao{
 
     public List getRecentOrders(int num) {
         Session session=getSession();
-        String strSQL="from Order as o order by buildTime desc";
+        String strSQL="from orders as o order by buildTime desc";
         Query query = session.createQuery(strSQL);
         query.setFirstResult(0);
         query.setMaxResults(num);
@@ -36,13 +36,13 @@ public class OrderDaoImpl extends BaseDaoImpl implements OrderDao{
     }
 
     public int getTotalOrderNum() {
-        int count = ((Long)getSession().createQuery("select count(*) from Order").uniqueResult()).intValue();
+        int count = ((Long)getSession().createQuery("select count(*) from orders").uniqueResult()).intValue();
         return count;
     }
 
     public Order getOrderByShipperIdAndBuildTime(int shipperId, Timestamp buildTime) {
 //        String hql = "from " + Order.class.getName() + " where " + "shipperId = " + shipperId +" and "+" buildTime = "+buildTime ;
-        String hql = "from " + Order.class.getName() + " where " + "shipperId = " + shipperId + "order by id desc";
+        String hql = "from " + Order.class.getName() + " where " + "shipperId = " + shipperId + "orders by id desc";
         Session session = getSession();
         return (Order)session.createQuery(hql).list().get(0);
 
