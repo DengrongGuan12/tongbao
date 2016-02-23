@@ -2,10 +2,7 @@ package service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
-import dao.Driver_auth_Dao;
-import dao.OrderDao;
-import dao.OrderTruckTypeDao;
-import dao.Truck_type_Dao;
+import dao.*;
 import manager.UserManager;
 import model.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +32,8 @@ public class OrderServiceImpl implements OrderService {
     Truck_type_Dao truckTypeDao;
     @Autowired
     Driver_auth_Dao driver_auth_dao;
+    @Autowired
+    UserDao userDao;
 
     /*
     创建订单时要考虑是否有匹配的司机，如果成功返回1，找不到匹配的司机返回2，其他失败(如用户不是货主就没有权限创建)返回0
@@ -484,42 +483,58 @@ public class OrderServiceImpl implements OrderService {
         return list;
     }
 
-    // TODO: 1/26/2016
     //获取所有订单
     //使用orderDetail, 需要设置的值有id,addressFrom, addressTo, time, loadTime, driverPhoneNum, shipperPhoneNum,money,goodsType,goodsWeight,state
     public List getAllOrders() {
+        List listTemp = orderDao.getAllOrders();
         List list = new ArrayList();
-
-        for(int i = 0;i<8;i++){
+        for(int i = 0;i<listTemp.size();i++){
+            Order order = (Order)listTemp.get(i);
+            User driver = userDao.getUserById(order.getDriverId());
+            User shipper =userDao.getUserById(order.getShipperId());
             OrderDetail orderDetail = new OrderDetail();
-            orderDetail.setId(i);
-            orderDetail.setAddressFrom("sdfsdf");
-            orderDetail.setAddressTo("werwer");
-            orderDetail.setTime("2015-11-11 11:11:11");
-            orderDetail.setLoadTime("2015-11-11 11:11:11");
-            orderDetail.setDriverPhoneNum("123132132");
-            orderDetail.setShipperPhoneNum("234234234");
-            orderDetail.setMoney(12.3);
-            orderDetail.setGoodsType("毒品");
-            orderDetail.setGoodsWeight(2);
-            orderDetail.setState(i);
+            orderDetail.setId(order.getId());
+            orderDetail.setAddressFrom(order.getAddressFrom());
+            orderDetail.setAddressTo(order.getAddressTo());
+            orderDetail.setTime(order.getBuildTime().toString());
+            orderDetail.setLoadTime(order.getLoadTime());
+            orderDetail.setDriverPhoneNum(driver.getPhone_number());
+            orderDetail.setShipperPhoneNum(shipper.getPhone_number());
+            orderDetail.setMoney(order.getPrice());
+            orderDetail.setGoodsType(order.getGoodsType());
+            orderDetail.setGoodsWeight(order.getGoodsWeight());
+            orderDetail.setState(order.getState());
             list.add(orderDetail);
         }
-
         return list;
     }
 
-    // TODO: 1/26/2016
     //管理员删除订单，只能删除已经完成的或者被取消或者被司机货主删除的订单（即state只能为2，3，5，6，7），否则返回false
     public boolean deleteOrder(int id) {
-        return true;
+        Order order = orderDao.showOrderDetail(id);
+        int orderState = order.getState();
+        if(orderState==2||orderState==3||orderState==5||orderState==6||orderState==7){
+            orderDao.deleteOrder(id);
+            return true;
+        }else{
+            return false;
+        }
     }
 
-    // TODO: 1/26/2016
+    // TODO: 2/23/2016(退还金额未写)
     //管理员取消订单，只能取消正在进行或者等待司机取消的订单（即state 只能为1，4），否则返回false
     //注意取消订单需要退还相应金额
-    public boolean cancelOrder(int id) {
-        return true;
+    public boolean cancelOrder(int id){
+
+        Order order = orderDao.showOrderDetail(id);
+        int orderState = order.getState();
+        if(orderState==1||orderState==4){
+            order.setState(new Byte("3"));
+            orderDao.updateOrder(order);
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /*

@@ -13,6 +13,7 @@ public interface AccountDao {
     public boolean updateAccount(Account account);
     public boolean deleteAccount(int id);
     public List<Object>getAccounts(int id);
+    public List getAllAccounts();
     public int getTotalAccountNum();
     public List getRecentAccounts(int num);
 }

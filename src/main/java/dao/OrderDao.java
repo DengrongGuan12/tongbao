@@ -18,4 +18,5 @@ public interface OrderDao {
     public Order getOrderByShipperIdAndBuildTime(int shipperId,Timestamp buildTime);
     public int getTotalOrderNum();
     public List getRecentOrders(int num);
+    public List getAllOrders();
 }

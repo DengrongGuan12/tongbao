@@ -24,6 +24,11 @@ public class AccountDaoImpl extends BaseDaoImpl implements AccountDao {
         return count;
     }
 
+    @Override
+    public List getAllAccounts() {
+        return super.getAllList(Account.class);
+    }
+
     public boolean addAccount(Account account) {
         try {
             super.save(account);
@@ -58,6 +63,12 @@ public class AccountDaoImpl extends BaseDaoImpl implements AccountDao {
     }
 
     public boolean deleteAccount(int id) {
-        return false;
+        try {
+            super.delete(Account.class,id);
+        }catch (Exception e){
+            return false;
+        }
+
+        return true;
     }
 }

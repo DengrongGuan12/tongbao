@@ -17,12 +17,17 @@ public class OrderDaoImpl extends BaseDaoImpl implements OrderDao{
 
     public boolean deleteOrder(int orderId) {
         try {
-            super.delete(Order.class,orderId+"");
+            super.delete(Order.class,orderId);
             return true;
         }catch(Exception e){
             return false;
         }
 
+    }
+
+    @Override
+    public List getAllOrders() {
+        return super.getAllList(Order.class);
     }
 
     public List getRecentOrders(int num) {

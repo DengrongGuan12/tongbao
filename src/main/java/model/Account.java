@@ -15,9 +15,6 @@ public class Account implements Serializable {
     private int id;
     private int userId;
     private Timestamp buildTime;
-
-
-
     private Byte type;
     private double money;
     private int orderId;

@@ -244,10 +244,16 @@ public class DriverServiceImpl implements DriverService {
         return truckInfo;
     }
 
-    // TODO: 1/26/2016
     //设置某辆车的认证状态
     //注意认证状态的转化方式 只能 1->2 或者1->3 ,否则返回false
     public boolean setAuthState(int id, Byte state) {
-        return true;
+        Driver_auth driver_auth = driver_auth_dao.getDriverAuthMessage(id);
+        if(driver_auth.getAuthState().equals(new Byte("1"))){
+            driver_auth.setAuthState(state);
+            driver_auth_dao.updateDriverAuth(driver_auth);
+            return true;
+        }
+
+        return false;
     }
 }
