@@ -104,7 +104,7 @@
         <p class="block-heading">个人信息</p>
         <div class="block-body">
             
-                <img src="${url}" class="img-polaroid" style="position:absolute;left:3%;">
+                <img src="${url}" class="img-polaroid" style="position:absolute;left:3%;width:25%;">
                 <table class="table" id="table" style="position:relative;left:30%;width:60%;">
                   <tbody>
                     <tr>
@@ -313,7 +313,7 @@
             }
           });
         }
-        function showModel(truckId){
+        function showModal(truckId){
           $('#truck-id').text(truckId);
           deleteId = truckId;
           $('#myModal').modal();
