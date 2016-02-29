@@ -15,14 +15,16 @@ import java.sql.Date;
  */
 public class Test {
     public static void main(String []args){
+        String t ="test";
+        System.out.print(t.length());
 //        UserManager userManager=UserManager.getInstance();
 //        String t=userManager.addToOnlineList(1,1);
 //        userManager.addToOnlineList(1,1);
 //        userManager.addToOnlineList(1,1);
 //        userManager.addToOnlineList(1,1);
-        Timestamp time = new Timestamp(System.currentTimeMillis());
-
-        System.out.print(time+"");
+//        Timestamp time = new Timestamp(System.currentTimeMillis());
+//
+//        System.out.print(time+"");
 //        String t = "[1,2,3,4]";
 //        JSONArray truckTypes = JSON.parseArray(t);
 //        for(int i=0;i<truckTypes.size();i++){

@@ -72,7 +72,7 @@ public class UserController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
         @ResponseBody
     public RestResult login(@ModelAttribute("UserAuthInfo")UserAuthInfo userAuthInfo, HttpSession session){
-        vo.User user = userService.login(userAuthInfo.getPhoneNumber(),userAuthInfo.getPassword(),session);
+        vo.User user = userService.login(userAuthInfo.getPhoneNumber(),userAuthInfo.getPassword(),userAuthInfo.getType(),session);
 
         if(user == null){
             return RestResult.CreateResult(0,"登录失败");

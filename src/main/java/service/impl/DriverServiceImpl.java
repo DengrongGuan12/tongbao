@@ -48,18 +48,27 @@ public class DriverServiceImpl implements DriverService {
     }
 
     public TruckDetail getTruckDetail(int userId,int id) {
-        //TODO
+
         //根据车辆id 获取该车辆的具体信息
         //注意该车辆是否是属于该用户，如果不是则返回null
-        TruckDetail truckDetail = new TruckDetail();
-        truckDetail.setTruckNum("苏A11111");
-        truckDetail.setAuthState(0);
-        truckDetail.setTypeName("金杯车");
-        truckDetail.setLength(10);
-        truckDetail.setCapacity(10);
-        truckDetail.setPhoneNum("123233434");
-        truckDetail.setRealName("老管");
-        return truckDetail;
+        List allTrucks = driver_auth_dao.getAllTruckInfoByUserId(userId);
+        for(int i=0;i<allTrucks.size();i++){
+            Driver_auth driver_auth = (Driver_auth) allTrucks.get(i);
+            int d_id = driver_auth.getId();
+            if(d_id==id){
+                TruckDetail truckDetail = new TruckDetail();
+                truckDetail.setTruckNum(driver_auth.getTruckNum());
+                truckDetail.setAuthState(driver_auth.getAuthState());
+                Trucks_type trucks_type = truck_type_dao.getTruckType(driver_auth.getType());
+                truckDetail.setTypeName(trucks_type.getName());
+                truckDetail.setLength(trucks_type.getLength());
+                truckDetail.setCapacity(trucks_type.getCapacity());
+                truckDetail.setPhoneNum(driver_auth.getPhoneNum());
+                truckDetail.setRealName(driver_auth.getRealName());
+                return truckDetail;
+            }
+        }
+        return null;
     }
 
     /*
@@ -161,7 +170,6 @@ public class DriverServiceImpl implements DriverService {
     3.type要存在
      */
     public boolean addTruck(int userId, TruckInfo truckInfo) {
-        //TODO 未判断车牌号的重复
         //判断是否为司机
         int userType = userManager.getUserType(userId);
         if(userType == 1){
@@ -171,9 +179,12 @@ public class DriverServiceImpl implements DriverService {
             driver_auth.setAuthState((byte)0);
             driver_auth.setTruckNum(truckInfo.getTruckNum());
             Byte type = truckInfo.getType();
+            //判断车牌号重复
+
            //判断type是否存在
             if (truck_type_dao.hasType(type)){
                 driver_auth.setType(type);
+                //truckNum被设置为unique，重复的值会无法添加
                 if(driver_auth_dao.addDriverAuth(driver_auth)){
                     return true;
                 }else{
