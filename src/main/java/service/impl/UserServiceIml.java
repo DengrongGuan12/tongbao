@@ -348,6 +348,7 @@ public class UserServiceIml implements UserService {
     // : 1/20/2016
     //重置某个用户的密码
     public boolean resetPassword(int userId, String newPassword) {
+        //TODO 限制密码长度大于等于8小于等于255
         User user = userDao.getUserById(userId);
         user.setPassword(newPassword);
         return userDao.updateUser(user);
