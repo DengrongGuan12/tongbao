@@ -12,7 +12,7 @@ import service.OrderService;
 import service.UserService;
 import vo.OrderDetail;
 import vo.RestResult;
-import vo.TruckType;
+import vo.TruckDetail;
 
 import java.util.List;
 
@@ -28,6 +28,27 @@ public class DriverController {
     DriverService driverService;
     @Autowired
     OrderService orderService;
+
+    @RequestMapping(value = "/auth/getTruckList", method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult getTruckList(@ModelAttribute("TokenAuthInfo")TokenAuthInfo tokenAuthInfo){
+        int userId = userService.hasLogin(tokenAuthInfo.getToken());
+        List truckList = driverService.getTruckList(userId);
+        return RestResult.CreateResult(1,truckList);
+    }
+
+    @RequestMapping(value = "/auth/getTruckDetail", method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult getTruckDetail(@ModelAttribute("IdInfoWithAuth")IdInfoWithAuth idInfoWithAuth){
+        int id = idInfoWithAuth.getId();
+        int userId = userService.hasLogin(idInfoWithAuth.getToken());
+        TruckDetail truckDetail = driverService.getTruckDetail(userId,id);
+        if(truckDetail != null){
+            return RestResult.CreateResult(1,truckDetail);
+        }else{
+            return RestResult.CreateResult(0,"无权限");
+        }
+    }
 
     @RequestMapping(value = "/auth/addTruck", method = RequestMethod.POST)
     @ResponseBody
@@ -71,9 +92,9 @@ public class DriverController {
     }
     @RequestMapping(value = "/auth/cancelOrder", method = RequestMethod.POST)
     @ResponseBody
-    public RestResult cancelOrder(@ModelAttribute("OrderIdInfoWithAuth")OrderIdInfoWithAuth orderIdInfoWithAuth){
-        int userId = userService.hasLogin(orderIdInfoWithAuth.getToken());
-        if(orderService.cancelOrder(userId,orderIdInfoWithAuth.getId()) == 0){
+    public RestResult cancelOrder(@ModelAttribute("IdInfoWithAuth") IdInfoWithAuth idInfoWithAuth){
+        int userId = userService.hasLogin(idInfoWithAuth.getToken());
+        if(orderService.cancelOrder(userId, idInfoWithAuth.getId()) == 0){
             return RestResult.CreateResult(0,"取消失败!");
         }else{
             return RestResult.CreateResult(1);
@@ -81,9 +102,9 @@ public class DriverController {
     }
     @RequestMapping(value = "/auth/deleteOrder", method = RequestMethod.POST)
     @ResponseBody
-    public RestResult deleteOrder(@ModelAttribute("OrderIdInfoWithAuth")OrderIdInfoWithAuth orderIdInfoWithAuth){
-        int userId = userService.hasLogin(orderIdInfoWithAuth.getToken());
-        if(orderService.deleteOrder(userId,orderIdInfoWithAuth.getId())){
+    public RestResult deleteOrder(@ModelAttribute("IdInfoWithAuth") IdInfoWithAuth idInfoWithAuth){
+        int userId = userService.hasLogin(idInfoWithAuth.getToken());
+        if(orderService.deleteOrder(userId, idInfoWithAuth.getId())){
             return RestResult.CreateResult(1);
         }else{
             return RestResult.CreateResult(0,"删除失败!");
@@ -92,9 +113,9 @@ public class DriverController {
     }
     @RequestMapping(value = "/auth/grabOrder", method = RequestMethod.POST)
     @ResponseBody
-    public RestResult grabOrder(@ModelAttribute("OrderIdInfoWithAuth")OrderIdInfoWithAuth orderIdInfoWithAuth){
-        int userId = userService.hasLogin(orderIdInfoWithAuth.getToken());
-        if(orderService.grabOrder(userId,orderIdInfoWithAuth.getId())){
+    public RestResult grabOrder(@ModelAttribute("IdInfoWithAuth") IdInfoWithAuth idInfoWithAuth){
+        int userId = userService.hasLogin(idInfoWithAuth.getToken());
+        if(orderService.grabOrder(userId, idInfoWithAuth.getId())){
             return RestResult.CreateResult(1);
         }else{
             return RestResult.CreateResult(0,"抢单失败!");
@@ -110,9 +131,9 @@ public class DriverController {
 
     @RequestMapping(value = "/auth/getOrderDetail",method = RequestMethod.POST)
     @ResponseBody
-    public RestResult getOrderDetail(@ModelAttribute("OrderIdInfoWithAuth")OrderIdInfoWithAuth orderIdInfoWithAuth){
-        int userId = userService.hasLogin(orderIdInfoWithAuth.getToken());
-        OrderDetail orderDetail = orderService.getOrderDetail(userId,orderIdInfoWithAuth.getId());
+    public RestResult getOrderDetail(@ModelAttribute("IdInfoWithAuth") IdInfoWithAuth idInfoWithAuth){
+        int userId = userService.hasLogin(idInfoWithAuth.getToken());
+        OrderDetail orderDetail = orderService.getOrderDetail(userId, idInfoWithAuth.getId());
         return RestResult.CreateResult(1,orderDetail);
     }
 

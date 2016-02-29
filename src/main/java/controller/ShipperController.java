@@ -123,9 +123,9 @@ public class ShipperController {
 
     @RequestMapping(value = "/auth/deleteOrder", method = RequestMethod.POST)
         @ResponseBody
-    public RestResult deleteOrder(@ModelAttribute("OrderIdInfoWithAuth")OrderIdInfoWithAuth orderIdInfoWithAuth){
-        int userId = userService.hasLogin(orderIdInfoWithAuth.getToken());
-        if(orderService.deleteOrder(userId,orderIdInfoWithAuth.getId())){
+    public RestResult deleteOrder(@ModelAttribute("IdInfoWithAuth") IdInfoWithAuth idInfoWithAuth){
+        int userId = userService.hasLogin(idInfoWithAuth.getToken());
+        if(orderService.deleteOrder(userId, idInfoWithAuth.getId())){
             return RestResult.CreateResult(1);
         }else{
             return RestResult.CreateResult(0,"删除失败!");
@@ -134,9 +134,9 @@ public class ShipperController {
     }
     @RequestMapping(value = "/auth/cancelOrder", method = RequestMethod.POST)
         @ResponseBody
-    public RestResult cancelOrder(@ModelAttribute("OrderIdInfoWithAuth")OrderIdInfoWithAuth orderIdInfoWithAuth){
-        int userId = userService.hasLogin(orderIdInfoWithAuth.getToken());
-        switch (orderService.cancelOrder(userId,orderIdInfoWithAuth.getId())){
+    public RestResult cancelOrder(@ModelAttribute("IdInfoWithAuth") IdInfoWithAuth idInfoWithAuth){
+        int userId = userService.hasLogin(idInfoWithAuth.getToken());
+        switch (orderService.cancelOrder(userId, idInfoWithAuth.getId())){
             case 0:
                 return RestResult.CreateResult(0,"取消失败!");
             case 1:
@@ -150,9 +150,9 @@ public class ShipperController {
 
     @RequestMapping(value = "/auth/finishOrder", method = RequestMethod.POST)
         @ResponseBody
-    public RestResult finishOrder(@ModelAttribute("OrderIdInfoWithAuth")OrderIdInfoWithAuth orderIdInfoWithAuth){
-        int userId = userService.hasLogin(orderIdInfoWithAuth.getToken());
-        if(orderService.finishOrder(userId,orderIdInfoWithAuth.getId())){
+    public RestResult finishOrder(@ModelAttribute("IdInfoWithAuth") IdInfoWithAuth idInfoWithAuth){
+        int userId = userService.hasLogin(idInfoWithAuth.getToken());
+        if(orderService.finishOrder(userId, idInfoWithAuth.getId())){
             return RestResult.CreateResult(1);
         }else{
             return RestResult.CreateResult(0,"结束失败!");
@@ -161,9 +161,9 @@ public class ShipperController {
 
     @RequestMapping(value = "/auth/getOrderDetail",method = RequestMethod.POST)
     @ResponseBody
-    public RestResult getOrderDetail(@ModelAttribute("OrderIdInfoWithAuth")OrderIdInfoWithAuth orderIdInfoWithAuth){
-        int userId = userService.hasLogin(orderIdInfoWithAuth.getToken());
-        OrderDetail orderDetail = orderService.getOrderDetail(userId,orderIdInfoWithAuth.getId());
+    public RestResult getOrderDetail(@ModelAttribute("IdInfoWithAuth") IdInfoWithAuth idInfoWithAuth){
+        int userId = userService.hasLogin(idInfoWithAuth.getToken());
+        OrderDetail orderDetail = orderService.getOrderDetail(userId, idInfoWithAuth.getId());
         return RestResult.CreateResult(1,orderDetail);
     }
 

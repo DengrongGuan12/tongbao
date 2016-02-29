@@ -1,5 +1,6 @@
 package service.impl;
 
+
 import dao.Driver_auth_Dao;
 import dao.Truck_type_Dao;
 import manager.UserManager;
@@ -11,6 +12,8 @@ import pojo.RealNameAuthInfo;
 import pojo.TruckAuthInfo;
 import pojo.TruckInfo;
 import service.DriverService;
+import vo.TruckDetail;
+import vo.TruckSimple;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,13 +30,41 @@ public class DriverServiceImpl implements DriverService {
 
     @Autowired
     private Truck_type_Dao truck_type_dao;
+
+    public List getTruckList(int userId) {
+        //TODO
+        //根据司机id获取该司机的所有车辆,不用考虑是否是司机，如果不是司机自然不会有车辆
+        List truckList = new ArrayList<TruckSimple>();
+        TruckSimple truckSimple = new TruckSimple();
+        truckSimple.setId(1);
+        truckSimple.setAuthState(0);
+        truckSimple.setTruckNum("苏A8888");
+        truckList.add(truckSimple);
+        return truckList;
+    }
+
+    public TruckDetail getTruckDetail(int userId,int id) {
+        //TODO
+        //根据车辆id 获取该车辆的具体信息
+        //注意该车辆是否是属于该用户，如果不是则返回null
+        TruckDetail truckDetail = new TruckDetail();
+        truckDetail.setTruckNum("苏A11111");
+        truckDetail.setAuthState(0);
+        truckDetail.setTypeName("金杯车");
+        truckDetail.setLength(10);
+        truckDetail.setCapacity(10);
+        truckDetail.setPhoneNum("123233434");
+        truckDetail.setRealName("老管");
+        return truckDetail;
+    }
+
     /*
-    注:
-    1.根据车牌号设置认证状态
-    2.只能司机设置，不能是货主，且该车牌号必须是该司机添加的
-    3.不能重复认证，即只有尚未认证的才能认证
-    4.只有当两种认证都填写完整时才设置正在认证的状态
-     */
+        注:
+        1.根据车牌号设置认证状态
+        2.只能司机设置，不能是货主，且该车牌号必须是该司机添加的
+        3.不能重复认证，即只有尚未认证的才能认证
+        4.只有当两种认证都填写完整时才设置正在认证的状态
+         */
     public boolean setRealNameInfo(int userId, RealNameAuthInfo realNameAuthInfo) {
         int userType = userManager.getUserType(userId);
         if(userType == 1){
@@ -126,6 +157,7 @@ public class DriverServiceImpl implements DriverService {
     3.type要存在
      */
     public boolean addTruck(int userId, TruckInfo truckInfo) {
+        //TODO 未判断车牌号的重复
         //判断是否为司机
         int userType = userManager.getUserType(userId);
         if(userType == 1){
