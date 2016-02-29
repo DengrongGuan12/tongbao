@@ -49,6 +49,7 @@ public class UserServiceIml implements UserService {
         注册
          */
     public boolean register(String phoneNumber, String password,Byte type) {
+        //TODO 限制密码最小长度为8
         User user=new User(phoneNumber,password,type);
         user.setRegister_time(new Timestamp(System.currentTimeMillis()));
         if(userDao.registerUser(user)){
@@ -67,7 +68,8 @@ public class UserServiceIml implements UserService {
     /*
     登录,登录成功返回用户信息,否则返回null
      */
-    public vo.User login(String phoneNumber, String password, HttpSession session) {
+    public vo.User login(String phoneNumber, String password, int type, HttpSession session) {
+        //TODO　添加用户类型，以区分不同的客户端，０货主　１司机
         User userTemp=userDao.getUserByPhoneNumber(phoneNumber);
         if(userTemp!=null&&userTemp.getPassword().equals(password)){
             String token=userManager.addToOnlineList(userTemp.getId(),userTemp.getType());
@@ -116,6 +118,7 @@ public class UserServiceIml implements UserService {
     修改用户密码,成功返回true
      */
     public boolean changePassword(int id, String oldPassword, String newPassword) {
+        //TODO 限制密码最小长度小于8
         User userTemp=userDao.getUserById(id);
         if(userTemp!=null&&userTemp.getPassword().equals(oldPassword)){
             userTemp.setPassword(newPassword);
@@ -348,7 +351,7 @@ public class UserServiceIml implements UserService {
     // : 1/20/2016
     //重置某个用户的密码
     public boolean resetPassword(int userId, String newPassword) {
-        //TODO 限制密码长度大于等于8小于等于255
+        //TODO 限制密码长度大于等于8
         User user = userDao.getUserById(userId);
         user.setPassword(newPassword);
         return userDao.updateUser(user);
