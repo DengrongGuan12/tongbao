@@ -72,27 +72,32 @@ public class UserServiceIml implements UserService {
     登录,登录成功返回用户信息,否则返回null
      */
     public vo.User login(String phoneNumber, String password, int type, HttpSession session) {
-        //TODO　添加用户类型，以区分不同的客户端，０货主　１司机
         User userTemp=userDao.getUserByPhoneNumber(phoneNumber);
-        if(userTemp!=null&&userTemp.getPassword().equals(password)){
-            String token=userManager.addToOnlineList(userTemp.getId(),userTemp.getType());
-            vo.User userReturn=new vo.User();
-            userReturn.setIconUrl(userTemp.getIcon());
-            userReturn.setMoney(userTemp.getMoney());
-            userReturn.setNickName(userTemp.getNick_name());
-            userReturn.setPoint(userTemp.getPoint());
-            userReturn.setPhoneNum(userTemp.getPhone_number());
-            userReturn.setRegisterTime(userTemp.getRegister_time()+"");
-            userReturn.setId(userTemp.getId());
-            userReturn.setToken(token);
-            session.setAttribute("type", userTemp.getType());
-            session.setAttribute("name", userTemp.getNick_name());
-            session.setAttribute("id", userTemp.getId());
-            session.setAttribute("password", userTemp.getPassword());
-            return userReturn;
-        }else {
+        Byte t = userTemp.getType();
+        if(t.equals(type)){
+            if(userTemp!=null&&userTemp.getPassword().equals(password)){
+                String token=userManager.addToOnlineList(userTemp.getId(),userTemp.getType());
+                vo.User userReturn=new vo.User();
+                userReturn.setIconUrl(userTemp.getIcon());
+                userReturn.setMoney(userTemp.getMoney());
+                userReturn.setNickName(userTemp.getNick_name());
+                userReturn.setPoint(userTemp.getPoint());
+                userReturn.setPhoneNum(userTemp.getPhone_number());
+                userReturn.setRegisterTime(userTemp.getRegister_time()+"");
+                userReturn.setId(userTemp.getId());
+                userReturn.setToken(token);
+                session.setAttribute("type", userTemp.getType());
+                session.setAttribute("name", userTemp.getNick_name());
+                session.setAttribute("id", userTemp.getId());
+                session.setAttribute("password", userTemp.getPassword());
+                return userReturn;
+            }else {
+                return null;
+            }
+        }else{
             return null;
         }
+
 
     }
 
