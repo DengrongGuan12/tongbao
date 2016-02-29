@@ -32,14 +32,18 @@ public class DriverServiceImpl implements DriverService {
     private Truck_type_Dao truck_type_dao;
 
     public List getTruckList(int userId) {
-        //TODO
         //根据司机id获取该司机的所有车辆,不用考虑是否是司机，如果不是司机自然不会有车辆
+        List allTrucks = driver_auth_dao.getAllTruckInfoByUserId(userId);
         List truckList = new ArrayList<TruckSimple>();
-        TruckSimple truckSimple = new TruckSimple();
-        truckSimple.setId(1);
-        truckSimple.setAuthState(0);
-        truckSimple.setTruckNum("苏A8888");
-        truckList.add(truckSimple);
+        for(int i=0;i<allTrucks.size();i++){
+            Driver_auth driver_auth = (Driver_auth) allTrucks.get(i);
+            TruckSimple truckSimple = new TruckSimple();
+            truckSimple.setId(driver_auth.getId());
+            truckSimple.setAuthState(driver_auth.getAuthState());
+            truckSimple.setTruckNum(driver_auth.getTruckNum());
+            truckList.add(truckSimple);
+        }
+
         return truckList;
     }
 
