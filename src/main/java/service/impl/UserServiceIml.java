@@ -69,8 +69,11 @@ public class UserServiceIml implements UserService {
     }
 
     public boolean phoneNumExist(String phoneNum) {
-        //TODO 判断该手机号是否存在 ,存在返回true
-        return false;
+        User user =  userDao.getUserByPhoneNumber(phoneNum);
+        if(user==null){
+            return false;
+        }
+        return true;
     }
 
     /*
