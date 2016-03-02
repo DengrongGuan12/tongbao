@@ -27,6 +27,13 @@
     <orderEntry type="library" scope="TEST" name="Maven: com.squareup.okhttp:mockwebserver:1.5.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.squareup.okhttp:okhttp:1.5.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.bouncycastle:bcprov-jdk15on:1.48" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.5" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-log4j12:1.7.5" level="project" />
+    <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.2.4" level="project" />
+    <orderEntry type="library" name="Maven: com.google.guava:guava:17.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.squareup.okhttp:mockwebserver:1.5.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.squareup.okhttp:okhttp:1.5.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.bouncycastle:bcprov-jdk15on:1.48" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:3.8.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-webmvc:4.2.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-core:4.2.4.RELEASE" level="project" />

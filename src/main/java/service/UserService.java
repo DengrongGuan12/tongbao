@@ -11,6 +11,7 @@ import java.util.List;
  */
 public interface UserService {
     public boolean register(String phoneNumber, String password,Byte type);
+    public boolean phoneNumExist(String phoneNum);
     public User getUserByPhoneNumber(String  phoneNumber);
     public User getUserById(int id);
     public vo.User login(String phoneNumber, String password, int type, HttpSession session);

@@ -68,6 +68,11 @@ public class UserServiceIml implements UserService {
         return false;
     }
 
+    public boolean phoneNumExist(String phoneNum) {
+        //TODO 判断该手机号是否存在 ,存在返回true
+        return false;
+    }
+
     /*
     登录,登录成功返回用户信息,否则返回null
      */

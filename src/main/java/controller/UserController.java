@@ -69,6 +69,16 @@ public class UserController {
 
     }
 
+    @RequestMapping(value = "/hasRegister", method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult hasRegister(PhoneNumInfo phoneNumInfo){
+        if(userService.phoneNumExist(phoneNumInfo.getPhoneNumber())){
+            return RestResult.CreateResult(1);
+        }else{
+            return RestResult.CreateResult(0);
+        }
+    }
+
     @RequestMapping(value = "/login", method = RequestMethod.POST)
         @ResponseBody
     public RestResult login(@ModelAttribute("UserAuthInfo")UserAuthInfo userAuthInfo, HttpSession session){
