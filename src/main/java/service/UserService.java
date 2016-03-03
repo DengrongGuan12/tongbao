@@ -14,7 +14,7 @@ public interface UserService {
     public boolean phoneNumExist(String phoneNum);
     public User getUserByPhoneNumber(String  phoneNumber);
     public User getUserById(int id);
-    public vo.User login(String phoneNumber, String password, int type, HttpSession session);
+    public vo.User login(String phoneNumber, String password, Byte type, HttpSession session);
     public int hasLogin(String token);
     public boolean changeNickName(int id, String nickName);
     public boolean changePassword(int id, String oldPassword, String newPassword);

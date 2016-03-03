@@ -79,7 +79,7 @@ public class UserServiceIml implements UserService {
     /*
     登录,登录成功返回用户信息,否则返回null
      */
-    public vo.User login(String phoneNumber, String password, int type, HttpSession session) {
+    public vo.User login(String phoneNumber, String password, Byte type, HttpSession session) {
         User userTemp=userDao.getUserByPhoneNumber(phoneNumber);
         Byte t = userTemp.getType();
         if(t.equals(type)){
