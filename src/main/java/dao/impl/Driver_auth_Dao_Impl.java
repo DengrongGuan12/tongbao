@@ -82,9 +82,11 @@ public class Driver_auth_Dao_Impl extends BaseDaoImpl implements Driver_auth_Dao
     }
 
     public Driver_auth getDriverAuthByTruckNum(String truckNum) {
-//        List<Driver_auth> driver_auths = super.getList(Driver_auth.class,"truck_num","'"+truckNum+"'");
-//        return driver_auths.get(0);
-        return null;
+        List<Driver_auth> driver_auths = super.getList(Driver_auth.class,"truck_num","'"+truckNum+"'");
+        if(driver_auths.size()==0){
+            return null;
+        }
+        return driver_auths.get(0);
     }
 
     public boolean updateDriverAuth(Driver_auth driver_auth) {

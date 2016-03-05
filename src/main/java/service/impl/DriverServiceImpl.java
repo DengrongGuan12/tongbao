@@ -201,6 +201,9 @@ public class DriverServiceImpl implements DriverService {
 
     public boolean removeTruck(int userId, String truckNum) {
         Driver_auth driver_auth = driver_auth_dao.getDriverAuthByTruckNum(truckNum);
+        if(driver_auth==null){
+            return false;
+        }
         if(driver_auth.getUserId()==userId)
         {
             return driver_auth_dao.deleteTruckById(driver_auth.getId());
