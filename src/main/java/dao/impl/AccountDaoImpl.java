@@ -24,7 +24,7 @@ public class AccountDaoImpl extends BaseDaoImpl implements AccountDao {
         return count;
     }
 
-    @Override
+
     public List getAllAccounts() {
         return super.getAllList(Account.class);
     }

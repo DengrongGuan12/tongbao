@@ -35,6 +35,8 @@ public class UserServiceIml implements UserService {
     private AccountDao accountDao;
     @Autowired
     private Driver_auth_Dao driver_auth_dao;
+    @Autowired
+    private FileDao fileDao;
 
 
     public User getUserByPhoneNumber(String phoneNumber) {
@@ -406,13 +408,32 @@ public class UserServiceIml implements UserService {
         return list;
     }
 
+    /**
+     *
+     * @param path 文件路径
+     * @return 成功添加返回id，添加失败返回-1
+     */
     public int addFile(String path) {
-        //TODO　像file表中插入一条数据，返回自增的id
-        return 0;
+        File file = new File();
+        file.setPath(path);
+        if(fileDao.uploadFile(file)){
+            return file.getId();
+        }else {
+            return -1;
+        }
     }
 
+    /**
+     *
+     * @param id
+     * @return 成功返回目标路径，失败返回空
+     */
     public String getFilePathById(int id) {
-        //// TODO: 3/5/2016 根据id获取路径
-        return null;
+        File file = fileDao.getFileById(id);
+        if(file!=null){
+            return file.getPath();
+        }else {
+            return "";
+        }
     }
 }
