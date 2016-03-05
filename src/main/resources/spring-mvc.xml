@@ -25,7 +25,7 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
           class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 
         <!-- one of the properties available; the maximum file size in bytes -->
-        <property name="maxUploadSize" value="100000"/>
+        <property name="maxUploadSize" value="50000000"/>
     </bean>
     <mvc:annotation-driven>
         <mvc:message-converters>

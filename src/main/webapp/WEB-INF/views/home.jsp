@@ -6,6 +6,7 @@
 </head>
 <body>
     <h1><c:out value="${message}"/></h1>
+    <h1><c:out value="${message1}"/></h1>
     <h2>Again!</h2>
 </body>
 </html>

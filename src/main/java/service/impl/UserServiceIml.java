@@ -405,4 +405,14 @@ public class UserServiceIml implements UserService {
 
         return list;
     }
+
+    public int addFile(String path) {
+        //TODO　像file表中插入一条数据，返回自增的id
+        return 0;
+    }
+
+    public String getFilePathById(int id) {
+        //// TODO: 3/5/2016 根据id获取路径
+        return null;
+    }
 }

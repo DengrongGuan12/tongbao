@@ -34,5 +34,7 @@ public interface UserService {
     public boolean deleteUser(int userId);
     public boolean resetPassword(int userId, String newPassword);
     public List getAllUsersByType(Byte type);
+    public int addFile(String path);
+    public String getFilePathById(int id);
 
 }
