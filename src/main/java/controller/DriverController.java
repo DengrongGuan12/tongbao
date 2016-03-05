@@ -62,6 +62,16 @@ public class DriverController {
             return RestResult.CreateResult(0,"操作失败!");
         }
     }
+    @RequestMapping(value = "/auth/removeTruck", method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult removeTruck(@ModelAttribute("TruckInfo")TruckInfo truckInfo){
+        int userId = userService.hasLogin(truckInfo.getToken());
+        if(driverService.removeTruck(userId,truckInfo.getTruckNum())){
+            return RestResult.CreateResult(1);
+        }else{
+            return RestResult.CreateResult(0,"删除失败!");
+        }
+    }
     @RequestMapping(value = "/auth/setRealNameAuthInfo", method = RequestMethod.POST)
     @ResponseBody
     public RestResult setRealNameAuthInfo(@ModelAttribute("RealNameAuthInfo")RealNameAuthInfo realNameAuthInfo){

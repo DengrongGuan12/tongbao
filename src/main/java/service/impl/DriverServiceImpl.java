@@ -199,6 +199,11 @@ public class DriverServiceImpl implements DriverService {
         }
     }
 
+    public boolean removeTruck(int userId, String truckNum) {
+        //TODO 根据车牌号删除车辆 需要判断该车辆是否属于该用户
+        return false;
+    }
+
     //获取尚未验证和验证失败的司机数量
     public int getUnSubmittedDriverNum() {
         return driver_auth_dao.getUnSubmittedDriverNum();
