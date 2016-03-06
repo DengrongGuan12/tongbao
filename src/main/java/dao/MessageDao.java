@@ -1,5 +1,7 @@
 package dao;
 
+import model.Message;
+
 import java.util.List;
 
 /**
@@ -7,4 +9,6 @@ import java.util.List;
  */
 public interface MessageDao {
     public List getMyMessage(int userId);
+    public Message getMessageById(int id);
+    public boolean updateMessage(Message message);
 }

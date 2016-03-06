@@ -17,6 +17,8 @@ public class OrderSimple {
     private String toContactName;
     private String toContactPhone;
     private int state;
+    private String loadTime;
+    private String stateStr = "";
 
     public String getStateStr() {
         return stateStr;
@@ -26,7 +28,7 @@ public class OrderSimple {
         this.stateStr = stateStr;
     }
 
-    private String stateStr = "";
+
 
     public int getState() {
         return state;
@@ -36,7 +38,7 @@ public class OrderSimple {
         this.state = state;
     }
 
-    private String loadTime;
+
 
 
     public String getLoadTime() {

@@ -23,6 +23,8 @@ import java.util.*;
  */
 @Service
 public class OrderServiceImpl implements OrderService {
+    //起步距离
+    private static final double BACE_DISTANCE= 5.0;
     UserManager userManager = UserManager.getInstance();
     @Autowired
     OrderDao orderDao;
@@ -34,6 +36,8 @@ public class OrderServiceImpl implements OrderService {
     Driver_auth_Dao driver_auth_dao;
     @Autowired
     UserDao userDao;
+    @Autowired
+    Order_state_name_t_Dao order_state_name_t_dao;
 
     /*
     创建订单时要考虑是否有匹配的司机，如果成功返回1，找不到匹配的司机返回2，其他失败(如用户不是货主就没有权限创建)返回0
@@ -54,7 +58,7 @@ public class OrderServiceImpl implements OrderService {
                 this.saveOrder(userId,orderInfo,tTypes);
                 return 1;
             }
-            MatchDriverModel m = this.maxMatchDriver(tTypes);
+            MatchDriverModel m = this.maxMatchDriver(tTypes,new HashSet<Integer>());
             //找到匹配司机
             if(tTypes.length==m.carType.size()){
                 this.saveOrder(userId,orderInfo,tTypes);
@@ -65,8 +69,12 @@ public class OrderServiceImpl implements OrderService {
         }
         return 0;
     }
-
+    //保存订单，并根据tTypes和公里数计算价格。
+    //设置在5公里内按起步价计算，超过5公里按车辆类型的公里单价继续计算
     private boolean saveOrder(int userId, OrderInfo orderInfo,String [] tTypes){
+        Map <Byte,Trucks_type>truckTypeMap = truckTypeDao.getAllTruckTypeMap();
+
+        double distance = orderInfo.getDistance();
         Order order=new Order();
         order.setBuildTime(new Timestamp(System.currentTimeMillis()));
         order.setShipperId(userId);
@@ -81,20 +89,28 @@ public class OrderServiceImpl implements OrderService {
         order.setGoodsWeight(orderInfo.getGoodsWeight());
         order.setGoodsSize(orderInfo.getGoodsSize());
         order.setPayType(orderInfo.getPayType());
-        order.setPrice(orderInfo.getPrice());
+//        order.setPrice(orderInfo.getPrice());
         order.setRemark(orderInfo.getRemark());
         order.setEvaluate_point(new Byte("0"));
         order.setEvaluate_content("");
         order.setState(new Byte("0"));
-        orderDao.createOrder(order);
-        Order orderTemp = orderDao.getOrderByShipperIdAndBuildTime(userId,order.getBuildTime());
+
+//        Order orderTemp = orderDao.getOrderByShipperIdAndBuildTime(userId,order.getBuildTime());
+        double price = 0;
         for(int i=0;i<tTypes.length;i++){
             OrderTruckType orderTruckType = new OrderTruckType();
             orderTruckType.setTruckType(new Byte(tTypes[i]));
-            orderTruckType.setOrderId(orderTemp.getId());
+            orderTruckType.setOrderId(order.getId());
             orderTruckTypeDao.addTruckTypes(orderTruckType);
+            Trucks_type trucks_type = truckTypeMap.get(new Byte(tTypes[i]));
+            price+=trucks_type.getBase_price();
+            //当距离大于起步距离时
+            if(distance>BACE_DISTANCE){
+                price+=(distance-BACE_DISTANCE)*trucks_type.getOver_price();
+            }
         }
-
+        order.setPrice(price);
+        orderDao.createOrder(order);
         return true;
     }
 
@@ -109,7 +125,7 @@ public class OrderServiceImpl implements OrderService {
      * @param types 需要匹配的汽车类型
      * @return 内部类，包含最多匹配的map
      */
-    private MatchDriverModel maxMatchDriver(String [] types){
+    private MatchDriverModel maxMatchDriver(String [] types,Set<Integer>hadSelected){
         //shipperId和内部类
         Map<Integer,MatchDriverModel>matchMap = new HashMap<Integer,MatchDriverModel>();
         for (int i=0;i<types.length;i++){
@@ -122,7 +138,7 @@ public class OrderServiceImpl implements OrderService {
                     matchMap.put(driverTemp.getUserId(),md);
                 }else {
                     MatchDriverModel md = matchMap.get(driverTemp.getUserId());
-                    if(!md.carType.containsKey(driverTemp.getId())){
+                    if(!md.carType.containsKey(driverTemp.getId())&&(!hadSelected.contains(driverTemp.getId()))){
                         md.carType.put(driverTemp.getId(),new Byte(driverTemp.getType()));
                     }
                 }
@@ -289,8 +305,21 @@ public class OrderServiceImpl implements OrderService {
     OrderDetail 中的state表示 0:尚未被抢1:已经被抢，正在进行2:进行中取消，正在等待司机确认3:已经取消4:已经完成
     如果是司机,OrderDetail中的state表示 0:尚未被抢1:已经被抢，正在进行2:进行中取消，正在等待司机确认4:已经完成
     */
+
     public OrderDetail getOrderDetail(int userId, int orderId) {
+        int userType = userManager.getUserType(userId);
+        Map <Byte,String> map = order_state_name_t_dao.getAllOrderStateName();
         Order order = orderDao.showOrderDetail(orderId);
+        if(userType==0){
+            if(order.getShipperId()!=userId){
+                return null;
+            }
+        }
+        else if(userType==1){
+            if(order.getDriverId()!=userId){
+                return null;
+            }
+        }
         List truckTypes = orderTruckTypeDao.getTruckTypesByOrderId(orderId);
         OrderDetail orderDetail = new OrderDetail();
         orderDetail.setId(order.getId());
@@ -305,6 +334,7 @@ public class OrderServiceImpl implements OrderService {
         orderDetail.setTime(order.getBuildTime()+"");
         orderDetail.setTruckTypes(truckTypes);
         orderDetail.setState(order.getState());
+        orderDetail.setStateStr(map.get(order.getState()));
         return orderDetail;
     }
 
@@ -312,7 +342,7 @@ public class OrderServiceImpl implements OrderService {
     根据订单信息进行拆单
      */
     public boolean splitOrder(int userId, OrderInfo orderInfo) {
-        // TODO: 3/6/2016
+
 //        orderInfo.getDistance() 获取公里数
         String truckTypeStr = orderInfo.getTruckTypes();
         JSONArray truckTypes = JSON.parseArray(truckTypeStr);
@@ -321,19 +351,20 @@ public class OrderServiceImpl implements OrderService {
             tTypes[i]=truckTypes.get(i)+"";
         }
         //取已经选择过的司机，防止二次选择
-//        Set set = new HashSet();
+        Set set = new HashSet();
         while (tTypes.length>0){
             if(tTypes.length==1){
                 this.saveOrder(userId,orderInfo,tTypes);
                 break;
             }
-            MatchDriverModel m = this.maxMatchDriver(tTypes);
+            MatchDriverModel m = this.maxMatchDriver(tTypes,set);
             Iterator iterator=m.carType.keySet().iterator();
 
             String [] tT = new String[m.carType.size()];
             int index=0;
             while (iterator.hasNext()){
                 int driverAuthId = Integer.parseInt(iterator.next() + "");
+                set.add(driverAuthId);
                 tT[index]=m.carType.get(driverAuthId)+"";
                 index++;
 //                if(!set.contains(driverAuthId)){

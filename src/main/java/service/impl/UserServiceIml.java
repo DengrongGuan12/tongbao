@@ -3,6 +3,7 @@ package service.impl;
 import dao.*;
 import manager.UserManager;
 import model.*;
+import model.Message;
 import model.User;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -37,6 +39,12 @@ public class UserServiceIml implements UserService {
     private Driver_auth_Dao driver_auth_dao;
     @Autowired
     private FileDao fileDao;
+    @Autowired
+    private OrderDao orderDao;
+    @Autowired
+    private Order_state_name_t_Dao order_state_name_t_dao;
+    @Autowired
+    private OrderTruckTypeDao orderTruckTypeDao;
 
 
     public User getUserByPhoneNumber(String phoneNumber) {
@@ -166,11 +174,13 @@ public class UserServiceIml implements UserService {
 
     /**
      *
-     * 还缺少获取order的部分
+     * 当orderId为-1时候表示该账单没有对应的order
+     *
      * @param userId
      * @return
      */
     public List getUserAccount(int userId) {
+        Map<Byte,String> allStateName = order_state_name_t_dao.getAllOrderStateName();
         List listTemp=accountDao.getAccounts(userId);
         List list = new ArrayList();
         for(int i=0;i<listTemp.size();i++){
@@ -179,8 +189,25 @@ public class UserServiceIml implements UserService {
             account.setMoney(accountTemp.getMoney());
             account.setType(accountTemp.getType());
             account.setTime(accountTemp.getBuildTime().toString());
-
-            account.setOrder(null);
+            int orderId = account.getOrderId();
+            OrderSimple orderSimple = new OrderSimple();
+            if(orderId!=-1){
+                Order order = orderDao.showOrderDetail(account.getOrderId());
+                orderSimple.setId(order.getId());
+                orderSimple.setTime(order.getBuildTime().toString());
+                orderSimple.setAddressFrom(order.getAddressFrom());
+                orderSimple.setAddressTo(order.getAddressTo());
+                orderSimple.setMoney(order.getPrice());
+                orderSimple.setTruckTypes(orderTruckTypeDao.getTruckTypesByOrderId(orderId));
+                orderSimple.setFromContactPhone(order.getFrom_contact_phone());
+                orderSimple.setFromContactName(order.getFrom_contact_name());
+                orderSimple.setToContactPhone(order.getTo_contact_phone());
+                orderSimple.setToContactName(order.getTo_contact_name());
+                orderSimple.setState(order.getState());
+                orderSimple.setLoadTime(order.getLoadTime());
+                orderSimple.setStateStr(allStateName.get(order.getState()));
+            }
+            account.setOrder(orderSimple);
 
             list.add(account);
         }
@@ -268,8 +295,13 @@ public class UserServiceIml implements UserService {
     }
 
     public boolean readMessage(int userId, int id) {
-        // TODO: 3/6/2016  将消息设为已读，注意必须该消息必须要是这个userId的，否则直接返回false ; 成功返回true，失败返回false
-        return false;
+        Message message = (Message) messageDao.getMessageById(id);
+        if(message==null||message.getUser_id()==userId){
+            return false;
+        }
+        message.setHas_read(new Byte("1"));
+
+        return messageDao.updateMessage(message);
     }
 
     public boolean recharge(int userId, double money) {
