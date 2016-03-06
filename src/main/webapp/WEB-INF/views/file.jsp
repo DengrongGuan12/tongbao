@@ -7,7 +7,7 @@
 <body>
     <h1>Please upload a file</h1>
     <!--   enctype(编码格式)必须为multipart/form-data  -->
-            <form method="post" action="/tongbao/home/form" enctype="multipart/form-data">
+            <form method="post" action="http://120.27.112.9:8080/tongbao/user/uploadPicture" enctype="multipart/form-data">
                 <input type="text" name="name"/>
                 <input type="file" name="file"/>
                 <input type="submit"/>
