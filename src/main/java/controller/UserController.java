@@ -243,6 +243,16 @@ public class UserController {
         return RestResult.CreateResult(1,list);
 
     }
+    @RequestMapping(value = "/auth/readMessage", method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult readMessage(@ModelAttribute("IdInfoWithToken")IdInfoWithAuth idInfoWithAuth){
+        int userId = userService.hasLogin(idInfoWithAuth.getToken());
+        if(userService.readMessage(userId,idInfoWithAuth.getId())){
+            return RestResult.CreateResult(1);
+        }else{
+            return RestResult.CreateResult(0,"操作失败");
+        }
+    }
     @RequestMapping(value = "getAllTruckTypes",method = RequestMethod.POST)
     @ResponseBody
     public RestResult getAllTruckTypes(){

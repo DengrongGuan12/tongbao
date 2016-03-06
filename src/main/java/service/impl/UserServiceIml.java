@@ -266,6 +266,12 @@ public class UserServiceIml implements UserService {
         }
         return returnList;
     }
+
+    public boolean readMessage(int userId, int id) {
+        // TODO: 3/6/2016  将消息设为已读，注意必须该消息必须要是这个userId的，否则直接返回false ; 成功返回true，失败返回false
+        return false;
+    }
+
     public boolean recharge(int userId, double money) {
         User user=getUserById(userId);
         double moneyTemp=user.getMoney();
