@@ -312,6 +312,8 @@ public class OrderServiceImpl implements OrderService {
     根据订单信息进行拆单
      */
     public boolean splitOrder(int userId, OrderInfo orderInfo) {
+        // TODO: 3/6/2016
+//        orderInfo.getDistance() 获取公里数
         String truckTypeStr = orderInfo.getTruckTypes();
         JSONArray truckTypes = JSON.parseArray(truckTypeStr);
         String [] tTypes=new String[truckTypes.size()];

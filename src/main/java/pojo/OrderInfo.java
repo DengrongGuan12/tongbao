@@ -19,6 +19,16 @@ public class OrderInfo extends TokenAuthInfo{
     private String truckTypes;
     private Byte payType;
     private double price;
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
+
+    private double distance;//公里数
     //备注信息
     private String remark;
 
