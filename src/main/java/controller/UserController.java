@@ -11,6 +11,7 @@ import service.OrderService;
 import service.UserService;
 import vo.ContactDetail;
 import vo.RestResult;
+import vo.UrlInfo;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -98,7 +99,9 @@ public class UserController {
             }
             int id = userService.addFile(storeName);
             String url = "http://120.27.112.9:8080/tongbao/user/picture?id="+id;
-            return RestResult.CreateResult(1,url);
+            UrlInfo urlInfo = new UrlInfo();
+            urlInfo.setUrl(url);
+            return RestResult.CreateResult(1,urlInfo);
         } else {
             return RestResult.CreateResult(0,"文件不存在");
         }
