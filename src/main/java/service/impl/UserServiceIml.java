@@ -261,6 +261,8 @@ public class UserServiceIml implements UserService {
     }
 
     public List getTruckTypes() {
+        // TODO: 3/7/2016
+        //truck_type 表加了一列base_distance, TruckType 加了一个baseDistance ,model也要改一下
         List listTemp=trucks_type_dao.getAllTruckType();
         List list = new ArrayList();
         for(int i=0;i<listTemp.size();i++){

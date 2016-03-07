@@ -11,6 +11,16 @@ public class TruckType {
     private double width;
     private double height;
 
+    public int getBaseDistance() {
+        return baseDistance;
+    }
+
+    public void setBaseDistance(int baseDistance) {
+        this.baseDistance = baseDistance;
+    }
+
+    private int baseDistance;
+
     public double getOverPrice() {
         return overPrice;
     }

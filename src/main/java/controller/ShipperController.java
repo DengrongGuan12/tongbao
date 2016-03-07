@@ -82,7 +82,7 @@ public class ShipperController {
             case 0:
                 return RestResult.CreateResult(0,"操作失败!");
             case 1:
-                return RestResult.CreateResult(1,"创建成功!");
+                return RestResult.CreateResult(1);
             case 2:
                 return RestResult.CreateResult(2,"需要拆单!");
             default:
