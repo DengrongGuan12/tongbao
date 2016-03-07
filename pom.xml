@@ -258,6 +258,14 @@
           <uriEncoding>UTF-8</uriEncoding>
         </configuration>
       </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>2.0.2</version>
+            <configuration>
+                <warSourceExcludes>WEB-INF/web.jar</warSourceExcludes>
+            </configuration>
+        </plugin>
     </plugins>
     <finalName>tongbao</finalName>
   </build>

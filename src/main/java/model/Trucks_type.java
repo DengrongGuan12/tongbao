@@ -19,6 +19,7 @@ public class Trucks_type implements Serializable{
     private double width;
     private double height;
     private double over_price;
+    private int base_distance;
 
 
     @Id
@@ -29,6 +30,10 @@ public class Trucks_type implements Serializable{
     public void setType(Byte type) {
         this.type = type;
     }
+    @Column
+    public int getBase_distance(){return base_distance;}
+
+    public void setBase_distance(int temp){this.base_distance = temp;}
     @Column
     public String getName() {
         return name;

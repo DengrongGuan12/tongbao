@@ -41,11 +41,10 @@ public class ShipperServiceImpl implements ShipperService{
      */
     public boolean evaluateOrder(int userId, int id, Byte evaluatePoint, String content) {
         model.Order order = orderDao.showOrderDetail(id);
-        if(userId==order.getShipperId()&&order.getState().equals(new Byte("2"))){
+        if(order!=null&&userId==order.getShipperId()&&order.getState().equals(new Byte("2"))){
             order.setEvaluate_point(evaluatePoint);
             order.setEvaluate_content(content);
-            orderDao.updateOrder(order);
-            return true;
+            return orderDao.updateOrder(order);
         }else{
             return false;
         }
@@ -55,6 +54,13 @@ public class ShipperServiceImpl implements ShipperService{
     需要属性包括货主id,司机id
      */
     public boolean addFrequentDriver(int userId, int driverId) {
+        model.User shipper = userDao.getUserById(userId);
+        model.User driver = userDao.getUserById(driverId);
+        Byte b1 = shipper.getType();
+        Byte b2 = driver.getType();
+        if(!(b1.equals(new Byte("0")))||!(b2.equals(new Byte("1")))){
+            return false;
+        }
         Frequent_driver frequent_driver=new Frequent_driver();
         frequent_driver.setShipper_id(userId);
         frequent_driver.setDriver_id(driverId);

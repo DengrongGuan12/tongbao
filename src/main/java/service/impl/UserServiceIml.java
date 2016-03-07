@@ -46,6 +46,8 @@ public class UserServiceIml implements UserService {
     private Order_state_name_t_Dao order_state_name_t_dao;
     @Autowired
     private OrderTruckTypeDao orderTruckTypeDao;
+    @Autowired
+    private Account_type_name_t_Dao account_type_name_t_dao;
 
 
     public User getUserByPhoneNumber(String phoneNumber) {
@@ -178,24 +180,30 @@ public class UserServiceIml implements UserService {
 
     /**
      *
-     * 当orderId为-1时候表示该账单没有对应的order
      *
      * @param userId
      * @return
      */
     public List getUserAccount(int userId) {
         Map<Byte,String> allStateName = order_state_name_t_dao.getAllOrderStateName();
+        Map<Byte,String> allAccountType = account_type_name_t_dao.getAllAccountTypes();
         List listTemp=accountDao.getAccounts(userId);
         List list = new ArrayList();
         for(int i=0;i<listTemp.size();i++){
             model.Account accountTemp=(model.Account)listTemp.get(i);
+            Byte type = accountTemp.getType();
             Account account = new Account();
+            account.setId(accountTemp.getId());
+            account.setTypeStr(allAccountType.get(type));
+            account.setType(type);
             account.setMoney(accountTemp.getMoney());
-            account.setType(accountTemp.getType());
             account.setTime(accountTemp.getBuildTime().toString());
+            account.setOrderId(accountTemp.getOrderId());
+            account.setUserId(accountTemp.getUserId());
+            account.setUserPhoneNum(userDao.getUserById(accountTemp.getUserId()).getPhone_number());
             int orderId = account.getOrderId();
             OrderSimple orderSimple = new OrderSimple();
-            if(orderId!=-1){
+            if(type.equals(new Byte("2"))||type.equals(new Byte("3"))||type.equals(new Byte("4"))){
                 Order order = orderDao.showOrderDetail(account.getOrderId());
                 orderSimple.setId(order.getId());
                 orderSimple.setTime(order.getBuildTime().toString());
@@ -262,7 +270,6 @@ public class UserServiceIml implements UserService {
     }
 
     public List getTruckTypes() {
-        // TODO: 3/7/2016
         //truck_type 表加了一列base_distance, TruckType 加了一个baseDistance ,model也要改一下
         List listTemp=trucks_type_dao.getAllTruckType();
         List list = new ArrayList();
@@ -277,6 +284,7 @@ public class UserServiceIml implements UserService {
             truckType.setLength(trucksTemp.getLength());
             truckType.setWidth(trucksTemp.getWidth());
             truckType.setHeight(trucksTemp.getHeight());
+            truckType.setBaseDistance(trucksTemp.getBase_distance());
             list.add(truckType);
         }
 

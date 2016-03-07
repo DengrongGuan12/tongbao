@@ -5,6 +5,14 @@ package vo;
  */
 public class Account {
     private int id;
+    private String typeStr;
+    private int type;
+    private String time;
+    private double money;
+    private OrderSimple order;
+    private int orderId;
+    private int userId;
+    private String userPhoneNum;
 
     public String getTypeStr() {
         return typeStr;
@@ -22,13 +30,7 @@ public class Account {
         this.id = id;
     }
 
-    private String typeStr;
-    private int type;
-    private String time;
-    private double money;
-    private OrderSimple order;
-    private int orderId;
-    private int userId;
+
 
     public String getUserPhoneNum() {
         return userPhoneNum;
@@ -54,7 +56,7 @@ public class Account {
         this.userId = userId;
     }
 
-    private String userPhoneNum;
+
 
     public OrderSimple getOrder() {
         return order;
