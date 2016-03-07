@@ -26,6 +26,15 @@
         <enabled>false</enabled>
       </snapshots>
     </repository>
+    <repository>
+      <id>mvn</id>
+      <name>mvn</name>
+      <layout>default</layout>
+      <url>http://mvnrepository.com/</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
     <!-- 阿里巴巴发布版本仓库 -->
     <repository>
       <id>alibaba-opensource</id>
@@ -231,6 +240,12 @@
       <artifactId>jackson-databind</artifactId>
       <version>2.4.3</version>
     </dependency>
+    <dependency>
+      <groupId>cn.jpush.api</groupId>
+      <artifactId>jpush-client</artifactId>
+      <version>3.1.1</version>
+    </dependency>
+
   </dependencies>
   <build>
     <plugins>

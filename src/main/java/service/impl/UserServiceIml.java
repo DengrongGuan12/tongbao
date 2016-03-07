@@ -1,5 +1,6 @@
 package service.impl;
 
+import cn.jpush.api.push.model.PushPayload;
 import dao.*;
 import manager.UserManager;
 import model.*;
@@ -478,5 +479,9 @@ public class UserServiceIml implements UserService {
         }else {
             return "";
         }
+    }
+
+    public PushPayload buildPushObject_all_all_alert() {
+        return PushPayload.alertAll("alert");
     }
 }

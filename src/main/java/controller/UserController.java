@@ -1,5 +1,10 @@
 package controller;
 
+import cn.jpush.api.JPushClient;
+import cn.jpush.api.common.APIConnectionException;
+import cn.jpush.api.common.APIRequestException;
+import cn.jpush.api.push.PushResult;
+import cn.jpush.api.push.model.PushPayload;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -270,7 +275,21 @@ public class UserController {
             return RestResult.CreateResult(0,"充值失败!");
         }
     }
+    @RequestMapping(value = "/testJPush",method = RequestMethod.GET)
+    @ResponseBody
+    public RestResult testJPush(){
+        JPushClient jPushClient = new JPushClient("9f5b375a48f78a79f18aaa0c","12be19e543158d0d057b2d09",3);
+        PushPayload payload = userService.buildPushObject_all_all_alert();
+        try {
+            PushResult pushResult = jPushClient.sendPush(payload);
+            return RestResult.CreateResult(1,pushResult);
+        } catch (APIConnectionException e) {
+            e.printStackTrace();
+        } catch (APIRequestException e) {
+            e.printStackTrace();
+        }
+        return RestResult.CreateResult(0,"failure!");
 
-
+    }
 
 }

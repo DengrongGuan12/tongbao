@@ -1,5 +1,6 @@
 package service;
 
+import cn.jpush.api.push.model.PushPayload;
 import model.User;
 import vo.ContactDetail;
 
@@ -38,4 +39,5 @@ public interface UserService {
     public int addFile(String path);
     public String getFilePathById(int id);
 
+    public PushPayload buildPushObject_all_all_alert();
 }
