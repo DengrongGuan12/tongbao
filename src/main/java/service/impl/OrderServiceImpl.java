@@ -95,13 +95,8 @@ public class OrderServiceImpl implements OrderService {
         order.setEvaluate_content("");
         order.setState(new Byte("0"));
 
-//        Order orderTemp = orderDao.getOrderByShipperIdAndBuildTime(userId,order.getBuildTime());
         double price = 0;
-        for(int i=0;i<tTypes.length;i++){
-            OrderTruckType orderTruckType = new OrderTruckType();
-            orderTruckType.setTruckType(new Byte(tTypes[i]));
-            orderTruckType.setOrderId(order.getId());
-            orderTruckTypeDao.addTruckTypes(orderTruckType);
+        for(int i =0;i<tTypes.length;i++){
             Trucks_type trucks_type = truckTypeMap.get(new Byte(tTypes[i]));
             price+=trucks_type.getBase_price();
             //当距离大于起步距离时
@@ -111,6 +106,15 @@ public class OrderServiceImpl implements OrderService {
         }
         order.setPrice(price);
         orderDao.createOrder(order);
+        Order orderTemp = orderDao.getOrderByShipperIdAndBuildTime(userId,order.getBuildTime());
+        for(int i=0;i<tTypes.length;i++){
+            OrderTruckType orderTruckType = new OrderTruckType();
+            orderTruckType.setTruckType(new Byte(tTypes[i]));
+            orderTruckType.setOrderId(orderTemp.getId());
+            orderTruckTypeDao.addTruckTypes(orderTruckType);
+
+        }
+
         return true;
     }
 
@@ -132,14 +136,16 @@ public class OrderServiceImpl implements OrderService {
             List listTemp = driver_auth_dao.getDriverByTruckType(types[i]);
             for(int j=0;j<listTemp.size();j++){
                 Driver_auth driverTemp = (Driver_auth)listTemp.get(j);
-                if(!matchMap.containsKey(driverTemp.getUserId())){
-                    MatchDriverModel md= new MatchDriverModel();
-                    md.carType.put(driverTemp.getId(),driverTemp.getType());
-                    matchMap.put(driverTemp.getUserId(),md);
-                }else {
-                    MatchDriverModel md = matchMap.get(driverTemp.getUserId());
-                    if(!md.carType.containsKey(driverTemp.getId())&&(!hadSelected.contains(driverTemp.getId()))){
-                        md.carType.put(driverTemp.getId(),new Byte(driverTemp.getType()));
+                if(driverTemp.getAuthState().equals(new Byte("2"))){
+                    if(!matchMap.containsKey(driverTemp.getUserId())){
+                        MatchDriverModel md= new MatchDriverModel();
+                        md.carType.put(driverTemp.getId(),driverTemp.getType());
+                        matchMap.put(driverTemp.getUserId(),md);
+                    }else {
+                        MatchDriverModel md = matchMap.get(driverTemp.getUserId());
+                        if(!md.carType.containsKey(driverTemp.getId())&&(!hadSelected.contains(driverTemp.getId()))){
+                            md.carType.put(driverTemp.getId(),new Byte(driverTemp.getType()));
+                        }
                     }
                 }
             }
