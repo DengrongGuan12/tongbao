@@ -91,6 +91,9 @@ public class UserServiceIml implements UserService {
      */
     public vo.User login(String phoneNumber, String password, Byte type, HttpSession session) {
         User userTemp=userDao.getUserByPhoneNumber(phoneNumber);
+        if(userTemp == null){
+            return null;
+        }
         Byte t = userTemp.getType();
         if(t.equals(type)){
             if(userTemp!=null&&userTemp.getPassword().equals(password)){
