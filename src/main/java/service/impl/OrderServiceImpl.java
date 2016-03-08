@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import pojo.OrderFilterInfo;
 import pojo.OrderInfo;
 import service.OrderService;
+import service.UserService;
 import vo.OrderDetail;
 import vo.OrderSimple;
 
@@ -39,6 +40,8 @@ public class OrderServiceImpl implements OrderService {
     Order_state_name_t_Dao order_state_name_t_dao;
     @Autowired
     AccountDao accountDao;
+    @Autowired
+    UserService userService;
 
     /*
     创建订单时要考虑是否有匹配的司机，如果成功返回1，找不到匹配的司机返回2，其他失败(如用户不是货主就没有权限创建)返回0
@@ -130,8 +133,8 @@ public class OrderServiceImpl implements OrderService {
         }
         order.setPrice(price);
         orderDao.createOrder(order);
-        //2表示线上支付
-        if(payType.equals(2)){
+        //0表示线上支付
+        if(payType.equals(0)){
             Account account = new Account();
             account.setOrderId(order.getId());
             account.setBuildTime(order.getBuildTime());
