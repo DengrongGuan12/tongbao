@@ -75,7 +75,7 @@ public class OrderServiceImpl implements OrderService {
             }
             User user = userDao.getUserById(userId);
             //钱不够返回0
-            if(user.getMoney()<price){
+            if(user.getMoney()<price||truckTypes.size()<1){
                 return 0;
             }
             if(truckTypes.size()==1){
@@ -99,6 +99,7 @@ public class OrderServiceImpl implements OrderService {
     }
     //保存订单，并根据tTypes和公里数计算价格。
     //设置在5公里内按起步价计算，超过5公里按车辆类型的公里单价继续计算
+    //todo 改成用事务方式提交存储
     private boolean saveOrder(int userId, OrderInfo orderInfo,String [] tTypes){
         Map <Byte,Trucks_type>truckTypeMap = truckTypeDao.getAllTruckTypeMap();
         Byte payType = orderInfo.getPayType();
@@ -118,7 +119,6 @@ public class OrderServiceImpl implements OrderService {
         order.setGoodsWeight(orderInfo.getGoodsWeight());
         order.setGoodsSize(orderInfo.getGoodsSize());
         order.setPayType(orderInfo.getPayType());
-//        order.setPrice(orderInfo.getPrice());
         order.setRemark(orderInfo.getRemark());
         order.setEvaluate_point(new Byte("0"));
         order.setEvaluate_content("");
@@ -144,9 +144,12 @@ public class OrderServiceImpl implements OrderService {
             account.setMoney(price);
             account.setType(new Byte("2"));
             accountDao.addAccount(account);
+            //扣钱
+            User user = userDao.getUserById(userId);
+            double moneyNow = user.getMoney()-price;
+            user.setMoney(moneyNow);
+            userDao.updateUser(user);
         }
-//        System.out.println("orderId!!!!!!!!!!!~~~~" + order.getId());
-//        Order orderTemp = orderDao.getOrderByShipperIdAndBuildTime(userId,order.getBuildTime());
         for(int i=0;i<tTypes.length;i++){
             OrderTruckType orderTruckType = new OrderTruckType();
             orderTruckType.setTruckType(new Byte(tTypes[i]));
@@ -209,6 +212,11 @@ public class OrderServiceImpl implements OrderService {
     要判断一下这个订单是不是该用户发布的以及该订单的状态是否允许删除
     只要是正在进行的都不允许删除
     设置删除状态:
+    0:尚未被抢
+    1:已经被抢，正在进行
+    2:表示已经完成
+    3:表示被取消
+    4:进行中取消，正在等待司机确认
     5:被货主删除
     6:被司机删除
     7:被司机和货主都删除
@@ -218,9 +226,11 @@ public class OrderServiceImpl implements OrderService {
 
         int userType=userManager.getUserType(userId);
         Order order = orderDao.showOrderDetail(orderId);
-        //1:正在进行
-        if(order.getState()!=1){
+        //1:正在进行和4进行中取消
+        int orderState = order.getState();
+        if(orderState!=1&&orderState!=4){
             //货主删除订单
+
             if(userType==0){
                 if(order.getShipperId()==userId){
                     if(order.getState().equals(new Byte("6"))){
@@ -257,11 +267,20 @@ public class OrderServiceImpl implements OrderService {
     返回0表示失败,1表示成功，2表示取消了正在进行的订单并将订单状态设为正在取消中,司机和货主都调用这个方法,根据userId对应的type区分,
     如果是司机则直接取消不返回2
     如果货主想取消正在进行的订单，需要给司机发送推送通知
-     */
+    0:尚未被抢
+    1:已经被抢，正在进行
+    2:表示已经完成
+    3:表示被取消
+    4:进行中取消，正在等待司机确认
+    5:被货主删除
+    6:被司机删除
+    7:被司机和货主都删除
+     *///TODO 缺账单
     public int cancelOrder(int userId, int orderId) {
         int userType = userManager.getUserType(userId);
         Order order = orderDao.showOrderDetail(orderId);
         int orderState = order.getState();
+
         //订单已经被删除或已完成或已经取消
         if(orderState==2||orderState==3||orderState==5||orderState==6||orderState==7){
             return 0;
@@ -269,12 +288,17 @@ public class OrderServiceImpl implements OrderService {
         }else {
             //货主
             if(userType==0){
+                if(order.getShipperId()!=userId){
+                    return 0;
+                }
                 //尚未被抢
                 if(orderState==0){
                     order.setState(new Byte("3"));
+
                     orderDao.updateOrder(order);
                     return 1;
                     //取消了正在进行的订单并将订单状态设为正在取消中
+                    //TODO 需要通知司机
                 }else if(orderState==1){
                     order.setState(new Byte("4"));
                     orderDao.updateOrder(order);
@@ -286,8 +310,18 @@ public class OrderServiceImpl implements OrderService {
 
 
             }else if(userType==1){
-                //TODO 司机直接取消后状态改回未被抢还是改成已取消
-                order.setState(new Byte("3"));
+                if(order.getDriverId()!=userId||orderState==0){
+                    return 0;
+                }
+                if(orderState==1){
+                    order.setState(new Byte("0"));
+                    order.setDriverId(-1);
+                }else{
+                    //状态为4
+                    order.setState(new Byte("3"));
+
+                }
+
                 orderDao.updateOrder(order);
                 return 1;
             }
@@ -298,18 +332,17 @@ public class OrderServiceImpl implements OrderService {
 
     /*
     要根据userId判断该订单是否是该user发出的
-     */
+    只有在正在进行时才能被完成。
+     *///TODO 缺账单
     public boolean finishOrder(int userId, int orderId) {
         Order order = orderDao.showOrderDetail(orderId);
         int orderState = order.getState();
-        if(order.getShipperId()==userId){
-            if(orderState==5||orderState==7){
-                return false;
-            }else{
-                order.setState(new Byte("2"));
-                orderDao.updateOrder(order);
-                return true;
-            }
+        if(order.getShipperId()==userId&&orderState==1){
+
+            order.setState(new Byte("2"));
+            orderDao.updateOrder(order);
+            return true;
+
         }else {
             return false;
         }
@@ -564,7 +597,7 @@ public class OrderServiceImpl implements OrderService {
      */
 
     public List getRecentOrders(int num) {
-
+        Map <Byte,String>orderState = order_state_name_t_dao.getAllOrderStateName();
         List listTemp = orderDao.getRecentOrders(num);
         List list = new ArrayList();
         for(int i=0;i<listTemp.size();i++){
@@ -575,32 +608,10 @@ public class OrderServiceImpl implements OrderService {
             order.setTime(orderTemp.getBuildTime().toString());
             order.setAddressFrom(orderTemp.getAddressFrom());
             order.setAddressTo(orderTemp.getAddressTo());
-            int state = orderTemp.getState();
+            Byte state = orderTemp.getState();
             order.setState(state);
-            String stateStr;
-            switch (state){
-                case 0:
-                    stateStr="待处理";
-                case 1:
-                    stateStr="进行中";
-                case 2:
-                    stateStr="已完成";
-                case 3:
-                    stateStr="被取消";
-                case 4:
-                    stateStr="待取消";
-                case 5:
-                    stateStr="货主删除";
-                case 6:
-                    stateStr="司机删除";
-                case 7:
-                    stateStr="已删除";
-                default:
-                    stateStr="";
-            }
-            order.setStateStr(stateStr);
+            order.setStateStr(orderState.get(state));
             list.add(order);
-
 
         }
         return list;
