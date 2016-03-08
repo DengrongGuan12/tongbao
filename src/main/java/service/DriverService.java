@@ -14,7 +14,7 @@ public interface DriverService {
     public List getTruckList(int userId);
     public TruckDetail getTruckDetail(int userId,int id);
     public boolean setRealNameInfo(int userId, RealNameAuthInfo realNameAuthInfo);
-    public boolean setTruckAuthInfo(int userId, TruckAuthInfo truckAuthInfo);
+    public String setTruckAuthInfo(int userId, TruckAuthInfo truckAuthInfo);
     public boolean addTruck(int userId,TruckInfo truckInfo);
     public boolean removeTruck(int userId, String truckNum);
     public int getUnSubmittedDriverNum();

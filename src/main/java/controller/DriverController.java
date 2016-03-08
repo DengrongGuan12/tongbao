@@ -86,10 +86,11 @@ public class DriverController {
     @ResponseBody
     public RestResult setTruckAuthInfo(@ModelAttribute("TruckAuthInfo")TruckAuthInfo truckAuthInfo){
         int userId = userService.hasLogin(truckAuthInfo.getToken());
-        if(driverService.setTruckAuthInfo(userId,truckAuthInfo)){
+        String result = driverService.setTruckAuthInfo(userId,truckAuthInfo);
+        if( result == null){
             return RestResult.CreateResult(1);
         }else{
-            return RestResult.CreateResult(0,"设置失败!");
+            return RestResult.CreateResult(0,result);
         }
     }
     @RequestMapping(value = "/auth/showMyOrderList",method = RequestMethod.POST)

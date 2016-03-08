@@ -127,18 +127,18 @@ public class DriverServiceImpl implements DriverService {
     3.不能重复认证，即只有尚未认证的才能认证
     4.只有当两种认证都填写完整时才设置正在认证的状态
      */
-    public boolean setTruckAuthInfo(int userId, TruckAuthInfo truckAuthInfo) {
+    public String setTruckAuthInfo(int userId, TruckAuthInfo truckAuthInfo) {
         int userType = userManager.getUserType(userId);
-        if(userId == 1){
+        if(userType == 1){
             String truckNum = truckAuthInfo.getTruckNum();
             if(truckNum == null){
-                return false;
+                return "车牌号不能为空!";
             }
             Driver_auth driver_auth = driver_auth_dao.getDriverAuthByTruckNum(truckNum);
             if(driver_auth != null){
                 if(driver_auth.getUserId() == userId && (driver_auth.getAuthState() == 0 || driver_auth.getAuthState() == 3)){
                     if(truckAuthInfo.getDriveLicensePicUrl() == null || truckAuthInfo.getTruckHeadPicUrl() == null){
-                        return false;
+                        return "图片不能为空!";
                     }else{
                         driver_auth.setDrivingLicense(truckAuthInfo.getDriveLicensePicUrl());
                         driver_auth.setTruckPicture(truckAuthInfo.getTruckHeadPicUrl());
@@ -146,19 +146,19 @@ public class DriverServiceImpl implements DriverService {
                             driver_auth.setAuthState((byte)1);
                         }
                         if(driver_auth_dao.updateDriverAuth(driver_auth)){
-                            return true;
+                            return null;
                         }else{
-                            return false;
+                            return "数据库错误!";
                         }
                     }
                 }else{
-                    return false;
+                    return "正在验证,不能提交!";
                 }
             }else{
-                return false;
+                return "找不到该车牌号的车!";
             }
         }else{
-            return  false;
+            return  "你根本不是司机!";
         }
     }
 
