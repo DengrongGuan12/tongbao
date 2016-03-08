@@ -1,6 +1,13 @@
 package service.impl;
 
+import cn.jpush.api.JPushClient;
+import cn.jpush.api.common.APIConnectionException;
+import cn.jpush.api.common.APIRequestException;
+import cn.jpush.api.push.PushResult;
+import cn.jpush.api.push.model.Platform;
 import cn.jpush.api.push.model.PushPayload;
+import cn.jpush.api.push.model.audience.Audience;
+import cn.jpush.api.push.model.notification.Notification;
 import dao.*;
 import manager.UserManager;
 import model.*;
@@ -16,6 +23,7 @@ import vo.Account;
 import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -49,6 +57,11 @@ public class UserServiceIml implements UserService {
     @Autowired
     private Account_type_name_t_Dao account_type_name_t_dao;
 
+    public static final int order_grabbed = 0;
+    public static final int order_finished = 1;
+    public static final int order_cancel_request = 2;
+    public static final int order_canceled = 3;
+    public static final int truck_auth_pass = 4;
 
     public User getUserByPhoneNumber(String phoneNumber) {
         return userDao.getUserByPhoneNumber(phoneNumber);
@@ -490,6 +503,27 @@ public class UserServiceIml implements UserService {
     }
 
     public PushPayload buildPushObject_all_all_alert() {
-        return PushPayload.alertAll("alert");
+        Map<String,String> extras = new HashMap<String, String>();
+        return PushPayload.newBuilder()
+                .setPlatform(Platform.android())
+                .setAudience(Audience.tag("shipper"))
+                .setNotification(Notification.android("内容", "标题",extras))
+                .build();
+    }
+
+    public void push(String alias, String title, String content, Map<String,String> extras) {
+        PushPayload pushPayload =  PushPayload.newBuilder()
+                .setPlatform(Platform.android_ios())
+                .setAudience(Audience.alias(alias))
+                .setNotification(Notification.android(content, title,extras))
+                .build();
+        JPushClient jPushClient = new JPushClient("9f5b375a48f78a79f18aaa0c","12be19e543158d0d057b2d09",3);
+        try {
+            PushResult pushResult = jPushClient.sendPush(pushPayload);
+        } catch (APIConnectionException e) {
+            e.printStackTrace();
+        } catch (APIRequestException e) {
+            e.printStackTrace();
+        }
     }
 }

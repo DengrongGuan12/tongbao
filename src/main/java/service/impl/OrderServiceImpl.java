@@ -43,6 +43,8 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     UserService userService;
 
+
+
     /*
     创建订单时要考虑是否有匹配的司机，如果成功返回1，找不到匹配的司机返回2，其他失败(如用户不是货主就没有权限创建)返回0
      */
@@ -325,6 +327,10 @@ public class OrderServiceImpl implements OrderService {
             order.setDriverId(orderId);
             order.setState(new Byte("1"));
             orderDao.updateOrder(order);
+//            Map<String,String> extras = new HashMap<String, String>();
+//            extras.put("type",UserServiceIml.order_grabbed+"");
+//            extras.put("id",orderId+"");
+//            userService.push(order.getShipperId()+"","订单被抢","您的订单被司机抢到了，请尽快联系司机!",extras);
             return true;
         }
         return false;

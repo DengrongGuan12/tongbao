@@ -6,6 +6,7 @@ import vo.ContactDetail;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by cg on 2015/12/29.
@@ -40,4 +41,5 @@ public interface UserService {
     public String getFilePathById(int id);
 
     public PushPayload buildPushObject_all_all_alert();
+    public void push(String alias, String title, String content, Map<String,String> extras);
 }
