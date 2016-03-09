@@ -1,5 +1,6 @@
 package service.impl;
 
+import affairs.OrderAffairs;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import dao.*;
@@ -42,6 +43,8 @@ public class OrderServiceImpl implements OrderService {
     AccountDao accountDao;
     @Autowired
     UserService userService;
+    @Autowired
+    OrderAffairs orderAffairs;
 
 
 
@@ -99,11 +102,9 @@ public class OrderServiceImpl implements OrderService {
     }
     //保存订单，并根据tTypes和公里数计算价格。
     //设置在5公里内按起步价计算，超过5公里按车辆类型的公里单价继续计算
-    //todo 改成用事务方式提交存储
     private boolean saveOrder(int userId, OrderInfo orderInfo,String [] tTypes){
         Map <Byte,Trucks_type>truckTypeMap = truckTypeDao.getAllTruckTypeMap();
         Byte payType = orderInfo.getPayType();
-
         double distance = orderInfo.getDistance();
         Order order=new Order();
         order.setBuildTime(new Timestamp(System.currentTimeMillis()));
@@ -123,7 +124,6 @@ public class OrderServiceImpl implements OrderService {
         order.setEvaluate_point(new Byte("0"));
         order.setEvaluate_content("");
         order.setState(new Byte("0"));
-
         double price = 0;
         for(int i =0;i<tTypes.length;i++){
             Trucks_type trucks_type = truckTypeMap.get(new Byte(tTypes[i]));
@@ -134,30 +134,7 @@ public class OrderServiceImpl implements OrderService {
             }
         }
         order.setPrice(price);
-        orderDao.createOrder(order);
-        //0表示线上支付
-        if(payType.equals(0)){
-            Account account = new Account();
-            account.setOrderId(order.getId());
-            account.setBuildTime(order.getBuildTime());
-            account.setUserId(userId);
-            account.setMoney(price);
-            account.setType(new Byte("2"));
-            accountDao.addAccount(account);
-            //扣钱
-            User user = userDao.getUserById(userId);
-            double moneyNow = user.getMoney()-price;
-            user.setMoney(moneyNow);
-            userDao.updateUser(user);
-        }
-        for(int i=0;i<tTypes.length;i++){
-            OrderTruckType orderTruckType = new OrderTruckType();
-            orderTruckType.setTruckType(new Byte(tTypes[i]));
-            orderTruckType.setOrderId(order.getId());
-            orderTruckTypeDao.addTruckTypes(orderTruckType);
-        }
-
-        return true;
+        return orderAffairs.saveOrderAffairs(order,tTypes);
     }
 
     private class MatchDriverModel{
@@ -230,23 +207,25 @@ public class OrderServiceImpl implements OrderService {
         int orderState = order.getState();
         if(orderState!=1&&orderState!=4){
             //货主删除订单
-
             if(userType==0){
                 if(order.getShipperId()==userId){
-                    if(order.getState().equals(new Byte("6"))){
+                    if(order.getState().equals(new Byte("6"))||order.getState().equals(new Byte("7"))){
                         order.setState(new Byte("7"));
                     }else {
                         order.setState(new Byte("5"));
+                        //线上支付且订单尚未被抢,使用事务办法，包含退款账单
+                        if(order.getPayType().equals(new Byte("0"))&&order.getState().equals(new Byte("0"))){
+                            return orderAffairs.deleteOrderAffairs(order);
+                        }
                     }
-
 
                 }else {
                     return false;
                 }
                 //司机删除订单
             }else if(userType==1){
-                if(order.getDriverId()==userId){
-                    if(order.getState().equals(new Byte("5"))){
+                if(order.getDriverId()==userId&&!(order.getState().equals(new Byte("0")))){
+                    if(order.getState().equals(new Byte("5"))||order.getState().equals(new Byte("7"))){
                         order.setState(new Byte("7"));
                     }else {
                         order.setState(new Byte("6"));
@@ -254,10 +233,11 @@ public class OrderServiceImpl implements OrderService {
                 }else{
                     return false;
                 }
+            }else {
+                return false;
             }
 
-            orderDao.updateOrder(order);
-            return true;
+            return orderDao.updateOrder(order);
         }
 
         return false;
@@ -275,7 +255,7 @@ public class OrderServiceImpl implements OrderService {
     5:被货主删除
     6:被司机删除
     7:被司机和货主都删除
-     *///TODO 缺账单
+     */
     public int cancelOrder(int userId, int orderId) {
         int userType = userManager.getUserType(userId);
         Order order = orderDao.showOrderDetail(orderId);
@@ -294,7 +274,10 @@ public class OrderServiceImpl implements OrderService {
                 //尚未被抢
                 if(orderState==0){
                     order.setState(new Byte("3"));
-
+                    //取消尚未被抢的在线支付订单
+                    if(order.getPayType().equals(new Byte("0"))){
+                        return orderAffairs.cancelOrderAffairs(order);
+                    }
                     orderDao.updateOrder(order);
                     return 1;
                     //取消了正在进行的订单并将订单状态设为正在取消中
@@ -314,11 +297,15 @@ public class OrderServiceImpl implements OrderService {
                     return 0;
                 }
                 if(orderState==1){
+                    //若正在进行中，直接取消
                     order.setState(new Byte("0"));
                     order.setDriverId(-1);
                 }else{
                     //状态为4
                     order.setState(new Byte("3"));
+                    if(order.getPayType().equals(new Byte("0"))){
+                        return orderAffairs.cancelOrderAffairs(order);
+                    }
 
                 }
 
@@ -333,13 +320,17 @@ public class OrderServiceImpl implements OrderService {
     /*
     要根据userId判断该订单是否是该user发出的
     只有在正在进行时才能被完成。
-     *///TODO 缺账单
+    只有货主有这个功能
+     */
     public boolean finishOrder(int userId, int orderId) {
         Order order = orderDao.showOrderDetail(orderId);
         int orderState = order.getState();
         if(order.getShipperId()==userId&&orderState==1){
 
             order.setState(new Byte("2"));
+            if(order.getPayType().equals(new Byte("0"))) {
+                return orderAffairs.finishOrderAffairs(order);
+            }
             orderDao.updateOrder(order);
             return true;
 
@@ -352,21 +343,56 @@ public class OrderServiceImpl implements OrderService {
     /*
     需要判断该用户是否司机以及该订单是否是处在尚未被抢的状态
      */
-    //TODO 判断司机是否符合订单需求
     public boolean grabOrder(int userId, int orderId) {
         int userType = userManager.getUserType(userId);
         Order order = orderDao.showOrderDetail(orderId);
         if(userType==1&&order.getState()==0){
-            order.setDriverId(orderId);
-            order.setState(new Byte("1"));
-            orderDao.updateOrder(order);
+
 //            Map<String,String> extras = new HashMap<String, String>();
 //            extras.put("type",UserServiceIml.order_grabbed+"");
 //            extras.put("id",orderId+"");
 //            userService.push(order.getShipperId()+"","订单被抢","您的订单被司机抢到了，请尽快联系司机!",extras);
-            return true;
+            if(this.matchOrder(userId,orderId)){
+                order.setDriverId(orderId);
+                order.setState(new Byte("1"));
+                orderDao.updateOrder(order);
+                return true;
+            }
         }
         return false;
+    }
+    //判断司机是否有足够车辆进行抢单
+    private boolean matchOrder(int driverId,int orderId){
+        List allAuthTruck = driver_auth_dao.getAllAuthTrucksByDriverId(driverId);
+        List allTruckType = orderTruckTypeDao.getTruckTypesByOrderId(orderId);
+        Map <Byte,Integer> matchMap = new HashMap();
+        for(int i = 0;i<allTruckType.size();i++){
+            OrderTruckType orderTruckType = (OrderTruckType)allTruckType.get(i);
+            Byte truckType = orderTruckType.getTruckType();
+            if(!matchMap.containsKey(truckType)){
+                matchMap.put(truckType,1);
+            }else {
+                int t = matchMap.get(truckType)+1;
+                matchMap.put(truckType,t);
+            }
+        }
+        for(int i = 0;i<allAuthTruck.size();i++){
+            Driver_auth driver_auth = (Driver_auth) allAuthTruck.get(i);
+            Byte truckType = driver_auth.getType();
+            if(matchMap.containsKey(truckType)){
+                int t = matchMap.get(truckType)-1;
+                matchMap.put(truckType,t);
+            }
+        }
+        Iterator iterator = matchMap.keySet().iterator();
+        boolean match = true;
+        while (iterator.hasNext()){
+            int valueTemp = matchMap.get(iterator.next());
+            if(valueTemp>0){
+                match = false;
+            }
+        }
+        return match;
     }
 
     /*
@@ -401,11 +427,10 @@ public class OrderServiceImpl implements OrderService {
     OrderDetail 中的state表示 0:尚未被抢1:已经被抢，正在进行2:进行中取消，正在等待司机确认3:已经取消4:已经完成
     如果是司机,OrderDetail中的state表示 0:尚未被抢1:已经被抢，正在进行2:进行中取消，正在等待司机确认4:已经完成
     */
-//TODO 不是只能被抢到的才能看，应该是没有被抢到或者被该司机抢到才能看
     public OrderDetail getOrderDetail(int userId, int orderId) {
-        int userType = userManager.getUserType(userId);
         Map <Byte,String> map = order_state_name_t_dao.getAllOrderStateName();
         Map <Byte,Trucks_type> truckType = truckTypeDao.getAllTruckTypeMap();
+        int userType = userManager.getUserType(userId);
         Order order = orderDao.showOrderDetail(orderId);
         if(userType==0){
             if(order.getShipperId()!=userId){
@@ -413,38 +438,28 @@ public class OrderServiceImpl implements OrderService {
             }
         }
         else if(userType==1){
-            if(order.getDriverId()!=userId){
-                return null;
+            //对于司机来说，如果不是尚未被抢的状态，则需要抢到该订单才能查看详情
+            if(!(order.getState().equals(new Byte("0")))){
+                if(order.getDriverId()!=userId){
+                    return null;
+                }
             }
         }
-        //为货主时候判断是否被货主删除
-        if(userType==0){
-            if(order.getState().equals(new Byte("5"))){
-                return null;
-            }
-        }
-        //为司机时候判断是否被司机删除
-        if(userType==1){
-            if(order.getState().equals(new Byte("6"))){
-                return null;
-            }
-        }
-        //被双方删除
-        if(order.getState().equals(new Byte("7"))){
-            return null;
-        }
+
         List orderTruckTypes = orderTruckTypeDao.getTruckTypesByOrderId(orderId);
         OrderDetail orderDetail = new OrderDetail();
         orderDetail.setId(order.getId());
+        orderDetail.setTime(order.getBuildTime().toString());
         orderDetail.setAddressFrom(order.getAddressFrom());
         orderDetail.setAddressTo(order.getAddressTo());
+        orderDetail.setMoney(order.getPrice());
         orderDetail.setFromContactName(order.getFrom_contact_name());
         orderDetail.setFromContactPhone(order.getFrom_contact_phone());
-        orderDetail.setMoney(order.getPrice());
         orderDetail.setLoadTime(order.getLoadTime());
+        orderDetail.setState(order.getState());
         orderDetail.setToContactName(order.getTo_contact_name());
         orderDetail.setToContactPhone(order.getTo_contact_phone());
-        orderDetail.setTime(order.getBuildTime()+"");
+
         List truckTypeName = new ArrayList();
         //货车类型
         for(int i = 0;i<orderTruckTypes.size();i++){
@@ -452,10 +467,14 @@ public class OrderServiceImpl implements OrderService {
             String truckName = truckType.get(t.getTruckType()).getName();
             truckTypeName.add(truckName);
         }
-
         orderDetail.setTruckTypes(truckTypeName);
-        orderDetail.setState(order.getState());
         orderDetail.setStateStr(map.get(order.getState()));
+        User shipper = userDao.getUserById(order.getShipperId());
+        User driver = userDao.getUserById(order.getDriverId());
+        orderDetail.setDriverPhoneNum(shipper.getPhone_number());
+        orderDetail.setShipperPhoneNum(driver.getPhone_number());
+        orderDetail.setGoodsWeight(order.getGoodsWeight());
+        orderDetail.setGoodsType(order.getGoodsType());
         return orderDetail;
     }
 
@@ -655,7 +674,6 @@ public class OrderServiceImpl implements OrderService {
         }
     }
 
-    // TODO: 2/23/2016(退还金额未写)
     //管理员取消订单，只能取消正在进行或者等待司机取消的订单（即state 只能为1，4），否则返回false
     //注意取消订单需要退还相应金额
     public boolean cancelOrder(int id){
@@ -664,6 +682,13 @@ public class OrderServiceImpl implements OrderService {
         int orderState = order.getState();
         if(orderState==1||orderState==4){
             order.setState(new Byte("3"));
+            if(order.getPayType().equals(new Byte("0"))){
+                int res = orderAffairs.cancelOrderAffairs(order);
+                if(res==1){
+                    return true;
+                }
+                return false;
+            }
             orderDao.updateOrder(order);
             return true;
         }else{
@@ -675,6 +700,7 @@ public class OrderServiceImpl implements OrderService {
     根据order 生成orderSimple
      */
     private OrderSimple genOrderSimpleFromOrder(Order order){
+
         OrderSimple orderSimple = new OrderSimple();
         orderSimple.setId(order.getId());
         orderSimple.setTime(order.getBuildTime()+"");
@@ -694,6 +720,7 @@ public class OrderServiceImpl implements OrderService {
             Trucks_type trucks_type = truckTypeDao.getTruckType(orderTruckType.getTruckType());
             truckNames.add(trucks_type.getName());
         }
+
         return orderSimple;
     }
 }

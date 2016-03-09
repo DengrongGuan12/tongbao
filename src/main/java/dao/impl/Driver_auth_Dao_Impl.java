@@ -103,6 +103,13 @@ public class Driver_auth_Dao_Impl extends BaseDaoImpl implements Driver_auth_Dao
         return (Driver_auth)super.load(Driver_auth.class,id);
     }
 
+    @Override
+    public List getAllAuthTrucksByDriverId(int driverId) {
+        String hql = "from " + Driver_auth.class.getName() + " where authState = 2 and userId = " + driverId;
+        Session session = getSession();
+        return session.createQuery(hql).list();
+    }
+
     public List getDriverByTruckType(String truckType) {
         String hql = "from " + Driver_auth.class.getName() + " where authState = 2 and type = " + truckType;
         Session session = getSession();

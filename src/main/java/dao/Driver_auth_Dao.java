@@ -10,7 +10,6 @@ import java.util.List;
 public interface Driver_auth_Dao {
 
     public boolean addDriverAuth(Driver_auth driver_auth);
-    public Driver_auth getDriverAuthByUserId(int userId);
     public Driver_auth getDriverAuthByTruckNum(String truckNum);
     public boolean updateDriverAuth(Driver_auth driver_auth);
     public boolean deleteDriverAuth(int userId);
@@ -24,4 +23,5 @@ public interface Driver_auth_Dao {
     public List getAllTruckInfoByUserId(int userId);
     public boolean deleteTruckById(int id);
     public Driver_auth getDriverAuthMessage(int id);
+    public List getAllAuthTrucksByDriverId(int driverId);
 }

@@ -1,4 +1,4 @@
-package dao.impl;
+package affairs.Impl;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

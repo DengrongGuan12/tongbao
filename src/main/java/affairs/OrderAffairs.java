@@ -1,13 +1,13 @@
 package affairs;
 
-import dao.impl.BaseDaoImpl;
 import model.Order;
 
 /**
- * Created by cg on 2016/3/8.
+ * Created by cg on 2016/3/9.
  */
-public class OrderAffairs extends BaseDaoImpl{
-        public boolean saveOrderAffairs(Order order){
-            return false;
-        }
+public interface OrderAffairs {
+    public boolean saveOrderAffairs(Order order,String [] tTypes);
+    public boolean deleteOrderAffairs(Order order);
+    public int cancelOrderAffairs(Order order);
+    public boolean finishOrderAffairs(Order order);
 }
