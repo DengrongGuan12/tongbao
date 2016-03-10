@@ -33,6 +33,10 @@ public class DriverServiceImpl implements DriverService {
 
     public List getTruckList(int userId) {
         //根据司机id获取该司机的所有车辆,不用考虑是否是司机，如果不是司机自然不会有车辆
+        int type = userManager.getUserType(userId);
+        if(type != 1){
+            return null;
+        }
         List allTrucks = driver_auth_dao.getAllTruckInfoByUserId(userId);
         List truckList = new ArrayList<TruckSimple>();
         for(int i=0;i<allTrucks.size();i++){
@@ -51,24 +55,21 @@ public class DriverServiceImpl implements DriverService {
 
         //根据车辆id 获取该车辆的具体信息
         //注意该车辆是否是属于该用户，如果不是则返回null
-        List allTrucks = driver_auth_dao.getAllTruckInfoByUserId(userId);
-        for(int i=0;i<allTrucks.size();i++){
-            Driver_auth driver_auth = (Driver_auth) allTrucks.get(i);
-            int d_id = driver_auth.getId();
-            if(d_id==id){
-                TruckDetail truckDetail = new TruckDetail();
-                truckDetail.setTruckNum(driver_auth.getTruckNum());
-                truckDetail.setAuthState(driver_auth.getAuthState());
-                Trucks_type trucks_type = truck_type_dao.getTruckType(driver_auth.getType());
-                truckDetail.setTypeName(trucks_type.getName());
-                truckDetail.setLength(trucks_type.getLength());
-                truckDetail.setCapacity(trucks_type.getCapacity());
-                truckDetail.setPhoneNum(driver_auth.getPhoneNum());
-                truckDetail.setRealName(driver_auth.getRealName());
-                return truckDetail;
-            }
+        Driver_auth driver_auth = driver_auth_dao.getDriverAuthMessage(id);
+        if(driver_auth.getUserId()!=userId){
+            return null;
         }
-        return null;
+        TruckDetail truckDetail = new TruckDetail();
+        truckDetail.setTruckNum(driver_auth.getTruckNum());
+        truckDetail.setAuthState(driver_auth.getAuthState());
+        Trucks_type trucks_type = truck_type_dao.getTruckType(driver_auth.getType());
+        truckDetail.setTypeName(trucks_type.getName());
+        truckDetail.setLength(trucks_type.getLength());
+        truckDetail.setCapacity(trucks_type.getCapacity());
+        truckDetail.setPhoneNum(driver_auth.getPhoneNum());
+        truckDetail.setRealName(driver_auth.getRealName());
+        return truckDetail;
+
     }
 
     /*

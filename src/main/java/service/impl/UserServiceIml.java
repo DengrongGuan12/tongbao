@@ -1,5 +1,6 @@
 package service.impl;
 
+import affairs.UserAffairs;
 import cn.jpush.api.JPushClient;
 import cn.jpush.api.common.APIConnectionException;
 import cn.jpush.api.common.APIRequestException;
@@ -56,6 +57,8 @@ public class UserServiceIml implements UserService {
     private OrderTruckTypeDao orderTruckTypeDao;
     @Autowired
     private Account_type_name_t_Dao account_type_name_t_dao;
+    @Autowired
+    private UserAffairs userAffairs;
 
     public static final int order_grabbed = 0;
     public static final int order_finished = 1;
@@ -81,13 +84,7 @@ public class UserServiceIml implements UserService {
         }
         User user=new User(phoneNumber,password,type);
         user.setRegister_time(new Timestamp(System.currentTimeMillis()));
-        if(userDao.registerUser(user)){
-            if(type.equals(1)){
-                Driver_auth driver_auth = new Driver_auth();
-                driver_auth.setUserId(user.getId());
-                driver_auth.setAuthState(new Byte("0"));
-                driver_auth_dao.addDriverAuth(driver_auth);
-            }
+        if(userAffairs.register(user)){
             return true;
         }
 
@@ -112,7 +109,7 @@ public class UserServiceIml implements UserService {
         }
         Byte t = userTemp.getType();
         if(t.equals(type)){
-            if(userTemp!=null&&userTemp.getPassword().equals(password)){
+            if(userTemp.getPassword().equals(password)){
                 String token=userManager.addToOnlineList(userTemp.getId(),userTemp.getType());
                 vo.User userReturn=new vo.User();
                 userReturn.setIconUrl(userTemp.getIcon());
@@ -256,9 +253,9 @@ public class UserServiceIml implements UserService {
             Contacts contactsTemp=(Contacts)contacts.get(i);
             User userTemp;
             if(userType==0){
-                 userTemp=getUserById(contactsTemp.getDriverId());
+                 userTemp=this.getUserById(contactsTemp.getDriverId());
             }else{
-                 userTemp=getUserById(contactsTemp.getShipperId());
+                 userTemp=this.getUserById(contactsTemp.getShipperId());
             }
             vo.ContactSimple contactSimple=new vo.ContactSimple();
             contactSimple.setId(userTemp.getId());
@@ -323,7 +320,7 @@ public class UserServiceIml implements UserService {
 
     public boolean readMessage(int userId, int id) {
         Message message = (Message) messageDao.getMessageById(id);
-        if(message==null||message.getUser_id()==userId){
+        if(message==null||message.getUser_id()!=userId){
             return false;
         }
         message.setHas_read(new Byte("1"));
@@ -341,8 +338,7 @@ public class UserServiceIml implements UserService {
         //0代表充值
         account.setType(new Byte("0"));
         account.setMoney(money);
-        accountDao.addAccount(account);
-        return userDao.updateUser(user);
+        return userAffairs.recharge(user,account);
     }
 
     //获取货主总人数

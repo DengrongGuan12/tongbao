@@ -4,6 +4,7 @@ import dao.Frequent_address_Dao;
 import dao.Frequent_driver_Dao;
 import dao.OrderDao;
 import dao.UserDao;
+import manager.UserManager;
 import model.Frequent_addresses;
 import model.Frequent_driver;
 import model.Order;
@@ -70,6 +71,10 @@ public class ShipperServiceImpl implements ShipperService{
     货主获取常用司机列表
      */
     public List getFrequentDrivers(int userId) {
+        int userType = UserManager.getInstance().getUserType(userId);
+        if(userType==1){
+            return null;
+        }
         List listTemp=frequent_driver_dao.getFrequentDriversByShipperId(userId);
         List list = new ArrayList();
         for(int i=0;i<listTemp.size();i++){

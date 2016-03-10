@@ -16,7 +16,7 @@ public class MessageDaoImpl extends BaseDaoImpl implements MessageDao {
             Message message = (Message)super.load(Message.class,id);
             return message;
         }catch (Exception e){
-            e.printStackTrace();;
+            e.printStackTrace();
             return null;
         }
 
