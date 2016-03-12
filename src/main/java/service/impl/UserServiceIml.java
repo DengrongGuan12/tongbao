@@ -65,6 +65,7 @@ public class UserServiceIml implements UserService {
     public static final int order_cancel_request = 2;
     public static final int order_canceled = 3;
     public static final int truck_auth_pass = 4;
+    public static final int truck_auth_fail = 5;
 
     public User getUserByPhoneNumber(String phoneNumber) {
         return userDao.getUserByPhoneNumber(phoneNumber);

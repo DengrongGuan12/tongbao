@@ -281,10 +281,14 @@ public class OrderServiceImpl implements OrderService {
                     orderDao.updateOrder(order);
                     return 1;
                     //取消了正在进行的订单并将订单状态设为正在取消中
-                    //TODO 需要通知司机
+
                 }else if(orderState==1){
                     order.setState(new Byte("4"));
                     orderDao.updateOrder(order);
+                    Map<String,String> extras = new HashMap<String, String>();
+                    extras.put("type",UserServiceIml.order_cancel_request+"");
+                    extras.put("id",orderId+"");
+                    userService.push(order.getDriverId()+"","订单取消！","该订单被货主要求取消，请根据实际情况进行选择!",extras);
                     return 2;
                 }else{
                     //状态为4，正在被取消中
@@ -300,9 +304,17 @@ public class OrderServiceImpl implements OrderService {
                     //若正在进行中，直接取消
                     order.setState(new Byte("0"));
                     order.setDriverId(-1);
+                    Map<String,String> extras = new HashMap<String, String>();
+                    extras.put("type",UserServiceIml.order_canceled+"");
+                    extras.put("id",orderId+"");
+                    userService.push(order.getDriverId()+"","订单取消！","该订单已被司机取消，正在等待新的司机!",extras);
                 }else{
                     //状态为4
                     order.setState(new Byte("3"));
+                    Map<String,String> extras = new HashMap<String, String>();
+                    extras.put("type",UserServiceIml.order_canceled+"");
+                    extras.put("id",orderId+"");
+                    userService.push(order.getDriverId()+"","订单取消！","该订单按您的要求已被司机取消!",extras);
                     if(order.getPayType().equals(new Byte("0"))){
                         return orderAffairs.cancelOrderAffairs(order);
                     }
@@ -332,6 +344,10 @@ public class OrderServiceImpl implements OrderService {
                 return orderAffairs.finishOrderAffairs(order);
             }
             orderDao.updateOrder(order);
+            Map<String,String> extras = new HashMap<String, String>();
+            extras.put("type",UserServiceIml.order_finished+"");
+            extras.put("id",orderId+"");
+            userService.push(order.getDriverId()+"","订单结束！","该订单被已被货主结束，核对付款的金额!",extras);
             return true;
 
         }else {
@@ -348,14 +364,15 @@ public class OrderServiceImpl implements OrderService {
         Order order = orderDao.showOrderDetail(orderId);
         if(userType==1&&order.getState()==0){
 
-//            Map<String,String> extras = new HashMap<String, String>();
-//            extras.put("type",UserServiceIml.order_grabbed+"");
-//            extras.put("id",orderId+"");
-//            userService.push(order.getShipperId()+"","订单被抢","您的订单被司机抢到了，请尽快联系司机!",extras);
+
             if(this.matchOrder(userId,orderId)){
                 order.setDriverId(orderId);
                 order.setState(new Byte("1"));
                 orderDao.updateOrder(order);
+                Map<String,String> extras = new HashMap<String, String>();
+                extras.put("type",UserServiceIml.order_grabbed+"");
+                extras.put("id",orderId+"");
+                userService.push(order.getShipperId()+"","订单被抢","您的订单被司机抢到了，请尽快联系司机!",extras);
                 return true;
             }
         }
@@ -680,11 +697,20 @@ public class OrderServiceImpl implements OrderService {
             if(order.getPayType().equals(new Byte("0"))){
                 int res = orderAffairs.cancelOrderAffairs(order);
                 if(res==1){
+                    Map<String,String> extras = new HashMap<String, String>();
+                    extras.put("type",UserServiceIml.order_canceled+"");
+                    extras.put("id",id+"");
+                    userService.push(order.getShipperId()+"","订单被管理员取消!","您的订单被管理员取消了，付款已被退还!",extras);
                     return true;
                 }
                 return false;
             }
+
             orderDao.updateOrder(order);
+            Map<String,String> extras = new HashMap<String, String>();
+            extras.put("type",UserServiceIml.order_canceled+"");
+            extras.put("id",id+"");
+            userService.push(order.getShipperId()+"","订单被管理员取消!","您的订单被管理员取消了!",extras);
             return true;
         }else{
             return false;

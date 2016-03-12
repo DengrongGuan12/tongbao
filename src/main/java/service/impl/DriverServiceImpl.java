@@ -12,11 +12,14 @@ import pojo.RealNameAuthInfo;
 import pojo.TruckAuthInfo;
 import pojo.TruckInfo;
 import service.DriverService;
+import service.UserService;
 import vo.TruckDetail;
 import vo.TruckSimple;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by I322233 on 1/4/2016.
@@ -30,6 +33,9 @@ public class DriverServiceImpl implements DriverService {
 
     @Autowired
     private Truck_type_Dao truck_type_dao;
+
+    @Autowired
+    UserService userService;
 
     public List getTruckList(int userId) {
         //根据司机id获取该司机的所有车辆,不用考虑是否是司机，如果不是司机自然不会有车辆
@@ -313,6 +319,21 @@ public class DriverServiceImpl implements DriverService {
         if(driver_auth.getAuthState().equals(new Byte("1"))){
             driver_auth.setAuthState(state);
             driver_auth_dao.updateDriverAuth(driver_auth);
+            Map<String,String> extras = new HashMap<String, String>();
+            switch (state){
+                case 2:
+                    //认证成功
+                    extras.put("type",UserServiceIml.truck_auth_pass+"");
+                    extras.put("id",id+"");
+                    userService.push(driver_auth.getUserId()+"","审核通过!","车牌号为"+driver_auth.getTruckNum()+"审核通过！",extras);
+                    break;
+                case 3:
+                    //认证失败
+                    extras.put("type",UserServiceIml.truck_auth_fail+"");
+                    extras.put("id",id+"");
+                    userService.push(driver_auth.getUserId()+"","审核未通过!","车牌号为"+driver_auth.getTruckNum()+"审核未通过！",extras);
+                    break;
+            }
             return true;
         }
 
