@@ -25,7 +25,7 @@ public class OrderDaoImpl extends BaseDaoImpl implements OrderDao{
 
     }
 
-    @Override
+
     public List getAllOrders() {
         return super.getAllList(Order.class);
     }
@@ -94,6 +94,19 @@ public class OrderDaoImpl extends BaseDaoImpl implements OrderDao{
             return true;
         }catch (Exception e){
             return false;
+        }
+    }
+    public List getAllNoGrabOrder(String fromAdd,String toAdd){
+        try{
+            Session session=getSession();
+            String strSQL="from orders as o where o.address_from like :fromAdd and o.address_to like :toAdd and o.state = '0'";
+            Query query = session.createQuery(strSQL);
+            query.setString("fromAdd","%"+fromAdd+"%");
+            query.setString("toAdd","%"+toAdd+"%");
+            return query.list();
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
         }
     }
 }

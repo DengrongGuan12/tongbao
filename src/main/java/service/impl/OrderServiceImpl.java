@@ -402,23 +402,18 @@ public class OrderServiceImpl implements OrderService {
      */
     //TODO
     public List getAllNoGrabOrder(int userId, OrderFilterInfo orderFilterInfo) {
+        int userType = userManager.getUserType(userId);
+        if(userType==1){
+            return null;
+        }
         List list = new ArrayList();
-        OrderSimple orderSimple = new OrderSimple();
-        orderSimple.setId(1);
-        orderSimple.setAddressFrom("dsfsdf");
-        orderSimple.setAddressTo("dsfsdf");
-        orderSimple.setFromContactName("sdfsdf");
-        orderSimple.setFromContactPhone("1231234");
-        orderSimple.setMoney(12.3);
-        orderSimple.setLoadTime("2015-11-02 11:00:00");
-        orderSimple.setToContactName("asdasd");
-        orderSimple.setToContactPhone("121212");
-        orderSimple.setTime("2015-11-11 00:00:00");
-        List truckTypes = new ArrayList();
-        truckTypes.add("中型货车");
-        truckTypes.add("小型面包车");
-        orderSimple.setTruckTypes(truckTypes);
-        list.add(orderSimple);
+        List listTemp = orderDao.getAllNoGrabOrder(orderFilterInfo.getFromAddress(),orderFilterInfo.getToAddress());
+        for(int i = 0;i < listTemp.size();i++){
+            Order order = (Order)listTemp.get(i);
+            OrderSimple orderSimple = this.genOrderSimpleFromOrder(order);
+            list.add(orderSimple);
+        }
+
         return list;
     }
 
@@ -700,7 +695,7 @@ public class OrderServiceImpl implements OrderService {
     根据order 生成orderSimple
      */
     private OrderSimple genOrderSimpleFromOrder(Order order){
-
+        Map map  = truckTypeDao.getAllTruckTypeMap();
         OrderSimple orderSimple = new OrderSimple();
         orderSimple.setId(order.getId());
         orderSimple.setTime(order.getBuildTime()+"");
@@ -717,7 +712,8 @@ public class OrderServiceImpl implements OrderService {
         List truckTypes = orderTruckTypeDao.getTruckTypesByOrderId(order.getId());
         for (Object object:truckTypes){
             OrderTruckType orderTruckType = (OrderTruckType)object;
-            Trucks_type trucks_type = truckTypeDao.getTruckType(orderTruckType.getTruckType());
+            Trucks_type trucks_type = (Trucks_type) map.get(orderTruckType.getTruckType());
+//                    truckTypeDao.getTruckType(orderTruckType.getTruckType());
             truckNames.add(trucks_type.getName());
         }
 
