@@ -420,7 +420,7 @@ public class OrderServiceImpl implements OrderService {
     //TODO
     public List getAllNoGrabOrder(int userId, OrderFilterInfo orderFilterInfo) {
         int userType = userManager.getUserType(userId);
-        if(userType==1){
+        if(userType==0){
             return null;
         }
         List list = new ArrayList();

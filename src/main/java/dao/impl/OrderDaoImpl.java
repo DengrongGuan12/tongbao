@@ -99,7 +99,7 @@ public class OrderDaoImpl extends BaseDaoImpl implements OrderDao{
     public List getAllNoGrabOrder(String fromAdd,String toAdd){
         try{
             Session session=getSession();
-            String strSQL="from orders as o where o.address_from like :fromAdd and o.address_to like :toAdd and o.state = '0'";
+            String strSQL="from orders as o where o.addressFrom like :fromAdd and o.addressTo like :toAdd and o.state = 0";
             Query query = session.createQuery(strSQL);
             query.setString("fromAdd","%"+fromAdd+"%");
             query.setString("toAdd","%"+toAdd+"%");

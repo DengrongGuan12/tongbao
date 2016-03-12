@@ -48,6 +48,7 @@ public class Driver_auth implements Serializable{
     public void setUserId(int userId) {
         this.userId = userId;
     }
+
     @Column(name="truck_num",length = 10,nullable = true, unique = true)
     public String getTruckNum() {
         return truckNum;
