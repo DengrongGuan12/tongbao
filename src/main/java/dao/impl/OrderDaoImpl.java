@@ -54,6 +54,7 @@ public class OrderDaoImpl extends BaseDaoImpl implements OrderDao{
     }
 
     public boolean createOrder(Order order) {
+        // TODO: 3/14/2016  这个返回值应该是自增的id，改一下
         try {
             super.save(order);
             return true;
