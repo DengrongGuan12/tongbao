@@ -110,7 +110,13 @@ public class OrderServiceImpl implements OrderService {
         Order order=new Order();
         order.setBuildTime(new Timestamp(System.currentTimeMillis()));
         order.setShipperId(userId);
-        order.setLoadTime(orderInfo.getLoadTime());
+        try{
+            order.setLoadTime(Timestamp.valueOf(orderInfo.getLoadTime()));
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+
         order.setAddressFrom(orderInfo.getAddressFrom());
         order.setAddressTo(orderInfo.getAddressTo());
         order.setFrom_contact_name(orderInfo.getFromContactName());
@@ -475,7 +481,7 @@ public class OrderServiceImpl implements OrderService {
         orderDetail.setMoney(order.getPrice());
         orderDetail.setFromContactName(order.getFrom_contact_name());
         orderDetail.setFromContactPhone(order.getFrom_contact_phone());
-        orderDetail.setLoadTime(order.getLoadTime());
+        orderDetail.setLoadTime(order.getLoadTime().toString());
         orderDetail.setState(order.getState());
         orderDetail.setToContactName(order.getTo_contact_name());
         orderDetail.setToContactPhone(order.getTo_contact_phone());
@@ -669,7 +675,7 @@ public class OrderServiceImpl implements OrderService {
             orderDetail.setAddressFrom(order.getAddressFrom());
             orderDetail.setAddressTo(order.getAddressTo());
             orderDetail.setTime(order.getBuildTime().toString());
-            orderDetail.setLoadTime(order.getLoadTime());
+            orderDetail.setLoadTime(order.getLoadTime().toString());
             orderDetail.setDriverPhoneNum(driver.getPhone_number());
             orderDetail.setShipperPhoneNum(shipper.getPhone_number());
             orderDetail.setMoney(order.getPrice());

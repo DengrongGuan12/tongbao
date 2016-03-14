@@ -16,7 +16,7 @@ public class Order implements Serializable{
     private Timestamp buildTime;
     private int shipperId;
     private int driverId;
-    private String loadTime;
+    private Timestamp loadTime;
     private String addressFrom;
     private String addressTo;
     private String from_contact_name;
@@ -73,11 +73,11 @@ public class Order implements Serializable{
         this.driverId = driverId;
     }
     @Column(name="load_time")
-    public String getLoadTime() {
+    public Timestamp getLoadTime() {
         return loadTime;
     }
 
-    public void setLoadTime(String loadTime) {
+    public void setLoadTime(Timestamp loadTime) {
         this.loadTime = loadTime;
     }
     @Column(name="address_from")
