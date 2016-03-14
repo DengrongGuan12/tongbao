@@ -32,6 +32,10 @@ public class Order implements Serializable{
     private String evaluate_content;
     private String remark;
     private Byte state;
+    private double fromLat;
+    private double fromLng;
+    private double toLat;
+    private double tolng;
 
     @Id
     @Column(name="id",nullable = true)
@@ -196,5 +200,38 @@ public class Order implements Serializable{
 
     public void setState(Byte state) {
         this.state = state;
+    }
+
+    @Column
+    public double getFromLat() {
+        return fromLat;
+    }
+
+    public void setFromLat(double fromLat) {
+        this.fromLat = fromLat;
+    }
+    @Column
+    public double getFromLng() {
+        return fromLng;
+    }
+
+    public void setFromLng(double fromLng) {
+        this.fromLng = fromLng;
+    }
+    @Column
+    public double getToLat() {
+        return toLat;
+    }
+
+    public void setToLat(double toLat) {
+        this.toLat = toLat;
+    }
+    @Column
+    public double getTolng() {
+        return tolng;
+    }
+
+    public void setTolng(double tolng) {
+        this.tolng = tolng;
     }
 }

@@ -17,7 +17,7 @@ import java.sql.Timestamp;
 @Repository
 public class OrderAffairsImpl  implements OrderAffairs{
         //保存使用事务办法，包含订单，订单用车类型，账单，更新用户账户
-        public boolean saveOrderAffairs(Order order,String [] tTypes){
+        public int saveOrderAffairs(Order order,String [] tTypes){
             Session session = HibernateUtil.getSession();
             Transaction tx = null;
             try{
@@ -45,11 +45,11 @@ public class OrderAffairsImpl  implements OrderAffairs{
                     session.save(orderTruckType);
                 }
                 tx.commit();
-                return true;
+                return order.getId();
             }catch (Exception e){
                 if(tx!=null) tx.rollback();
                 e.printStackTrace();
-                return false;
+                return -1;
             }finally {
                 HibernateUtil.closeSession();
             }
