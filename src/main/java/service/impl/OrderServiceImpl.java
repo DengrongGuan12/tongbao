@@ -52,6 +52,11 @@ public class OrderServiceImpl implements OrderService {
     创建订单时要考虑是否有匹配的司机，如果成功返回1，找不到匹配的司机返回2，其他失败(如用户不是货主就没有权限创建)返回0
      */
     public int createOrder(int userId, OrderInfo orderInfo) {
+        // TODO: 3/14/2016 下面的注释是加的四个属性(起始点的经纬度)
+//        orderInfo.getAddressFromLat();
+//        orderInfo.getAddressFromLng();
+//        orderInfo.getAddressToLat();
+//        orderInfo.getAddressToLng();
         Map <Byte,Trucks_type>truckTypeMap = truckTypeDao.getAllTruckTypeMap();
         //注意orderInfo 中的truckTypes是string类型的，需要转成json数组类型
         int userType = userManager.getUserType(userId);
@@ -494,7 +499,7 @@ public class OrderServiceImpl implements OrderService {
     根据订单信息进行拆单
      */
     public boolean splitOrder(int userId, OrderInfo orderInfo) {
-
+        // TODO: 3/14/2016  同createOrder 
 //        orderInfo.getDistance() 获取公里数
         String truckTypeStr = orderInfo.getTruckTypes();
         JSONArray truckTypes = JSON.parseArray(truckTypeStr);

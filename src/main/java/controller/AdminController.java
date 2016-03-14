@@ -301,5 +301,11 @@ public class AdminController {
         return RestResult.CreateResult(1,list);
     }
 
+    @RequestMapping(value = "/genTestData", method = RequestMethod.GET)
+    @ResponseBody
+    public RestResult genTestData(){
+
+        return RestResult.CreateResult(1);
+    }
 
 }

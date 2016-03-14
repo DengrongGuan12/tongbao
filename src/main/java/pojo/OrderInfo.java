@@ -7,7 +7,46 @@ import java.util.Date;
  */
 public class OrderInfo extends TokenAuthInfo{
     private String addressFrom;
+    private double addressFromLat;
+    private double addressFromLng;
+
     private String addressTo;
+    private double addressToLat;
+
+    public double getAddressToLng() {
+        return addressToLng;
+    }
+
+    public void setAddressToLng(double addressToLng) {
+        this.addressToLng = addressToLng;
+    }
+
+    public double getAddressFromLat() {
+        return addressFromLat;
+    }
+
+    public void setAddressFromLat(double addressFromLat) {
+        this.addressFromLat = addressFromLat;
+    }
+
+    public double getAddressFromLng() {
+        return addressFromLng;
+    }
+
+    public void setAddressFromLng(double addressFromLng) {
+        this.addressFromLng = addressFromLng;
+    }
+
+    public double getAddressToLat() {
+        return addressToLat;
+    }
+
+    public void setAddressToLat(double addressToLat) {
+        this.addressToLat = addressToLat;
+    }
+
+    private double addressToLng;
+
     private String fromContactName;
     private String fromContactPhone;
     private String toContactName;
