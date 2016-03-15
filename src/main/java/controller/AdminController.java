@@ -301,9 +301,9 @@ public class AdminController {
         return RestResult.CreateResult(1,list);
     }
 
-    @RequestMapping(value = "/genTestData", method = RequestMethod.GET)
+    @RequestMapping(value = "/genOrderData", method = RequestMethod.GET)
     @ResponseBody
-    public RestResult genTestData(){
+    public RestResult genOrderData(){
 
         return RestResult.CreateResult(1);
     }

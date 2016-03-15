@@ -227,7 +227,7 @@ public class UserServiceIml implements UserService {
                 orderSimple.setToContactPhone(order.getTo_contact_phone());
                 orderSimple.setToContactName(order.getTo_contact_name());
                 orderSimple.setState(order.getState());
-                orderSimple.setLoadTime(order.getLoadTime());
+                orderSimple.setLoadTime(order.getLoadTime().toString());
                 orderSimple.setStateStr(allStateName.get(order.getState()));
             }
             account.setOrder(orderSimple);

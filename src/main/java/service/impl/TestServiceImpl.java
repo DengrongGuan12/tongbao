@@ -1,5 +1,6 @@
 package service.impl;
 
+import affairs.OrderAffairs;
 import dao.OrderDao;
 import model.Order;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +20,10 @@ public class TestServiceImpl implements TestService {
     public static int num = 20;
 
     @Autowired
-    OrderDao orderDao;
+    OrderAffairs orderAffairs;
 
     @Override
-    public void genTestData() {
+    public void genOrderData() {
         // TODO: 3/14/2016  生成测试数据
         for(int i = 0;i<20;i++){
             int district = (int)(districts.length*Math.random());
@@ -41,7 +42,7 @@ public class TestServiceImpl implements TestService {
             double goodsSize = Math.random()*10;
             String goodsType = "食品";
             double goodsWeight = Math.random()*10;
-            String loadTime = (new Date()).toString();
+//            String loadTime = (new Date()).toString();
             int payType = (int)(Math.random()+0.5);
             double price = Math.random()*100;
             String remark = "轻拿轻放谢谢！";
@@ -60,7 +61,7 @@ public class TestServiceImpl implements TestService {
             order.setGoodsSize(goodsSize);
             order.setGoodsType(goodsType);
             order.setGoodsWeight(goodsWeight);
-            order.setLoadTime(loadTime);
+            order.setLoadTime(new Timestamp(new Date().getTime()));
             order.setPayType((byte)payType);
             order.setPrice(price);
             order.setTo_contact_name(toContactName);
@@ -68,10 +69,24 @@ public class TestServiceImpl implements TestService {
             order.setShipperId(shipperId);
             order.setRemark(remark);
             order.setState((byte)state);
-
+            order.setFromLat(fromPlaceLat);
+            order.setFromLng(fromPlaceLng);
+            order.setToLat(toPlaceLat);
+            order.setTolng(toPlaceLng);
+            int types_num = (int)(Math.random()*9);
+            String types[] = new String[types_num+1];
+            for(i = 0;i<=types_num;i++){
+                types[i] = (int)(Math.random()*9)+"";
+            }
+            orderAffairs.saveOrderAffairs(order,types);
 
         }
 
+
+    }
+
+    @Override
+    public void genMessageData() {
 
     }
 }
