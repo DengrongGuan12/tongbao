@@ -32,6 +32,16 @@ public class MessageDaoImpl extends BaseDaoImpl implements MessageDao {
         }
     }
 
+    @Override
+    public boolean addMessage(Message message) {
+        try{
+            super.save(message);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
     public List getMyMessage(int userId) {
         return super.getList(Message.class,"user_id",userId+"");
     }

@@ -309,4 +309,11 @@ public class AdminController {
         return RestResult.CreateResult(1);
     }
 
+    @RequestMapping(value = "/genMessageData",method = RequestMethod.GET)
+    @ResponseBody
+    public RestResult genMessageData(@RequestParam(value = "id")int id){
+        testService.genMessageData(id);
+        return RestResult.CreateResult(1);
+    }
+
 }

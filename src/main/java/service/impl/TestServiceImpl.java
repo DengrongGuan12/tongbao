@@ -1,7 +1,9 @@
 package service.impl;
 
 import affairs.OrderAffairs;
+import dao.MessageDao;
 import dao.OrderDao;
+import model.Message;
 import model.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,10 +23,10 @@ public class TestServiceImpl implements TestService {
 
     @Autowired
     OrderAffairs orderAffairs;
-
+    @Autowired
+    MessageDao messageDao;
 
     public void genOrderData() {
-        // TODO: 3/14/2016  生成测试数据
         for(int i = 0;i<20;i++){
             int district = (int)(districts.length*Math.random());
             int road =(int) (roads.length*Math.random());
@@ -86,8 +88,17 @@ public class TestServiceImpl implements TestService {
 
     }
 
-
-    public void genMessageData() {
-
+    public void genMessageData(int id) {
+        for (int i = 0;i<10;i++){
+            Message message = new Message();
+            message.setType((byte)3);
+            String content = "转账"+(i+100)+"元成功，请核对账户余额!";
+            message.setContent(content);
+            message.setHas_read((byte)0);
+            message.setObject_id(0);
+            message.setTime(new Timestamp(new Date().getTime()));
+            message.setUser_id(id);
+            messageDao.addMessage(message);
+        }
     }
 }

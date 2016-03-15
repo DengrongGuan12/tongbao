@@ -5,5 +5,5 @@ package service;
  */
 public interface TestService {
     public void genOrderData();
-    public void genMessageData();
+    public void genMessageData(int id);
 }

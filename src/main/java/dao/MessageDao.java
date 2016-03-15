@@ -11,4 +11,5 @@ public interface MessageDao {
     public List getMyMessage(int userId);
     public Message getMessageById(int id);
     public boolean updateMessage(Message message);
+    public boolean addMessage(Message message);
 }
