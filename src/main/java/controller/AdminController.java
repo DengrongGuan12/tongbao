@@ -9,10 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pojo.ModifiedPassword;
 import pojo.TokenAuthInfo;
-import service.AccountService;
-import service.DriverService;
-import service.OrderService;
-import service.UserService;
+import service.*;
 import vo.LatestNumInfo;
 import vo.RestResult;
 import vo.TruckInfo;
@@ -38,6 +35,9 @@ public class AdminController {
 
     @Autowired
     AccountService accountService;
+
+    @Autowired
+    TestService testService;
 
     @RequestMapping("/login")
     public String login(HttpSession session){
@@ -305,6 +305,7 @@ public class AdminController {
     @ResponseBody
     public RestResult genOrderData(){
 
+        testService.genOrderData();
         return RestResult.CreateResult(1);
     }
 

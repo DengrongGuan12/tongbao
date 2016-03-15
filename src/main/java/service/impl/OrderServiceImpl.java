@@ -643,6 +643,9 @@ public class OrderServiceImpl implements OrderService {
     public List getRecentOrders(int num) {
         Map <Byte,String>orderState = order_state_name_t_dao.getAllOrderStateName();
         List listTemp = orderDao.getRecentOrders(num);
+        if(listTemp==null){
+            return listTemp;
+        }
         List list = new ArrayList();
         for(int i=0;i<listTemp.size();i++){
             model.Order orderTemp = (model.Order)listTemp.get(i);

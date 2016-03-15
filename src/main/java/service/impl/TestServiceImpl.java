@@ -22,7 +22,7 @@ public class TestServiceImpl implements TestService {
     @Autowired
     OrderAffairs orderAffairs;
 
-    @Override
+
     public void genOrderData() {
         // TODO: 3/14/2016  生成测试数据
         for(int i = 0;i<20;i++){
@@ -78,14 +78,15 @@ public class TestServiceImpl implements TestService {
             for(i = 0;i<=types_num;i++){
                 types[i] = (int)(Math.random()*9)+"";
             }
-            orderAffairs.saveOrderAffairs(order,types);
+            int order_id =orderAffairs.saveOrderAffairs(order,types);
+            System.out.println("订单的id是："+order_id);
 
         }
 
 
     }
 
-    @Override
+
     public void genMessageData() {
 
     }
