@@ -202,7 +202,7 @@ public class Order implements Serializable{
         this.state = state;
     }
 
-    @Column
+    @Column(columnDefinition = "0")
     public double getFromLat() {
         return fromLat;
     }
@@ -210,7 +210,7 @@ public class Order implements Serializable{
     public void setFromLat(double fromLat) {
         this.fromLat = fromLat;
     }
-    @Column
+    @Column(columnDefinition = "0")
     public double getFromLng() {
         return fromLng;
     }
@@ -218,7 +218,7 @@ public class Order implements Serializable{
     public void setFromLng(double fromLng) {
         this.fromLng = fromLng;
     }
-    @Column
+    @Column(columnDefinition = "0")
     public double getToLat() {
         return toLat;
     }
@@ -226,7 +226,7 @@ public class Order implements Serializable{
     public void setToLat(double toLat) {
         this.toLat = toLat;
     }
-    @Column
+    @Column(columnDefinition = "0")
     public double getTolng() {
         return tolng;
     }

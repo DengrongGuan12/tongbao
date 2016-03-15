@@ -673,14 +673,16 @@ public class OrderServiceImpl implements OrderService {
             Order order = (Order)listTemp.get(i);
             User driver = userDao.getUserById(order.getDriverId());
             User shipper =userDao.getUserById(order.getShipperId());
+            String driverPhoneNum = driver!=null?driver.getPhone_number():"0";
+            String shipperPhoneNum = shipper!=null?shipper.getPhone_number():"0";
             OrderDetail orderDetail = new OrderDetail();
             orderDetail.setId(order.getId());
             orderDetail.setAddressFrom(order.getAddressFrom());
             orderDetail.setAddressTo(order.getAddressTo());
             orderDetail.setTime(order.getBuildTime().toString());
             orderDetail.setLoadTime(order.getLoadTime().toString());
-            orderDetail.setDriverPhoneNum(driver.getPhone_number());
-            orderDetail.setShipperPhoneNum(shipper.getPhone_number());
+            orderDetail.setDriverPhoneNum(driverPhoneNum);
+            orderDetail.setShipperPhoneNum(shipperPhoneNum);
             orderDetail.setMoney(order.getPrice());
             orderDetail.setGoodsType(order.getGoodsType());
             orderDetail.setGoodsWeight(order.getGoodsWeight());
