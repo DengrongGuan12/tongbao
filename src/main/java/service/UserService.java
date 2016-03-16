@@ -27,7 +27,9 @@ public interface UserService {
     public List getTruckTypes();
     public List getMessagesByUserId(int userId);
     public boolean readMessage(int userId, int id);
+    public boolean deleteMessage(int userId, int id);
     public boolean recharge(int userId, double money);
+    public boolean withdraw(int userId, double money);
     public int getTotalShipperNum();
     public int getTotalDriverNum();
     public int getTotalAccountNum();

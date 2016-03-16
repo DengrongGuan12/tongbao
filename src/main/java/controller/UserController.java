@@ -258,6 +258,16 @@ public class UserController {
             return RestResult.CreateResult(0,"操作失败");
         }
     }
+    @RequestMapping(value = "/auth/deleteMessage", method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult deleteMessage(@ModelAttribute("IdInfoWithToken")IdInfoWithAuth idInfoWithAuth){
+        int userId = userService.hasLogin(idInfoWithAuth.getToken());
+        if(userService.deleteMessage(userId,idInfoWithAuth.getId())){
+            return RestResult.CreateResult(1);
+        }else{
+            return RestResult.CreateResult(0,"操作失败");
+        }
+    }
     @RequestMapping(value = "getAllTruckTypes",method = RequestMethod.POST)
     @ResponseBody
     public RestResult getAllTruckTypes(){
@@ -273,6 +283,16 @@ public class UserController {
             return RestResult.CreateResult(1);
         }else{
             return RestResult.CreateResult(0,"充值失败!");
+        }
+    }
+    @RequestMapping(value = "/auth/withdraw", method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult withdraw(@ModelAttribute("WithdrawInfo")RechargeInfo rechargeInfo){
+        int userId = userService.hasLogin(rechargeInfo.getToken());
+        if(userService.withdraw(userId,rechargeInfo.getMoney())){
+            return RestResult.CreateResult(1);
+        }else{
+            return RestResult.CreateResult(0,"操作失败");
         }
     }
     @RequestMapping(value = "/testJPush",method = RequestMethod.GET)
