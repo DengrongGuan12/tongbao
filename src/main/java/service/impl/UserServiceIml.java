@@ -329,9 +329,11 @@ public class UserServiceIml implements UserService {
         return messageDao.updateMessage(message);
     }
 
-    @Override
     public boolean deleteMessage(int userId, int id) {
-        // TODO: 2016/3/17  删除消息， 要判断该消息是否存在以及是否是这个用户的 
+        Message message = messageDao.getMessageById(id);
+        if(message!=null&&message.getUser_id()==userId){
+            return messageDao.deleteMessage(id);
+        }
         return false;
     }
 
@@ -345,13 +347,20 @@ public class UserServiceIml implements UserService {
         //0代表充值
         account.setType(new Byte("0"));
         account.setMoney(money);
-        return userAffairs.recharge(user,account);
+        return userAffairs.recharge(user, account);
     }
 
-    @Override
     public boolean withdraw(int userId, double money) {
-        // TODO: 2016/3/17  提现，直接扣钱吧，不过看一下能不能扣这么多 
-        return false;
+        if(money==0){
+            return false;
+        }
+        User user = userDao.getUserById(userId);
+        double moneyTemp = user.getMoney()-money;
+        if(moneyTemp<0){
+            return false;
+        }
+        user.setMoney(moneyTemp);
+        return userDao.updateUser(user);
     }
 
     //获取货主总人数

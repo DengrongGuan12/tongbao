@@ -12,4 +12,5 @@ public interface MessageDao {
     public Message getMessageById(int id);
     public boolean updateMessage(Message message);
     public boolean addMessage(Message message);
+    public boolean deleteMessage(int id);
 }

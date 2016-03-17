@@ -32,12 +32,21 @@ public class MessageDaoImpl extends BaseDaoImpl implements MessageDao {
         }
     }
 
-    @Override
     public boolean addMessage(Message message) {
         try{
             super.save(message);
             return true;
         }catch (Exception e){
+            return false;
+        }
+    }
+
+    public boolean deleteMessage(int id) {
+        try {
+            super.delete(Message.class,id);
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
             return false;
         }
     }
