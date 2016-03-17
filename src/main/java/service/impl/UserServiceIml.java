@@ -85,6 +85,13 @@ public class UserServiceIml implements UserService {
         }
         User user=new User(phoneNumber,password,type);
         user.setRegister_time(new Timestamp(System.currentTimeMillis()));
+        user.setIcon("http://120.27.112.9:8080/tongbao/user/picture?id=35");
+        if(type == 0){
+            user.setNick_name("我是货主SAMA");
+        }else{
+            user.setNick_name("我是司机SAMA");
+        }
+
         if(userAffairs.register(user)){
             return true;
         }
