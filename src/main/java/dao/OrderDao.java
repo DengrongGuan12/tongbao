@@ -20,4 +20,5 @@ public interface OrderDao {
     public List getRecentOrders(int num);
     public List getAllOrders();
     public List getAllNoGrabOrder(String fromAdd,String toAdd);
+    public List getAllAutoFinishOrder();
 }

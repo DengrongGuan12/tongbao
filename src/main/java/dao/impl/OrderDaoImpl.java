@@ -110,4 +110,15 @@ public class OrderDaoImpl extends BaseDaoImpl implements OrderDao{
             return null;
         }
     }
+
+    @Override
+    public List getAllAutoFinishOrder() {
+        //7天之前
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis()-7L*24L*60L*60L*1000L);
+        Session session = getSession();
+        Query query = session.createQuery("select * form orders as o where o.state = 2 and o.load_time > :timestamp");
+        query.setParameter("timestamp", timestamp);
+
+        return null;
+    }
 }

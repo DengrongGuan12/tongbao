@@ -11,6 +11,7 @@ import service.TestService;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by I322233 on 3/14/2016.
@@ -25,6 +26,16 @@ public class TestServiceImpl implements TestService {
     OrderAffairs orderAffairs;
     @Autowired
     MessageDao messageDao;
+    @Autowired
+    OrderDao orderDao;
+    public void getAutoFinishOrder(){
+        List list = orderDao.getAllAutoFinishOrder();
+        System.out.println(list.size());
+        for (int i=0;i<list.size();i++){
+            Order order = (Order)list.get(i);
+            System.out.println(order.getLoadTime());
+        }
+    }
 
     public void genOrderData() {
         for(int i = 0;i<20;i++){
@@ -101,4 +112,5 @@ public class TestServiceImpl implements TestService {
             messageDao.addMessage(message);
         }
     }
+
 }

@@ -310,9 +310,15 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/genMessageData",method = RequestMethod.GET)
-    @ResponseBody
-    public RestResult genMessageData(@RequestParam(value = "id")int id){
+     @ResponseBody
+     public RestResult genMessageData(@RequestParam(value = "id")int id){
         testService.genMessageData(id);
+        return RestResult.CreateResult(1);
+    }
+    @RequestMapping(value = "/Test",method = RequestMethod.GET)
+    @ResponseBody
+    public RestResult TestOrder(){
+        testService.getAutoFinishOrder();
         return RestResult.CreateResult(1);
     }
 

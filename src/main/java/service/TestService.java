@@ -6,4 +6,5 @@ package service;
 public interface TestService {
     public void genOrderData();
     public void genMessageData(int id);
+    public void getAutoFinishOrder();
 }
