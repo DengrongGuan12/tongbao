@@ -21,7 +21,7 @@ public class UserAffairsImpl implements UserAffairs {
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-//            session.save(user);
+            session.update(user);
             session.save(account);
 
             tx.commit();
