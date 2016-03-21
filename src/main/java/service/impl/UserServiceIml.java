@@ -486,12 +486,17 @@ public class UserServiceIml implements UserService {
      */
     public List getAllUsersByType(Byte type) {
         List listTemp = userDao.getAllUsersByType(type);
-        List list = new ArrayList();
+        List <vo.User> list = new ArrayList();
+        if(listTemp==null){
+            return list;
+        }
         for(int i = 0;i<listTemp.size();i++){
             model.User userTemp = (model.User) listTemp.get(i);
             int typeTemp = userTemp.getType();
             vo.User user = new vo.User();
-
+            if(typeTemp==1){
+                user.setWaitingAuthNum(driver_auth_dao.getWaitingExamineDriverNum(userTemp.getId()));
+            }
             user.setPhoneNum(userTemp.getPhone_number());
             user.setNickName(userTemp.getNick_name());
             user.setId(userTemp.getId());

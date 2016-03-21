@@ -48,7 +48,9 @@ public class Driver_auth_Dao_Impl extends BaseDaoImpl implements Driver_auth_Dao
     }
 
     public int getUnSubmittedDriverNum() {
-        int count = ((Long)getSession().createQuery("select count(*) from driver_auth where auth_state = '0' or auth_state='3' ").uniqueResult()).intValue();
+      //  int count = ((Long)getSession().createQuery("select count(*) from driver_auth where auth_state = '0' or auth_state='3' ").uniqueResult()).intValue();
+        int count = ((Long)getSession().createQuery("select count(*) from driver_auth where auth_state = '0' ").uniqueResult()).intValue();
+
         return count;
     }
 
