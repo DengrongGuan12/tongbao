@@ -23,7 +23,6 @@ public class UserAffairsImpl implements UserAffairs {
             tx = session.beginTransaction();
             session.update(user);
             session.save(account);
-
             tx.commit();
             return true;
         }catch (Exception e){
