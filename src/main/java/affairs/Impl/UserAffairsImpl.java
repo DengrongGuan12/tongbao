@@ -15,6 +15,23 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class UserAffairsImpl implements UserAffairs {
 
+    public boolean withdraw(User user, Account account) {
+        Session session = HibernateUtil.getSession();
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+            session.update(user);
+            session.save(account);
+            tx.commit();
+            return true;
+        }catch (Exception e){
+            if(tx!=null) tx.rollback();
+            return false;
+        }finally {
+            HibernateUtil.closeSession();
+        }
+    }
+
     @Override
     public boolean recharge(User user, Account account) {
         Session session = HibernateUtil.getSession();

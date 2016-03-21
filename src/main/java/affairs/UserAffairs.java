@@ -9,5 +9,6 @@ import model.User;
 public interface UserAffairs {
     public boolean register(User user);
     public boolean recharge(User user, Account account);
+    public boolean withdraw(User user,Account account);
 
 }

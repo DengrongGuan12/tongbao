@@ -366,8 +366,14 @@ public class UserServiceIml implements UserService {
         if(moneyTemp<0){
             return false;
         }
+        model.Account account=new model.Account();
+        account.setBuildTime(new Timestamp(System.currentTimeMillis()));
+        account.setUserId(userId);
+        //0代表充值
+        account.setType(new Byte("1"));
+        account.setMoney(money);
         user.setMoney(moneyTemp);
-        return userDao.updateUser(user);
+        return userAffairs.withdraw(user,account);
     }
 
     //获取货主总人数
