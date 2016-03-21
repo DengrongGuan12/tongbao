@@ -136,27 +136,27 @@
           <table class="table" id="table">
             <tbody>
               <tr>
-                  <td>
+                  <td style="width: 25%;">
                     <div>
-                      <img src="${drivingLicense}" class="img-polaroid" style="position:relative;left:3%;margin-bottom: 15px;">
+                      <img src="${drivingLicense}" class="img-polaroid" style="position:relative;left:3%;margin-bottom: 15px;width:100%;height:100%;">
                       <div>行驶证照片</div>
                     </div>
                   </td>
-                  <td>
+                  <td style="width: 25%;">
                     <div>
-                      <img src="${truckLicense}" class="img-polaroid" style="position:relative;left:3%;margin-bottom: 15px;">
+                      <img src="${truckLicense}" class="img-polaroid" style="position:relative;left:3%;margin-bottom: 15px;width:100%;height:100%;">
                       <div>驾驶证照片</div>
                     </div>
                   </td>
-                  <td>
+                  <td style="width: 25%;">
                     <div>
-                      <img src="${headPicture}" class="img-polaroid" style="position:relative;left:3%;margin-bottom: 15px;">
+                      <img src="${headPicture}" class="img-polaroid" style="position:relative;left:3%;margin-bottom: 15px;width:100%;height:100%;">
                       <div>司机头像</div>
                     </div>
                   </td>
-                  <td>
+                  <td style="width: 25%;">
                     <div>
-                      <img src="${truckPicture}" class="img-polaroid" style="position:relative;left:3%;margin-bottom: 15px;">
+                      <img src="${truckPicture}" class="img-polaroid" style="position:relative;left:3%;margin-bottom: 15px;width:100%;height:100%;">
                       <div>车头照</div>
                     </div>
                   </td>
