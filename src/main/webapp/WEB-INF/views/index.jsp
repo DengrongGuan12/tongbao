@@ -342,7 +342,7 @@
                 
               </tbody>
             </table>
-            <p id="orderMore"><a href="users.html">更多...</a></p>
+            <p id="orderMore"><a href="/tongbao/admin/orderManage">更多...</a></p>
         </div>
     </div>
     <div class="block span6">
@@ -402,7 +402,7 @@
                 </tr>
               </tbody>
             </table>
-            <p id="accountMore"><a href="users.html">更多...</a></p>
+            <p id="accountMore"><a href="/tongbao/admin/accountManage">更多...</a></p>
         </div>
     </div>
 </div>
