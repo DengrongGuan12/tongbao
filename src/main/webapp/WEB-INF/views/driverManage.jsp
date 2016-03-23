@@ -133,7 +133,7 @@
         <h3 id="myModalLabel">重置确认</h3>
     </div>
     <div class="modal-body">
-        <p class="error-text"><i class="icon-warning-sign modal-icon"></i>你确定要重置id为<span id="user-id-reset">10</span>用户的密码为12345吗?</p>
+        <p class="error-text"><i class="icon-warning-sign modal-icon"></i>你确定要重置id为<span id="user-id-reset">10</span>用户的密码为12345678吗?</p>
     </div>
     <div class="modal-footer">
         <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
@@ -243,7 +243,7 @@
             type:"POST",
             url:"/tongbao/admin/resetUserPassword",
             //提交的数据
-            data:{id:resetId,password:12345},
+            data:{id:resetId,password:12345678},
             //返回数据的格式
             datatype: "json",//"xml", "html", "script", "json", "jsonp", "text".
             //在请求之前调用的函数
