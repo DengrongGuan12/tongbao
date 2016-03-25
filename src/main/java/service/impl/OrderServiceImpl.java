@@ -754,6 +754,8 @@ public class OrderServiceImpl implements OrderService {
         orderSimple.setMoney(order.getPrice());
         orderSimple.setLoadTime(order.getLoadTime()+"");
         orderSimple.setState(order.getState());
+        orderSimple.setLat(order.getFromLat());
+        orderSimple.setLng(order.getFromLng());
         List truckNames = new ArrayList();
         List truckTypes = orderTruckTypeDao.getTruckTypesByOrderId(order.getId());
         for (Object object:truckTypes){
