@@ -72,6 +72,13 @@ public class ShipperController {
         }
     }
 
+    @RequestMapping(value = "/auth/getDriversPosition", method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult getDriversPosition(@ModelAttribute("TokenAuthInfo")TokenAuthInfo tokenAuthInfo){
+        // TODO: 3/27/2016  
+        return RestResult.CreateResult(1,null);
+    }
+
     @RequestMapping(value = "/auth/placeOrder", method = RequestMethod.POST)
         @ResponseBody
     public RestResult placeOrder(@ModelAttribute("OrderInfo")OrderInfo orderInfo){

@@ -132,6 +132,12 @@ public class DriverController {
             return RestResult.CreateResult(0,"抢单失败!");
         }
     }
+    @RequestMapping(value = "/auth/updateMyPostion", method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult updateMyPostion(@ModelAttribute("PositionInfo")PositionInfo positionInfo){
+        // TODO: 3/27/2016  
+        return RestResult.CreateResult(1);
+    }
     @RequestMapping(value = "/auth/showAllOrders",method = RequestMethod.POST)
     @ResponseBody
     public RestResult showAllOrders(@ModelAttribute("OrderFilterInfo")OrderFilterInfo orderFilterInfo){
