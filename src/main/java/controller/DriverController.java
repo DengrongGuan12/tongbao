@@ -135,8 +135,12 @@ public class DriverController {
     @RequestMapping(value = "/auth/updateMyPostion", method = RequestMethod.POST)
     @ResponseBody
     public RestResult updateMyPostion(@ModelAttribute("PositionInfo")PositionInfo positionInfo){
-        // TODO: 3/27/2016  
-        return RestResult.CreateResult(1);
+        int userId = userService.hasLogin(positionInfo.getToken());
+        if(driverService.updateMyPosition(userId,positionInfo)){
+            return RestResult.CreateResult(1);
+        }else{
+            return RestResult.CreateResult(0,"更新失败!");
+        }
     }
     @RequestMapping(value = "/auth/showAllOrders",method = RequestMethod.POST)
     @ResponseBody

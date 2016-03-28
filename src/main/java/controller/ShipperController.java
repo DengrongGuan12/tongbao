@@ -7,6 +7,7 @@ import pojo.*;
 import service.OrderService;
 import service.ShipperService;
 import service.UserService;
+import vo.DriverPosition;
 import vo.OrderDetail;
 import vo.RestResult;
 import java.util.List;
@@ -75,8 +76,8 @@ public class ShipperController {
     @RequestMapping(value = "/auth/getDriversPosition", method = RequestMethod.POST)
     @ResponseBody
     public RestResult getDriversPosition(@ModelAttribute("TokenAuthInfo")TokenAuthInfo tokenAuthInfo){
-        // TODO: 3/27/2016  
-        return RestResult.CreateResult(1,null);
+        List<DriverPosition> driverPositions = shipperService.getDriversPosition();
+        return RestResult.CreateResult(1,driverPositions);
     }
 
     @RequestMapping(value = "/auth/placeOrder", method = RequestMethod.POST)

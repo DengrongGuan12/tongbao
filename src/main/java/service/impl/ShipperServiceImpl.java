@@ -13,10 +13,7 @@ import org.springframework.stereotype.Service;
 import pojo.AddressInfo;
 import pojo.OrderInfo;
 import service.ShipperService;
-import vo.Address;
-import vo.OrderDetail;
-import vo.User;
-import vo.UserSimple;
+import vo.*;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -67,6 +64,15 @@ public class ShipperServiceImpl implements ShipperService{
         frequent_driver.setDriver_id(driverId);
         return frequent_driver_dao.addFrequentDriver(frequent_driver);
     }
+
+    public List<DriverPosition> getDriversPosition() {
+        // TODO: 3/28/2016
+        //从表 driver_gps 表中获取数据
+        List<DriverPosition> driverPositions = new ArrayList<DriverPosition>();
+
+        return driverPositions;
+    }
+
     /*
     货主获取常用司机列表
      */
@@ -138,6 +144,8 @@ public class ShipperServiceImpl implements ShipperService{
         fa.setLng(addressInfo.getLng());
         return frequent_address_dao.addFrequentAddress(fa);
     }
+
+
 
 
 

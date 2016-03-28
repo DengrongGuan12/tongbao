@@ -1,6 +1,7 @@
 package service;
 
 import pojo.AddressInfo;
+import vo.DriverPosition;
 
 import java.util.List;
 
@@ -14,4 +15,5 @@ public interface ShipperService {
     public List searchDriversByPhoneNum(String phoneNum);
     public boolean addFrequentAddress(int userId, AddressInfo addressInfo);
     public boolean addFrequentDriver(int userId, int driverId);
+    public List<DriverPosition> getDriversPosition();
 }

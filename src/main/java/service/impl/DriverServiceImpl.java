@@ -8,6 +8,7 @@ import model.Driver_auth;
 import model.Trucks_type;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pojo.PositionInfo;
 import pojo.RealNameAuthInfo;
 import pojo.TruckAuthInfo;
 import pojo.TruckInfo;
@@ -336,6 +337,13 @@ public class DriverServiceImpl implements DriverService {
             }
             return true;
         }
+
+        return false;
+    }
+
+    public boolean updateMyPosition(int userId, PositionInfo positionInfo) {
+        // TODO: 3/28/2016
+        // 更新司机的位置 表 driver_gps, collect_time 是传过来（收集）的时间戳,receive_time 是系统当前时间戳
 
         return false;
     }

@@ -1,8 +1,10 @@
 package service;
 
+import pojo.PositionInfo;
 import pojo.RealNameAuthInfo;
 import pojo.TruckAuthInfo;
 import pojo.TruckInfo;
+import vo.DriverPosition;
 import vo.TruckDetail;
 
 import java.util.List;
@@ -27,4 +29,5 @@ public interface DriverService {
     public boolean deleteTruckById(int id);
     public vo.TruckInfo getTruckInfoById(int id);
     public boolean setAuthState(int id, Byte state);
+    public boolean updateMyPosition(int userId, PositionInfo positionInfo);
 }
