@@ -5,11 +5,14 @@ import model.Account;
 import model.Order;
 import model.OrderTruckType;
 import model.User;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Timestamp;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Created by cg on 2016/3/8.
@@ -144,4 +147,50 @@ public class OrderAffairsImpl  implements OrderAffairs{
         }
     }
 
+    @Override
+    public boolean autoFinishOrderAffairs(List<Order> orders) {
+
+        Session session = HibernateUtil.getSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            for(Order order : orders) {
+                order.setState(new Byte("2"));
+                session.update(order);
+                //表示在线支付
+                if(order.getPayType().equals(new Byte("0"))){
+                    Account account = new Account();
+                    account.setOrderId(order.getId());
+                    account.setBuildTime(new Timestamp(System.currentTimeMillis()));
+                    account.setUserId(order.getDriverId());
+                    account.setMoney(order.getPrice());
+                    account.setType(new Byte("4"));//表示到账账单
+                    session.save(account);
+                    User user = (User) session.load(User.class, order.getDriverId());
+                    double moneyNow = user.getMoney() + order.getPrice();
+                    user.setMoney(moneyNow);
+                    session.update(user);//到账
+                }
+
+            }
+            tx.commit();
+            return true;
+        }catch (Exception e){
+            if(tx!=null) tx.rollback();
+            return false;
+        }finally {
+            HibernateUtil.closeSession();
+        }
+    }
+
+    @Override
+    public List<Order> getAllAutoFinishOrders() {
+        //7天之前
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis()-7L*24L*60L*60L*1000L);
+        Session session = HibernateUtil.getSession();
+        Query query = session.createQuery("from orders as o where o.state = 1 and o.loadTime > :timestamp");
+        query.setTime("timestamp", timestamp);
+        System.out.println(timestamp);
+        return query.list();
+    }
 }

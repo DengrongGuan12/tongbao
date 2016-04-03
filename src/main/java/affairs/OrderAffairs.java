@@ -2,6 +2,8 @@ package affairs;
 
 import model.Order;
 
+import java.util.List;
+
 /**
  * Created by cg on 2016/3/9.
  */
@@ -10,4 +12,7 @@ public interface OrderAffairs {
     public boolean deleteOrderAffairs(Order order);
     public int cancelOrderAffairs(Order order);
     public boolean finishOrderAffairs(Order order);
+    public boolean autoFinishOrderAffairs(List<Order> orders);
+    public List<Order> getAllAutoFinishOrders();
+
 }

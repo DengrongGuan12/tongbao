@@ -355,7 +355,15 @@ public class OrderServiceImpl implements OrderService {
 
             order.setState(new Byte("2"));
             if(order.getPayType().equals(new Byte("0"))) {
-                return orderAffairs.finishOrderAffairs(order);
+                if(orderAffairs.finishOrderAffairs(order)){
+                    Map<String,String> extras = new HashMap<String, String>();
+                    extras.put("type",UserServiceIml.order_finished+"");
+                    extras.put("id",orderId+"");
+                    userService.push(order.getDriverId()+"","订单结束！","该订单被已被货主结束，核对付款的金额!",extras);
+                    return true;
+                }else {
+                    return false;
+                }
             }
             if(orderDao.updateOrder(order)){
                 Map<String,String> extras = new HashMap<String, String>();
@@ -436,10 +444,11 @@ public class OrderServiceImpl implements OrderService {
     //TODO
     public List getAllNoGrabOrder(int userId, OrderFilterInfo orderFilterInfo) {
         int userType = userManager.getUserType(userId);
-        if(userType==0){
-            return null;
-        }
         List list = new ArrayList();
+        if(userType==0){
+            return list;
+        }
+
         List listTemp = orderDao.getAllNoGrabOrder(orderFilterInfo.getFromAddress(),orderFilterInfo.getToAddress());
         for(int i = 0;i < listTemp.size();i++){
             Order order = (Order)listTemp.get(i);

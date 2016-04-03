@@ -1,8 +1,10 @@
 package manager;
 
-import com.alibaba.druid.pool.vendor.SybaseExceptionSorter;
-import net.sf.ehcache.util.counter.sampled.TimeStampedCounterValue;
 
+
+import model.UserToken;
+
+import java.sql.Timestamp;
 import java.util.*;
 
 /**
@@ -18,16 +20,26 @@ public class UserManager {
     private static Map<String,Object> all_user_online=new HashMap<String, Object>();
     private static Map<Integer,String>user_auth_code=new HashMap<Integer,String>();
 
+    private static List<UserToken> newAddUserToken = new ArrayList<UserToken>();
+    private static List<UserToken> newUpdateUserToken = new ArrayList<UserToken>();
+
     private static class SingletonHolder {
         private static final UserManager INSTANCE = new UserManager();
     }
     private UserManager(){
-        new clearThread().start();
+
     }
     public static final UserManager getInstance(){
         return SingletonHolder.INSTANCE;
     }
-
+    private UserToken buildUserToken(int userId,String key){
+        UserToken userToken = new UserToken();
+        Timestamp now = new Timestamp(System.currentTimeMillis());
+        userToken.setUserId(userId);
+        userToken.setToken(key);
+        userToken.setLastLoginTime(now);
+        return userToken;
+    }
     /**
      * 把用户加入在线列表，返回key值
      * @param userId
@@ -45,9 +57,11 @@ public class UserManager {
         //删除之前all_user_online表中之前的数据,保证每个用户在online map中是唯一的
         if(user_auth_code.containsKey(userId)){
             all_user_online.remove(user_auth_code.get(userId));
-            user_auth_code.replace(userId,key);
+            user_auth_code.replace(userId, key);
+            newUpdateUserToken.add(this.buildUserToken(userId, key));
         }else{
             user_auth_code.put(userId,key);
+            newAddUserToken.add(this.buildUserToken(userId, key));
         }
 
         all_user_online.put(key,new user_online(userId,userType));
@@ -106,11 +120,36 @@ public class UserManager {
             this.addTime = time;
         }
     }
+    public List<UserToken>getAllNewAddToken(){
+        return newAddUserToken;
+    }
+    public List<UserToken>getAllNewUpdateToken(){
+        return newUpdateUserToken;
+    }
+    public Map<Integer,String>getAllAuthToken(){
+        return user_auth_code;
+    }
+    public boolean initAllUserTokenFromDatabase(List<UserToken> allUserToken){
+        for(int i = 0;i<allUserToken.size();i++){
+            UserToken userToken = allUserToken.get(i);
+            int userId = userToken.getUserId();
+            String key = userToken.getToken();
+            int userType = userToken.getUserType();
+            if(user_auth_code.containsKey(userId)){
+                newUpdateUserToken.add(buildUserToken(userId,user_auth_code.get(userId)));
+            }else{
+                user_auth_code.put(userId,key);
+                all_user_online.put(key,new user_online(userId,userType));
+            }
+        }
+        System.out.println("共从数据库中更新"+allUserToken.size()+"个用户数据。");
+        return true;
+    }
 
     /**
      * 内部类，定时清理过期线程
      *
-     */
+     *
     private class clearThread extends Thread{
         clearThread(){
             setName("clear cache thread");
@@ -139,6 +178,7 @@ public class UserManager {
             }
         }
     }
+     */
 
 
 }

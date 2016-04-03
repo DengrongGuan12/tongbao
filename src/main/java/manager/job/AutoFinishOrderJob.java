@@ -1,23 +1,31 @@
 package manager.job;
 
-import org.quartz.JobExecutionContext;
-import org.quartz.JobKey;
-import org.slf4j.LoggerFactory;
-import org.quartz.Job;
-import org.slf4j.Logger;
-import java.sql.Timestamp;
+import affairs.OrderAffairs;
+import dao.OrderDao;
+import model.Order;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import java.util.List;
 
 /**
  * Created by cg on 2016/3/20.
  */
-public class AutoFinishOrderJob implements Job {
-    private static Logger _log = LoggerFactory.getLogger(AutoFinishOrderJob.class);
-    public AutoFinishOrderJob(){}
-    public void execute(JobExecutionContext context){
-        JobKey jobKey = context.getJobDetail().getKey();
-        _log.info("Auto finish order at "+ new Timestamp(System.currentTimeMillis()));
-
+@Component("autoFinishOrderJob")
+public class AutoFinishOrderJob {
+    private List<Order> allAutoFinishOrders;
+    @Autowired
+    private OrderAffairs orderAffairs;
+    @Autowired
+    private OrderDao orderDao;
+    public void autoFinishOrder(){
+        allAutoFinishOrders = orderAffairs.getAllAutoFinishOrders();
+        System.out.println("需要自动结束的订单个数为：" + allAutoFinishOrders.size());
+        if(allAutoFinishOrders.size()!=0){
+            if(orderAffairs.autoFinishOrderAffairs(allAutoFinishOrders)){
+                allAutoFinishOrders.clear();
+            }
+        }
 
     }
 

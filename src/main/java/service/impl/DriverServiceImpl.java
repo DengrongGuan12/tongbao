@@ -1,9 +1,11 @@
 package service.impl;
 
 
+import dao.DriverGpsDao;
 import dao.Driver_auth_Dao;
 import dao.Truck_type_Dao;
 import manager.UserManager;
+import model.DriverGps;
 import model.Driver_auth;
 import model.Trucks_type;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,7 @@ import service.UserService;
 import vo.TruckDetail;
 import vo.TruckSimple;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -37,6 +40,9 @@ public class DriverServiceImpl implements DriverService {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    DriverGpsDao driverGpsDao;
 
     public List getTruckList(int userId) {
         //根据司机id获取该司机的所有车辆,不用考虑是否是司机，如果不是司机自然不会有车辆
@@ -342,9 +348,18 @@ public class DriverServiceImpl implements DriverService {
     }
 
     public boolean updateMyPosition(int userId, PositionInfo positionInfo) {
-        // TODO: 3/28/2016
         // 更新司机的位置 表 driver_gps, collect_time 是传过来（收集）的时间戳,receive_time 是系统当前时间戳
-
-        return false;
+        int userType = userManager.getUserType(userId);
+        //如果不是司机
+        if(userType!=1){
+            return false;
+        }
+        DriverGps driverGps = new DriverGps();
+        driverGps.setDriver_id(userId);
+        driverGps.setCollect_time(Timestamp.valueOf(positionInfo.getCollectTime()));
+        driverGps.setReceive_time(new Timestamp(System.currentTimeMillis()));
+        driverGps.setLng(positionInfo.getLng());
+        driverGps.setLat(positionInfo.getLat());
+        return driverGpsDao.updateMyPosition(userId,driverGps);
     }
 }

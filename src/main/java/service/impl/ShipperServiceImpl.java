@@ -1,10 +1,8 @@
 package service.impl;
 
-import dao.Frequent_address_Dao;
-import dao.Frequent_driver_Dao;
-import dao.OrderDao;
-import dao.UserDao;
+import dao.*;
 import manager.UserManager;
+import model.DriverGps;
 import model.Frequent_addresses;
 import model.Frequent_driver;
 import model.Order;
@@ -26,13 +24,15 @@ import java.util.List;
 @Service
 public class ShipperServiceImpl implements ShipperService{
     @Autowired
-    UserDao userDao;
+    private UserDao userDao;
     @Autowired
-    Frequent_driver_Dao frequent_driver_dao;
+    private Frequent_driver_Dao frequent_driver_dao;
     @Autowired
-    Frequent_address_Dao frequent_address_dao;
+    private Frequent_address_Dao frequent_address_dao;
     @Autowired
-    OrderDao orderDao;
+    private OrderDao orderDao;
+    @Autowired
+    private DriverGpsDao driverGpsDao;
 
     /*
     这边要判断该user是否是订单的发出者且是否已经完成，如果不是返回false
@@ -66,10 +66,18 @@ public class ShipperServiceImpl implements ShipperService{
     }
 
     public List<DriverPosition> getDriversPosition() {
-        // TODO: 3/28/2016
         //从表 driver_gps 表中获取数据
+        List<DriverGps>allDriverP = driverGpsDao.getAllDriversPosition();
         List<DriverPosition> driverPositions = new ArrayList<DriverPosition>();
-
+        for(DriverGps driverGps : allDriverP){
+            DriverPosition driverPosition = new DriverPosition();
+            driverPosition.setDriverId(driverGps.getDriver_id());
+            driverPosition.setCollectTime(driverGps.getCollect_time().toString());
+            driverPosition.setReceiveTime(driverGps.getReceive_time().toString());
+            driverPosition.setLat(driverGps.getLat());
+            driverPosition.setLng(driverGps.getLng());
+            driverPositions.add(driverPosition);
+        }
         return driverPositions;
     }
 
