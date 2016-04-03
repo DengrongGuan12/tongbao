@@ -7,12 +7,14 @@ import model.UserToken;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * Created by cg on 2016/4/3.
  */
+@Repository
 public class DriverGpsDaoImpl extends BaseDaoImpl implements DriverGpsDao {
     @Override
     public List<DriverGps> getAllDriversPosition() {
