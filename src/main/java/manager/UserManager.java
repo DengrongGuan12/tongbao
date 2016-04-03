@@ -32,12 +32,13 @@ public class UserManager {
     public static final UserManager getInstance(){
         return SingletonHolder.INSTANCE;
     }
-    private UserToken buildUserToken(int userId,String key){
+    private UserToken buildUserToken(int userId,String key,int userType){
         UserToken userToken = new UserToken();
         Timestamp now = new Timestamp(System.currentTimeMillis());
         userToken.setUserId(userId);
         userToken.setToken(key);
         userToken.setLastLoginTime(now);
+        userToken.setUserType(userType);
         return userToken;
     }
     /**
@@ -58,10 +59,10 @@ public class UserManager {
         if(user_auth_code.containsKey(userId)){
             all_user_online.remove(user_auth_code.get(userId));
             user_auth_code.replace(userId, key);
-            newUpdateUserToken.add(this.buildUserToken(userId, key));
+            newUpdateUserToken.add(this.buildUserToken(userId, key,userType));
         }else{
             user_auth_code.put(userId,key);
-            newAddUserToken.add(this.buildUserToken(userId, key));
+            newAddUserToken.add(this.buildUserToken(userId, key,userType));
         }
 
         all_user_online.put(key,new user_online(userId,userType));
@@ -92,16 +93,15 @@ public class UserManager {
         return sb.toString();
     }
     //测试用
-    private String showAllOnlineUser(){
+    public void showAllOnlineUser(){
         Iterator iterator=all_user_online.keySet().iterator();
         while (iterator.hasNext()){
             String t=(String)iterator.next();
             System.out.println(t);
             user_online user_online=(user_online)all_user_online.get(t);
-            System.out.println(user_online.userId);
+            System.out.println(user_online.userId+" "+user_online.userType);
 
         }
-        return null;
     }
 
     /**
@@ -136,7 +136,7 @@ public class UserManager {
             String key = userToken.getToken();
             int userType = userToken.getUserType();
             if(user_auth_code.containsKey(userId)){
-                newUpdateUserToken.add(buildUserToken(userId,user_auth_code.get(userId)));
+                newUpdateUserToken.add(buildUserToken(userId,user_auth_code.get(userId),userType));
             }else{
                 user_auth_code.put(userId,key);
                 all_user_online.put(key,new user_online(userId,userType));

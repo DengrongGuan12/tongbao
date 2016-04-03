@@ -40,7 +40,7 @@
     <!-- Run the job every 60 seconds with initial delay of 60 second -->
     <bean id="simpleTrigger2"  class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
         <property name="jobDetail" ref="simpleJobDetail2" />
-        <property name="startDelay" value="60000" />
+        <property name="startDelay" value="20000" />
         <property name="repeatInterval" value="60000" />
     </bean>
 

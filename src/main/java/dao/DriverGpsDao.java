@@ -10,4 +10,6 @@ import java.util.List;
 public interface DriverGpsDao {
     public List<DriverGps> getAllDriversPosition();
     public boolean updateMyPosition(DriverGps positionInfo);
+    public boolean createDriverPosition(DriverGps driverGps);
+    public DriverGps getMyPosition(int driverId);
 }

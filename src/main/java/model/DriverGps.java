@@ -22,7 +22,7 @@ public class DriverGps {
 
 
     @Id
-    @Column(name="id",nullable = true)
+    @Column(name="id")
     @GeneratedValue(generator = "generator")
     @GenericGenerator(name = "generator",strategy = "increment")
     public int getId() {
@@ -32,7 +32,7 @@ public class DriverGps {
     public void setId(int id) {
         this.id = id;
     }
-    @Column
+    @Column(nullable= false,unique = true)
     public int getDriver_id() {
         return driver_id;
     }

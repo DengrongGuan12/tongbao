@@ -146,7 +146,8 @@ public class OrderAffairsImpl  implements OrderAffairs{
             HibernateUtil.closeSession();
         }
     }
-
+    //TODO
+    //通知货车司机
     @Override
     public boolean autoFinishOrderAffairs(List<Order> orders) {
 
@@ -186,10 +187,12 @@ public class OrderAffairsImpl  implements OrderAffairs{
     @Override
     public List<Order> getAllAutoFinishOrders() {
         //7天之前
+        Date now = new Date();
+        Date sevenDaysAgo = new Date(now.getTime() -(7L*24L*60L*60L*1000L));
         Timestamp timestamp = new Timestamp(System.currentTimeMillis()-7L*24L*60L*60L*1000L);
         Session session = HibernateUtil.getSession();
-        Query query = session.createQuery("from orders as o where o.state = 1 and o.loadTime > :timestamp");
-        query.setTime("timestamp", timestamp);
+        Query query = session.createQuery("from orders as o where o.state = 1 and o.loadTime < :timestamp");
+        query.setTime("timestamp",sevenDaysAgo);
         System.out.println(timestamp);
         return query.list();
     }

@@ -349,17 +349,30 @@ public class DriverServiceImpl implements DriverService {
 
     public boolean updateMyPosition(int userId, PositionInfo positionInfo) {
         // 更新司机的位置 表 driver_gps, collect_time 是传过来（收集）的时间戳,receive_time 是系统当前时间戳
+        //如果表中没有司机位置，就新增一条记录
         int userType = userManager.getUserType(userId);
         //如果不是司机
         if(userType!=1){
             return false;
         }
-        DriverGps driverGps = new DriverGps();
-        driverGps.setDriver_id(userId);
-        driverGps.setCollect_time(Timestamp.valueOf(positionInfo.getCollectTime()));
-        driverGps.setReceive_time(new Timestamp(System.currentTimeMillis()));
-        driverGps.setLng(positionInfo.getLng());
-        driverGps.setLat(positionInfo.getLat());
-        return driverGpsDao.updateMyPosition(driverGps);
+        DriverGps driverGpsTemp = driverGpsDao.getMyPosition(userId);
+        if(driverGpsTemp!=null){
+            driverGpsTemp.setCollect_time(Timestamp.valueOf(positionInfo.getCollectTime()));
+            driverGpsTemp.setDriver_id(userId);
+            driverGpsTemp.setReceive_time(new Timestamp(System.currentTimeMillis()));
+            driverGpsTemp.setLng(positionInfo.getLng());
+            driverGpsTemp.setLat(positionInfo.getLat());
+            return driverGpsDao.updateMyPosition(driverGpsTemp);
+
+        }else {
+            DriverGps driverGps = new DriverGps();
+            driverGps.setDriver_id(userId);
+            driverGps.setCollect_time(Timestamp.valueOf(positionInfo.getCollectTime()));
+            driverGps.setReceive_time(new Timestamp(System.currentTimeMillis()));
+            driverGps.setLng(positionInfo.getLng());
+            driverGps.setLat(positionInfo.getLat());
+            return driverGpsDao.createDriverPosition(driverGps);
+        }
+
     }
 }
