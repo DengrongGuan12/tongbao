@@ -360,6 +360,6 @@ public class DriverServiceImpl implements DriverService {
         driverGps.setReceive_time(new Timestamp(System.currentTimeMillis()));
         driverGps.setLng(positionInfo.getLng());
         driverGps.setLat(positionInfo.getLat());
-        return driverGpsDao.updateMyPosition(userId,driverGps);
+        return driverGpsDao.updateMyPosition(driverGps);
     }
 }
