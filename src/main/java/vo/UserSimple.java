@@ -7,6 +7,16 @@ public class UserSimple {
     private String phoneNum;
     private String nickName;
 
+    public double getMoney() {
+        return money;
+    }
+
+    public void setMoney(double money) {
+        this.money = money;
+    }
+
+    private double money;
+
     public String getRegisterTime() {
         return registerTime;
     }

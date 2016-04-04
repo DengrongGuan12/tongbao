@@ -17,6 +17,7 @@ import service.UserService;
 import vo.ContactDetail;
 import vo.RestResult;
 import vo.UrlInfo;
+import vo.UserSimple;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -294,6 +295,13 @@ public class UserController {
         }else{
             return RestResult.CreateResult(0,"操作失败");
         }
+    }
+    @RequestMapping(value = "/auth/getMoney",method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult getMoney(@ModelAttribute("TokenAuthInfo")TokenAuthInfo tokenAuthInfo){
+        int userId = userService.hasLogin(tokenAuthInfo.getToken());
+        UserSimple userSimple = userService.getUserSimpleById(userId);
+        return RestResult.CreateResult(1,userSimple);
     }
     @RequestMapping(value = "/testJPush",method = RequestMethod.GET)
     @ResponseBody

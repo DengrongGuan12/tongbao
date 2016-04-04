@@ -538,6 +538,17 @@ public class UserServiceIml implements UserService {
         }
     }
 
+    public UserSimple getUserSimpleById(int id) {
+        User user = userDao.getUserById(id);
+        UserSimple userSimple = new UserSimple();
+        userSimple.setId(id);
+        userSimple.setMoney(user.getMoney());
+        userSimple.setPhoneNum(user.getPhone_number());
+        userSimple.setNickName(user.getNick_name());
+        userSimple.setRegisterTime(user.getRegister_time().toString());
+        return userSimple;
+    }
+
     public PushPayload buildPushObject_all_all_alert() {
         Map<String,String> extras = new HashMap<String, String>();
         return PushPayload.newBuilder()

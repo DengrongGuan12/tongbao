@@ -3,6 +3,7 @@ package service;
 import cn.jpush.api.push.model.PushPayload;
 import model.User;
 import vo.ContactDetail;
+import vo.UserSimple;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -41,6 +42,7 @@ public interface UserService {
     public List getAllUsersByType(Byte type);
     public int addFile(String path);
     public String getFilePathById(int id);
+    public UserSimple getUserSimpleById(int id);
 
     public PushPayload buildPushObject_all_all_alert();
     public void push(String alias, String title, String content, Map<String,String> extras);
