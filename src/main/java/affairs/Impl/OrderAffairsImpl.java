@@ -8,17 +8,24 @@ import model.User;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import service.UserService;
+import service.impl.UserServiceIml;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by cg on 2016/3/8.
  */
 @Repository
 public class OrderAffairsImpl  implements OrderAffairs{
+    @Autowired
+    UserService userService;
         //保存使用事务办法，包含订单，订单用车类型，账单，更新用户账户
         public int saveOrderAffairs(Order order,String [] tTypes){
             Session session = HibernateUtil.getSession();
@@ -146,8 +153,6 @@ public class OrderAffairsImpl  implements OrderAffairs{
             HibernateUtil.closeSession();
         }
     }
-    //TODO
-    //通知货车司机
     @Override
     public boolean autoFinishOrderAffairs(List<Order> orders) {
 
@@ -171,6 +176,10 @@ public class OrderAffairsImpl  implements OrderAffairs{
                     double moneyNow = user.getMoney() + order.getPrice();
                     user.setMoney(moneyNow);
                     session.update(user);//到账
+                    Map<String,String> extras = new HashMap<String, String>();
+                    extras.put("type", UserServiceIml.order_finished+"");
+                    extras.put("id",order.getId()+"");
+                    userService.push(order.getDriverId()+"","订单结束！","该订单被已被货主结束，核对付款的金额!",extras);
                 }
 
             }
