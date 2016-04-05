@@ -14,7 +14,7 @@ public interface OrderService {
     public boolean deleteOrder(int userId, int orderId);
     public int cancelOrder(int userId, int orderId);
     public boolean finishOrder(int userId, int orderId);
-    public boolean grabOrder(int userId, int orderId);
+    public String grabOrder(int userId, int orderId);
     public List getAllNoGrabOrder(int userId,OrderFilterInfo orderFilterInfo);
     public OrderDetail getOrderDetail(int userId, int orderId);
     public boolean splitOrder(int userId, OrderInfo orderInfo);

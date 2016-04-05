@@ -10,6 +10,7 @@ import pojo.*;
 import service.DriverService;
 import service.OrderService;
 import service.UserService;
+import service.impl.OrderServiceImpl;
 import vo.OrderDetail;
 import vo.RestResult;
 import vo.TruckDetail;
@@ -126,10 +127,11 @@ public class DriverController {
     @ResponseBody
     public RestResult grabOrder(@ModelAttribute("IdInfoWithAuth") IdInfoWithAuth idInfoWithAuth){
         int userId = userService.hasLogin(idInfoWithAuth.getToken());
-        if(orderService.grabOrder(userId, idInfoWithAuth.getId())){
+        String res = orderService.grabOrder(userId, idInfoWithAuth.getId());
+        if(res.equals(OrderServiceImpl.grab_suc)){
             return RestResult.CreateResult(1);
         }else{
-            return RestResult.CreateResult(0,"抢单失败!");
+            return RestResult.CreateResult(0,res);
         }
     }
     @RequestMapping(value = "/auth/updateMyPostion", method = RequestMethod.POST)

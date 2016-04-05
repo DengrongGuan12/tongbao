@@ -380,10 +380,13 @@ public class OrderServiceImpl implements OrderService {
 
     }
 
+    public static final String grab_forbidden = "forbidden";
+    public static final String grab_unable = "truck not match";
+    public static final String grab_suc = "success";
     /*
     需要判断该用户是否司机以及该订单是否是处在尚未被抢的状态
      */
-    public boolean grabOrder(int userId, int orderId) {
+    public String grabOrder(int userId, int orderId) {
         int userType = userManager.getUserType(userId);
         Order order = orderDao.showOrderDetail(orderId);
         if(userType==1&&order.getState()==0){
@@ -397,10 +400,12 @@ public class OrderServiceImpl implements OrderService {
                 extras.put("type",UserServiceIml.order_grabbed+"");
                 extras.put("id",orderId+"");
                 userService.push(order.getShipperId()+"","订单被抢","您的订单被司机抢到了，请尽快联系司机!",extras);
-                return true;
+                return grab_suc;
+            }else{
+                return grab_unable;
             }
         }
-        return false;
+        return grab_forbidden;
     }
     //判断司机是否有足够车辆进行抢单
     private boolean matchOrder(int driverId,int orderId){
