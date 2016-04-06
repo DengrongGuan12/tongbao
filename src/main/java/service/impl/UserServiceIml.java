@@ -549,28 +549,37 @@ public class UserServiceIml implements UserService {
         return userSimple;
     }
 
-    public PushPayload buildPushObject_all_all_alert() {
+    public PushPayload buildPushObject_all_all_alert(String tag) {
         Map<String,String> extras = new HashMap<String, String>();
+        extras.put("type","0");
+        extras.put("id","1");
         return PushPayload.newBuilder()
-                .setPlatform(Platform.android())
-                .setAudience(Audience.tag("shipper"))
+                .setPlatform(Platform.all())
+                .setAudience(Audience.tag(tag))
                 .setNotification(Notification.android("内容", "标题",extras))
                 .build();
     }
 
-    public void push(String alias, String title, String content, Map<String,String> extras) {
+    public PushResult push(String alias, String title, String content, Map<String,String> extras) {
         PushPayload pushPayload =  PushPayload.newBuilder()
                 .setPlatform(Platform.android_ios())
                 .setAudience(Audience.alias(alias))
-                .setNotification(Notification.android(content, title,extras))
+//                .setNotification(Notification.android(content, title,extras))
+                .setMessage(cn.jpush.api.push.model.Message.newBuilder()
+                        .setTitle(title)
+                        .setMsgContent(content)
+                        .addExtras(extras)
+                        .build())
                 .build();
         JPushClient jPushClient = new JPushClient("9f5b375a48f78a79f18aaa0c","12be19e543158d0d057b2d09",3);
         try {
             PushResult pushResult = jPushClient.sendPush(pushPayload);
+            return pushResult;
         } catch (APIConnectionException e) {
             e.printStackTrace();
         } catch (APIRequestException e) {
             e.printStackTrace();
         }
+        return null;
     }
 }

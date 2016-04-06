@@ -23,7 +23,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.*;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by cg on 2015/12/29.
@@ -305,16 +307,23 @@ public class UserController {
     }
     @RequestMapping(value = "/testJPush",method = RequestMethod.GET)
     @ResponseBody
-    public RestResult testJPush(){
-        JPushClient jPushClient = new JPushClient("9f5b375a48f78a79f18aaa0c","12be19e543158d0d057b2d09",3);
-        PushPayload payload = userService.buildPushObject_all_all_alert();
-        try {
-            PushResult pushResult = jPushClient.sendPush(payload);
+    public RestResult testJPush(@RequestParam("alias")String alias){
+//        JPushClient jPushClient = new JPushClient("9f5b375a48f78a79f18aaa0c","12be19e543158d0d057b2d09",3);
+//        PushPayload payload = userService.buildPushObject_all_all_alert(tag);
+//        try {
+//            PushResult pushResult = jPushClient.sendPush(payload);
+//            return RestResult.CreateResult(1,pushResult);
+//        } catch (APIConnectionException e) {
+//            e.printStackTrace();
+//        } catch (APIRequestException e) {
+//            e.printStackTrace();
+//        }
+        Map<String,String> extras = new HashMap<String, String>();
+        extras.put("type","0");
+        extras.put("id","1");
+        PushResult pushResult = userService.push(alias,"title","content",extras);
+        if(pushResult != null){
             return RestResult.CreateResult(1,pushResult);
-        } catch (APIConnectionException e) {
-            e.printStackTrace();
-        } catch (APIRequestException e) {
-            e.printStackTrace();
         }
         return RestResult.CreateResult(0,"failure!");
 
