@@ -778,6 +778,7 @@ public class OrderServiceImpl implements OrderService {
 //                    truckTypeDao.getTruckType(orderTruckType.getTruckType());
             truckNames.add(trucks_type.getName());
         }
+        orderSimple.setTruckTypes(truckNames);
 
         return orderSimple;
     }

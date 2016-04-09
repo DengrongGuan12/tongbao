@@ -4,7 +4,7 @@ package pojo;
  * Created by DengrongGuan on 2016/1/10.
  */
 public class OrderFilterInfo extends TokenAuthInfo {
-    private String fromAddress;
+    private String fromAddress = "";
 
     public String getToAddress() {
         return toAddress;
@@ -22,6 +22,6 @@ public class OrderFilterInfo extends TokenAuthInfo {
         this.fromAddress = fromAddress;
     }
 
-    private String toAddress;
+    private String toAddress = "";
 
 }
