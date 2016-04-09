@@ -46,8 +46,6 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     OrderAffairs orderAffairs;
 
-
-
     /*
     创建订单时要考虑是否有匹配的司机，如果成功返回1，找不到匹配的司机返回2，其他失败(如用户不是货主就没有权限创建)返回0
      */
@@ -392,18 +390,19 @@ public class OrderServiceImpl implements OrderService {
         if(userType==1&&order.getState()==0){
 
 
-            if(this.matchOrder(userId,orderId)){
-                order.setDriverId(orderId);
-                order.setState(new Byte("1"));
-                orderDao.updateOrder(order);
-                Map<String,String> extras = new HashMap<String, String>();
-                extras.put("type",UserServiceIml.order_grabbed+"");
-                extras.put("id",orderId+"");
-                userService.push(order.getShipperId()+"","订单被抢","您的订单被司机抢到了，请尽快联系司机!",extras);
-                return grab_suc;
-            }else{
-                return grab_unable;
-            }
+//            if(this.matchOrder(userId,orderId)){
+//
+//            }else{
+//                return grab_unable;
+//            }
+            order.setDriverId(orderId);
+            order.setState(new Byte("1"));
+            orderDao.updateOrder(order);
+            Map<String,String> extras = new HashMap<String, String>();
+            extras.put("type",UserServiceIml.order_grabbed+"");
+            extras.put("id",orderId+"");
+            userService.push(order.getShipperId()+"","订单被抢","您的订单被司机抢到了，请尽快联系司机!",extras);
+            return grab_suc;
         }
         return grab_forbidden;
     }
@@ -754,8 +753,9 @@ public class OrderServiceImpl implements OrderService {
     /*
     根据order 生成orderSimple
      */
+//    Map map  = truckTypeDao.getAllTruckTypeMap();
     private OrderSimple genOrderSimpleFromOrder(Order order){
-        Map map  = truckTypeDao.getAllTruckTypeMap();
+//        Map map  = truckTypeDao.getAllTruckTypeMap();
         OrderSimple orderSimple = new OrderSimple();
         orderSimple.setId(order.getId());
         orderSimple.setTime(order.getBuildTime()+"");
@@ -774,9 +774,8 @@ public class OrderServiceImpl implements OrderService {
         List truckTypes = orderTruckTypeDao.getTruckTypesByOrderId(order.getId());
         for (Object object:truckTypes){
             OrderTruckType orderTruckType = (OrderTruckType)object;
-            Trucks_type trucks_type = (Trucks_type) map.get(orderTruckType.getTruckType());
-//                    truckTypeDao.getTruckType(orderTruckType.getTruckType());
-            truckNames.add(trucks_type.getName());
+//            Trucks_type trucks_type = (Trucks_type) map.get(orderTruckType.getTruckType());
+            truckNames.add(orderTruckType.getTruckType());
         }
         orderSimple.setTruckTypes(truckNames);
 
