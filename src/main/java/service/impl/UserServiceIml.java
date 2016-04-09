@@ -582,4 +582,9 @@ public class UserServiceIml implements UserService {
         }
         return null;
     }
+
+    public boolean addFeedback(String feedback) {
+        // TODO: 4/9/2016  
+        return true;
+    }
 }

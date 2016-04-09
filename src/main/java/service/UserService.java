@@ -47,4 +47,6 @@ public interface UserService {
 
     public PushPayload buildPushObject_all_all_alert(String tag);
     public PushResult push(String alias, String title, String content, Map<String,String> extras);
+
+    public boolean addFeedback(String feedback);
 }

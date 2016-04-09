@@ -328,5 +328,14 @@ public class UserController {
         return RestResult.CreateResult(0,"failure!");
 
     }
+    @RequestMapping(value = "/addFeedback",method = RequestMethod.GET)
+    @ResponseBody
+    public RestResult addFeedback(@RequestParam("content")String content){
+        if(userService.addFeedback(content)){
+            return RestResult.CreateResult(1);
+        }else{
+            return RestResult.CreateResult(0,"error");
+        }
+    }
 
 }
