@@ -449,7 +449,7 @@ public class OrderServiceImpl implements OrderService {
     public List getAllNoGrabOrder(int userId, OrderFilterInfo orderFilterInfo) {
         int userType = userManager.getUserType(userId);
         List list = new ArrayList();
-        if(userType==0){
+        if(userType==0||orderFilterInfo.getFromAddress()==null||orderFilterInfo.getToAddress()==null){
             return list;
         }
 

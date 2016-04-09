@@ -1,16 +1,8 @@
 package dao.impl;
 
-import affairs.Impl.HibernateUtil;
 import dao.DriverGpsDao;
 import model.DriverGps;
-import model.Driver_auth;
-import model.UserToken;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**

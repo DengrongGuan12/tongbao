@@ -5,19 +5,18 @@ import model.Account;
 import model.Order;
 import model.OrderTruckType;
 import model.User;
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import service.UserService;
 import service.impl.UserServiceIml;
 
 import java.sql.Timestamp;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by cg on 2016/3/8.
@@ -196,13 +195,28 @@ public class OrderAffairsImpl  implements OrderAffairs{
     @Override
     public List<Order> getAllAutoFinishOrders() {
         //7天之前
+//        Date now = new Date();
+//        Date sevenDaysAgo = new Date(now.getTime() -(7L*24L*60L*60L*1000L));
+//        Timestamp timestamp = new Timestamp(System.currentTimeMillis()-7L*24L*60L*60L*1000L);
+//        Session session = HibernateUtil.getSession();
+//        Query query = session.createQuery("from orders as o where o.state = 1 and o.loadTime < :timestamp");
+//        query.setTime("timestamp",timestamp);
+//        System.out.println(timestamp+"timestamp");
+//        return query.list();
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.YEAR,1970);
+        calendar.set(Calendar.MONTH,1);
+        calendar.set(Calendar.DATE,1);
+        calendar.set(Calendar.HOUR_OF_DAY,0);
+        calendar.set(Calendar.MINUTE,0);
+        calendar.set(Calendar.SECOND,0);
+        Date fromDate = calendar.getTime();
         Date now = new Date();
         Date sevenDaysAgo = new Date(now.getTime() -(7L*24L*60L*60L*1000L));
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis()-7L*24L*60L*60L*1000L);
-        Session session = HibernateUtil.getSession();
-        Query query = session.createQuery("from orders as o where o.state = 1 and o.loadTime < :timestamp");
-        query.setTime("timestamp",sevenDaysAgo);
-        System.out.println(timestamp);
-        return query.list();
+        Session sess = HibernateUtil.getSession();
+        Criteria criteria = sess.createCriteria(Order.class);
+        criteria.add(Restrictions.between("loadTime", fromDate, sevenDaysAgo));
+        criteria.add(Restrictions.eq("state",new Byte("1")));
+        return criteria.list();
     }
 }
