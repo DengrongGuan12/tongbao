@@ -335,12 +335,18 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "/getAccountByMonth",method = RequestMethod.GET)
+    @RequestMapping(value = "/auth/getAccountByMonth",method = RequestMethod.GET)
     @ResponseBody
     public RestResult getAccountByMonth(@RequestParam("token")String token,@RequestParam("year")int year,@RequestParam("month")int month){
         int userId = userService.hasLogin(token);
         MonthAccount monthAccount = userService.getAccountByMonth(userId,year,month);
         return RestResult.CreateResult(1,monthAccount);
+    }
+
+    @RequestMapping(value = "/getBannerInfo",method = RequestMethod.GET)
+    @ResponseBody
+    public RestResult getBannerInfo(){
+        return RestResult.CreateResult(1,userService.getBannerInfoList());
     }
 
 }

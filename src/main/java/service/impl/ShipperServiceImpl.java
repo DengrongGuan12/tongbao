@@ -65,6 +65,11 @@ public class ShipperServiceImpl implements ShipperService{
         return frequent_driver_dao.addFrequentDriver(frequent_driver);
     }
 
+    public boolean deleteFrequentDriver(int userId, int driverId) {
+        // TODO: 4/10/2016  删除我的某个常用司机
+        return true;
+    }
+
     public List<DriverPosition> getDriversPosition() {
         //从表 driver_gps 表中获取数据
         List<DriverGps>allDriverP = driverGpsDao.getAllDriversPosition();
@@ -119,6 +124,7 @@ public class ShipperServiceImpl implements ShipperService{
             address.setName(fa.getAddress());
             address.setContactName(fa.getContact_name());
             address.setContactPhone(fa.getContact_phone());
+            address.setId(fa.getId());
             list.add(address);
         }
 
@@ -157,8 +163,15 @@ public class ShipperServiceImpl implements ShipperService{
         return frequent_address_dao.addFrequentAddress(fa);
     }
 
+    public boolean editFrequentAddress(int userId, AddressInfo addressInfo) {
+        // TODO: 4/10/2016  更新常用地址信息，addressInfo中有id的信息，只更新不为null的值，注意只能更新自己的
+        return true;
+    }
 
-
+    public boolean deleteFrequentAddress(int userId, int id) {
+        // TODO: 4/10/2016  根据id删除常用地址, 注意只能删除自己的
+        return true;
+    }
 
 
 }

@@ -4,6 +4,17 @@ package pojo;
  * Created by DengrongGuan on 2016/1/10.
  */
 public class AddressInfo extends TokenAuthInfo {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    private int id;
+
+
     public String getAddress() {
         return address;
     }

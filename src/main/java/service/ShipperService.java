@@ -14,6 +14,9 @@ public interface ShipperService {
     public List getFrequentAddresses(int userId);
     public List searchDriversByPhoneNum(String phoneNum);
     public boolean addFrequentAddress(int userId, AddressInfo addressInfo);
+    public boolean editFrequentAddress(int userId, AddressInfo addressInfo);
+    public boolean deleteFrequentAddress(int userId, int id);
     public boolean addFrequentDriver(int userId, int driverId);
+    public boolean deleteFrequentDriver(int userId, int driverId);
     public List<DriverPosition> getDriversPosition();
 }

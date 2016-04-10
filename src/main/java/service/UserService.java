@@ -51,4 +51,5 @@ public interface UserService {
 
     public boolean addFeedback(String feedback);
     public MonthAccount getAccountByMonth(int userId, int year, int month);
+    public List getBannerInfoList();
 }

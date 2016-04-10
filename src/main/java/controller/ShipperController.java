@@ -42,6 +42,26 @@ public class ShipperController {
         List list = shipperService.getFrequentAddresses(userId);
         return RestResult.CreateResult(1,list);
     }
+    @RequestMapping(value = "/auth/deleteFrequentAddress",method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult deleteFrequentAddress(@RequestParam("token")String token, @RequestParam("id")int id){
+        int userId = userService.hasLogin(token);
+        if(shipperService.deleteFrequentAddress(userId,id)){
+            return RestResult.CreateResult(1);
+        }else {
+            return RestResult.CreateResult(0,"删除错误!");
+        }
+    }
+    @RequestMapping(value = "/auth/editFrequentAddress", method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult editFrequentAddress(@ModelAttribute("AddressInfo")AddressInfo addressInfo){
+        int userId = userService.hasLogin(addressInfo.getToken());
+        if(shipperService.editFrequentAddress(userId,addressInfo)){
+            return RestResult.CreateResult(1);
+        }else{
+            return RestResult.CreateResult(0,"更新失败!");
+        }
+    }
     @RequestMapping(value = "/auth/addFrequentDriver",method = RequestMethod.POST)
     @ResponseBody
     public RestResult addFrequentDriver(@ModelAttribute("UserIdInfoWithAuth")UserIdInfoWithAuth userIdInfoWithAuth){
@@ -50,6 +70,17 @@ public class ShipperController {
             return RestResult.CreateResult(1);
         }else {
             return RestResult.CreateResult(0,"添加失败!");
+        }
+    }
+
+    @RequestMapping(value = "/auth/deleteFrequentDriver",method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult deleteFrequentDriver(@ModelAttribute("UserIdInfoWithAuth")UserIdInfoWithAuth userIdInfoWithAuth){
+        int userId = userService.hasLogin(userIdInfoWithAuth.getToken());
+        if(shipperService.deleteFrequentDriver(userId,userIdInfoWithAuth.getId())){
+            return RestResult.CreateResult(1);
+        }else {
+            return RestResult.CreateResult(0,"删除失败!");
         }
     }
 

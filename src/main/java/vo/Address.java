@@ -4,6 +4,15 @@ package vo;
  * Created by I322233 on 1/8/2016.
  */
 public class Address {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    private int id;
     private double lat;
     private double lng;
     private String contactName;

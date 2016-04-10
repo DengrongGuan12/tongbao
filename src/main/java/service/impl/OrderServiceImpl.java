@@ -395,7 +395,7 @@ public class OrderServiceImpl implements OrderService {
 //            }else{
 //                return grab_unable;
 //            }
-            order.setDriverId(orderId);
+            order.setDriverId(userId);
             order.setState(new Byte("1"));
             orderDao.updateOrder(order);
             Map<String,String> extras = new HashMap<String, String>();
