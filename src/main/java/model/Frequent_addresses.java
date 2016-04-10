@@ -16,6 +16,11 @@ public class Frequent_addresses implements Serializable{
     private String address;
     private double lat;
     private double lng;
+
+
+
+    private String contact_name;
+    private String contact_phone;
     @Column
     public double getLat() {
         return lat;
@@ -60,4 +65,22 @@ public class Frequent_addresses implements Serializable{
     public void setAddress(String address) {
         this.address = address;
     }
+    @Column
+    public String getContact_name() {
+        return contact_name;
+    }
+
+    public void setContact_name(String contact_name) {
+        this.contact_name = contact_name;
+    }
+
+    @Column
+    public String getContact_phone() {
+        return contact_phone;
+    }
+
+    public void setContact_phone(String contact_phone) {
+        this.contact_phone = contact_phone;
+    }
+
 }

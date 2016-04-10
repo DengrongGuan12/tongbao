@@ -117,6 +117,8 @@ public class ShipperServiceImpl implements ShipperService{
             address.setLat(fa.getLat());
             address.setLng(fa.getLng());
             address.setName(fa.getAddress());
+            address.setContactName(fa.getContact_name());
+            address.setContactPhone(fa.getContact_phone());
             list.add(address);
         }
 
@@ -150,6 +152,8 @@ public class ShipperServiceImpl implements ShipperService{
         fa.setAddress(addressInfo.getAddress());
         fa.setLat(addressInfo.getLat());
         fa.setLng(addressInfo.getLng());
+        fa.setContact_name(addressInfo.getContactName());
+        fa.setContact_phone(addressInfo.getContactPhone());
         return frequent_address_dao.addFrequentAddress(fa);
     }
 

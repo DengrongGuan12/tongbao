@@ -6,6 +6,25 @@ package vo;
 public class Address {
     private double lat;
     private double lng;
+    private String contactName;
+
+    public String getContactPhone() {
+        return contactPhone;
+    }
+
+    public void setContactPhone(String contactPhone) {
+        this.contactPhone = contactPhone;
+    }
+
+    public String getContactName() {
+        return contactName;
+    }
+
+    public void setContactName(String contactName) {
+        this.contactName = contactName;
+    }
+
+    private String contactPhone;
 
     public String getName() {
         return name;

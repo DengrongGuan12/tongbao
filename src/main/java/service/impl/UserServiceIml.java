@@ -587,4 +587,14 @@ public class UserServiceIml implements UserService {
         // TODO: 4/9/2016  
         return true;
     }
+
+    public MonthAccount getAccountByMonth(int userId, int year, int month) {
+        // TODO: 4/10/2016  根据年月获取某个用户的账单列表，需要这个月的总收入（type为0，3，4的和）和总支出（type为1，2的和） 
+        MonthAccount monthAccount = new MonthAccount();
+        monthAccount.setTotalIn(12.3);
+        monthAccount.setTotalOut(14.5);
+        List accountList = new ArrayList<Account>();
+        monthAccount.setAccountList(accountList);
+        return monthAccount;
+    }
 }

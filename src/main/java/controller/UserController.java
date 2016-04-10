@@ -14,10 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import pojo.*;
 import service.OrderService;
 import service.UserService;
-import vo.ContactDetail;
-import vo.RestResult;
-import vo.UrlInfo;
-import vo.UserSimple;
+import vo.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -336,6 +333,14 @@ public class UserController {
         }else{
             return RestResult.CreateResult(0,"error");
         }
+    }
+
+    @RequestMapping(value = "/getAccountByMonth",method = RequestMethod.GET)
+    @ResponseBody
+    public RestResult getAccountByMonth(@RequestParam("token")String token,@RequestParam("year")int year,@RequestParam("month")int month){
+        int userId = userService.hasLogin(token);
+        MonthAccount monthAccount = userService.getAccountByMonth(userId,year,month);
+        return RestResult.CreateResult(1,monthAccount);
     }
 
 }

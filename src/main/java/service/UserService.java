@@ -4,6 +4,7 @@ import cn.jpush.api.push.PushResult;
 import cn.jpush.api.push.model.PushPayload;
 import model.User;
 import vo.ContactDetail;
+import vo.MonthAccount;
 import vo.UserSimple;
 
 import javax.servlet.http.HttpSession;
@@ -49,4 +50,5 @@ public interface UserService {
     public PushResult push(String alias, String title, String content, Map<String,String> extras);
 
     public boolean addFeedback(String feedback);
+    public MonthAccount getAccountByMonth(int userId, int year, int month);
 }
