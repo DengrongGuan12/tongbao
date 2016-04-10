@@ -66,8 +66,8 @@ public class ShipperServiceImpl implements ShipperService{
     }
 
     public boolean deleteFrequentDriver(int userId, int driverId) {
-        // TODO: 4/10/2016  删除我的某个常用司机
-        return true;
+        //   删除我的某个常用司机
+        return frequent_driver_dao.deleteFrequentDriver(userId,driverId);
     }
 
     public List<DriverPosition> getDriversPosition() {
@@ -164,13 +164,37 @@ public class ShipperServiceImpl implements ShipperService{
     }
 
     public boolean editFrequentAddress(int userId, AddressInfo addressInfo) {
-        // TODO: 4/10/2016  更新常用地址信息，addressInfo中有id的信息，只更新不为null的值，注意只能更新自己的
-        return true;
+        // 更新常用地址信息，addressInfo中有id的信息，只更新不为null的值，注意只能更新自己的
+        Frequent_addresses frequent_addresses = frequent_address_dao.getFrequent_address(addressInfo.getId());
+        if(frequent_addresses==null||frequent_addresses.getShipper_id()!=userId){
+            return false;
+        }
+        if(addressInfo.getAddress()!=null){
+            frequent_addresses.setAddress(addressInfo.getAddress());
+        }
+        if(addressInfo.getContactName()!=null){
+            frequent_addresses.setContact_name(addressInfo.getContactName());
+        }
+        if(addressInfo.getContactPhone()!=null){
+            frequent_addresses.setContact_phone(addressInfo.getContactPhone());
+        }
+        if(addressInfo.getLat()!=0){
+            frequent_addresses.setLat(addressInfo.getLat());
+        }
+        if(addressInfo.getLng()!=0){
+            frequent_addresses.setLng(addressInfo.getLng());
+        }
+
+        return frequent_address_dao.updateFrequentAddress(frequent_addresses);
     }
 
     public boolean deleteFrequentAddress(int userId, int id) {
-        // TODO: 4/10/2016  根据id删除常用地址, 注意只能删除自己的
-        return true;
+        //  根据id删除常用地址, 注意只能删除自己的
+        Frequent_addresses frequent_addresses = frequent_address_dao.getFrequent_address(id);
+        if(frequent_addresses==null||frequent_addresses.getShipper_id()!=userId){
+            return false;
+        }
+        return frequent_address_dao.deleteFrequentAddressByShipperId(id, userId);
     }
 
 
