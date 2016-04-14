@@ -47,7 +47,7 @@ public interface UserService {
     public UserSimple getUserSimpleById(int id);
 
     public PushPayload buildPushObject_all_all_alert(String tag);
-    public PushResult push(String alias, String title, String content, Map<String,String> extras);
+    public PushResult push(String alias, String title, String content, Map<String,String> extras,String userType);
 
     public boolean addFeedback(String feedback);
     public MonthAccount getAccountByMonth(int userId, int year, int month);

@@ -300,7 +300,7 @@ public class OrderServiceImpl implements OrderService {
                     Map<String,String> extras = new HashMap<String, String>();
                     extras.put("type",UserServiceIml.order_cancel_request+"");
                     extras.put("id",orderId+"");
-                    userService.push(order.getDriverId()+"","订单取消！","该订单被货主要求取消，请根据实际情况进行选择!",extras);
+                    userService.push(order.getDriverId()+"","订单取消！","该订单被货主要求取消，请根据实际情况进行选择!",extras,UserServiceIml.userType_driver);
                     return 2;
                 }else{
                     //状态为4，正在被取消中
@@ -319,14 +319,14 @@ public class OrderServiceImpl implements OrderService {
                     Map<String,String> extras = new HashMap<String, String>();
                     extras.put("type",UserServiceIml.order_canceled+"");
                     extras.put("id",orderId+"");
-                    userService.push(order.getDriverId()+"","订单取消！","该订单已被司机取消，正在等待新的司机!",extras);
+                    userService.push(order.getShipperId()+"","订单取消！","该订单已被司机取消，正在等待新的司机!",extras,UserServiceIml.userType_shipper);
                 }else{
                     //状态为4
                     order.setState(new Byte("3"));
                     Map<String,String> extras = new HashMap<String, String>();
                     extras.put("type",UserServiceIml.order_canceled+"");
                     extras.put("id",orderId+"");
-                    userService.push(order.getDriverId()+"","订单取消！","该订单按您的要求已被司机取消!",extras);
+                    userService.push(order.getShipperId()+"","订单取消！","该订单按您的要求已被司机取消!",extras,UserServiceIml.userType_shipper);
                     if(order.getPayType().equals(new Byte("0"))){
                         return orderAffairs.cancelOrderAffairs(order);
                     }
@@ -357,7 +357,7 @@ public class OrderServiceImpl implements OrderService {
                     Map<String,String> extras = new HashMap<String, String>();
                     extras.put("type",UserServiceIml.order_finished+"");
                     extras.put("id",orderId+"");
-                    userService.push(order.getDriverId()+"","订单结束！","该订单被已被货主结束，核对付款的金额!",extras);
+                    userService.push(order.getDriverId()+"","订单结束！","该订单被已被货主结束，核对付款的金额!",extras,UserServiceIml.userType_driver);
                     return true;
                 }else {
                     return false;
@@ -367,7 +367,7 @@ public class OrderServiceImpl implements OrderService {
                 Map<String,String> extras = new HashMap<String, String>();
                 extras.put("type",UserServiceIml.order_finished+"");
                 extras.put("id",orderId+"");
-                userService.push(order.getDriverId()+"","订单结束！","该订单被已被货主结束，核对付款的金额!",extras);
+                userService.push(order.getDriverId()+"","订单结束！","该订单被已被货主结束，核对付款的金额!",extras,UserServiceIml.userType_driver);
                 return true;
             }
             return false;
@@ -401,7 +401,7 @@ public class OrderServiceImpl implements OrderService {
             Map<String,String> extras = new HashMap<String, String>();
             extras.put("type",UserServiceIml.order_grabbed+"");
             extras.put("id",orderId+"");
-            userService.push(order.getShipperId()+"","订单被抢","您的订单被司机抢到了，请尽快联系司机!",extras);
+            userService.push(order.getShipperId()+"","订单被抢","您的订单被司机抢到了，请尽快联系司机!",extras,UserServiceIml.userType_shipper);
             return grab_suc;
         }
         return grab_forbidden;
@@ -733,7 +733,7 @@ public class OrderServiceImpl implements OrderService {
                     Map<String,String> extras = new HashMap<String, String>();
                     extras.put("type",UserServiceIml.order_canceled+"");
                     extras.put("id",id+"");
-                    userService.push(order.getShipperId()+"","订单被管理员取消!","您的订单被管理员取消了，付款已被退还!",extras);
+                    userService.push(order.getShipperId()+"","订单被管理员取消!","您的订单被管理员取消了，付款已被退还!",extras,UserServiceIml.userType_shipper);
                     return true;
                 }
                 return false;
@@ -743,7 +743,7 @@ public class OrderServiceImpl implements OrderService {
             Map<String,String> extras = new HashMap<String, String>();
             extras.put("type",UserServiceIml.order_canceled+"");
             extras.put("id",id+"");
-            userService.push(order.getShipperId()+"","订单被管理员取消!","您的订单被管理员取消了!",extras);
+            userService.push(order.getShipperId()+"","订单被管理员取消!","您的订单被管理员取消了!",extras,UserServiceIml.userType_shipper);
             return true;
         }else{
             return false;

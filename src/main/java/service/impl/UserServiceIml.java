@@ -67,6 +67,9 @@ public class UserServiceIml implements UserService {
     public static final int truck_auth_pass = 4;
     public static final int truck_auth_fail = 5;
 
+    public static String userType_driver = "driver";
+    public static String userType_shipper = "shipper";
+
     public User getUserByPhoneNumber(String phoneNumber) {
         return userDao.getUserByPhoneNumber(phoneNumber);
     }
@@ -560,7 +563,7 @@ public class UserServiceIml implements UserService {
                 .build();
     }
 
-    public PushResult push(String alias, String title, String content, Map<String,String> extras) {
+    public PushResult push(String alias, String title, String content, Map<String,String> extras,String userType) {
         PushPayload pushPayload =  PushPayload.newBuilder()
                 .setPlatform(Platform.android_ios())
                 .setAudience(Audience.alias(alias))
@@ -571,7 +574,13 @@ public class UserServiceIml implements UserService {
                         .addExtras(extras)
                         .build())
                 .build();
-        JPushClient jPushClient = new JPushClient("9f5b375a48f78a79f18aaa0c","12be19e543158d0d057b2d09",3);
+
+        JPushClient jPushClient = null;
+        if(userType.equals(userType_shipper)){
+            jPushClient = new JPushClient("f3c822aa7d23171dc35e351a","0bfdf19308d2b4265b5d467d",3);
+        }else{
+            jPushClient = new JPushClient("9f5b375a48f78a79f18aaa0c","12be19e543158d0d057b2d09",3);
+        }
         try {
             PushResult pushResult = jPushClient.sendPush(pushPayload);
             return pushResult;
