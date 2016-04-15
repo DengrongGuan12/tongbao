@@ -7,6 +7,16 @@ public class UserSimple {
     private String phoneNum;
     private String nickName;
 
+    public String getIconUrl() {
+        return iconUrl;
+    }
+
+    public void setIconUrl(String iconUrl) {
+        this.iconUrl = iconUrl;
+    }
+
+    private String iconUrl;
+
     public double getMoney() {
         return money;
     }

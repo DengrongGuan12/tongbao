@@ -618,4 +618,9 @@ public class UserServiceIml implements UserService {
         }
         return list;
     }
+
+    public boolean tokenValid(String token) {
+        // TODO: 4/15/2016  验证某token的有效性，这是因为客户端有些对401错误的支持不太好才加上去的，已登录返回true否则返回false 
+        return true;
+    }
 }

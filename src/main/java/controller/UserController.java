@@ -326,7 +326,7 @@ public class UserController {
         return RestResult.CreateResult(0,"failure!");
 
     }
-    @RequestMapping(value = "/addFeedback",method = RequestMethod.GET)
+    @RequestMapping(value = "/addFeedback",method = RequestMethod.POST)
     @ResponseBody
     public RestResult addFeedback(@RequestParam("content")String content){
         if(userService.addFeedback(content)){
@@ -336,7 +336,7 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "/auth/getAccountByMonth",method = RequestMethod.GET)
+    @RequestMapping(value = "/auth/getAccountByMonth",method = RequestMethod.POST)
     @ResponseBody
     public RestResult getAccountByMonth(@RequestParam("token")String token,@RequestParam("year")int year,@RequestParam("month")int month){
         int userId = userService.hasLogin(token);
@@ -344,10 +344,20 @@ public class UserController {
         return RestResult.CreateResult(1,monthAccount);
     }
 
-    @RequestMapping(value = "/getBannerInfo",method = RequestMethod.GET)
+    @RequestMapping(value = "/getBannerInfo",method = RequestMethod.POST)
     @ResponseBody
     public RestResult getBannerInfo(){
         return RestResult.CreateResult(1,userService.getBannerInfoList());
+    }
+
+    @RequestMapping(value = "/tokenValid",method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult tokenValid(@RequestParam("token")String token){
+        if(userService.tokenValid(token)){
+            return RestResult.CreateResult(1);
+        }else{
+            return RestResult.CreateResult(0);
+        }
     }
 
 }

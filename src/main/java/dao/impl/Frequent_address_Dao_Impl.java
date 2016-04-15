@@ -26,7 +26,6 @@ public class Frequent_address_Dao_Impl extends BaseDaoImpl implements Frequent_a
         return super.getList(Frequent_addresses.class,"shipper_id",userId+"");
     }
 
-    @Override
     public boolean deleteFrequentAddressByShipperId(int Fid, int shipperId) {
         try{
             Session session = getSession();
@@ -42,7 +41,6 @@ public class Frequent_address_Dao_Impl extends BaseDaoImpl implements Frequent_a
         }
     }
 
-    @Override
     public boolean updateFrequentAddress(Frequent_addresses frequent_addresses) {
         try{
             super.update(frequent_addresses);
@@ -53,7 +51,6 @@ public class Frequent_address_Dao_Impl extends BaseDaoImpl implements Frequent_a
         }
     }
 
-    @Override
     public Frequent_addresses getFrequent_address(int id) {
         return (Frequent_addresses)super.load(Frequent_addresses.class,id);
     }

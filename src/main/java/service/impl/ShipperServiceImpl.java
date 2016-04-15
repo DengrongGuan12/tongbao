@@ -103,6 +103,7 @@ public class ShipperServiceImpl implements ShipperService{
             user.setNickName(userTemp.getNick_name());
             user.setId(userTemp.getId());
             user.setPhoneNum(userTemp.getPhone_number());
+            user.setIconUrl(userTemp.getIcon());
             list.add(user);
         }
 
