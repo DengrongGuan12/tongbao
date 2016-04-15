@@ -66,7 +66,6 @@ public class OrderAffairsImpl  implements OrderAffairs{
 
         }
 
-    @Override
     public boolean finishOrderAffairs(Order order) {
         Session session = HibernateUtil.getSession();
         Transaction tx = null;
@@ -94,7 +93,6 @@ public class OrderAffairsImpl  implements OrderAffairs{
         }
     }
 
-    @Override
     public int cancelOrderAffairs(Order order) {
         Session session = HibernateUtil.getSession();
         Transaction tx = null;
@@ -125,7 +123,6 @@ public class OrderAffairsImpl  implements OrderAffairs{
     }
 
     //线上支付且订单尚未被抢,使用事务办法，包含退款账单，把钱退回用户账号
-    @Override
     public boolean deleteOrderAffairs(Order order) {
         Session session = HibernateUtil.getSession();
         Transaction tx = null;
@@ -152,7 +149,6 @@ public class OrderAffairsImpl  implements OrderAffairs{
             HibernateUtil.closeSession();
         }
     }
-    @Override
     public boolean autoFinishOrderAffairs(List<Order> orders) {
 
         Session session = HibernateUtil.getSession();
@@ -178,7 +174,7 @@ public class OrderAffairsImpl  implements OrderAffairs{
                     Map<String,String> extras = new HashMap<String, String>();
                     extras.put("type", UserServiceIml.order_finished+"");
                     extras.put("id",order.getId()+"");
-                    userService.push(order.getDriverId()+"","订单结束！","该订单被已被货主结束，核对付款的金额!",extras);
+                    userService.push(order.getDriverId()+"","订单结束！","该订单被已被货主结束，核对付款的金额!",extras,UserServiceIml.userType_driver);
                 }
 
             }
@@ -192,7 +188,6 @@ public class OrderAffairsImpl  implements OrderAffairs{
         }
     }
 
-    @Override
     public List<Order> getAllAutoFinishOrders() {
         //7天之前
 //        Date now = new Date();

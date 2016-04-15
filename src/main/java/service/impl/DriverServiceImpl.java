@@ -332,13 +332,13 @@ public class DriverServiceImpl implements DriverService {
                     //认证成功
                     extras.put("type",UserServiceIml.truck_auth_pass+"");
                     extras.put("id",id+"");
-                    userService.push(driver_auth.getUserId()+"","审核通过!","车牌号为"+driver_auth.getTruckNum()+"审核通过！",extras);
+                    userService.push(driver_auth.getUserId()+"","审核通过!","车牌号为"+driver_auth.getTruckNum()+"审核通过！",extras,UserServiceIml.userType_driver);
                     break;
                 case 3:
                     //认证失败
                     extras.put("type",UserServiceIml.truck_auth_fail+"");
                     extras.put("id",id+"");
-                    userService.push(driver_auth.getUserId()+"","审核未通过!","车牌号为"+driver_auth.getTruckNum()+"审核未通过！",extras);
+                    userService.push(driver_auth.getUserId()+"","审核未通过!","车牌号为"+driver_auth.getTruckNum()+"审核未通过！",extras,UserServiceIml.userType_driver);
                     break;
             }
             return true;

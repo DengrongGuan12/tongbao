@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import pojo.*;
 import service.OrderService;
 import service.UserService;
+import service.impl.UserServiceIml;
 import vo.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -318,7 +319,7 @@ public class UserController {
         Map<String,String> extras = new HashMap<String, String>();
         extras.put("type","0");
         extras.put("id","1");
-        PushResult pushResult = userService.push(alias,"title","content",extras);
+        PushResult pushResult = userService.push(alias,"title","content",extras, UserServiceIml.userType_driver);
         if(pushResult != null){
             return RestResult.CreateResult(1,pushResult);
         }
