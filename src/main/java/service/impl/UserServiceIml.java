@@ -609,6 +609,7 @@ public class UserServiceIml implements UserService {
     public MonthAccount getAccountByMonth(int userId, int year, int month) {
         //0:充值/1:提现/2:支付/3:退款/4:到帐
         // 根据年月获取某个用户的账单列表，需要这个月的总收入（type为0，3，4的和）和总支出（type为1，2的和）
+
         List<model.Account>allMonthAccount = accountDao.getAccountsByMonth(userId,year,month);
         List<vo.Account>outputAccounts = new ArrayList<Account>();
         Map <Integer,String>map = new HashMap<Integer,String>();
