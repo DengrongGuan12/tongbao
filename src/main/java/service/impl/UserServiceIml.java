@@ -17,6 +17,7 @@ import model.User;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import service.OrderService;
 import service.UserService;
 import vo.*;
 import vo.Account;
@@ -59,6 +60,12 @@ public class UserServiceIml implements UserService {
     private Account_type_name_t_Dao account_type_name_t_dao;
     @Autowired
     private UserAffairs userAffairs;
+    @Autowired
+    private OrderService orderService;
+    @Autowired
+    private FeedbackDao feedbackDao;
+    @Autowired
+    private BannerDao bannerDao;
 
     public static final int order_grabbed = 0;
     public static final int order_finished = 1;
@@ -554,8 +561,8 @@ public class UserServiceIml implements UserService {
 
     public PushPayload buildPushObject_all_all_alert(String tag) {
         Map<String,String> extras = new HashMap<String, String>();
-        extras.put("type","0");
-        extras.put("id","1");
+        extras.put("type", "0");
+        extras.put("id", "1");
         return PushPayload.newBuilder()
                 .setPlatform(Platform.all())
                 .setAudience(Audience.tag(tag))
@@ -593,34 +600,75 @@ public class UserServiceIml implements UserService {
     }
 
     public boolean addFeedback(String feedback) {
-        // TODO: 4/9/2016  
-        return true;
+        Feedback fb = new Feedback();
+        fb.setContent(feedback);
+        fb.setState(0);
+        return feedbackDao.createFeedback(fb);
     }
 
     public MonthAccount getAccountByMonth(int userId, int year, int month) {
-        // TODO: 4/10/2016  根据年月获取某个用户的账单列表，需要这个月的总收入（type为0，3，4的和）和总支出（type为1，2的和）
+        //0:充值/1:提现/2:支付/3:退款/4:到帐
+        // 根据年月获取某个用户的账单列表，需要这个月的总收入（type为0，3，4的和）和总支出（type为1，2的和）
+        List<model.Account>allMonthAccount = accountDao.getAccountsByMonth(userId,year,month);
+        List<vo.Account>outputAccounts = new ArrayList<Account>();
+        Map <Integer,String>map = new HashMap<Integer,String>();
+        map.put(0,"充值");map.put(1,"提现");map.put(2,"支付");map.put(3,"退款");map.put(4,"到账");
+        double output=0,input=0;
+        for(model.Account account:allMonthAccount){
+            int type = account.getType();
+            if (type == 0 || type == 3 || type == 4) {
+                input+=account.getMoney();
+            }
+            else if(type ==1 || type ==2){
+                output+=account.getMoney();
+            }
+            Account accountTemp = new Account();
+            accountTemp.setId(account.getId());
+            accountTemp.setOrderId(account.getOrderId());
+            Order order = orderDao.showOrderDetail(account.getOrderId());
+            if(order == null){
+                accountTemp.setOrder(null);
+            }else {
+                accountTemp.setOrder(orderService.genOrderSimpleFromOrder(order));
+            }
+            accountTemp.setTime(account.getBuildTime().toString());
+            accountTemp.setType(type);
+            accountTemp.setTypeStr(map.get(type));
+            accountTemp.setMoney(account.getMoney());
+            accountTemp.setUserId(account.getUserId());
+            User user = userDao.getUserById(account.getUserId());
+            accountTemp.setUserPhoneNum(user.getPhone_number());
+            outputAccounts.add(accountTemp);
+        }
         MonthAccount monthAccount = new MonthAccount();
-        monthAccount.setTotalIn(12.3);
-        monthAccount.setTotalOut(14.5);
-        List accountList = new ArrayList<Account>();
-        monthAccount.setAccountList(accountList);
+        monthAccount.setTotalIn(input);
+        monthAccount.setTotalOut(output);
+        monthAccount.setAccountList(outputAccounts);
         return monthAccount;
     }
 
     public List getBannerInfoList() {
-        // TODO: 4/10/2016  需要新建一张表来存imgUrl和targetUrl 
-        List list = new ArrayList<BannerInfo>();
-        for(int i = 0;i<4;i++){
+        // 需要新建一张表来存imgUrl和targetUrl
+        List<Banner> listTemp = bannerDao.getAllBanners();
+        List<BannerInfo> list = new ArrayList<>();
+        for(int i = 0;i<listTemp.size();i++){
+            Banner banner = listTemp.get(i);
             BannerInfo bannerInfo = new BannerInfo();
-            bannerInfo.setImgUrl("http://ww4.sinaimg.cn/large/610dc034jw1f2munu5gmfj20sg0e80v7.jpg");
-            bannerInfo.setTargetUrl("https://github.com/Yalantis/Horizon");
+//            bannerInfo.setImgUrl("http://ww4.sinaimg.cn/large/610dc034jw1f2munu5gmfj20sg0e80v7.jpg");
+//            bannerInfo.setTargetUrl("https://github.com/Yalantis/Horizon");
+            bannerInfo.setImgUrl(banner.getImgUrl());
+            bannerInfo.setTargetUrl(banner.getTargetUrl());
             list.add(bannerInfo);
         }
         return list;
     }
 
     public boolean tokenValid(String token) {
-        // TODO: 4/15/2016  验证某token的有效性，这是因为客户端有些对401错误的支持不太好才加上去的，已登录返回true否则返回false 
+        // 验证某token的有效性，这是因为客户端有些对401错误的支持不太好才加上去的，已登录返回true否则返回false
+        int userId =  userManager.getUserIdByKey(token);
+        if(userId ==0){
+            return false;
+        }
         return true;
     }
 }

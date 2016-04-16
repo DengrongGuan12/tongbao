@@ -754,7 +754,7 @@ public class OrderServiceImpl implements OrderService {
     根据order 生成orderSimple
      */
 //    Map map  = truckTypeDao.getAllTruckTypeMap();
-    private OrderSimple genOrderSimpleFromOrder(Order order){
+    public OrderSimple genOrderSimpleFromOrder(Order order){
 //        Map map  = truckTypeDao.getAllTruckTypeMap();
         OrderSimple orderSimple = new OrderSimple();
         orderSimple.setId(order.getId());

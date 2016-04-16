@@ -1,8 +1,10 @@
 package service;
 
+import model.Order;
 import pojo.OrderFilterInfo;
 import pojo.OrderInfo;
 import vo.OrderDetail;
+import vo.OrderSimple;
 
 import java.util.List;
 
@@ -24,4 +26,5 @@ public interface OrderService {
     public List getAllOrders();
     public boolean deleteOrder(int id);
     public boolean cancelOrder(int id);
+    public OrderSimple genOrderSimpleFromOrder(Order order);
 }

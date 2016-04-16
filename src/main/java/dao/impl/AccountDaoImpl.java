@@ -15,6 +15,16 @@ import java.util.List;
 public class AccountDaoImpl extends BaseDaoImpl implements AccountDao {
 
 
+    public List<Account> getAccountsByMonth(int userId, int year, int month) {
+        Session session = getSession();
+        String str = "Select acc from account acc where userId = :userId and month(acc.buildTime) = :month and year(acc.buildTime) = :year";
+        Query query = session.createQuery(str);
+        query.setInteger("userId",userId);
+        query.setInteger("month",month);
+        query.setInteger("year",year);
+        return query.list();
+    }
+
     public List<Object> getAccounts(int userId) {
         return super.getList(Account.class,"userId",userId+"");
     }

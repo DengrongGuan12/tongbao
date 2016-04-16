@@ -16,4 +16,5 @@ public interface AccountDao {
     public List getAllAccounts();
     public int getTotalAccountNum();
     public List getRecentAccounts(int num);
+    public List<Account>getAccountsByMonth(int userId,int year,int month);
 }
