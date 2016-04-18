@@ -104,6 +104,7 @@ public class ShipperServiceImpl implements ShipperService{
             user.setId(userTemp.getId());
             user.setPhoneNum(userTemp.getPhone_number());
             user.setIconUrl(userTemp.getIcon());
+            user.setRegisterTime(userTemp.getRegister_time()+"");
             list.add(user);
         }
 
@@ -144,6 +145,8 @@ public class ShipperServiceImpl implements ShipperService{
             userSimple.setId(userTemp.getId());
             userSimple.setNickName(userTemp.getNick_name());
             userSimple.setPhoneNum(userTemp.getPhone_number());
+            userSimple.setIconUrl(userTemp.getIcon());
+            userSimple.setRegisterTime(userTemp.getRegister_time()+"");
             list.add(userSimple);
         }
 
