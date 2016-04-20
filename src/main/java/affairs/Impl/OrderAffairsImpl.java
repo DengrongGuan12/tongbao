@@ -212,6 +212,13 @@ public class OrderAffairsImpl  implements OrderAffairs{
         Criteria criteria = sess.createCriteria(Order.class);
         criteria.add(Restrictions.between("loadTime", fromDate, sevenDaysAgo));
         criteria.add(Restrictions.eq("state",new Byte("1")));
-        return criteria.list();
+        try{
+            return criteria.list();
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ArrayList<>();
+        }finally {
+            HibernateUtil.closeSession();
+        }
     }
 }

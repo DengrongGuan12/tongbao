@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -75,6 +76,14 @@ public class UserTokenAffairsImpl implements UserTokenAffairs {
     public List<UserToken> getAllUserToken() {
         Session session = HibernateUtil.getSession();
         String hql = "from " + UserToken.class.getName();
-        return session.createQuery(hql).list();
+        try{
+            return session.createQuery(hql).list();
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ArrayList<>();
+        }finally {
+            HibernateUtil.closeSession();
+        }
+
     }
 }

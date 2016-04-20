@@ -35,7 +35,7 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
 		<!-- <property name="poolPreparedStatements" value="true" /> <property name="maxPoolPreparedStatementPerConnectionSize" value="33" /> -->
 
 		<property name="validationQuery" value="${validationQuery}" />
-		<property name="testOnBorrow" value="false" />
+		<property name="testOnBorrow" value="true" />
 		<property name="testOnReturn" value="false" />
 		<property name="testWhileIdle" value="true" />
 
