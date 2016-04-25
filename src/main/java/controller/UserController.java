@@ -317,7 +317,7 @@ public class UserController {
 //            e.printStackTrace();
 //        }
         Map<String,String> extras = new HashMap<String, String>();
-        extras.put("type","0");
+        extras.put("type","4");
         extras.put("id","1");
         PushResult pushResult = userService.push(alias,"title","content",extras, tag);
         if(pushResult != null){
