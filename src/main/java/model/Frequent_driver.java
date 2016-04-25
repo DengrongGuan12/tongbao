@@ -10,22 +10,11 @@ import java.io.Serializable;
  */
 @Entity(name="frequent_driver")
 public class Frequent_driver implements Serializable{
-    private int id;
     private int shipper_id;
     private int driver_id;
 
     @Id
-    @Column(name="id",nullable = true)
-    @GeneratedValue(generator = "generator")
-    @GenericGenerator(name = "generator",strategy = "increment")
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-    @Column
+    @Column(name = "shipper_id")
     public int getShipper_id() {
         return shipper_id;
     }
@@ -33,7 +22,8 @@ public class Frequent_driver implements Serializable{
     public void setShipper_id(int shipper_id) {
         this.shipper_id = shipper_id;
     }
-    @Column
+    @Id
+    @Column(name = "driver_id")
     public int getDriver_id() {
         return driver_id;
     }
