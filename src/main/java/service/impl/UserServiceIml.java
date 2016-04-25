@@ -8,6 +8,8 @@ import cn.jpush.api.push.PushResult;
 import cn.jpush.api.push.model.Platform;
 import cn.jpush.api.push.model.PushPayload;
 import cn.jpush.api.push.model.audience.Audience;
+import cn.jpush.api.push.model.notification.AndroidNotification;
+import cn.jpush.api.push.model.notification.IosNotification;
 import cn.jpush.api.push.model.notification.Notification;
 import dao.*;
 import manager.UserManager;
@@ -574,12 +576,19 @@ public class UserServiceIml implements UserService {
         PushPayload pushPayload =  PushPayload.newBuilder()
                 .setPlatform(Platform.android_ios())
                 .setAudience(Audience.alias(alias))
-//                .setNotification(Notification.android(content, title,extras))
-                .setMessage(cn.jpush.api.push.model.Message.newBuilder()
-                        .setTitle(title)
-                        .setMsgContent(content)
-                        .addExtras(extras)
-                        .build())
+                .setNotification(Notification.newBuilder().
+                        addPlatformNotification(AndroidNotification.
+                                newBuilder().
+                                setAlert(content).
+                                setTitle(title).
+                                addExtras(extras)
+                                .build()).addPlatformNotification(IosNotification.newBuilder().setAlert(content).addExtras(extras).build()).build())
+//                .setMessage(cn.jpush.api.push.model.Message.newBuilder()
+//                        .setTitle(title)
+//                        .setMsgContent(content)
+//                        .addExtras(extras)
+//                        .build())
+//                .setMessage(cn.jpush.api.push.model.Message.content(content))
                 .build();
 
         JPushClient jPushClient = null;
