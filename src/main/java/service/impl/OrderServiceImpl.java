@@ -161,10 +161,12 @@ public class OrderServiceImpl implements OrderService {
      * @return 内部类，包含最多匹配的map
      */
     private MatchDriverModel maxMatchDriver(String [] types,Set<Integer>hadSelected){
-        //shipperId和内部类
+        //driverId和内部类
         Map<Integer,MatchDriverModel>matchMap = new HashMap<Integer,MatchDriverModel>();
         for (int i=0;i<types.length;i++){
             List listTemp = driver_auth_dao.getDriverByTruckType(types[i]);
+            //防止同一个司机多辆同种类型的车子干扰,代表driverId
+            Set<Integer> uniqueType = new HashSet<>();
             for(int j=0;j<listTemp.size();j++){
                 Driver_auth driverTemp = (Driver_auth)listTemp.get(j);
                 if(driverTemp.getAuthState().equals(new Byte("2"))){
@@ -172,10 +174,17 @@ public class OrderServiceImpl implements OrderService {
                         MatchDriverModel md= new MatchDriverModel();
                         md.carType.put(driverTemp.getId(),driverTemp.getType());
                         matchMap.put(driverTemp.getUserId(),md);
+                        uniqueType.add(driverTemp.getUserId());
                     }else {
                         MatchDriverModel md = matchMap.get(driverTemp.getUserId());
                         if(!md.carType.containsKey(driverTemp.getId())&&(!hadSelected.contains(driverTemp.getId()))){
-                            md.carType.put(driverTemp.getId(),new Byte(driverTemp.getType()));
+                            if(uniqueType.contains(driverTemp.getUserId())){
+
+                            }else {
+                                md.carType.put(driverTemp.getId(),new Byte(driverTemp.getType()));
+                                uniqueType.add(driverTemp.getUserId());
+                            }
+
                         }
                     }
                 }
@@ -512,6 +521,10 @@ public class OrderServiceImpl implements OrderService {
         orderDetail.setStateStr(map.get(order.getState()));
         User shipper = userDao.getUserById(order.getShipperId());
         User driver = userDao.getUserById(order.getDriverId());
+        if(driver == null){
+            driver = new User();
+            driver.setPhone_number("");
+        }
         orderDetail.setDriverPhoneNum(shipper.getPhone_number());
         orderDetail.setShipperPhoneNum(driver.getPhone_number());
         orderDetail.setGoodsWeight(order.getGoodsWeight());
