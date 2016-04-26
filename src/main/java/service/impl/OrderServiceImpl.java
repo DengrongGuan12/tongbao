@@ -65,21 +65,24 @@ public class OrderServiceImpl implements OrderService {
             return 0;
         }else if(userType==0){
             //先根据总价格和用户账户中的钱判断是否够钱产生订单
-            double price = 0;
-            double distance = orderInfo.getDistance();
-            for(int i =0;i<tTypes.length;i++){
-                Trucks_type trucks_type = truckTypeMap.get(new Byte(tTypes[i]));
-                price+=trucks_type.getBase_price();
-                //当距离大于起步距离时
-                if(distance>BACE_DISTANCE){
-                    price+=(distance-BACE_DISTANCE)*trucks_type.getOver_price();
+            if(orderInfo.getPayType().equals(new Byte("1"))){
+                double price = 0;
+                double distance = orderInfo.getDistance();
+                for(int i =0;i<tTypes.length;i++){
+                    Trucks_type trucks_type = truckTypeMap.get(new Byte(tTypes[i]));
+                    price+=trucks_type.getBase_price();
+                    //当距离大于起步距离时
+                    if(distance>BACE_DISTANCE){
+                        price+=(distance-BACE_DISTANCE)*trucks_type.getOver_price();
+                    }
+                }
+                User user = userDao.getUserById(userId);
+                //钱不够返回0
+                if(user.getMoney()<price||truckTypes.size()<1){
+                    return 0;
                 }
             }
-            User user = userDao.getUserById(userId);
-            //钱不够返回0
-            if(user.getMoney()<price||truckTypes.size()<1){
-                return 0;
-            }
+
             if(truckTypes.size()==1){
                 if(!(this.saveOrder(userId,orderInfo,tTypes))){
                     return 0;
@@ -551,6 +554,15 @@ public class OrderServiceImpl implements OrderService {
                 break;
             }
             MatchDriverModel m = this.maxMatchDriver(tTypes,set);
+            //当找不到匹配时候遍历所以车辆类型生成订单
+            if(m.carType.size() == 0){
+                for(int i = 0; i<tTypes.length;i++){
+                    String []temp = new String [1];
+                    temp[0] = tTypes[i];
+                    this.saveOrder(userId,orderInfo,temp);
+                }
+                break;
+            }
             Iterator iterator=m.carType.keySet().iterator();
 
             String [] tT = new String[m.carType.size()];

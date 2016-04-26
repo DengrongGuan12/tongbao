@@ -54,6 +54,9 @@ public class ShipperServiceImpl implements ShipperService{
     public boolean addFrequentDriver(int userId, int driverId) {
         model.User shipper = userDao.getUserById(userId);
         model.User driver = userDao.getUserById(driverId);
+        if(shipper == null||driver == null){
+            return false;
+        }
         Byte b1 = shipper.getType();
         Byte b2 = driver.getType();
         if(!(b1.equals(new Byte("0")))||!(b2.equals(new Byte("1")))){
