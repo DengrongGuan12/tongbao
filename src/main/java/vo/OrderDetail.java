@@ -47,5 +47,25 @@ public class OrderDetail extends OrderSimple {
     //货物重量
     private double goodsWeight;
 
+    private Byte evaluatePoint;
+
+    public String getEvaluateContent() {
+        return evaluateContent;
+    }
+
+    public void setEvaluateContent(String evaluateContent) {
+        this.evaluateContent = evaluateContent;
+    }
+
+    public Byte getEvaluatePoint() {
+        return evaluatePoint;
+    }
+
+    public void setEvaluatePoint(Byte evaluatePoint) {
+        this.evaluatePoint = evaluatePoint;
+    }
+
+    private String evaluateContent;
+
 
 }

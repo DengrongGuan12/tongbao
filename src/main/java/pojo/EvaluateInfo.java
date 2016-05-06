@@ -14,7 +14,7 @@ public class EvaluateInfo extends TokenAuthInfo{
         this.evaluatePoint = evaluatePoint;
     }
 
-    private Byte evaluatePoint;
+    private Byte evaluatePoint = 0;
 
     public String getEvaluate() {
         return evaluate;
@@ -32,6 +32,6 @@ public class EvaluateInfo extends TokenAuthInfo{
         this.id = id;
     }
 
-    private String evaluate;
+    private String evaluate = "";
 
 }
