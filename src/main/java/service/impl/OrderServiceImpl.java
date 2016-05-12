@@ -70,6 +70,9 @@ public class OrderServiceImpl implements OrderService {
                 double distance = orderInfo.getDistance();
                 for(int i =0;i<tTypes.length;i++){
                     Trucks_type trucks_type = truckTypeMap.get(new Byte(tTypes[i]));
+                    if(trucks_type == null){
+                        continue;
+                    }
                     price+=trucks_type.getBase_price();
                     //当距离大于起步距离时
                     if(distance>BACE_DISTANCE){
@@ -139,6 +142,9 @@ public class OrderServiceImpl implements OrderService {
         double price = 0;
         for(int i =0;i<tTypes.length;i++){
             Trucks_type trucks_type = truckTypeMap.get(new Byte(tTypes[i]));
+            if(trucks_type == null){
+                continue;
+            }
             price+=trucks_type.getBase_price();
             //当距离大于起步距离时
             if(distance>BACE_DISTANCE){
