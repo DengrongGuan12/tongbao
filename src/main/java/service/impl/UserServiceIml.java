@@ -593,7 +593,7 @@ public class UserServiceIml implements UserService {
 
         JPushClient jPushClient = null;
         if(userType.equals(userType_shipper)){
-            jPushClient = new JPushClient("f3c822aa7d23171dc35e351a","0bfdf19308d2b4265b5d467d",3);
+            jPushClient = new JPushClient("68930d7fc23368be387e17a7","ca9fe909612197690db46060",3);
         }else{
             jPushClient = new JPushClient("9f5b375a48f78a79f18aaa0c","12be19e543158d0d057b2d09",3);
         }

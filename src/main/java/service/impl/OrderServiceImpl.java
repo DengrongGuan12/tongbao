@@ -132,8 +132,8 @@ public class OrderServiceImpl implements OrderService {
         order.setGoodsSize(orderInfo.getGoodsSize());
         order.setPayType(orderInfo.getPayType());
         order.setRemark(orderInfo.getRemark());
-        order.setEvaluate_point(new Byte("0"));
-        order.setEvaluate_content("");
+        order.setEvaluate_point(null);
+        order.setEvaluate_content(null);
         order.setState(new Byte("0"));
         order.setFromLat(orderInfo.getAddressFromLat());
         order.setFromLng(orderInfo.getAddressFromLng());
@@ -534,10 +534,16 @@ public class OrderServiceImpl implements OrderService {
             driver = new User();
             driver.setPhone_number("");
         }
-        orderDetail.setDriverPhoneNum(shipper.getPhone_number());
-        orderDetail.setShipperPhoneNum(driver.getPhone_number());
+        if(shipper == null){
+            shipper = new User();
+            shipper.setPhone_number("");
+        }
+        orderDetail.setDriverPhoneNum(driver.getPhone_number());
+        orderDetail.setShipperPhoneNum(shipper.getPhone_number());
         orderDetail.setGoodsWeight(order.getGoodsWeight());
         orderDetail.setGoodsType(order.getGoodsType());
+        orderDetail.setEvaluateContent(order.getEvaluate_content());
+        orderDetail.setEvaluatePoint(order.getEvaluate_point());
         return orderDetail;
     }
 
