@@ -176,7 +176,7 @@ public class OrderAffairsImpl  implements OrderAffairs{
                     Map<String,String> extras = new HashMap<String, String>();
                     extras.put("type", UserServiceIml.order_canceled+"");
                     extras.put("id",order.getId()+"");
-                    userService.push(order.getShipperId()+"","订单自动结束！","该订单由于超时已被自动结束，请核对退款款的金额!",extras,UserServiceIml.userType_shipper);
+                    userService.push(order.getShipperId()+"","订单自动结束！","该订单由于超时已被自动结束，请核对退款的金额!",extras,UserServiceIml.userType_shipper);
                 }
 
             }
