@@ -149,6 +149,47 @@ public class OrderAffairsImpl  implements OrderAffairs{
             HibernateUtil.closeSession();
         }
     }
+
+    @Override
+    public boolean autoFinishTimeOutAffairs(List<Order> orders) {
+        Session session = HibernateUtil.getSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            for(Order order : orders) {
+                order.setState(new Byte("2"));
+                session.update(order);
+                //表示在线支付
+                if(order.getPayType().equals(new Byte("0"))){
+                    Account account = new Account();
+                    account.setOrderId(order.getId());
+                    account.setBuildTime(new Timestamp(System.currentTimeMillis()));
+                    account.setUserId(order.getDriverId());
+                    account.setMoney(order.getPrice());
+                    account.setType(new Byte("3"));//表示退款账单
+                    session.save(account);
+                    User user = (User) session.load(User.class, order.getShipperId());
+                    double moneyNow = user.getMoney() + order.getPrice();
+                    user.setMoney(moneyNow);
+                    session.update(user);//到账
+                    //TODO: 16/5/22在线支付中，未完成订单退款给货主，给货主发送提示消息
+//                    Map<String,String> extras = new HashMap<String, String>();
+//                    extras.put("type", UserServiceIml.order_finished+"");
+//                    extras.put("id",order.getId()+"");
+//                    userService.push(order.getDriverId()+"","订单结束！","该订单被已被货主结束，核对付款的金额!",extras,UserServiceIml.userType_driver);
+                }
+
+            }
+            tx.commit();
+            return true;
+        }catch (Exception e){
+            if(tx!=null) tx.rollback();
+            return false;
+        }finally {
+            HibernateUtil.closeSession();
+        }
+    }
+
     public boolean autoFinishOrderAffairs(List<Order> orders) {
 
         Session session = HibernateUtil.getSession();
@@ -190,14 +231,6 @@ public class OrderAffairsImpl  implements OrderAffairs{
 
     public List<Order> getAllAutoFinishOrders() {
         //7天之前
-//        Date now = new Date();
-//        Date sevenDaysAgo = new Date(now.getTime() -(7L*24L*60L*60L*1000L));
-//        Timestamp timestamp = new Timestamp(System.currentTimeMillis()-7L*24L*60L*60L*1000L);
-//        Session session = HibernateUtil.getSession();
-//        Query query = session.createQuery("from orders as o where o.state = 1 and o.loadTime < :timestamp");
-//        query.setTime("timestamp",timestamp);
-//        System.out.println(timestamp+"timestamp");
-//        return query.list();
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.YEAR,1970);
         calendar.set(Calendar.MONTH,1);
@@ -212,6 +245,32 @@ public class OrderAffairsImpl  implements OrderAffairs{
         Criteria criteria = sess.createCriteria(Order.class);
         criteria.add(Restrictions.between("loadTime", fromDate, sevenDaysAgo));
         criteria.add(Restrictions.eq("state",new Byte("1")));
+        try{
+            return criteria.list();
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ArrayList<>();
+        }finally {
+            HibernateUtil.closeSession();
+        }
+    }
+
+
+    public List<Order> getAllLoadTimeOutOrders() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.YEAR,1970);
+        calendar.set(Calendar.MONTH,1);
+        calendar.set(Calendar.DATE,1);
+        calendar.set(Calendar.HOUR_OF_DAY,0);
+        calendar.set(Calendar.MINUTE,0);
+        calendar.set(Calendar.SECOND,0);
+        Date fromDate = calendar.getTime();
+        Date now = new Date();
+        Date nowTime = new Date(now.getTime());
+        Session sess = HibernateUtil.getSession();
+        Criteria criteria = sess.createCriteria(Order.class);
+        criteria.add(Restrictions.between("loadTime", fromDate, nowTime));
+        criteria.add(Restrictions.eq("state",new Byte("0")));
         try{
             return criteria.list();
         }catch (Exception e){

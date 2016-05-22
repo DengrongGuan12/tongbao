@@ -13,6 +13,8 @@ public interface OrderAffairs {
     public int cancelOrderAffairs(Order order);
     public boolean finishOrderAffairs(Order order);
     public boolean autoFinishOrderAffairs(List<Order> orders);
+    public boolean autoFinishTimeOutAffairs(List<Order> orders);
     public List<Order> getAllAutoFinishOrders();
+    public List<Order> getAllLoadTimeOutOrders();
 
 }

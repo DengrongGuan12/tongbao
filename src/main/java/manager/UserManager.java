@@ -19,9 +19,9 @@ public class UserManager {
     private static final long OVERDUE_TIME=1800000;//设置用户过期时长为30分钟
     private static Map<String,Object> all_user_online=new HashMap<String, Object>();
     private static Map<Integer,String>user_auth_code=new HashMap<Integer,String>();
-
-    private static List<UserToken> newAddUserToken = new ArrayList<UserToken>();
-    private static List<UserToken> newUpdateUserToken = new ArrayList<UserToken>();
+    //线程安全Vector
+    private static List<UserToken> newAddUserToken = new Vector<>();
+    private static List<UserToken> newUpdateUserToken = new Vector<>();
 
     private static class SingletonHolder {
         private static final UserManager INSTANCE = new UserManager();
