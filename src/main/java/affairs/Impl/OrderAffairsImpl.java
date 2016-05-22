@@ -173,10 +173,10 @@ public class OrderAffairsImpl  implements OrderAffairs{
                     user.setMoney(moneyNow);
                     session.update(user);//到账
                     //TODO: 16/5/22在线支付中，未完成订单退款给货主，给货主发送提示消息
-//                    Map<String,String> extras = new HashMap<String, String>();
-//                    extras.put("type", UserServiceIml.order_finished+"");
-//                    extras.put("id",order.getId()+"");
-//                    userService.push(order.getDriverId()+"","订单结束！","该订单被已被货主结束，核对付款的金额!",extras,UserServiceIml.userType_driver);
+                    Map<String,String> extras = new HashMap<String, String>();
+                    extras.put("type", UserServiceIml.order_canceled+"");
+                    extras.put("id",order.getId()+"");
+                    userService.push(order.getShipperId()+"","订单自动结束！","该订单由于超时已被自动结束，请核对退款款的金额!",extras,UserServiceIml.userType_shipper);
                 }
 
             }
