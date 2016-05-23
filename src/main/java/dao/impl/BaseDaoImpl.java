@@ -45,7 +45,7 @@ public class BaseDaoImpl implements BaseDao {
     }
     public Object load(Class c, Byte id){
         Session session = getSession();
-        return session.get(c,id);
+        return session.get(c, id);
     }
 
     public List getAllList(Class c) {
@@ -55,9 +55,15 @@ public class BaseDaoImpl implements BaseDao {
     }
 
     public List getList(Class c, String para, String val) {
-        String hql = "from " + c.getName() + " where " + para + " = " + val;
-        Session session = getSession();
-        return session.createQuery(hql).list();
+        try{
+            String hql = "from " + c.getName() + " where " + para + " = " + val;
+            Session session = getSession();
+            return session.createQuery(hql).list();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+
     }
 
     public List getList(Class c, String[] para, String[] val, String[] operation, String order, boolean isAsc) {

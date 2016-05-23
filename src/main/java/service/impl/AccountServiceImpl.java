@@ -33,6 +33,9 @@ public class AccountServiceImpl implements AccountService {
             Account account = new Account();
             model.Account accountTemp = (model.Account) listTemp.get(i);
             model.User user = userDao.getUserById(accountTemp.getUserId());
+            if(user == null){
+                continue;
+            }
             account.setId(accountTemp.getId());
             account.setUserId(accountTemp.getUserId());
             account.setUserPhoneNum(user.getPhone_number());

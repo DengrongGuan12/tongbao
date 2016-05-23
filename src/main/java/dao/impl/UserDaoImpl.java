@@ -88,7 +88,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao{
     }
     public User getUserByPhoneNumber(String phoneNumber) {
         List list=super.getList(User.class,"phone_number",phoneNumber);
-        if(list.isEmpty()){
+        if(list == null||list.isEmpty()){
             return null;
         }else {
             return (User)list.get(0);
