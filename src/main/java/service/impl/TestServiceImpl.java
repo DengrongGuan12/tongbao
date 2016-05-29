@@ -88,8 +88,8 @@ public class TestServiceImpl implements TestService {
             order.setTolng(toPlaceLng);
             int types_num = (int)(Math.random()*9);
             String types[] = new String[types_num+1];
-            for(i = 0;i<=types_num;i++){
-                types[i] = (int)(Math.random()*9)+"";
+            for(int j = 0;j<=types_num;j++){
+                types[j] = (int)(Math.random()*9)+"";
             }
             int order_id =orderAffairs.saveOrderAffairs(order,types);
             System.out.println("订单的id是："+order_id);
